@@ -14,7 +14,7 @@ const AppLayout = ({ containerClassnames, children, history }) => {
         <li>INDUSTRY</li>
       </ul>
       <div className="container-warp">
-        <LeftMenu/>
+        <LeftMenu />
         <main>
           <div className="container-fluid">{children}</div>
         </main>

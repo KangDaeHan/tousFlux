@@ -141,114 +141,121 @@ body {
   }
 }
 
-.left-menu {
+.pro-sidebar {
+  width: 280px;
+  height: auto !important;
+  min-width: 280px;
   padding-top: 0;
   z-index: 4;
   transition: width,left,right,.3s;
-  
-  .pro-sidebar {
-    width: 280px;
-    min-width: 280px;
-    color: #bbb;
+  color: #bbb;
 
-    > .pro-sidebar-inner {
-      background-color: #5d5d5d;
-      border-radius: 0 7px 7px 0;
-      overflow: hidden;
+  > .pro-sidebar-inner {
+    background-color: #5d5d5d !important;
+    border-radius: 0 7px 7px 0;
+    overflow: hidden;
 
-      > .pro-sidebar-layout {
-        
-        .pro-sidebar-header {
-          position: relative;
-          height: 60px;
-          border-bottom: 1px solid #888;
-          background-color: #707070;
-
-          .closemenu {
-            position: absolute;
-            top: 50%;
-            right: 15px;
-            padding: 0;
-            border: 0;
-            margin-top: -11px;
-            background-color: transparent;
-            
-            > span {
-              position: relative;
-              display: block;
-              width: 22px;
-              height: 22px;
-              overflow: hidden;
-              text-indent: -9999px;
-            }
-            .folding_on {
-              background: url('/assets/img/icon/icon_sidebar_on.png') no-repeat;
-            }
-            .folding_off {
-              background: url('/assets/img/icon/icon_sidebar.png') no-repeat;
-            }
-          }
-        }
-      }
-    }
-    .pro-menu {
-      padding: 0;
-
-      .pro-menu-item {
-
-        > .pro-inner-item {
-          height: 60px;
-          padding: 0 26px;
-          border-bottom: 1px solid #888;
-        }
-
-        &.active {
-          border-left: 5px solid #f9a21b;
-
-          .pro-inner-item {
-            color: #f9a21b;
-          }
-        }
-      }
+    > .pro-sidebar-layout {
       
+      .pro-sidebar-header {
+        position: relative;
+        height: 60px;
+        border-bottom: 1px solid #888;
+        background-color: #707070;
+
+        .closemenu {
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          padding: 0;
+          border: 0;
+          margin-top: -11px;
+          background-color: transparent;
+          
+          > span {
+            position: relative;
+            display: block;
+            width: 22px;
+            height: 22px;
+            overflow: hidden;
+            text-indent: -9999px;
+          }
+          .folding_on {
+            background: url('/assets/img/icon/icon_sidebar_on.png') no-repeat;
+          }
+          .folding_off {
+            background: url('/assets/img/icon/icon_sidebar.png') no-repeat;
+          }
+        }
+      }
+    }
+  }
+  .pro-menu {
+    padding: 0 !important;
+
+    .pro-menu-item {
+
+      > .pro-inner-item {
+        height: 60px;
+        padding: 0 26px;
+        border-bottom: 1px solid #888;
+      }
+
+      &.active {
+        border-left: 5px solid #f9a21b;
+
+        .pro-inner-item {
+          color: #f9a21b;
+        }
+      }
+    }
+    
+  }
+
+  &.collapsed {
+    width: 64px !important;
+    min-width: 64px !important;
+
+    .pro-menu .pro-menu-item.active {
+      border: 0;
+
+      &::before {
+        width: 5px;
+        right: auto;
+        background-color: #f9a21b;
+        cursor: default;
+      }
     }
 
-    &.collapsed {
-      width: 61px;
-      min-width: 61px;
+    > .pro-sidebar-inner > .pro-sidebar-layout .pro-sidebar-header .closemenu {
+      left: 50%;
+      right: auto;
+      margin-left: -9.5px;
 
-      .pro-menu .pro-menu-item.active {
-        border: 0;
-
-        &::before {
-          width: 5px;
-          right: auto;
-          background-color: #f9a21b;
-          cursor: default;
-        }
+      .folding_on {
+        background-position: 50% 50%;
+        background-size: contain;
       }
-
-      > .pro-sidebar-inner > .pro-sidebar-layout .pro-sidebar-header .closemenu {
-        left: 50%;
-        right: auto;
-        margin-left: -9.5px;
-
-        .folding_on {
-          background-position: 50% 50%;
-          background-size: contain;
-        }
-      }
-
     }
 
   }
+
 }
 
 // 달력 스타일
+.date-picker-wrap {
+  .cal-range {
+    float: left;
+    margin: 9px 8px 0 0;
+    font-size: 12px;
+    color: #bbb;
+    vertical-align: middle;
+  }
+}
 .react-datepicker-wrapper {
   float: left;
   max-width: 120px;
-  margin-right: 23px;
+  margin-right: 8px;
 }
 .react-datepicker__day-names .react-datepicker__day-name:first-child, 
 .react-datepicker__week .react-datepicker__day:first-child {
@@ -286,6 +293,97 @@ table {
   }
 }
 
-.tbl-vertical-heading {
+.select-box-wrap {
+      
+  .select-box {
+    display: inline-block;
+    min-width: 120px;
+    width: 27%;
+    margin: 0 0 0 0;
+    vertical-align: middle;
+    box-sizing: content-box;
+  }
 
+  &.multi {
+    .select-box {
+      padding-left: 23px;
+      background: url("/assets/img/icon/icon_step.png") no-repeat 9px 50%;
+
+      &:first-child {
+        padding: 0;
+        background: none;
+      }
+    }
+  }
+}
+
+.btn-xl {
+  min-width: 200px;
+}
+
+.btn-gray {
+  background-color: #bbbbbb;
+  color: #fff;
+  border-radius: 0;
+}
+
+.box-line {
+  margin: 20px 0;
+  border: 1px solid #d4d4d4;
+}
+
+.box-title {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #d1d1d1;
+
+  h2 {
+    display: inline-block;
+    margin: 0 15px 0 0;
+    font-size: 30px;
+    color: #444;
+    vertical-align: middle;
+  }
+
+  .help {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.showroom-gallery {
+  margin-top: 20px;
+  overflow: hidden;
+
+  ul {
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-content : flex-start;
+    justify-content : flex-start;
+    width: calc(100% + 12px);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    li {
+      width: 203.5px;
+      margin: 0 12px 12px 0;
+      list-style: none;
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.left-menu {
+  &.collapsed + main {
+    .showroom-gallery {
+      ul {
+        li {
+          width: 233px;
+        }
+      }
+    }
+  }
 }
