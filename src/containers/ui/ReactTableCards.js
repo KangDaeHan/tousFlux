@@ -49,12 +49,13 @@ function Table({ columns, data, divided = false, defaultPageSize = 6 }) {
                 <th
                   key={`th_${columnIndex}`}
                   {...column.getHeaderProps(column.getSortByToggleProps())}
+                  title='클릭시 정렬'
                   className={
                     column.isSorted
                       ? column.isSortedDesc
-                        ? 'sorted-desc'
-                        : 'sorted-asc'
-                      : ''
+                        ? 'text-center sorted-desc'
+                        : 'text-center sorted-asc'
+                      : ' text-center'
                   }
                 >
                   {column.render('Header')}
@@ -107,27 +108,27 @@ export const ReactTableWithPaginationCard = () => {
   const cols = React.useMemo(
     () => [
       {
-        Header: 'Name',
-        accessor: 'title',
-        cellClass: 'list-item-heading w-40',
+        Header: 'Rank',
+        accessor: 'id',
+        cellClass: 'list-item-heading text-center',
         Cell: (props) => <>{props.value}</>,
       },
       {
-        Header: 'Sales',
-        accessor: 'sales',
-        cellClass: 'text-muted w-10',
+        Header: 'Purchase Factor',
+        accessor: 'purchase',
+        cellClass: 'text-muted text-center',
         Cell: (props) => <>{props.value}</>,
       },
       {
-        Header: 'Stock',
-        accessor: 'stock',
-        cellClass: 'text-muted w-10',
+        Header: 'Satisfaction Factor',
+        accessor: 'satisfaction',
+        cellClass: 'text-muted text-center',
         Cell: (props) => <>{props.value}</>,
       },
       {
-        Header: 'Category',
-        accessor: 'category',
-        cellClass: 'text-muted w-40',
+        Header: 'Dis-satisfaction Factor',
+        accessor: 'disSatisfaction',
+        cellClass: 'text-muted text-center',
         Cell: (props) => <>{props.value}</>,
       },
     ],
@@ -137,9 +138,9 @@ export const ReactTableWithPaginationCard = () => {
   return (
     <Card className="mb-4">
       <CardBody>
-        <CardTitle>
+        {/* <CardTitle>
           <IntlMessages id="table.react-pagination" />
-        </CardTitle>
+        </CardTitle> */}
         <Table columns={cols} data={products} />
       </CardBody>
     </Card>

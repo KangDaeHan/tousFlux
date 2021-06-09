@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
-import { Row, Card, CardBody, Form, FormGroup, Button } from 'reactstrap';
+import { 
+  Row, 
+  Card, 
+  CardBody, 
+  Form, 
+  FormGroup, 
+  Nav,
+  NavItem,
+  TabContent,
+  TabPane, 
+  Button } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
+import classnames from 'classnames';
 import Select from 'react-select';
 // import IntlMessages from '../../../helpers/IntlMessages';
 import DatePicker from 'react-datepicker';
@@ -9,7 +21,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Bubble from '../../../components/charts/Bubble';
 import Line from '../../../components/charts/Line';
 import Bar from '../../../components/charts/Bar';
-
+import { ReactTableWithPaginationCard } from '../../../containers/ui/ReactTableCards';
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
 
@@ -44,6 +56,8 @@ const Start = ({ intl }) => {
     { label: '신발', value: 'clothing2', key: 1 },
     { label: '패션의류', value: 'clothing3', key: 2 },
   ];
+
+  const [activeFirstTab, setActiveFirstTab] = useState('1');
 
   return (
     <>
@@ -174,29 +188,130 @@ const Start = ({ intl }) => {
       </Row>
       {/* e:showwoom */}
 
-      {/* s:P-Factor Analysis */}
       <Row className="mt-5">
         <Colxx xxs="12">
-          <Card>
-            <CardBody>
-              <div className="box-title">
-                <h2>Trend-Quad</h2>
-                <span className="help"><img src="/assets/img/icon/icon_help.png" alt="도움말" /></span>
-              </div>
+          {/* s: 탭메뉴 */}
+          <Nav tabs className="card-header-tabs ">
+            <NavItem>
+              <NavLink
+                to="#"
+                location={{}}
+                className={classnames({
+                  active: activeFirstTab === '1',
+                  'nav-link': true,
+                })}
+                onClick={() => {
+                  setActiveFirstTab('1');
+                }}
+              >
+                P-Factor Analysis
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink
+                to="#"
+                location={{}}
+                className={classnames({
+                  active: activeFirstTab === '2',
+                  'nav-link': true,
+                })}
+                onClick={() => {
+                  setActiveFirstTab('2');
+                }}
+              >
+                E-Factor Analysis
+              </NavLink>
+            </NavItem>
+          </Nav>
+          {/* e: 탭메뉴 */}
 
-              <div className="box-line">
-                <Bubble />
+          {/* s:탭 컨텐츠 */}
+          <TabContent activeTab={activeFirstTab}>
+            {/* s:P-Factor Analysis */}
+            <TabPane tabId="1">
+              <Row>
+                <Colxx xxs="12">
+                  <Card>
+                    <CardBody>
+                      <div className="box-title">
+                        <h2>Trend-Quad</h2>
+                        <span className="help"><img src="/assets/img/icon/icon_help.png" alt="도움말" /></span>
+                      </div>
 
-                <Line />
+                      <div className="clearfix box-line">
+                        <div className="box left">
+                          {/* 각 차트별 height 값은 props로 전달 */}
+                          <Bubble height={550} />
+                        </div>
+                        <div className="box right">
+                          <div className="chart-area">
+                            <div className="chart-header">
+                              <div className="chart-title">
+                                <h4>Post-Trend</h4>
+                                <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
+                              </div>
+                              <span className="mean">Pre-Trend <span className="number">85.5%</span></span>
+                            </div>
+                            {/* 각 차트별 height 값은 props로 전달 */}
+                            <Line height={210} />
+                          </div>
+                          <div className="chart-area mb-0">
+                            <div className="chart-header">
+                              <div className="chart-title">
+                                <h4>Sentiment Factor | <span>Brand</span></h4>
+                                <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
+                              </div>
+                            </div>
+                            {/* 각 차트별 height 값은 props로 전달 */}
+                            <Bar height={210} />
+                          </div>
+                        </div>
+                      </div>
 
-                <Bar />
-              </div>
-              
-            </CardBody>
-          </Card>
+                      <div className="box-title">
+                        <h2>GI(Global Index) Analysis</h2>
+                        <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
+                      </div>
+
+                      <div className="table-sort-area">
+                        <div className="clearfix box-line">
+                          <div className="box left">
+                            <ReactTableWithPaginationCard />
+                          </div>
+                          <div className="box right">
+                            <Bubble height={400} />
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </CardBody>
+                  </Card>
+                </Colxx>
+              </Row>
+            </TabPane>
+            {/* e:P-Factor Analysis */}
+            
+            {/* s:E-Factor Analysis */}
+            <TabPane tabId="2">
+              <Row>
+                <Colxx xxs="12">
+                  <Card>
+                    <CardBody>
+                      <div>
+                        Wedding Cake with Flowers Macarons and Blueberries
+                      </div>
+                    </CardBody>
+                  </Card>
+                </Colxx>
+              </Row>
+            </TabPane>
+            {/* e:E-Factor Analysis */}
+
+          </TabContent>
+          {/* e:탭 컨텐츠 */}
         </Colxx>
       </Row>
-      {/* e:P-Factor Analysis */}
+      
     </>
   );
 };

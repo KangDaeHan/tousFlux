@@ -2,9 +2,9 @@ import React from 'react';
 import ReactApexChart from "react-apexcharts";
 import { lineChartOptions } from './config';
 
-const Line = () => {
+const Line = ({height}) => {
   return (
-    <ReactApexChart options={lineChartOptions.options} series={lineChartOptions.series} type="line" width={500} height={320} />
+    <ReactApexChart options={lineChartOptions.options} series={lineChartOptions.series} type="line" height={height} />
   );
 };
 
