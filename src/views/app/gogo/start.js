@@ -18,6 +18,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
 import 'react-datepicker/dist/react-datepicker.css';
+import ShowRoom from '../../../containers/pages/ShowRoom';
 import Bubble from '../../../components/charts/Bubble';
 import Line from '../../../components/charts/Line';
 import Bar from '../../../components/charts/Bar';
@@ -165,7 +166,8 @@ const Start = ({ intl }) => {
 
               {/* 이미지 갤러리 */}
               <div className="showroom-gallery">
-                <ul>
+                <ShowRoom />
+                {/* <ul>
                   <li><img src="/assets/img/showroom/thumb1.png" alt="연관 이미지"/></li>
                   <li><img src="/assets/img/showroom/thumb2.png" alt="연관 이미지"/></li>
                   <li><img src="/assets/img/showroom/thumb3.png" alt="연관 이미지"/></li>
@@ -180,7 +182,7 @@ const Start = ({ intl }) => {
                   <li><img src="/assets/img/showroom/thumb2.png" alt="연관 이미지"/></li>
                   <li><img src="/assets/img/showroom/thumb3.png" alt="연관 이미지"/></li>
                   <li><img src="/assets/img/showroom/thumb4.png" alt="연관 이미지"/></li>
-                </ul>
+                </ul> */}
               </div>
             </CardBody>
           </Card>
