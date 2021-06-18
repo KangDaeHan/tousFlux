@@ -101,7 +101,7 @@ const TopNav = ({
               </span>
             </DropdownToggle>
             <DropdownMenu className="mt-3" right>
-              <div className="name mr-1">
+              <div className="name">
                 <span>
                   <img alt="Profile" src="/assets/img/pic_default.png" />
                 </span>

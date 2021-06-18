@@ -6,17 +6,16 @@ const thumbs = [
   '/assets/img/showroom/thumb2.png',
   '/assets/img/showroom/thumb3.png',
   '/assets/img/showroom/thumb4.png',
-  '/assets/img/showroom/thumb1.png',
   '/assets/img/showroom/thumb3.png',
   '/assets/img/showroom/thumb2.png',
   '/assets/img/showroom/thumb1.png',
   '/assets/img/showroom/thumb4.png',
-  '/assets/img/showroom/thumb3.png',
-  '/assets/img/showroom/thumb1.png',
   '/assets/img/showroom/thumb2.png',
+  '/assets/img/showroom/thumb3.png',
   '/assets/img/showroom/thumb4.png',
+  '/assets/img/showroom/thumb2.png',
   '/assets/img/showroom/thumb1.png',
-
+  '/assets/img/showroom/thumb4.png',
 ];
 
 const ShowRoom = () => {

@@ -5,6 +5,10 @@
   "private": true,
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
+    "@grapecity/wijmo.react.all": "^5.20211.794",
+    "@grapecity/wijmo.react.chart": "^5.20211.794",
+    "@grapecity/wijmo.react.chart.annotation": "^5.20211.794",
+    "@grapecity/wijmo.styles": "^5.20211.794",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

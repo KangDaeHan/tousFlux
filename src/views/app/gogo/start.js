@@ -7,10 +7,9 @@ import {
   FormGroup, 
   Nav,
   NavItem,
-  TabContent,
-  TabPane, 
   Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { Formik, Field } from 'formik';
 import { injectIntl } from 'react-intl';
 import classnames from 'classnames';
 import Select from 'react-select';
@@ -22,6 +21,7 @@ import ShowRoom from '../../../containers/pages/ShowRoom';
 import Bubble from '../../../components/charts/Bubble';
 import Line from '../../../components/charts/Line';
 import Bar from '../../../components/charts/Bar';
+import ScatterQuadrant from '../../../components/charts/ScatterQuadrant';
 import { ReactTableWithPaginationCard } from '../../../containers/ui/ReactTableCards';
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
@@ -60,20 +60,31 @@ const Start = ({ intl }) => {
 
   const [activeFirstTab, setActiveFirstTab] = useState('1');
 
+  const validateKeyword = (value) => {
+    let error;
+    if (!value) {
+      error = 'No Keywords';
+    } else if (value.length < 2) {
+      error = 'Value must be longer than 2 characters';
+    }
+    return error;
+  };
+
   return (
     <>
       <Row>
         <Colxx xxs="12">
           <Card>
             <CardBody>
+              { /* s: 검색 조건 일단 여기 */ }
               <Form className="select-box-wrap multi">
               <div className="tbl-vertical-heading">
                 <table>
                   <tbody>
                     <tr>
                       {/* vertical유형의 테이블 th 값은 인라인 스타일로 지정 바랍니다. */}
-                      <th style={{ width:'10%' }}>Period</th>
-                      <td style={{ width:'90%' }} colSpan="3">
+                      <th style={{ width:'15%' }}>Period</th>
+                      <td style={{ width:'85%' }} colSpan="3">
                         <div className="date-picker-wrap">
                           <DatePicker
                             locale={ko}
@@ -100,8 +111,8 @@ const Start = ({ intl }) => {
                       </td>
                     </tr>
                     <tr>
-                      <th style={{ width:'10%' }}>Product(上) Category</th>
-                      <td style={{ width:'40%' }}>
+                      <th style={{ width:'15%' }}>Product(上) Category</th>
+                      <td style={{ width:'35%' }}>
                         <FormGroup className="select-box">
                           <Select
                             components={{ Input: CustomSelectInput }}
@@ -136,8 +147,30 @@ const Start = ({ intl }) => {
                           />
                         </FormGroup>
                       </td>
-                      <th style={{ width:'10%' }}>Product(下) Category</th>
-                      <td style={{ width:'40%' }}>No Keywords</td>
+                      <th style={{ width:'15%' }}>Product(下) Category</th>
+                      <td style={{ width:'35%' }}>
+                      <Formik
+                        initialValues={{
+                          keyword: '',
+                        }}
+                        // onSubmit={onSubmit}
+                      >
+                      {({ errors, touched }) => (
+                        <FormGroup className="keyword-area">
+                          <Field
+                            className="form-control"
+                            name="keyword"
+                            validate={validateKeyword}
+                          />
+                          {errors.keyword && touched.keyword && (
+                            <div className="d-block noti-text">
+                              {errors.keyword}
+                            </div>
+                          )}
+                        </FormGroup>
+                      )}
+                      </Formik>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -149,11 +182,11 @@ const Start = ({ intl }) => {
                 </Button>
               </div>
               </Form>
+              { /* e: 검색 조건 일단 여기 */ }
             </CardBody>
           </Card>
         </Colxx>
       </Row>
-
       {/* s:showwoom */}
       <Row className="mt-5">
         <Colxx xxs="12">
@@ -163,33 +196,17 @@ const Start = ({ intl }) => {
                 <h2>Showroom</h2>
                 <span className="help"><img src="/assets/img/icon/icon_help.png" alt="도움말" /></span>
               </div>
-
               {/* 이미지 갤러리 */}
               <div className="showroom-gallery">
+                {/* 이미지 갤러리 */}
                 <ShowRoom />
-                {/* <ul>
-                  <li><img src="/assets/img/showroom/thumb1.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb2.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb3.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb4.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb3.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb4.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb2.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb1.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb1.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb3.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb1.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb2.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb3.png" alt="연관 이미지"/></li>
-                  <li><img src="/assets/img/showroom/thumb4.png" alt="연관 이미지"/></li>
-                </ul> */}
               </div>
             </CardBody>
           </Card>
         </Colxx>
       </Row>
       {/* e:showwoom */}
-
+      {/* s:tab menu */}
       <Row className="mt-5">
         <Colxx xxs="12">
           {/* s: 탭메뉴 */}
@@ -226,91 +243,75 @@ const Start = ({ intl }) => {
             </NavItem>
           </Nav>
           {/* e: 탭메뉴 */}
-
-          {/* s:탭 컨텐츠 */}
-          <TabContent activeTab={activeFirstTab}>
-            {/* s:P-Factor Analysis */}
-            <TabPane tabId="1">
-              <Row>
-                <Colxx xxs="12">
-                  <Card>
-                    <CardBody>
-                      <div className="box-title">
-                        <h2>Trend-Quad</h2>
-                        <span className="help"><img src="/assets/img/icon/icon_help.png" alt="도움말" /></span>
-                      </div>
-
-                      <div className="clearfix box-line">
-                        <div className="box left">
-                          {/* 각 차트별 height 값은 props로 전달 */}
-                          <Bubble height={550} />
-                        </div>
-                        <div className="box right">
-                          <div className="chart-area">
-                            <div className="chart-header">
-                              <div className="chart-title">
-                                <h4>Post-Trend</h4>
-                                <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
-                              </div>
-                              <span className="mean">Pre-Trend <span className="number">85.5%</span></span>
-                            </div>
-                            {/* 각 차트별 height 값은 props로 전달 */}
-                            <Line height={210} />
-                          </div>
-                          <div className="chart-area mb-0">
-                            <div className="chart-header">
-                              <div className="chart-title">
-                                <h4>Sentiment Factor | <span>Brand</span></h4>
-                                <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
-                              </div>
-                            </div>
-                            {/* 각 차트별 height 값은 props로 전달 */}
-                            <Bar height={210} />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="box-title">
-                        <h2>GI(Global Index) Analysis</h2>
+        </Colxx>
+      </Row>
+      {/* e:tab menu */}
+      
+      <Row>
+        <Colxx xxs="12">
+          <Card>
+            <CardBody>
+              {/* s:trend-quad */}
+              <div className="box-title">
+                 <h2>Trend-Quad</h2>
+                 <span className="help"><img src="/assets/img/icon/icon_help.png" alt="도움말" /></span>
+              </div>
+              <div className="clearfix box-line">
+                <div className="box left">
+                  {/* 각 차트별 height 값은 props로 전달 차트 */}
+                  <ScatterQuadrant height={500} />
+                </div>
+                <div className="box right">
+                  <div className="chart-area">
+                    <div className="chart-header">
+                      <div className="chart-title">
+                        <h4>Post-Trend</h4>
                         <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
                       </div>
-
-                      <div className="table-sort-area">
-                        <div className="clearfix box-line">
-                          <div className="box left">
-                            <ReactTableWithPaginationCard />
-                          </div>
-                          <div className="box right">
-                            <Bubble height={400} />
-                          </div>
-                        </div>
+                      <span className="mean">Pre-Trend <span className="number">85.5%</span></span>
+                    </div>
+                    {/* 각 차트별 height 값은 props로 전달 */}
+                    <Line height={210} />
+                  </div>
+                  <div className="chart-area mb-0">
+                    <div className="chart-header">
+                      <div className="chart-title">
+                        <h4>Sentiment Factor | <span>Brand</span></h4>
+                        <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
                       </div>
-                      
-                    </CardBody>
-                  </Card>
-                </Colxx>
-              </Row>
-            </TabPane>
-            {/* e:P-Factor Analysis */}
-            
-            {/* s:E-Factor Analysis */}
-            <TabPane tabId="2">
-              <Row>
-                <Colxx xxs="12">
-                  <Card>
-                    <CardBody>
-                      <div>
-                        Wedding Cake with Flowers Macarons and Blueberries
-                      </div>
-                    </CardBody>
-                  </Card>
-                </Colxx>
-              </Row>
-            </TabPane>
-            {/* e:E-Factor Analysis */}
+                    </div>
+                    {/* 각 차트별 height 값은 props로 전달 */}
+                    <Bar height={210} />
+                  </div>
+                </div>
+              </div>
+              {/* e:trend-quad */}
 
-          </TabContent>
-          {/* e:탭 컨텐츠 */}
+              {/* s:grobal index analysis */}
+              <div className="box-title mt-5">
+                <h2>GI(Global Index) Analysis</h2>
+                <span className="help"><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></span>
+              </div>
+              
+              <div className="table-sort-area">
+                <div className="clearfix box-line">
+                  <div className="box left">
+                    <ReactTableWithPaginationCard />
+                  </div>
+                  <div className="box right relation-img">
+                    <Bubble height={400} className="relation-bubble" />
+                  </div>
+                </div>
+                {/* s: 연관 이미지 영역 */}
+                <div className="showroom-gallery relation-gallery">
+                  <ShowRoom />
+                </div>
+                {/* e: 연관 이미지 영역 */}
+                
+              </div>
+              {/* e:grobal index analysis */}
+            </CardBody>
+          </Card>
         </Colxx>
       </Row>
       

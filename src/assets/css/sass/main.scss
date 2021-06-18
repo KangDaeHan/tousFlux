@@ -24,6 +24,7 @@ $public_img: "/src";
 }
 
 body {
+  min-width: 1903px;
   min-height: auto;
   height: calc(100% - 100px);
   padding: 0;
@@ -57,7 +58,7 @@ body {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 30px;
-    margin-right: 50px;
+    margin-right: 30px;
     transition: margin-left .3s;
   }
 }
@@ -110,7 +111,29 @@ body {
             border-bottom-color: #f9a21b;
             color: #f9a21b;
           }
+          &:hover {
+            border-bottom-color: #f9a21b;
+            color: #f9a21b;
+          }
         }
+      }
+    }
+    .user {
+      .dropdown-menu.show {
+        border-radius: .75rem;
+        box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+      }
+      .name {
+        text-align: center;
+
+        img {
+          margin: 0;
+        }
+      }
+      .dropdown-item {
+        margin: 0;
+        border-top: 1px solid #d1d1d1;
+        text-align: center;
       }
     }
 
@@ -216,6 +239,9 @@ body {
     width: 64px !important;
     min-width: 64px !important;
 
+    .pro-menu > ul > .pro-menu-item > .pro-inner-item {
+      padding: 8px 28px 8px 27px;
+    }
     .pro-menu .pro-menu-item.active {
       border: 0;
 
@@ -285,6 +311,7 @@ table {
     padding: 16px 15px;
     border-top: 1px solid #d1d1d1;
     background-color: #f3f3f3;
+    font-size: 14px;
     font-weight: 500;
   }
   td {
@@ -325,6 +352,11 @@ table {
   background-color: #bbbbbb;
   color: #fff;
   border-radius: 0;
+}
+
+.btn-gray:hover {
+  background-color: #f9a21b;
+  color: #fff;
 }
 
 .clearfix {
@@ -378,14 +410,14 @@ table {
     flex-flow: row wrap;
     align-content : flex-start;
     justify-content : flex-start;
-    width: calc(100% + 12px);
+    width: calc(100% + 15px);
     margin: 0;
     padding: 0;
     overflow: hidden;
 
     li {
       width: 203.5px;
-      margin: 0 12px 12px 0;
+      margin: 0 15px 12px 0;
       list-style: none;
 
       img {
@@ -393,6 +425,11 @@ table {
       }
     }
   }
+}
+
+.relation-gallery {
+  height: 215px;
+  overflow: hidden;
 }
 
 .left-menu {
@@ -488,6 +525,113 @@ table {
   }
 }
 
-// .r-table {
-//   table-layout: fixed;
-// }
+.keyword-area {
+  position: relative;
+  margin: 0;
+
+  .form-control {
+    position: relative;
+    background: transparent;
+    z-index: 10;
+  }
+  .noti-text {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    margin-top: -9px;
+    font-size: 13px;
+  }
+}
+
+
+@mixin on-circle($item-count, $circle-size, $item-size) {  
+  position: relative;
+  width:  $circle-size;
+  height: $circle-size;
+  border-radius: 50%;
+  padding: 0; 
+  list-style: none;
+  
+  > * {
+    display: block;
+    position: absolute;
+    top:  50%; 
+    left: 50%;
+    margin: -($item-size / 2);
+    // width:  $item-size;
+    // height: $item-size;
+  
+    $angle: (360 / $item-count);
+    $rot: 0;
+
+    @for $i from 1 through $item-count {
+      &:nth-of-type(#{$i}) {
+        transform: rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+      }
+
+      $rot: $rot + $angle;
+    }
+  }
+}
+
+
+.relation-bubble {
+  .apexcharts-tooltip {
+    &.apexcharts-theme-light {
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+      
+      .active-keyword-area {
+        @include on-circle($item-count: 5, $circle-size: 15em, $item-size: 70px);
+        border: 0;
+
+        .item {
+          width: 70px;
+          height: 70px;
+          background-color: #0f00f3;
+          font-size: 12px;
+          color: #fff;
+          box-shadow: none;
+          max-width: 100%; 
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: .15s;
+        }
+      }
+
+    }
+  }
+}
+
+
+@media (max-width: 1906px) { 
+  .navbar {
+    min-width: 100%;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    .navbar-right {
+      padding-left: 3%;
+
+      .top-nav-list {
+        li {
+          margin-right: 2.5rem;
+
+          a {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .user {
+        margin-right: 2.5rem;
+      }
+    }
+  }
+}
