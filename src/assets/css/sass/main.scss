@@ -31,6 +31,14 @@ body {
   font-family: 'noto', sans-serif;
 }
 
+.f-blue {
+  color: #0053A6;
+}
+
+.f-red {
+  color: #FF0000;
+}
+
 .row {
   margin: 0;
 }
@@ -65,6 +73,8 @@ body {
 
 
 .navbar {
+  z-index: 1100;
+
   .navbar-left {
     flex-basis: 30%;
 
@@ -85,6 +95,10 @@ body {
       font-size: 12px;
       font-weight: 200;
       color: #bbb;
+
+      .name {
+        margin-right: 5px;
+      }
     }
 
   }
@@ -296,6 +310,12 @@ body {
   background: url("/assets/img/icon/icon_calender.png") no-repeat 10px 50%;
   padding-left: 40px !important;
 }
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range {
+  background-color: #f9a21b !important;
+}
+.react-datepicker__input-container input:focus  {
+  border-color: #f9a21b !important;
+}
 
 // 테이블 스타일 : vertical-heading
 table {
@@ -390,15 +410,18 @@ table {
   h2 {
     display: inline-block;
     margin: 0 15px 0 0;
-    font-size: 30px;
+    font-size: 20px;
     color: #444;
     vertical-align: middle;
   }
+}
 
-  .help {
-    display: inline-block;
-    vertical-align: middle;
-  }
+.help {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  background: none;
+  vertical-align: middle;
 }
 
 .showroom-gallery {
@@ -456,7 +479,7 @@ table {
       background-color: #fff;
       border: 1px solid #d1d1d1;
       border-radius: 7px 7px 0 0;
-      font-size: 30px;
+      font-size: 22px;
       font-weight: 500;
       color: #d1d1d1;
       text-align: center;
@@ -543,6 +566,17 @@ table {
   }
 }
 
+.react-select__control--is-focused , .form-control:hover , .form-control:focus {
+  border-color: #f9a21b !important;
+}
+
+.react-select__control--is-focused + .react-select__menu {
+  border-color: #f9a21b !important;
+}
+
+.react-select__control--is-focused + .react-select__menu *:hover {
+  background-color: #f9a21b !important;
+}
 
 @mixin on-circle($item-count, $circle-size, $item-size) {  
   position: relative;
@@ -605,6 +639,35 @@ table {
 
     }
   }
+}
+
+.popover {
+  max-width: 1000px;
+  top: -100px !important;
+  border-color: #f9a21b;
+}
+
+.pos-right {
+  float: right;
+}
+
+.relation-bubble {
+  clear: both;
+}
+
+.bs-popover-right .arrow::before, .bs-popover-auto[x-placement^='right'] .arrow::before {
+  border-right-color: #f9a21b;
+}
+
+.page-item.active .page-link , .page-item .page-link:hover {
+  border: 1px solid #f9a21b;
+  color: #f9a21b;
+}
+
+.page-item .page-link.prev, .page-item .page-link.next {
+  background: #f9a21b;
+  color: white;
+  border: 1px solid #f9a21b;
 }
 
 
