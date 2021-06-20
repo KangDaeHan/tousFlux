@@ -385,10 +385,10 @@ const Start = ({ intl }) => {
                     <ReactTableWithPaginationCard />
                   </div>
                   <div className="box right relation-img">
-                  <button type="button" className="help pos-right" id="popover_6" onClick={() => setPopoverOpenHelp6(true)} onKeyDown={() => setPopoverOpenHelp6(true)}><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></button>
+                  <button type="button" className="help" id="popover_6" onClick={() => setPopoverOpenHelp6(true)} onKeyDown={() => setPopoverOpenHelp6(true)}><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></button>
                   <Popover
                     style={{ maxWidth: '700px' }}
-                    placement="left"
+                    placement="right"
                     isOpen={popoverOpenHelp6}
                     target="popover_6"
                     toggle={() => setPopoverOpenHelp6(!popoverOpenHelp6)}
