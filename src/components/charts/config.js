@@ -1,9 +1,10 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import ActiveKeyword from '../../containers/pages/ActiveKeyword';
+import products from '../../data/products';
 
-function displayTooltip({relationTxt}) {
-  return renderToString(<ActiveKeyword relationTxt={relationTxt}/>);
+function displayTooltip() {
+  return renderToString(<ActiveKeyword />);
 }
 
 // bubble config options 설정
@@ -17,9 +18,9 @@ export const bubbleChartOptions = {
         enabled: false
       },
       events: {
-        // dataPointSelection: (event, chartContext, config) => {
-        //   // console.log(config.w.config.series[config.seriesIndex].relationTxt);
-        // }
+        dataPointSelection: (event, chartContext, config) => {
+          console.log(config.w.config.series[config.seriesIndex].relationTxt);
+        }
       }
     },
     tooltip: {                                       
@@ -43,23 +44,12 @@ export const bubbleChartOptions = {
     {
       name: "ORG",
       data: [[20, 50, 20]],
-      relationTxt: [
-        '핏',
-        '멋짐',
-        '다양성',
-        '마무리감',
-        '루즈',
-      ]
+      relationTxt: products
     },
     {
       name: "OHEP Index",
       data: [[20, 20, 40]],
-      relationTxt: [
-        '핏',
-        '멋짐',
-        '다양성',
-        '마무리감',
-      ],
+      relationTxt: products
     }
   ]
 }

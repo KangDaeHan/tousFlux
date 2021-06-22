@@ -44,8 +44,6 @@ const Start = ({ intl }) => {
   const [popoverOpenHelp5, setPopoverOpenHelp5] = useState(false);
   const [popoverOpenHelp6, setPopoverOpenHelp6] = useState(false);
 
-
-
   const { messages } = intl;
 
   // Category select data step1 
@@ -211,6 +209,7 @@ const Start = ({ intl }) => {
                   isOpen={popoverOpenHelp1}
                   target="popover_1"
                   toggle={() => setPopoverOpenHelp1(!popoverOpenHelp1)}
+                  trigger="legacy"
                 >
                   <PopoverBody>조회한 상품(키워드)와 관련한 상위 top14개 상품 이미지</PopoverBody>
                 </Popover>
@@ -279,6 +278,7 @@ const Start = ({ intl }) => {
                   isOpen={popoverOpenHelp2}
                   target="popover_2"
                   toggle={() => setPopoverOpenHelp2(!popoverOpenHelp2)}
+                  trigger="legacy"
                 >
                   <PopoverBody>
                     <div>(가로축) P/R Index는 상품수와 리뷰수의 합을 계산한 것으로, <span className="f-blue">상품수와 리뷰수가 많을수록 우측에 위치함</span></div>
@@ -305,6 +305,7 @@ const Start = ({ intl }) => {
                           isOpen={popoverOpenHelp3}
                           target="popover_3"
                           toggle={() => setPopoverOpenHelp3(!popoverOpenHelp3)}
+                          trigger="legacy"
                         >
                           <PopoverBody>
                             좌측 포지셔닝 맵에서 선택한 요소에 대하여 트렌드의 흐름을 보여줌 <br/>
@@ -329,6 +330,7 @@ const Start = ({ intl }) => {
                           isOpen={popoverOpenHelp4}
                           target="popover_4"
                           toggle={() => setPopoverOpenHelp4(!popoverOpenHelp4)}
+                          trigger="legacy"
                         >
                           <PopoverBody>
                             (Sentiment Factor) <br/>
@@ -358,6 +360,7 @@ const Start = ({ intl }) => {
                   isOpen={popoverOpenHelp5}
                   target="popover_5"
                   toggle={() => setPopoverOpenHelp5(!popoverOpenHelp5)}
+                  trigger="legacy"
                 >
                   <PopoverBody>
                     <div>
@@ -392,6 +395,7 @@ const Start = ({ intl }) => {
                     isOpen={popoverOpenHelp6}
                     target="popover_6"
                     toggle={() => setPopoverOpenHelp6(!popoverOpenHelp6)}
+                    trigger="legacy"
                   >
                     <PopoverBody>
                       <div>

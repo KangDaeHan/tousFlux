@@ -1,22 +1,17 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
+import products from '../../data/products';
 
-const relationTxt = [
-  '핏',
-  '멋짐',
-  '다양성',
-  '마무리감',
-  '루즈',
-];
+const data = products;
 
 const ActiveKeyword = () => {
   return (
     <>
       <div className="active-keyword-area">
-        {relationTxt.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <div className="item" key={index}>
-              {item}
+              {item.purchase}
             </div>
           );
         })}
