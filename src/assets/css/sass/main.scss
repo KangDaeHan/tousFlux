@@ -450,11 +450,6 @@ table {
   }
 }
 
-.relation-gallery {
-  height: 215px;
-  overflow: hidden;
-}
-
 .left-menu {
   &.collapsed + main {
     .showroom-gallery {
@@ -680,6 +675,11 @@ table {
   background: #f9a21b;
   color: white;
   border: 1px solid #f9a21b;
+}
+
+.loading {
+  border: 2px solid rgba(249, 162, 27, 0.2);
+  border-top-color : #f9a21b;
 }
 
 

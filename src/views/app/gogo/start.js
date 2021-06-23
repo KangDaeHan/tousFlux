@@ -407,12 +407,12 @@ const Start = ({ intl }) => {
                       <p className="f-red">버블 클릭시, 그래츠 아래에 연관된 이미지가 활성화됩니다.</p>
                     </PopoverBody>
                   </Popover>
-                    <Bubble height={400} className="relation-bubble" />
+                    <Bubble height={400} className="relation-bubble"/>
                   </div>
                 </div>
                 {/* s: 연관 이미지 영역 */}
-                <div className="showroom-gallery relation-gallery">
-                  <ShowRoom />
+                <div className="showroom-gallery relation-gallery" style={{maxHeight: '215px', overflow: 'hidden'}}>
+                  {/* <ShowRoom /> */}
                 </div>
                 {/* e: 연관 이미지 영역 */}
                 

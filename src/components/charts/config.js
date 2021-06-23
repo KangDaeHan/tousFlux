@@ -1,7 +1,6 @@
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import ActiveKeyword from '../../containers/pages/ActiveKeyword';
-import products from '../../data/products';
 
 function displayTooltip() {
   return renderToString(<ActiveKeyword />);
@@ -19,7 +18,10 @@ export const bubbleChartOptions = {
       },
       events: {
         dataPointSelection: (event, chartContext, config) => {
-          console.log(config.w.config.series[config.seriesIndex].relationTxt);
+          const messageSpan = document.querySelector(".relation-gallery");
+
+          messageSpan.innerHTML = "";
+          messageSpan.innerHTML = config.w.config.series[config.seriesIndex].relationTxt;
         }
       }
     },
@@ -44,12 +46,24 @@ export const bubbleChartOptions = {
     {
       name: "ORG",
       data: [[20, 50, 20]],
-      relationTxt: products
+      relationTxt: [
+        "<img src='/assets/img/showroom/thumb1.png'/>",
+        "<img src='/assets/img/showroom/thumb2.png'/>",
+        "<img src='/assets/img/showroom/thumb3.png'/>",
+        "<img src='/assets/img/showroom/thumb2.png'/>",
+        "<img src='/assets/img/showroom/thumb4.png'/>",
+      ],
     },
     {
       name: "OHEP Index",
       data: [[20, 20, 40]],
-      relationTxt: products
+      relationTxt: [
+        "<img src='/assets/img/showroom/thumb4.png'/>",
+        "<img src='/assets/img/showroom/thumb3.png'/>",
+        "<img src='/assets/img/showroom/thumb2.png'/>",
+        "<img src='/assets/img/showroom/thumb3.png'/>",
+        "<img src='/assets/img/showroom/thumb1.png'/>",
+      ],
     }
   ]
 }
