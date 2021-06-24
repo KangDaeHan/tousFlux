@@ -18,10 +18,12 @@ export const bubbleChartOptions = {
       },
       events: {
         dataPointSelection: (event, chartContext, config) => {
-          const messageSpan = document.querySelector(".relation-gallery");
-
-          messageSpan.innerHTML = "";
-          messageSpan.innerHTML = config.w.config.series[config.seriesIndex].relationTxt;
+          const dataImgWrap = document.querySelector('.relation-gallery');
+          const dataImg = config.w.config.series[config.seriesIndex].relationTxt;
+          
+          dataImgWrap.innerHTML = "";
+          dataImgWrap.innerHTML = dataImg;
+          dataImgWrap.innerHTML = dataImgWrap.innerHTML.replaceAll(',','');
         }
       }
     },
@@ -47,23 +49,23 @@ export const bubbleChartOptions = {
       name: "ORG",
       data: [[20, 50, 20]],
       relationTxt: [
-        "<img src='/assets/img/showroom/thumb1.png'/>",
-        "<img src='/assets/img/showroom/thumb2.png'/>",
-        "<img src='/assets/img/showroom/thumb3.png'/>",
-        "<img src='/assets/img/showroom/thumb2.png'/>",
-        "<img src='/assets/img/showroom/thumb4.png'/>",
-      ],
+        '<img src="/assets/img/showroom/thumb1.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb2.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb3.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb4.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb2.png" alt="" />',
+      ]
     },
     {
       name: "OHEP Index",
       data: [[20, 20, 40]],
       relationTxt: [
-        "<img src='/assets/img/showroom/thumb4.png'/>",
-        "<img src='/assets/img/showroom/thumb3.png'/>",
-        "<img src='/assets/img/showroom/thumb2.png'/>",
-        "<img src='/assets/img/showroom/thumb3.png'/>",
-        "<img src='/assets/img/showroom/thumb1.png'/>",
-      ],
+        '<img src="/assets/img/showroom/thumb4.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb3.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb2.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb1.png" alt="" />',
+        '<img src="/assets/img/showroom/thumb3.png" alt="" />',
+      ]
     }
   ]
 }

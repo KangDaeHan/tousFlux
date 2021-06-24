@@ -450,6 +450,21 @@ table {
   }
 }
 
+.relation-gallery {
+  display: flex;
+  justify-content: flex-start;
+
+  img {
+    display: inline-block;
+    max-width: 235px;
+    margin-left: 15px;
+    
+    &:first-child {
+      margin: 0;
+    }
+  }
+}
+
 .left-menu {
   &.collapsed + main {
     .showroom-gallery {
