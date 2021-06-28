@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Popover, PopoverBody } from 'reactstrap';
 
-const PopoverItem = ({ id, item, style }) => {
+const PopoverItem = ({ id, item, style, className }) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   return (
@@ -15,6 +15,7 @@ const PopoverItem = ({ id, item, style }) => {
         {item.text}
       </Button>
       <Popover
+        className={className}
         style={style}
         placement={item.placement}
         isOpen={popoverOpen}

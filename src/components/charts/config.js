@@ -27,6 +27,9 @@ export const bubbleChartOptions = {
         }
       }
     },
+    grid: {
+      show: false,
+    },
     tooltip: {                                       
       custom: displayTooltip,
     },
@@ -41,7 +44,13 @@ export const bubbleChartOptions = {
       type: "category",
     },
     yaxis: {
-      max: 70
+      max: 70,
+      axisTicks: {
+        show: true
+      },
+      axisBorder: {
+        show: true,
+      },
     },
   },
   series: [
@@ -49,22 +58,22 @@ export const bubbleChartOptions = {
       name: "ORG",
       data: [[20, 50, 20]],
       relationTxt: [
-        '<img src="/assets/img/showroom/thumb1.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb2.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb3.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb4.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb2.png" alt="" />',
+        '<div><p>핏</p><img src="/assets/img/showroom/thumb1.png" alt="" /></div>',
+        '<div><p>레이어드</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
+        '<div><p>멋있다</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
+        '<div><p>깔끔함</p><img src="/assets/img/showroom/thumb4.png" alt="" /></div>',
+        '<div><p>고급스럽다</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
       ]
     },
     {
       name: "OHEP Index",
       data: [[20, 20, 40]],
       relationTxt: [
-        '<img src="/assets/img/showroom/thumb4.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb3.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb2.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb1.png" alt="" />',
-        '<img src="/assets/img/showroom/thumb3.png" alt="" />',
+        '<div><p>고급스럽다</p><img src="/assets/img/showroom/thumb4.png" alt="" /></div>',
+        '<div><p>깔끔함</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
+        '<div><p>핏</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
+        '<div><p>멋있다</p><img src="/assets/img/showroom/thumb1.png" alt="" /></div>',
+        '<div><p>레이어드</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
       ]
     }
   ]
@@ -118,6 +127,9 @@ export const barChartOptions = {
     dataLabels: {
       enabled: true
     },
+    grid: {
+      show: false,
+    },
     fill: {
       opacity: 0.7
     },
@@ -127,6 +139,14 @@ export const barChartOptions = {
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
     },
+    yaxis: {
+      axisTicks: {
+        show: true
+      },
+      axisBorder: {
+        show: true,
+      },
+    }
   },
   series: [{
     name: "Desktops",
@@ -146,6 +166,45 @@ export const ScatterQuadrantChartOptions = {
         enabled: false
       },
     },
+    annotations: {
+      position: "back",
+      xaxis: [
+        {
+          x: 0,
+          x2: 18,
+          strokeDashArray: 0,
+          borderColor: "#666",
+          fillColor: "#797979",
+          opacity: 0.3
+        },
+        {
+          x: 18,
+          x2: 36.5,
+          strokeDashArray: 0,
+          borderColor: "#666",
+          fillColor: "#fd7b7a",
+          opacity: 0.3
+        }
+      ],
+      yaxis: [
+        {
+          y: 0,
+          y2: 35,
+          strokeDashArray: 0,
+          borderColor: "#666",
+          fillColor: "#c8c4c3",
+          opacity: 1
+        },
+        {
+          y: 35,
+          y2: 70,
+          strokeDashArray: 0,
+          borderColor: "#666",
+          fillColor: "#bbd5ee",
+          opacity: 1
+        }
+      ]
+    },
     dataLabels: {
       enabled: true
     },
@@ -156,11 +215,12 @@ export const ScatterQuadrantChartOptions = {
       // text: ""
     },
     xaxis: {
-      tickAmount: 12,
-      type: "category"
+      tickAmount: 2,
+      type: "category",
     },
     yaxis: {
-      max: 70,
+      tickAmount: 2,
+      max: 70
     }
   },
   series: [{

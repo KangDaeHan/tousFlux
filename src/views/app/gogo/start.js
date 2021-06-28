@@ -4,9 +4,11 @@ import {
   Card, 
   CardBody, 
   Form, 
-  FormGroup, 
+  FormGroup,
   Nav,
   NavItem,
+  TabContent,
+  TabPane,
   Button,
   Popover, 
   PopoverBody } from 'reactstrap';
@@ -20,6 +22,7 @@ import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
 import 'react-datepicker/dist/react-datepicker.css';
 import ShowRoom from '../../../containers/pages/ShowRoom';
+import RelationImage from '../../../containers/pages/RelationImage';
 import Bubble from '../../../components/charts/Bubble';
 import Line from '../../../components/charts/Line';
 import Bar from '../../../components/charts/Bar';
@@ -36,48 +39,58 @@ const Start = ({ intl }) => {
   const [selectedOptionsStep1, setSelectedOptionsStep1] = useState([]);
   const [selectedOptionsStep2, setSelectedOptionsStep2] = useState([]);
   const [selectedOptionsStep3, setSelectedOptionsStep3] = useState([]);
-
+  
   const [popoverOpenHelp1, setPopoverOpenHelp1] = useState(false);
   const [popoverOpenHelp2, setPopoverOpenHelp2] = useState(false);
   const [popoverOpenHelp3, setPopoverOpenHelp3] = useState(false);
   const [popoverOpenHelp4, setPopoverOpenHelp4] = useState(false);
   const [popoverOpenHelp5, setPopoverOpenHelp5] = useState(false);
   const [popoverOpenHelp6, setPopoverOpenHelp6] = useState(false);
-
+  
   const { messages } = intl;
-
+  
   // Category select data step1 
   const selectDataTypeStep1 = [
     { label: '패션의류', value: 'clothing1', key: 0 },
     { label: '의류', value: 'clothing2', key: 1 },
     { label: '신발', value: 'clothing3', key: 2 },
   ];
-
+  
   // Category select data step2 
   const selectDataTypeStep2 = [
     { label: '신발', value: 'clothing1', key: 0 },
     { label: '패션의류', value: 'clothing2', key: 1 },
     { label: '계절의류', value: 'clothing3', key: 2 },
   ];
-
+  
   // Category select data step3
   const selectDataTypeStep3 = [
     { label: '가방', value: 'clothing1', key: 0 },
     { label: '신발', value: 'clothing2', key: 1 },
     { label: '패션의류', value: 'clothing3', key: 2 },
   ];
-
+  
   const [activeFirstTab, setActiveFirstTab] = useState('1');
+  const [activeSentiment, setActiveSentiment] = useState('1');
+
 
   const validateKeyword = (value) => {
     let error;
     if (!value) {
       error = 'No Keywords';
-    } else if (value.length < 2) {
-      error = 'Value must be longer than 2 characters';
-    }
+    } 
     return error;
   };
+
+  const sentimentFactorSeries = [{
+    name: "sentimentFactor",
+    data: [30, 20, 80, 90, 150, 62, 20, 90, 200]
+  }];
+
+  const brandSeries = [{
+    name: "brand",
+    data: [30, 50, 10, 120, 22, 45, 70, 91, 170]
+  }];
 
 
   return (
@@ -268,7 +281,7 @@ const Start = ({ intl }) => {
       
       <Row>
         <Colxx xxs="12">
-          <Card>
+          <Card className="bor-top-radius0">
             <CardBody>
               {/* s:trend-quad */}
               <div className="box-title">
@@ -310,42 +323,87 @@ const Start = ({ intl }) => {
                         >
                           <PopoverBody>
                             좌측 포지셔닝 맵에서 선택한 요소에 대하여 트렌드의 흐름을 보여줌 <br/>
-                            재생버튼 클릭시, 앞으로의 <span className="f-blue">미래 트랜드를 예측</span>하여 나타내며, 우측 상단으로 뻗어가는 그래프일수록 잠재 트랜드 요소인 것으로 판단됨.<br/>
-                            Pre-Trend 퍼센트가 높을수록 향후 트랜드에 있어 변동이 큰 요소라고 볼 수 있음.
+                            재생버튼 클릭시, 앞으로의 <span className="f-blue">미래 트렌드를 예측</span>하여 나타내며, 우측 상단으로 뻗어가는 그래프일수록 잠재 트렌드 요소인 것으로 판단됨.<br/>
+                            Pre-Trend 퍼센트가 높을수록 향후 트렌드에 있어 변동이 큰 요소라고 볼 수 있음.
                           </PopoverBody>
                         </Popover>
                       </div>
-                      <span className="mean">Pre-Trend <span className="number">85.5%</span></span>
+                      <span className="mean" style={{ left: '14.5%' }}>Pre-Trend <span className="number">85.5%</span></span>
+                      {/* 전체 100% 기준으로 number 값의 나머지 값을 style 값에 인라인으로 대입바랍니다.  */}
                     </div>
                     {/* 각 차트별 height 값은 props로 전달 */}
                     <Line height={210} />
                   </div>
                   <div className="chart-area mb-0">
                     <div className="chart-header">
-                      <div className="chart-title">
-                        <h4>Sentiment Factor | <span>Brand</span></h4>
-                        <button type="button" className="help" id="popover_4" onClick={() => setPopoverOpenHelp4(true)} onKeyDown={() => setPopoverOpenHelp4(true)}><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></button>
-                        <Popover 
-                          style={{ maxWidth: '600px' }}
-                          placement="right"
-                          isOpen={popoverOpenHelp4}
-                          target="popover_4"
-                          toggle={() => setPopoverOpenHelp4(!popoverOpenHelp4)}
-                          trigger="legacy"
-                        >
-                          <PopoverBody>
-                            (Sentiment Factor) <br/>
-                            - 좌측 포지셔닝 맵에서 선택한 요소에 대하여 소비자가 느낀 이미지 상위 10개<br/>
-                            - 빨간색: 소비자가 가장 많이 연상하는 이미지 / 파란색: 소비자가 10번째로 연상하는 이미지 <br/>
-                            (Brand) <br/>
-                            - 좌측 포지셔닝 맵에서 선택한 요소가 가장 만힝 언급되는 브랜드 상위 10개 <br/>
-                            - 빨간색: 해당 요소가 가장 많이 언급된 브랜드 / 파란색: 해당요소가 10번째로 언급된 브랜드 
-                          </PopoverBody>
-                        </Popover>
-                      </div>
+                        {/* s: Sentiment Factor 탭 */}
+                        <Nav tabs className="card-header-tabs chart-tab">
+                          <NavItem>
+                            <NavLink
+                              to="#"
+                              location={{}}
+                              className={classnames({
+                                active: activeSentiment === '1',
+                                'nav-link': true,
+                              })}
+                              onClick={() => {
+                                setActiveSentiment('1');
+                              }}
+                            >
+                              Sentiment Factor
+                            </NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <NavLink
+                              to="#"
+                              location={{}}
+                              className={classnames({
+                                active: activeSentiment === '2',
+                                'nav-link': true,
+                              })}
+                              onClick={() => {
+                                setActiveSentiment('2');
+                              }}
+                            >
+                              Brand
+                            </NavLink>
+                          </NavItem>
+                          <NavItem>
+                            <button type="button" className="help" id="popover_4" onClick={() => setPopoverOpenHelp4(true)} onKeyDown={() => setPopoverOpenHelp4(true)}><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></button>
+                            <Popover 
+                              style={{ maxWidth: '600px' }}
+                              placement="right"
+                              isOpen={popoverOpenHelp4}
+                              target="popover_4"
+                              toggle={() => setPopoverOpenHelp4(!popoverOpenHelp4)}
+                              trigger="legacy"
+                            >
+                              <PopoverBody>
+                                (Sentiment Factor) <br/>
+                                - 좌측 포지셔닝 맵에서 선택한 요소에 대하여 소비자가 느낀 이미지 상위 10개<br/>
+                                - 빨간색: 소비자가 가장 많이 연상하는 이미지 / 파란색: 소비자가 10번째로 연상하는 이미지 <br/>
+                                (Brand) <br/>
+                                - 좌측 포지셔닝 맵에서 선택한 요소가 가장 많이 언급되는 브랜드 상위 10개 <br/>
+                                - 빨간색: 해당 요소가 가장 많이 언급된 브랜드 / 파란색: 해당요소가 10번째로 언급된 브랜드 
+                              </PopoverBody>
+                            </Popover>
+                          </NavItem>
+                        </Nav>
+                        {/* e: Sentiment Factor 탭 */}
+                        {/* <h4>Sentiment Factor | <span>Brand</span></h4> */}
                     </div>
-                    {/* 각 차트별 height 값은 props로 전달 */}
-                    <Bar height={210} />
+
+                    <TabContent activeTab={activeSentiment}>
+                      <TabPane tabId="1">
+                        {/* 각 차트별 height 값은 props로 전달 */}
+                        <Bar height={210} series={sentimentFactorSeries} />
+                      </TabPane>
+                      <TabPane tabId="2">
+                        {/* 각 차트별 height 값은 props로 전달 */}
+                        <Bar height={210} series={brandSeries} />
+                      </TabPane>
+                    </TabContent>
+                    
                   </div>
                 </div>
               </div>
@@ -365,7 +423,7 @@ const Start = ({ intl }) => {
                 >
                   <PopoverBody>
                     <div>
-                      Global Index는 온라인 소비자 글과 패션 주요 속성 간의 연관성을 측정하는 나타내는 지표이며, 구매요인, 만족요인, 불만족요인에 따라 GI값을 보기위해 PGI(Purchase GI), SGI(Satisfaction GI), DGI(Dis-satisfaction GI) 지표를 생성함.
+                      Global Index는 온라인 소비자 글과 패션 주요 속성 간의 연관성을 측정하여 나타내는 지표이며, 구매요인, 만족요인, 불만족요인에 따라 GI값을 보기위해 PGI(Purchase GI), SGI(Satisfaction GI), DGI(Dis-satisfaction GI) 지표를 생성함.
                     </div>
                     <div>
                       <span className="f-blue">(Purchase Factor)</span> 상품의 잠재적 구매 요인 랭킹을 보여주며, PGI를 구성하는 요인 <br/>
@@ -391,29 +449,30 @@ const Start = ({ intl }) => {
                   <div className="box right relation-img">
                   <button type="button" className="help" id="popover_6" onClick={() => setPopoverOpenHelp6(true)} onKeyDown={() => setPopoverOpenHelp6(true)}><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></button>
                   <Popover
-                    style={{ maxWidth: '700px' }}
-                    placement="right"
+                    className="pop-left"
+                    style={{ maxWidth: '700px'}}
+                    placement="left"
                     isOpen={popoverOpenHelp6}
                     target="popover_6"
                     toggle={() => setPopoverOpenHelp6(!popoverOpenHelp6)}
                     trigger="legacy"
                   >
-                    <PopoverBody>
+                    <PopoverBody className="help-popup-body">
                       <div>
                         (가로축) DGI, 불만족을 나타내는 정도 <br/>
                         (세로축) SGI, 만족을 나타내는 정도 <br/>
                         (버블크기) PGI, 잠재 구매욕구를 나타내는 정도
                       </div>
                       <img src="../../../assets/img/icon/help2.png" alt="도움말 이미지" />
-                      <p className="f-red">버블 클릭시, 그래츠 아래에 연관된 이미지가 활성화됩니다.</p>
+                      <p className="f-red">버블 클릭시, 그래프 아래에 연관된 이미지가 활성화됩니다.</p>
                     </PopoverBody>
                   </Popover>
                     <Bubble height={400} className="relation-bubble"/>
                   </div>
                 </div>
                 {/* s: 연관 이미지 영역 */}
-                <div className="showroom-gallery relation-gallery" style={{maxHeight: '215px', overflow: 'hidden'}}>
-                  {/* <ShowRoom /> */}
+                <div className="showroom-gallery relation-gallery" style={{overflow: 'hidden'}}>
+                  <RelationImage />
                 </div>
                 {/* e: 연관 이미지 영역 */}
                 
