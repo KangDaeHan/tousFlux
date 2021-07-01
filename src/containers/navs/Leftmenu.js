@@ -29,8 +29,8 @@ const LeftMenu = () => {
         <SidebarContent>
           <Menu>
             <MenuItem active>FASHION</MenuItem>
-            <MenuItem>COSMETIC / BEAUTY</MenuItem>
-            <MenuItem>GROCERIES</MenuItem>
+            {/* <MenuItem>COSMETIC / BEAUTY</MenuItem>
+            <MenuItem>GROCERIES</MenuItem> */}
           </Menu>
         </SidebarContent>
       </ProSidebar>

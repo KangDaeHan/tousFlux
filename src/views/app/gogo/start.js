@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
+// import axios from 'axios';
 import { 
   Row, 
   Card, 
@@ -45,7 +46,7 @@ const Start = ({ intl }) => {
   const [popoverOpenHelp3, setPopoverOpenHelp3] = useState(false);
   const [popoverOpenHelp4, setPopoverOpenHelp4] = useState(false);
   const [popoverOpenHelp5, setPopoverOpenHelp5] = useState(false);
-  const [popoverOpenHelp6, setPopoverOpenHelp6] = useState(false);
+  // const [popoverOpenHelp6, setPopoverOpenHelp6] = useState(false);
   
   const { messages } = intl;
   
@@ -92,9 +93,41 @@ const Start = ({ intl }) => {
     data: [30, 50, 10, 120, 22, 45, 70, 91, 170]
   }];
 
+  // api 호출시 로딩바 적용 테스트
+  const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [Movies, setMovies] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [MainMovieImage, setMainMovieImage] = useState(null);
+
+  useEffect(() => {
+    setLoading(true);
+    const endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=0f40db77d8d5f917e7414c3131c26da4&language=en-US&page=1`;
+    fetch(endpoint)
+    .then(response => response.json())
+    .then(response => {
+      setMovies([response.results]);
+      setMainMovieImage(response.results[1]);
+      setLoading(false);
+    })
+    .catch(e => setError(e))
+  },[]);
+  
+  if (loading) return <div className="loading" />;
+  if (error) return <div>에러가 발생했습니다</div>;
+  if (!MainMovieImage) return null;
 
   return (
     <>
+      {/* api 테스트 영역 삭제 예정 */}
+      {/* {MainMovieImage && */}
+        {/* api 테스트 : {MainMovieImage.overview} */}
+        {/* <img src={`https://image.tmdb.org/t/p/w1280${MainMovieImage.backdrop_path}`} alt="" /> */}
+      {/* } */}
+      {/* api 테스트 영역 삭제 예정 */}
+
       <Row>
         <Colxx xxs="12">
           <Card>
@@ -305,7 +338,7 @@ const Start = ({ intl }) => {
               <div className="clearfix box-line">
                 <div className="box left">
                   {/* 각 차트별 height 값은 props로 전달 차트 */}
-                  <ScatterQuadrant height={500} />
+                  <ScatterQuadrant height={600} className="scatter-chart" />
                 </div>
                 <div className="box right">
                   <div className="chart-area">
@@ -447,7 +480,7 @@ const Start = ({ intl }) => {
                     <ReactTableWithPaginationCard />
                   </div>
                   <div className="box right relation-img">
-                  <button type="button" className="help" id="popover_6" onClick={() => setPopoverOpenHelp6(true)} onKeyDown={() => setPopoverOpenHelp6(true)}><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></button>
+                  {/* <button type="button" className="help" id="popover_6" onClick={() => setPopoverOpenHelp6(true)} onKeyDown={() => setPopoverOpenHelp6(true)}><img src="/assets/img/icon/icon_help_small.png" alt="도움말" /></button>
                   <Popover
                     className="pop-left"
                     style={{ maxWidth: '700px'}}
@@ -466,8 +499,8 @@ const Start = ({ intl }) => {
                       <img src="../../../assets/img/icon/help2.png" alt="도움말 이미지" />
                       <p className="f-red">버블 클릭시, 그래프 아래에 연관된 이미지가 활성화됩니다.</p>
                     </PopoverBody>
-                  </Popover>
-                    <Bubble height={400} className="relation-bubble"/>
+                  </Popover> */}
+                    <Bubble height={470} className="relation-bubble"/>
                   </div>
                 </div>
                 {/* s: 연관 이미지 영역 */}
