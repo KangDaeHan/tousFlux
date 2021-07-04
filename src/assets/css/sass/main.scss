@@ -31,6 +31,10 @@ body {
   font-family: 'noto', sans-serif;
 }
 
+p {
+  font-family: 'noto', sans-serif;
+}
+
 .f-blue {
   color: #0053A6;
 }
@@ -80,13 +84,13 @@ body {
 
     .navbar-logo {
       position: static;
-      width: 138px;
+      width: 175px;
       height: 40px;
       margin: 0 0 0 30px;
 
       .logo {
         background: url("../../logos/logo.png") no-repeat;
-        background-size: contain;
+        background-size: cover;
       }
     }
 
@@ -537,6 +541,11 @@ table {
   border-radius: 0 0 .75rem .75rem;
 }
 
+.desc {
+  margin: 0;
+  font-size: 13px;
+}
+
 // chart 영역 스타일
 .chart-area {
   margin-bottom: 20px;
@@ -558,6 +567,7 @@ table {
         color: #444;
         vertical-align: middle;
         z-index: 20;
+        cursor: pointer;
       }
     }
 
@@ -574,6 +584,7 @@ table {
       background-size: contain;
       line-height: 55px;
       text-align: right;
+      cursor: pointer;
 
       .number {
         margin: 0 10px;
@@ -735,10 +746,24 @@ table {
   border-top-color : #f9a21b;
 }
 
+.scatter-chart ,
+.chart-area ,
+.relation-bubble {
+  position: relative;
+}
+
 .scatter-chart svg {
   overflow: visible !important;
 }
 
+.scatter-chart circle.active {
+  fill: #ff0000;
+  r: 20;
+}
+
+.apexcharts-marker {
+  transition: none !important;
+}
 
 @media (max-width: 1906px) { 
   .navbar {

@@ -337,10 +337,12 @@ const Start = ({ intl }) => {
               </div>
               <div className="clearfix box-line">
                 <div className="box left">
+                  <p className="desc">- 키워드(dot) 클릭시, 우측 그래프가 활성화됩니다.</p>
                   {/* 각 차트별 height 값은 props로 전달 차트 */}
                   <ScatterQuadrant height={600} className="scatter-chart" />
                 </div>
                 <div className="box right">
+                  <p className="desc">- Pre-Trend 클릭 시, 예측트렌드가 노출됩니다.</p>
                   <div className="chart-area">
                     <div className="chart-header">
                       <div className="chart-title">
@@ -501,6 +503,7 @@ const Start = ({ intl }) => {
                     </PopoverBody>
                   </Popover> */}
                     <Bubble height={470} className="relation-bubble"/>
+                    <p className="desc text-right">- 위 버블 클릭 시, 연관 이미지 노출됩니다.</p>
                   </div>
                 </div>
                 {/* s: 연관 이미지 영역 */}

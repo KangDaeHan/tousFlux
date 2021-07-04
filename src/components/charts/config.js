@@ -52,11 +52,16 @@ export const bubbleChartOptions = {
         show: true,
       },
     },
+    plotOptions: {
+      bubble: {
+        minBubbleRadius: 10,
+      }
+    },
   },
   series: [
     {
       name: "ORG",
-      data: [[20, 50, 20]],
+      data: [[20, 50, 60]],
       relationTxt: [
         '<div><p>핏</p><img src="/assets/img/showroom/thumb1.png" alt="" /></div>',
         '<div><p>레이어드</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
@@ -67,7 +72,7 @@ export const bubbleChartOptions = {
     },
     {
       name: "OHEP Index",
-      data: [[20, 20, 40]],
+      data: [[20, 20, 150]],
       relationTxt: [
         '<div><p>고급스럽다</p><img src="/assets/img/showroom/thumb4.png" alt="" /></div>',
         '<div><p>깔끔함</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
@@ -254,7 +259,13 @@ export const ScatterQuadrantChartOptions = {
       ]
     },
     dataLabels: {
-      enabled: true
+      enabled: true,
+      style: {
+        colors: ['#fff']
+      },
+      background: {
+        enabled: false,
+      },
     },
     fill: {
       opacity: 0.7
@@ -272,6 +283,29 @@ export const ScatterQuadrantChartOptions = {
       tickAmount: 2,
       min: 0,
       max: 100
+    },
+    states: {
+      hover: {
+          filter: {
+              type: 'none',
+              value: 0,
+          }
+      },
+      active: {
+          allowMultipleDataPointsSelection: false,
+          filter: {
+              type: 'none',
+              value: 0,
+          }
+      },
+    },
+    markers: {
+      size: 15,
+      shape: "circle",
+      onClick: (e) => {
+        const elm = e.target;
+        elm.classList.toggle('active');
+      },
     }
   },
   series: [{
