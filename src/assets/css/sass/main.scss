@@ -136,27 +136,33 @@ p {
         }
       }
     }
-    .user {
-      .dropdown-menu.show {
-        border-radius: .75rem;
-        box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
-      }
-      .name {
-        text-align: center;
-
-        img {
-          margin: 0;
-        }
-      }
-      .dropdown-item {
-        margin: 0;
-        border-top: 1px solid #d1d1d1;
-        text-align: center;
-      }
-    }
-
   }
+}
 
+.user {
+  .dropdown-menu.show {
+    border-radius: .75rem;
+    box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.1);
+  }
+  .name {
+    text-align: center;
+
+    img {
+      margin: 0;
+    }
+  }
+  .dropdown-item {
+    margin: 0;
+    border-top: 1px solid #d1d1d1;
+    text-align: center;
+    
+    &:active {
+      background-color: #f9a21b;
+    }
+  }
+  .dropdown-menu {
+    padding-top: 17px;
+  }
 }
 
 .location {
@@ -742,6 +748,10 @@ table {
 }
 
 .loading {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin: -15px 0 0 -15px;
   border: 2px solid rgba(249, 162, 27, 0.2);
   border-top-color : #f9a21b;
 }
@@ -758,12 +768,83 @@ table {
 
 .scatter-chart circle.active {
   fill: #ff0000;
-  r: 20;
+  r: 17;
 }
 
 .apexcharts-marker {
   transition: none !important;
 }
+
+// 로그인 페이지
+.login-wrap {
+  .user {
+    position: absolute;
+    top: 29px;
+    right: 29px;
+  }
+  .login-area {
+    width: 440px;
+    margin: 0 auto;
+
+    .logo-single {
+      width: 431px;
+      height: 123px;
+      margin: 0 0 25px 0;
+      background: url("/assets/img/login/login_logo.png") no-repeat 50% 50%;
+    }
+    .card {
+      border-radius: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+    .form-control {
+      height: 61px;
+      font-size: 20px;
+    }
+    .btn {
+      width: 100%;
+      background-color: #f9a21b;
+      border: 0;
+      border-radius: 0;
+      font-size: 20px;
+
+      &:active {
+        background-color: #f9a21b;
+      }
+    }
+    .chk-remember {
+      margin: 20px 0 0 0;
+
+      .custom-control-label {
+        padding-left: 12px;
+        font-size: 18px;
+        color: #888;
+      }
+
+      .custom-control-label::before {
+        top: 0;
+        width: 24px;
+        height: 24px;
+        border-color: #d1d1d1;
+        border-radius: 0;
+        background-color: #fff;
+      }
+
+      .custom-control-label::after {
+        top: 0;
+        width: 24px;
+        height: 24px;
+      }
+
+      .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #f9a21b;
+        border-color: #f9a21b;
+      }
+    }
+  }
+}
+
+
 
 @media (max-width: 1906px) { 
   .navbar {

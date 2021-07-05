@@ -1,12 +1,27 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
-import { Row, Card, CardTitle, Label, FormGroup, Button } from 'reactstrap';
+/* eslint no-unused-vars: 0 */
+import { 
+  Row, 
+  Card, 
+  CardTitle, 
+  Label, 
+  FormGroup, 
+  Button, 
+  CustomInput, 
+  UncontrolledDropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu, } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Formik, Form, Field } from 'formik';
 import { NotificationManager } from '../../components/common/react-notifications';
 
-import { loginUser } from '../../redux/actions';
+import { loginUser, logoutUser } from '../../redux/actions';
 import { Colxx } from '../../components/common/CustomBootstrap';
 import IntlMessages from '../../helpers/IntlMessages';
 
@@ -30,7 +45,7 @@ const validateEmail = (value) => {
   return error;
 };
 
-const Login = ({ history, loading, error, loginUserAction }) => {
+const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) => {
   const [email] = useState('demo@gogo.com');
   const [password] = useState('gogo123');
 
@@ -50,37 +65,44 @@ const Login = ({ history, loading, error, loginUserAction }) => {
 
   const initialValues = { email, password };
 
+  const handleLogout = () => {
+    logoutUserAction(history);
+  };
+
   return (
-    <Row className="h-100">
-      <Colxx xxs="12" md="10" className="mx-auto my-auto">
-        <Card className="auth-card">
-          <div className="position-relative image-side ">
-            <p className="text-white h2">MAGIC IS IN THE DETAILS</p>
-            <p className="white mb-0">
-              Please use your credentials to login.
-              <br />
-              If you are not a member, please{' '}
-              <NavLink to="/user/register" className="white">
-                register
-              </NavLink>
-              .
-            </p>
+    <>
+    <div className="user d-inline-block">
+      <UncontrolledDropdown className="dropdown-menu-right">
+        <DropdownToggle className="p-0" color="empty">
+          <span>
+            <img alt="Profile" src="/assets/img/pic_default.png" />
+          </span>
+        </DropdownToggle>
+        <DropdownMenu className="mt-2" right>
+          <div className="name">
+            <span>
+              <img alt="Profile" src="/assets/img/pic_default.png" />
+            </span>
+            <p>관리자</p>
           </div>
-          <div className="form-side">
+          <DropdownItem>MY PAGE</DropdownItem>
+          <DropdownItem onClick={() => handleLogout()}>LOGOUT</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    </div>
+
+    <Row className="h-100 login-area">
+      <Colxx xxs="12" md="12" className="mx-auto my-auto">
+        <Card className="">
+          <div className="">
             <NavLink to="/" className="white">
               <span className="logo-single" />
             </NavLink>
-            <CardTitle className="mb-4">
-              <IntlMessages id="user.login-title" />
-            </CardTitle>
 
             <Formik initialValues={initialValues} onSubmit={onUserLogin}>
               {({ errors, touched }) => (
                 <Form className="av-tooltip tooltip-label-bottom">
                   <FormGroup className="form-group has-float-label">
-                    <Label>
-                      <IntlMessages id="user.email" />
-                    </Label>
                     <Field
                       className="form-control"
                       name="email"
@@ -93,9 +115,6 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                     )}
                   </FormGroup>
                   <FormGroup className="form-group has-float-label">
-                    <Label>
-                      <IntlMessages id="user.password" />
-                    </Label>
                     <Field
                       className="form-control"
                       type="password"
@@ -109,9 +128,9 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                     )}
                   </FormGroup>
                   <div className="d-flex justify-content-between align-items-center">
-                    <NavLink to="/user/forgot-password">
+                    {/* <NavLink to="/user/forgot-password">
                       <IntlMessages id="user.forgot-password-question" />
-                    </NavLink>
+                    </NavLink> */}
                     <Button
                       color="primary"
                       className={`btn-shadow btn-multiple-state ${
@@ -129,6 +148,12 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </span>
                     </Button>
                   </div>
+                  <CustomInput
+                    type="checkbox"
+                    id="exCustomCheckbox"
+                    label="Remember me"
+                    className="chk-remember"
+                  />
                 </Form>
               )}
             </Formik>
@@ -136,6 +161,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
         </Card>
       </Colxx>
     </Row>
+  </>
   );
 };
 const mapStateToProps = ({ authUser }) => {
@@ -145,4 +171,5 @@ const mapStateToProps = ({ authUser }) => {
 
 export default connect(mapStateToProps, {
   loginUserAction: loginUser,
+  logoutUserAction: logoutUser,
 })(Login);
