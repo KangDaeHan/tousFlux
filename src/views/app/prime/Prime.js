@@ -4,63 +4,38 @@ import { Row, Card, CardBody, Form, FormGroup,Input, Label, Button } from 'react
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
-import Bar from '../../../components/charts/Bar';
+import CompareBar from '../../../components/charts/CompareBar';
 import Line from '../../../components/charts/Line'
 import 'react-datepicker/dist/react-datepicker.css';
 // eslint-disable-next-line react/prefer-stateless-function
 class Prime extends React.Component {
   constructor(props) {
     super(props); // React.Component의 생성자 메소드를 먼저 실행
-    this.state = { // 이 컴포넌트의 state 설정
-      // eslint-disable-next-line react/no-unused-state
-      chartOption: [
-        {id:1, series: [{data: [21, 22]}], options: {
-          chart: {
-            height: 350,
-            type: 'bar',
-          },
-          plotOptions: {
-            bar: {
-              columnWidth: '45%',
-              distributed: true,
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          legend: {
-            show: false
-          },
-          xaxis: {
-            categories: ['1', 'Mar'],
-          },
-        }},
-        
-        {id:2, series: [{data: [50, 11]}], options: {
-          chart: {
-            height: 350,
-            type: 'bar',
-          },
-          plotOptions: {
-            bar: {
-              columnWidth: '45%',
-              distributed: true,
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          legend: {
-            show: false
-          },
-          xaxis: {
-            categories: ['1', 'Mar'],
-          },
-        }},
-      ],
+
+    this.state = {
+      options: {
+        chart: {
+          height: 350,
+          type: 'bar',
+        },
+        // colors: colors,
+        plotOptions: {
+          bar: {
+            columnWidth: '45%',
+            distributed: true,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          show: false
+        },
+        xaxis: {
+          categories: ['Past', 'Present'],
+        },
+      },
       
-      
-      // eslint-disable-next-line react/no-unused-state
       startDate: new Date(),
       // eslint-disable-next-line react/no-unused-state
       endDate: new Date(),
@@ -73,8 +48,10 @@ class Prime extends React.Component {
       ], 
       // eslint-disable-next-line react/no-unused-state
       activeId: null, 
+      
     };
-  };
+  }
+
 
   ChangeStartDate = (e) => { 
     this.setState({  
@@ -111,17 +88,25 @@ class Prime extends React.Component {
     this.setState({ checkInfo });
   }
 
-  listClickEvt = (evt) => {
-    const getNum = evt.currentTarget.className.replace('item-','');
-    this.setState({activeId : Number(getNum)})
+  
 
+
+  listClickEvt = (evt) => {
+    const getNum = Number(evt.currentTarget.className.replace('item-',''));
+    this.setState({
+      activeId : getNum
+    });
   }
+
+
+  
   
 
   render() {
     
-    const statesItems = this.state;
     
+
+    const statesItems = this.state;
 
     const indiCont = [
       {id: 1, title :  'Key-Rank.', count: '-', active: false},
@@ -131,6 +116,34 @@ class Prime extends React.Component {
       {id: 5, title :  'Num of Conversion', count: 2345},
     ]
     
+    const clickChartData = [
+      {id: 1, title: 'Post', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Comment', count: 2000,series: [{data: [17, 15]}]},
+      {id: 3, title: 'Positive', count: 3000,series: [{data: [17, 15]}]},
+      {id: 4, title: 'Negative', count: 4000,series: [{data: [17, 15]}]},
+    ]
+
+    const socialChartData = [
+      {id: 1, title: 'Post1', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Comment1', count: 2000,series: [{data: [17, 15]}]},
+      {id: 3, title: 'Positive1', count: 3000,series: [{data: [17, 15]}]},
+      {id: 4, title: 'Negative1', count: 4000,series: [{data: [17, 15]}]},
+    ]
+
+    const productChartData = [
+      {id: 1, title: 'Post2', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Comment2', count: 2000,series: [{data: [17, 15]}]},
+      {id: 3, title: 'Positive2', count: 3000,series: [{data: [17, 15]}]},
+    ]
+
+    const converChartData = [
+      {id: 1, title: 'Post3', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Comment3', count: 2000,series: [{data: [17, 15]}]},
+      {id: 3, title: 'Positive3', count: 3000,series: [{data: [17, 15]}]},
+      {id: 4, title: 'Negative3', count: 4000,series: [{data: [17, 15]}]},
+    ]
+    
+    const chartData1 = [clickChartData, socialChartData, productChartData, converChartData] 
 
     // eslint-disable-next-line prefer-const
       return (
@@ -266,7 +279,36 @@ class Prime extends React.Component {
                     <h2>Total Indicator</h2>
                   </div>
                   <div className='graph-area'>
-                    <ul className='item-1 graph-list' style={statesItems.activeId === 1 ? {display : 'flex'} : {display : 'none'}}>
+                    {/* <ul className='item-1 graph-list' > */}
+                    {chartData1.forEach((list , idx) => {
+                      return(
+                        <ul 
+                          // eslint-disable-next-line react/no-array-index-key
+                          key={idx} 
+                          className="item-1 graph-list">
+                          {list.map(item => {
+                            console.log(item.title);
+                            return(
+                              <li 
+                                key={item.id}
+                              >
+                                <div className='count-area'>
+                                  <p className='area-title'>{item.title}</p>
+                                  <p className='count'>{item.count}</p>
+                                </div>
+                                <div className='chart-area'>
+                                  <div id="chart">
+                                    <CompareBar options={statesItems.options} series={item.series} type="bar" height={350} />
+                                  </div>
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )
+                    })}
+                    
+                    {/* <ul className='item-2 graph-list' style={statesItems.activeId === 2 ? {display : 'flex'} : {display : 'none'}}>
                       <li>
                         <div className='count-area'>
                           <p className='area-title'>Post</p>
@@ -274,7 +316,7 @@ class Prime extends React.Component {
                         </div>
                         <div className='chart-area'>
                           <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
+                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
                           </div>
                         </div>
                       </li>
@@ -285,7 +327,7 @@ class Prime extends React.Component {
                         </div>
                         <div className='chart-area'>
                           <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
+                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
                           </div>
                         </div>
                       </li>
@@ -296,7 +338,7 @@ class Prime extends React.Component {
                         </div>
                         <div className='chart-area'>
                           <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
+                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
                           </div>
                         </div>
                       </li>
@@ -307,57 +349,11 @@ class Prime extends React.Component {
                         </div>
                         <div className='chart-area'>
                           <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
+                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
                           </div>
                         </div>
                       </li>
-                    </ul>
-                    <ul className='item-2 graph-list'>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <Bar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </CardBody>
               </Card>

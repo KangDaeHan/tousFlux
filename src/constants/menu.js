@@ -22,7 +22,7 @@ const data = [
   },
   {
     id: 'PRIME',
-    // icon: 'iconsminds-library',
+    icon: 'iconsminds-library',
     label: 'PRIME',
     to: `${adminRoot}/prime`,
   },
