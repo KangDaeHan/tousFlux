@@ -79,19 +79,19 @@ const TopNav = ({
           <span className="logo d-none d-xs-block" />
           <span className="logo-mobile d-block d-xs-none" />
         </NavLink>
-        <div className="login-info">
+        {/* <div className="login-info">
           <span className="name">AAA님</span>
           <span className="calendar">| 19.01.01~21.03.31</span>
-        </div>
+        </div> */}
       </div>
       <div className="navbar-right">
         <ul className="d-inline-block top-nav-list">
-          <li><NavLink to="/app/prime" activeClassName="active" className="nav-menu">PRIME</NavLink></li>
+          <li><NavLink to="#" activeClassName="" className="nav-menu">PRIME</NavLink></li>
           <li><NavLink to="/app/gogo/start" activeClassName="active" className="nav-menu">TREND</NavLink></li>
-          <li><NavLink to="/app/socialListening" activeClassName="active" className="nav-menu">SOCIAL LISTENING</NavLink></li>
-          <li><NavLink to="/app/onlineRetailer" activeClassName="active" className="nav-menu">ONLINE RETAILER</NavLink></li>
-          <li><NavLink to="/app/simulator" activeClassName="active" className="nav-menu">SIMULATOR</NavLink></li>
-          <li><NavLink to="/app/about" activeClassName="active" className="nav-menu">ABOUT TousFlux</NavLink></li>
+          <li><NavLink to="#" activeClassName="" className="nav-menu">SOCIAL LISTENING</NavLink></li>
+          <li><NavLink to="#" activeClassName="" className="nav-menu">ONLINE RETAILER</NavLink></li>
+          <li><NavLink to="#" activeClassName="" className="nav-menu">SIMULATOR</NavLink></li>
+          <li><NavLink to="#" activeClassName="" className="nav-menu">ABOUT TousFlux</NavLink></li>
         </ul>
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
@@ -100,7 +100,7 @@ const TopNav = ({
                 <img alt="Profile" src="/assets/img/pic_default.png" />
               </span>
             </DropdownToggle>
-            <DropdownMenu className="mt-3" right>
+            <DropdownMenu className="mt-2" right>
               <div className="name">
                 <span>
                   <img alt="Profile" src="/assets/img/pic_default.png" />
