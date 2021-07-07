@@ -115,35 +115,38 @@ class Prime extends React.Component {
       {id: 4, title :  'Num of Product', count: 11485},
       {id: 5, title :  'Num of Conversion', count: 2345},
     ]
-    
-    const clickChartData = [
+
+    const keyChartData = [
       {id: 1, title: 'Post', count: 1000,series: [{data: [17, 15]}]},
       {id: 2, title: 'Comment', count: 2000,series: [{data: [17, 15]}]},
       {id: 3, title: 'Positive', count: 3000,series: [{data: [17, 15]}]},
       {id: 4, title: 'Negative', count: 4000,series: [{data: [17, 15]}]},
     ]
 
-    const socialChartData = [
+    const clickChartData = [
       {id: 1, title: 'Post1', count: 1000,series: [{data: [17, 15]}]},
       {id: 2, title: 'Comment1', count: 2000,series: [{data: [17, 15]}]},
       {id: 3, title: 'Positive1', count: 3000,series: [{data: [17, 15]}]},
       {id: 4, title: 'Negative1', count: 4000,series: [{data: [17, 15]}]},
     ]
 
-    const productChartData = [
+    const socialChartData = [
       {id: 1, title: 'Post2', count: 1000,series: [{data: [17, 15]}]},
       {id: 2, title: 'Comment2', count: 2000,series: [{data: [17, 15]}]},
       {id: 3, title: 'Positive2', count: 3000,series: [{data: [17, 15]}]},
     ]
 
-    const converChartData = [
+    const productChartData = [
       {id: 1, title: 'Post3', count: 1000,series: [{data: [17, 15]}]},
       {id: 2, title: 'Comment3', count: 2000,series: [{data: [17, 15]}]},
       {id: 3, title: 'Positive3', count: 3000,series: [{data: [17, 15]}]},
-      {id: 4, title: 'Negative3', count: 4000,series: [{data: [17, 15]}]},
+    ]
+
+    const converChartData = [
+      {id: 1, title: 'Post4', count: 1000,series: [{data: [17, 15]}]},
     ]
     
-    const chartData1 = [clickChartData, socialChartData, productChartData, converChartData] 
+    const chartDataArray = [keyChartData, clickChartData, socialChartData, productChartData, converChartData] 
 
     // eslint-disable-next-line prefer-const
       return (
@@ -253,7 +256,7 @@ class Prime extends React.Component {
                           <li 
                             key={item.id}
                             onClick={this.listClickEvt}
-                            className={`item-${item.id}${statesItems.activeId === Number(item.id) ? ' active' : ""}` }
+                            className={`item-${item.id} ${statesItems.activeId === Number(item.id) ? ' active' : ""}` }
                           >
                             <div>
                               <p>
@@ -280,14 +283,13 @@ class Prime extends React.Component {
                   </div>
                   <div className='graph-area'>
                     {/* <ul className='item-1 graph-list' > */}
-                    {chartData1.forEach((list , idx) => {
+                    {chartDataArray.map((list , idx) => {
                       return(
                         <ul 
                           // eslint-disable-next-line react/no-array-index-key
                           key={idx} 
-                          className="item-1 graph-list">
+                          className={`item-${idx} graph-list`} style={statesItems.activeId === Number(`${idx + 1}`) ? {display : 'flex'} : {display : 'none'}}>
                           {list.map(item => {
-                            console.log(item.title);
                             return(
                               <li 
                                 key={item.id}
