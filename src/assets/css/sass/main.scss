@@ -83,10 +83,10 @@ p {
     flex-basis: 30%;
 
     .navbar-logo {
-      position: static;
+      top: 50%;
       width: 175px;
       height: 40px;
-      margin: 0 0 0 30px;
+      margin: -20px 0 0 30px;
 
       .logo {
         background: url("../../logos/logo.png") no-repeat;
@@ -110,6 +110,77 @@ p {
   .navbar-right {
     flex-basis: 70%;
 
+    .top-nav {
+      position: static;
+      padding-bottom: 0;
+
+      > .dropdown-menu {
+        float: none;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        padding: 35px 0 0 0;
+        border: 0;
+        background: transparent;
+        transform: translate3d(0, 65px, 0px) !important;
+        
+        .sub-menu-area {
+          padding: 38px 0 38px 30%;
+          background: #f9a21b;
+          overflow: hidden;
+
+          ul {
+            float: left;
+            margin-bottom: 0;
+
+            &.sub-list1 {
+              margin-left: 15px;
+            }
+
+            &.sub-list2 {
+              margin-left: 0;
+            }
+
+            &.sub-list3 {
+              margin-left: 5px;
+            }
+
+            &.sub-list4 {
+              margin-left: 55px;
+            }
+
+            &.sub-list5 {
+              margin-left: 40px;
+            }
+
+            &.sub-list6 {
+              margin-left: -15px;
+            }
+
+            li {
+              margin-top: 15px;
+              list-style: none;
+
+              &:first-child {
+                margin: 0;
+              }
+              a {
+                padding-bottom: 5px;
+                border-bottom: 2px solid transparent;
+                font-size: 20px;
+                color: #fff;
+
+                &:hover {
+                  border-bottom-color: #444;
+                  color: #444;
+                }
+              }
+            }
+            
+          }
+        }
+      }
+    }
     .top-nav-list {
       margin: 0;
       padding: 0;
@@ -119,6 +190,10 @@ p {
       li {
         display: inline-block;
         margin-right: 80px;
+
+        &:last-child {
+          margin-right: 150px;
+        }
 
         a {
           padding-bottom: 2px;
@@ -135,6 +210,13 @@ p {
           }
         }
       }
+    }
+
+    .user {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin: -21px 30px 0 0;
     }
   }
 }
