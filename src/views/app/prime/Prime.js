@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Row, Card, CardBody, Form, FormGroup,Input, Label, Button } from 'reactstrap';
+import { Row, Card, CardBody, Form, Button } from 'reactstrap';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import CompareBar from '../../../components/charts/CompareBar';
 import Line from '../../../components/charts/Line'
 import 'react-datepicker/dist/react-datepicker.css';
+import ChannelButton from '../../../components/applications/ChannelButton'
 // eslint-disable-next-line react/prefer-stateless-function
 class Prime extends React.Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class Prime extends React.Component {
         { id: 4, value: "Test3", isChecked: false }
       ], 
       // eslint-disable-next-line react/no-unused-state
-      activeId: null, 
+      activeId: 1, 
       
     };
   }
@@ -65,31 +66,33 @@ class Prime extends React.Component {
     });  
   }; 
 
-  handleAllChecked = (evt) => {
-    // eslint-disable-next-line prefer-const
-    let { checkInfo } = this.state;
-
-    checkInfo.forEach(item => {
-      // eslint-disable-next-line no-param-reassign
-      item.isChecked = evt.target.checked
-    });
-    this.setState({ checkInfo });
-  }
-  
-  handleOneChecked = (evt) => {
-    // eslint-disable-next-line prefer-const
-    let { checkInfo } = this.state;
-    checkInfo.forEach(item => {
-      if (item.value === evt.target.value){
-        // eslint-disable-next-line no-param-reassign
-        item.isChecked = evt.target.checked;
-      }
-    });
-    this.setState({ checkInfo });
-  }
-
   
 
+  // 체크박스 
+  // handleAllChecked = (evt) => {
+  //   // eslint-disable-next-line prefer-const
+  //   let { checkInfo } = this.state;
+
+  //   checkInfo.forEach(item => {
+  //     // eslint-disable-next-line no-param-reassign
+  //     item.isChecked = evt.target.checked
+  //   });
+  //   this.setState({ checkInfo });
+  // }
+  
+  // handleOneChecked = (evt) => {
+  //   // eslint-disable-next-line prefer-const
+  //   let { checkInfo } = this.state;
+  //   checkInfo.forEach(item => {
+  //     if (item.value === evt.target.value){
+  //       // eslint-disable-next-line no-param-reassign
+  //       item.isChecked = evt.target.checked;
+  //     }
+  //   });
+  //   this.setState({ checkInfo });
+  // }
+
+  
 
   listClickEvt = (evt) => {
     const getNum = Number(evt.currentTarget.className.replace('item-',''));
@@ -103,8 +106,6 @@ class Prime extends React.Component {
   
 
   render() {
-    
-    
 
     const statesItems = this.state;
 
@@ -191,7 +192,9 @@ class Prime extends React.Component {
                           <tr>
                             <th style={{ width:'15%' }}>Channel</th>
                             <td style={{ width:'85%' }}>
-                              <FormGroup check inline className='check-box'>
+                              <ChannelButton />
+                              {/* 체크박스 */}
+                              {/* <FormGroup check inline className='check-box'>
                                 <Label check>
                                 <Input 
                                   className='check-all-box'
@@ -217,7 +220,7 @@ class Prime extends React.Component {
                                   </Label>
                                 </FormGroup>
                               )
-                            })}
+                            })} */}
                               
                             </td>
                           </tr>
@@ -309,53 +312,6 @@ class Prime extends React.Component {
                         </ul>
                       )
                     })}
-                    
-                    {/* <ul className='item-2 graph-list' style={statesItems.activeId === 2 ? {display : 'flex'} : {display : 'none'}}>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <CompareBar options={statesItems.options} series={statesItems.series} type="bar" height={350} />
-                          </div>
-                        </div>
-                      </li>
-                    </ul> */}
                   </div>
                 </CardBody>
               </Card>
@@ -371,36 +327,33 @@ class Prime extends React.Component {
                   <div className='graph-area'>
                     <ul>
                       <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
-                        <div className='chart-area'>
+                      <div className='chart-area'>
                           <div id="chart">
                             <Line options={statesItems.options} series={statesItems.series} type="line" height={350} />
                           </div>
+                        </div>
+                        <div className='count-area'>
+                          <p className='area-title'>Post</p>
                         </div>
                       </li>
                       <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
                         <div className='chart-area'>
                           <div id="chart">
                             <Line options={statesItems.options} series={statesItems.series} type="line" height={350} />
                           </div>
+                        </div>
+                        <div className='count-area'>
+                          <p className='area-title'>Post</p>
                         </div>
                       </li>
                       <li>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                          <p className='count'>1557</p>
-                        </div>
                         <div className='chart-area'>
                           <div id="chart">
                             <Line options={statesItems.options} series={statesItems.series} type="line" height={350} />
                           </div>
+                        </div>
+                        <div className='count-area'>
+                          <p className='area-title'>Post</p>
                         </div>
                       </li>
                     </ul>
