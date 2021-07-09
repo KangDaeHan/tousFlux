@@ -284,7 +284,7 @@ class Prime extends React.Component {
                   <div className='box-title'>
                     <h2>Total Indicator</h2>
                   </div>
-                  <div className='graph-area'>
+                  <div className='graph-area bar'>
                     {/* <ul className='item-1 graph-list' > */}
                     {chartDataArray.map((list , idx) => {
                       return(
@@ -324,8 +324,8 @@ class Prime extends React.Component {
                   <div className='box-title'>
                     <h2>Demographics Comparison</h2>
                   </div>
-                  <div className='graph-area'>
-                    <ul>
+                  <div className='graph-area line'>
+                    <ul className='graph-list'>
                       <li>
                       <div className='chart-area'>
                           <div id="chart">
