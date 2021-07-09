@@ -868,11 +868,17 @@ table {
     width: 440px;
     margin: 0 auto;
 
-    .logo-single {
-      width: 431px;
-      height: 123px;
-      margin: 0 0 25px 0;
-      background: url("/assets/img/login/login_logo.png") no-repeat 50% 50%;
+    .home-logo {
+      display: table;
+      margin: 0 auto;
+      text-align: center;
+      
+      .logo-single {
+        width: 431px;
+        height: 123px;
+        margin: 0 auto 25px;
+        background: url("/assets/img/login/login_logo.png") no-repeat 50% 50%;
+      }
     }
     .card {
       border-radius: 0;
@@ -924,9 +930,60 @@ table {
       }
     }
   }
+
+  .home-area {
+    width: 720px;
+  }
 }
 
+// home 페이지
+.quick-link {
+  text-align: center;
 
+  a {
+    position: relative;
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    margin-left: 30px;
+    overflow: hidden;
+    text-indent: -9999px;
+
+    &:first-child {
+      margin: 0;
+    }
+    &.link1 {
+      background: url('/assets/img/icon/quick_link1.png') no-repeat;
+      &:hover {
+        background: url('/assets/img/icon/quick_link1_on.png') no-repeat;
+      }
+    }
+    &.link2 {
+      background: url('/assets/img/icon/quick_link2.png') no-repeat;
+      &:hover {
+        background: url('/assets/img/icon/quick_link2_on.png') no-repeat;
+      }
+    }
+    &.link3 {
+      background: url('/assets/img/icon/quick_link3.png') no-repeat;
+      &:hover {
+        background: url('/assets/img/icon/quick_link3_on.png') no-repeat;
+      }
+    }
+    &.link4 {
+      background: url('/assets/img/icon/quick_link4.png') no-repeat;
+      &:hover {
+        background: url('/assets/img/icon/quick_link4_on.png') no-repeat;
+      }
+    }
+    &.link5 {
+      background: url('/assets/img/icon/quick_link5.png') no-repeat;
+      &:hover {
+        background: url('/assets/img/icon/quick_link5_on.png') no-repeat;
+      }
+    }
+  }
+}
 
 @media (max-width: 1906px) { 
   .navbar {
