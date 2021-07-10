@@ -110,7 +110,6 @@ class Prime extends React.Component {
       activeId : getNum
     });
   }
-  
 
   render() {
 
@@ -258,7 +257,13 @@ class Prime extends React.Component {
         areaTitle : 'Device'
     }
     
-
+    const validateKeyword = (value) => {
+      let error;
+      if (!value) {
+        error = 'No Keywords';
+      } 
+      return error;
+    };
     
     const chartDataArray = [keyChartData, clickChartData, socialChartData, productChartData, converChartData] 
     const linechartDataArray = [genderChartData , ageChartData, deviceChartData]
@@ -323,7 +328,7 @@ class Prime extends React.Component {
                                   <Field
                                     className="form-control"
                                     name="keyword"
-                                    validate={statesItems.validateKeyword}
+                                    validate={validateKeyword}
                                   />
                                   {errors.keyword && touched.keyword && (
                                     <div className="d-block noti-text">
