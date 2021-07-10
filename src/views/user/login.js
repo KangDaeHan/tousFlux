@@ -46,6 +46,7 @@ const validateEmail = (value) => {
 };
 
 const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) => {
+  const [loginBefore, setLoginBefore] = useState(true);
   const [email] = useState('demo@gogo.com');
   const [password] = useState('gogo123');
 
@@ -54,6 +55,10 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
       NotificationManager.warning(error, 'Login Error', 3000, null, null, '');
     }
   }, [error]);
+
+  const onLoginView = () => {
+    setLoginBefore(false);
+  }
 
   const onUserLogin = (values) => {
     if (!loading) {
@@ -86,19 +91,28 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
             <p>관리자</p>
           </div>
           <DropdownItem>MY PAGE</DropdownItem>
-          <DropdownItem onClick={() => handleLogout()}>LOGOUT</DropdownItem>
+          <DropdownItem onClick={() => onLoginView()}>LOGIN</DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     </div>
 
-    <Row className="h-100 login-area">
+    <Row className={`h-100 login-area ${loginBefore && 'home-area'}`}>
       <Colxx xxs="12" md="12" className="mx-auto my-auto">
         <Card className="">
           <div className="">
-            <NavLink to="/" className="white">
+            <NavLink to="/" className="home-logo white">
               <span className="logo-single" />
             </NavLink>
 
+            {loginBefore === true ?
+              <div className="quick-link">
+                <NavLink to="/" className="link1">메뉴1</NavLink>
+                <NavLink to="/" className="link2">메뉴2</NavLink>
+                <NavLink to="/" className="link3">메뉴3</NavLink>
+                <NavLink to="/" className="link4">메뉴4</NavLink>
+                <NavLink to="/" className="link5">메뉴5</NavLink>
+              </div>
+            :
             <Formik initialValues={initialValues} onSubmit={onUserLogin}>
               {({ errors, touched }) => (
                 <Form className="av-tooltip tooltip-label-bottom">
@@ -157,6 +171,8 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
                 </Form>
               )}
             </Formik>
+            }
+
           </div>
         </Card>
       </Colxx>
