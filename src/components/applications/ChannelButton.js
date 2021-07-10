@@ -93,32 +93,37 @@ const ChannelButton = () => {
       <div className='channel_header'>
       {tabTitle.map((title, idx) => {
           return(
-            <Button key color='h_tab' onClick={() => resetArray(idx)} active={rSelected === idx}>{title}</Button>
+            // eslint-disable-next-line react/no-array-index-key
+            <Button key={idx} color='h_tab' onClick={() => resetArray(idx)} active={rSelected === idx}>{title}</Button>
           )
       })}
       </div>
 
       <div className={`channel_cont ${rSelected === 0 ? ' active': ''}`}>
         <table className='tbl_social'>
-            {socialData.map((list, idx) => {
-                return(
-                    <tr key>
-                        <th>{socialDataTitle[idx]}</th>
-                        <td>
-                            {list.map(item => {
-                                return (
-                                    <Button color="items" key={item.id} onClick={() => onCheckboxBtnClick(item.id, item.name)} active={checkSelected.includes(item.id)}>{item.name}</Button>
-                                )
-                            })}
-                        </td>
-                    </tr>
-                )
-            })}
+            <tbody>
+                {socialData.map((list, idx) => {
+                    return(
+                        // eslint-disable-next-line react/no-array-index-key
+                        <tr key={idx}>
+                            <th>{socialDataTitle[idx]}</th>
+                            <td>
+                                {list.map(item => {
+                                    return (
+                                        <Button color="items" key={item.id} onClick={() => onCheckboxBtnClick(item.id, item.name)} active={checkSelected.includes(item.id)}>{item.name}</Button>
+                                    )
+                                })}
+                            </td>
+                        </tr>
+                    )
+                })}
+            </tbody>
         </table>
         <ul className='list_tag'>
-            {selectArray.map(item =>{
+            {selectArray.map((item, idx) =>{
                 return(
-                    <li key>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
+                    // eslint-disable-next-line react/no-array-index-key
+                    <li key={idx}>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
                 )
             })}
         </ul>
@@ -126,21 +131,24 @@ const ChannelButton = () => {
 
       <div className={`channel_cont ${rSelected === 1 ? ' active': ''}`}>
         <table className='tbl_social'>
-            <tr>
-                <td>
-                    {onlineShopData.map((item) => {
-                        return(
+            <tbody>
+                <tr>
+                    <td>
+                        {onlineShopData.map((item) => {
+                            return(
                                 <Button color="items" key={item.id} onClick={() => onCheckboxBtnClick(item.id, item.name)} active={checkSelected.includes(item.id)}>{item.name}</Button>
-                        )
-                    })}
-                </td>
-            </tr>
+                            )
+                        })}
+                    </td>
+                </tr>
+            </tbody>
         </table>
         
         <ul className='list_tag'>
-            {selectArray.map(item =>{
+            {selectArray.map((item, idx) =>{
                 return(
-                    <li key>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
+                    // eslint-disable-next-line react/no-array-index-key
+                    <li key={idx}>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
                 )
             })}
         </ul>
@@ -148,20 +156,23 @@ const ChannelButton = () => {
 
       <div className={`channel_cont ${rSelected === 2 ? ' active': ''}`}>
         <table className='tbl_social'>
-            <tr>
-                <td>
-                    {googleAnalData.map((item) => {
-                        return(
+            <tbody>
+                <tr>
+                    <td>
+                        {googleAnalData.map((item) => {
+                            return(
                                 <Button color="items" key={item.id} onClick={() => onCheckboxBtnClick(item.id, item.name)} active={checkSelected.includes(item.id)}>{item.name}</Button>
-                        )
-                    })}
-                </td>
-            </tr>
+                            )
+                        })}
+                    </td>
+                </tr>
+            </tbody>
         </table>
         <ul className='list_tag'>
-            {selectArray.map(item =>{
+            {selectArray.map((item, idx) =>{
                 return(
-                    <li key>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
+                    // eslint-disable-next-line react/no-array-index-key
+                    <li key={idx}>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
                 )
             })}
         </ul>
