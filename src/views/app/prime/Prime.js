@@ -47,7 +47,7 @@ class Prime extends React.Component {
             },
             title : {
               text : 'Period',
-              offsetX: 90,
+              offsetX: 100,
               offsetY: 0,
               style: {
                 color: undefined,
@@ -74,59 +74,20 @@ class Prime extends React.Component {
           }
         },
       },
-      lineChart : {
-        options: {
-          chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-              enabled: false
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'straight'
-          },
-          title: {
-            text: 'Product Trends by Month',
-            align: 'left'
-          },
-          grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5
-            },
-          },
-          xaxis: {
-            categories: ['Male', 'Female'],
-            tickPlacement: 'between'
-          }
-        },
-      },
       
       startDate: new Date(),
       // eslint-disable-next-line react/no-unused-state
       endDate: new Date(),
-      // eslint-disable-next-line react/no-unused-state
-      checkInfo: [
-        { id: 1, value: "Naver", isChecked: false },
-        { id: 2, value: "Test1", isChecked: false },
-        { id: 3, value: "Test2", isChecked: false },
-        { id: 4, value: "Test3", isChecked: false }
-      ], 
       // eslint-disable-next-line react/no-unused-state
       activeId: 1, 
       
     };
   }
 
-
   ChangeStartDate = (e) => { 
     this.setState({  
       startDate: e,
-    });  ;
+    });
   };  
   
   ChangeEndDate = (e) => { 
@@ -149,60 +110,158 @@ class Prime extends React.Component {
       activeId : getNum
     });
   }
+  
 
   render() {
 
     const statesItems = this.state;
 
     const indiCont = [
-      {id: 1, title :  'Key-Rank.', count: '-', active: false},
-      {id: 2, title :  'Click', count: 99, active: false},
+      {id: 1, title :  'Key-Rank.', count: '-'},
+      {id: 2, title :  'Click', count: 99},
       {id: 3, title :  'Social Buzz', count: 824},
       {id: 4, title :  'Num of Product', count: 11485},
       {id: 5, title :  'Num of Conversion', count: 2345},
     ]
 
     const keyChartData = [
-      {id: 1, title: 'Post', count: 1000,series: [{data: [17, 15]}]},
-      {id: 2, title: 'Comment', count: 2000,series: [{data: [17, 15]}]},
-      {id: 3, title: 'Positive', count: 3000,series: [{data: [17, 15]}]},
-      {id: 4, title: 'Negative', count: 4000,series: [{data: [17, 15]}]},
+      {id: 1, title: 'Post', count: 1000, series: [{data: [17, 15]}]},
+      {id: 2, title: 'Comment', count: 2000, series: [{data: [17, 15]}]},
+      {id: 3, title: 'Positive', count: 3000, series: [{data: [17, 15]}], class: 'blue'},
+      {id: 4, title: 'Negative', count: 4000, series: [{data: [17, 15]}], class: 'red'},
     ]
 
     const clickChartData = [
-      {id: 1, title: 'Post1', count: 1000,series: [{data: [17, 15]}]},
-      {id: 2, title: 'Comment1', count: 2000,series: [{data: [17, 15]}]},
-      {id: 3, title: 'Positive1', count: 3000,series: [{data: [17, 15]}]},
-      {id: 4, title: 'Negative1', count: 4000,series: [{data: [17, 15]}]},
+      {id: 1, title: 'Buzz', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Product', count: 2000,series: [{data: [17, 15]}]},
+      {id: 3, title: 'Conversion', count: 3000,series: [{data: [17, 15]}], class: 'blue'},
     ]
 
     const socialChartData = [
-      {id: 1, title: 'Post2', count: 1000,series: [{data: [17, 15]}]},
-      {id: 2, title: 'Comment2', count: 2000,series: [{data: [17, 15]}]},
-      {id: 3, title: 'Positive2', count: 3000,series: [{data: [17, 15]}]},
+      {id: 1, title: 'Post', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Comment', count: 2000,series: [{data: [17, 15]}]},
+      {id: 3, title: 'Positive', count: 3000,series: [{data: [17, 15]}], class: 'blue'},
+      {id: 3, title: 'Negative', count: 3000,series: [{data: [17, 15]}], class: 'red'},
     ]
 
     const productChartData = [
-      {id: 1, title: 'Post3', count: 1000,series: [{data: [17, 15]}]},
-      {id: 2, title: 'Comment3', count: 2000,series: [{data: [17, 15]}]},
-      {id: 3, title: 'Positive3', count: 3000,series: [{data: [17, 15]}]},
+      {id: 1, title: 'Product', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Review', count: 2000,series: [{data: [17, 15]}]},
     ]
 
     const converChartData = [
-      {id: 1, title: 'Post4', count: 1000,series: [{data: [17, 15]}]},
+      {id: 1, title: 'User', count: 1000,series: [{data: [17, 15]}]},
+      {id: 2, title: 'Session', count: 1000,series: [{data: [17, 15]}]},
+      {id: 3, title: 'Conver-sion', count: 1000,series: [{data: [17, 15]}], class: 'blue'},
+      {id: 4, title: 'Bounce', count: 1000,series: [{data: [17, 15]}], class: 'red'},
     ]
     
     const genderChartData = {
       series: [
-            {name: 'Peter',  data: [45, 10]}, 
-            {name: 'Johnny', data: [21, 50]}
+            {name: 'Male',  data: [45, 10]}, 
+            {name: 'Female', data: [21, 50]}
         ],
+        options: {
+          chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false
+            },
+            toolbar: {
+              show: false
+            }
+          },
+          colors: ['#f69200', '#000'], 
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'straight'
+          },
+          xaxis: {
+            categories: ['Male', 'Female'],
+            tickPlacement: 'between'
+          },
+          legend: {
+            show: false
+          },
+        },
+        areaTitle : 'Gender'
+    }
+
+    const ageChartData = {
+      series: [
+            {name: 'Search',  data: [0.45, 0.1, 0.51, 0.94, 0.23, 0.65]}, 
+            {name: 'Google Analyitcs', data: [0.21, 0.5, 0.45, 0.1, 0.51, 0.23,]}
+        ],
+        options: {
+          chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false
+            },
+            toolbar: {
+              show: false
+            }
+          },
+          colors: ['#ea6910', '#000'], 
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'smooth'
+          },
+          xaxis: {
+            categories: ['10s', '20s', '30s', '40s', '50s', '60s+'],
+            tickPlacement: 'between'
+          },
+          legend: {
+            position: 'top'
+          },
+        },
+        areaTitle : 'Ages'
+    }
+
+    const deviceChartData = {
+      series: [
+            {name: 'PC',  data: [45, 10]}, 
+            {name: 'Mobile', data: [21, 50]}
+        ],
+        options: {
+          chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false
+            },
+            toolbar: {
+              show: false
+            }
+          },
+          colors: ['#f69200', '#000'], 
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: 'straight'
+          },
+          xaxis: {
+            categories: ['PC', 'Mobile'],
+            tickPlacement: 'between'
+          },
+          legend: {
+            show: false
+          }
+        },
+        areaTitle : 'Device'
     }
     
 
     
     const chartDataArray = [keyChartData, clickChartData, socialChartData, productChartData, converChartData] 
-    // const linechartDataArray = [genDerChartData]
+    const linechartDataArray = [genderChartData , ageChartData, deviceChartData]
 
     // eslint-disable-next-line prefer-const
       return (
@@ -298,12 +357,13 @@ class Prime extends React.Component {
                   </div>
                   <div className='indi-wrap'>
                     <ul className='lst-indi'>
-                      {indiCont.map((item) => {
+                      {indiCont.map((item, idx) => {
                         const countNumberDot = item.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         return (
                           // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                           <li 
-                            key={item.id}
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={idx} 
                             onClick={this.listClickEvt}
                             className={`item-${item.id} ${statesItems.activeId === Number(item.id) ? ' active' : ""}` }
                           >
@@ -317,7 +377,7 @@ class Prime extends React.Component {
                         );
                       })}
                     </ul>
-                    <p className='noti'>* 각 수치는 기간 내 일평균 값을 의미</p>
+                    <p className='cont-noti'>* 각 수치는 기간 내 일평균 값을 의미</p>
                   </div>
                 </CardBody>
               </Card>
@@ -332,20 +392,22 @@ class Prime extends React.Component {
                   </div>
                   <div className='graph-area bar'>
                     {/* <ul className='item-1 graph-list' > */}
-                    {chartDataArray.map((list , idx) => {
+                    {chartDataArray.map((list , indx) => {
                       return(
                         <ul 
                           // eslint-disable-next-line react/no-array-index-key
-                          key={idx} 
-                          className={`item-${idx} graph-list`} style={statesItems.activeId === Number(`${idx + 1}`) ? {display : 'flex'} : {display : 'none'}}>
-                          {list.map(item => {
+                          key={indx} 
+                          className={`item-${indx} graph-list`} style={statesItems.activeId === Number(`${indx + 1}`) ? {display : 'flex'} : {display : 'none'}}>
+                          {list.map((item, idx) => {
+                            const countNumberDot = item.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             return(
                               <li 
-                                key={item.id}
+                                // eslint-disable-next-line react/no-array-index-key
+                                key={idx}
                               >
                                 <div className='count-area'>
                                   <p className='area-title'>{item.title}</p>
-                                  <p className='count'>{item.count}</p>
+                                  <p className={`count ${item.class}`}>{countNumberDot}</p>
                                 </div>
                                 <div className='chart-area'>
                                   <div id="chart">
@@ -358,6 +420,7 @@ class Prime extends React.Component {
                         </ul>
                       )
                     })}
+                    <p className='cont-noti'>* 각 수치는 기간 내 총 합계를 의미</p>
                   </div>
                 </CardBody>
               </Card>
@@ -372,37 +435,23 @@ class Prime extends React.Component {
                   </div>
                   <div className='graph-area line'>
                     <ul className='graph-list'>
-                      <li>
-                      <div className='chart-area'>
-                          <div id="chart">
-                            <CompareLine options={statesItems.lineChart.options} series={genderChartData.series} type="line" height={350} />
-                          </div>
-                        </div>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <CompareLine options={statesItems.lineChart.options} series={statesItems.lineChart.series} type="line" height={350} />
-                          </div>
-                        </div>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                        </div>
-                      </li>
-                      <li>
-                        <div className='chart-area'>
-                          <div id="chart">
-                            <CompareLine options={statesItems.lineChart.options} series={statesItems.lineChart.series} type="line" height={350} />
-                          </div>
-                        </div>
-                        <div className='count-area'>
-                          <p className='area-title'>Post</p>
-                        </div>
-                      </li>
+                      {linechartDataArray.map((item, idx)=>{
+                        return(
+                          // eslint-disable-next-line react/no-array-index-key
+                          <li key={idx} className={idx === 1 ? 'center_graph' : ''}>
+                            <div className='chart-area'>
+                              <div id="chart">
+                                <CompareLine options={item.options} series={item.series} type="line" height={350} />
+                              </div>
+                            </div>
+                            <div className='txt-area'>
+                              <p className='area-title'>{item.areaTitle}</p>
+                            </div>
+                          </li>
+                        );
+                      })}
                     </ul>
+                    <p className='cont-noti'>* 각 수치는 기간 내 총 비율을 의미</p>
                   </div>
                 </CardBody>
               </Card>

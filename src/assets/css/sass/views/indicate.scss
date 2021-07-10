@@ -1,15 +1,6 @@
 .indi-wrap{
     margin-top: 50px;
     font-family: 'noto', sans-serif;
-
-    .noti {
-        margin-top: 30px;
-        margin-right: 20px;
-        font-size: 18px;
-        color: #bbb;
-        text-align: right;
-    }
-
     .lst-indi{
         display: flex;
         justify-content: space-around;
@@ -64,6 +55,14 @@
     }
 }
 
+.cont-noti {
+    margin-top: 30px;
+    margin-right: 20px;
+    font-size: 18px;
+    color: #bbb;
+    text-align: right;
+}
+
 .graph-area{
     ul{
         display: flex;
@@ -71,22 +70,68 @@
         justify-content: space-around;
         list-style: none;
     }
-    .count-area{
-        border: 1px solid #d1d1d1;
-        padding: 20px;
-        border-radius: 20px;
-        margin-bottom: 20px;
 
-        .count{
-            font-size: 20px;
-            text-align: center;
-            margin-bottom: 0;
+    &.bar{
+        .graph-list{
+            li{
+                width: 25%;
+                margin: 0 10px;
+                
+                p{
+                    line-height: inherit;    
+                    margin: 0;
+                }
+                .count-area{
+                    border: 1px solid #d1d1d1;
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    margin-bottom: 20px;
+                    color: #888;
+            
+                    .count{
+                        font-size: 40px;
+                        text-align: center;
+                        margin-bottom: 0;
+
+                        &.blue{
+                            color: #8faadc;
+                        }
+
+                        &.red{
+                            color: #fb9874;
+                        }
+                    }
+
+                    .area-title{
+                        font-size: 20px;
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    &.line{
+        .graph-list{
+            .center_graph{
+                width: 50%;
+            }
+            .txt-area{
+                padding: 10px 0;
+                background: #4e4f4f;
+                font-size: 14px;
+                text-align: center;
+                color: #fff;
+
+                p{
+                    margin: 0;
+                }
+            }
         }
     }
 }
 
 .channel_header{
-    
     .btn-h_tab{
         background-color: #fff;
         border-color: #bbb;
