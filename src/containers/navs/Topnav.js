@@ -98,7 +98,7 @@ const TopNav = ({
         <Dropdown className="top-nav" isOpen={menuDropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
           <DropdownToggle tag="div">
             <ul className="d-inline-block top-nav-list">
-              <li><NavLink to="#" activeClassName="" className="nav-menu">PRIME</NavLink></li>
+              <li><NavLink to="/app/prime/prime" activeClassName="active" className="nav-menu">PRIME</NavLink></li>
               <li><NavLink to="/app/gogo/start" activeClassName="active" className="nav-menu">TREND</NavLink></li>
               <li><NavLink to="#" activeClassName="" className="nav-menu">SOCIAL LISTENING</NavLink></li>
               <li><NavLink to="#" activeClassName="" className="nav-menu">ONLINE RETAILER</NavLink></li>
