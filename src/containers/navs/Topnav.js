@@ -6,7 +6,6 @@ import { injectIntl } from 'react-intl';
 
 import {
   UncontrolledDropdown,
-  Dropdown,
   DropdownItem,
   DropdownToggle,
   DropdownMenu,
@@ -95,7 +94,7 @@ const TopNav = ({
         </div> */}
       </div>
       <div className="navbar-right">
-        <Dropdown className="top-nav" isOpen={menuDropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+        <UncontrolledDropdown className="top-nav" isOpen={menuDropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
           <DropdownToggle tag="div">
             <ul className="d-inline-block top-nav-list">
               <li><NavLink to="/app/prime/prime" activeClassName="active" className="nav-menu">PRIME</NavLink></li>
@@ -109,13 +108,13 @@ const TopNav = ({
           <DropdownMenu>
             <div className="sub-menu-area">
               <ul className="sub-list1">
-                <li><NavLink to="#" activeClassName="" className="sub-menu">STATES</NavLink></li>
-                <li><NavLink to="#" activeClassName="" className="sub-menu">CHANNELS</NavLink></li>
+                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">STATES</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">CHANNELS</DropdownItem></li>
               </ul>
               <ul className="sub-list2">
-                <li><NavLink to="#" activeClassName="" className="sub-menu">BASIC</NavLink></li>
-                <li><NavLink to="#" activeClassName="" className="sub-menu">ACVANCED</NavLink></li>
-                <li><NavLink to="#" activeClassName="" className="sub-menu">INDUSTRY</NavLink></li>
+                <li><DropdownItem tag={NavLink} to="/app/trend/basic" activeClassName="active" className="sub-menu">BASIC</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">ACVANCED</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">INDUSTRY</DropdownItem></li>
               </ul>
               <ul className="sub-list3">
                 <li><NavLink to="#" activeClassName="" className="sub-menu">OPINION/NEEDS</NavLink></li>
@@ -138,7 +137,7 @@ const TopNav = ({
               </ul>
             </div>
           </DropdownMenu>
-        </Dropdown>
+        </UncontrolledDropdown>
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
             <DropdownToggle className="p-0" color="empty">
