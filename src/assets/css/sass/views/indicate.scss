@@ -169,8 +169,8 @@
         color: #bbb;
 
         &.active{
-            background-color: #bbb;
-            border-color: #bbb;
+            background-color: #f9a21b;
+            border-color: #f9a21b;
             color: #fff;
         }
 
@@ -201,6 +201,25 @@
             + li{
                 margin-left: 10px;
             }
+        }
+    }
+}
+
+.tbl-indicator{
+
+    thead{
+        th{
+            text-align: center;
+            color: #666;
+        }
+    }
+    
+
+    tbody{
+        td{
+            font-size: 13px;
+            text-align: center;
+            color: #888;
         }
     }
 }
