@@ -416,7 +416,7 @@ class Prime extends React.Component {
                                 </div>
                                 <div className='chart-area'>
                                   <div id="chart">
-                                    <CompareBar options={statesItems.barChart.options} series={item.series} type="bar" height={350} />
+                                    <CompareBar options={statesItems.barChart.options} series={item.series} height={350} />
                                   </div>
                                 </div>
                               </li>
@@ -446,7 +446,7 @@ class Prime extends React.Component {
                           <li key={idx} className={idx === 1 ? 'center_graph' : ''}>
                             <div className='chart-area'>
                               <div id="chart">
-                                <CompareLine options={item.options} series={item.series} type="line" height={350} />
+                                <CompareLine options={item.options} series={item.series} height={350} />
                               </div>
                             </div>
                             <div className='txt-area'>
