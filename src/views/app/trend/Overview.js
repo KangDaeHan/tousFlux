@@ -98,17 +98,7 @@ class Overview extends React.Component {
             heatMapGraph : {
                 series: [{
                     name: 'Jan',
-                    data: [20, 90, 70, 80, 90, 100, 50, {
-                        min: -30,
-                        max: 55
-                      }]
-                  },
-                  {
-                    name: 'Feb',
-                    data:  [20, 90, 70, 80, 90, 100, 50, {
-                      min: -30,
-                      max: 55
-                    }]
+                    data: [{x: "1", y: -21}, {x: "2", y: 30}]
                   },
                 ],
                 options: {
@@ -186,22 +176,22 @@ class Overview extends React.Component {
         }
     }
 
-    // generateData = (count, yrange) => {
-    //     let i = 0;
-    //     const series = [];
-    //     while (i < count) {
-    //       const x = (i + 1).toString();
-    //       const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-    //       series.push({
-    //         x,
-    //         y
-    //       });
-    //       // eslint-disable-next-line no-plusplus
-    //       i++;
-    //       console.log(series);
-    //     }
-    //     return series;
-    //   }
+    generateData = (count, yrange) => {
+        let i = 0;
+        const series = [];
+        while (i < count) {
+          const x = (i + 1).toString();
+          const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+          series.push({
+            x,
+            y
+          });
+          // eslint-disable-next-line no-plusplus
+          i++;
+        }
+        console.log(series);
+        return series;
+      }
     
 
     render() {
