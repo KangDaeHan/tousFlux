@@ -100,6 +100,10 @@ class Overview extends React.Component {
                     name: 'Jan',
                     data: [{x: "1", y: -21}, {x: "2", y: 30}]
                   },
+                  {
+                    name: 'Test',
+                    data: [{x: "1", y: 10}, {x: "2", y: 55}]
+                  },
                 ],
                 options: {
                   chart: {
