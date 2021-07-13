@@ -330,6 +330,7 @@ p {
     padding: 0 !important;
 
     .pro-menu-item {
+      position: relative;
 
       > .pro-inner-item {
         height: 60px;
@@ -338,11 +339,34 @@ p {
       }
 
       &.active {
-        border-left: 5px solid #f9a21b;
+        color: #f9a21b;
+        
+        &::before {
+          content:'';
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 5px;
+          height: 100%;
+          background: #f9a21b;
+        }
 
         .pro-inner-item {
           color: #f9a21b;
         }
+
+        &:hover {
+          .pro-inner-item {
+            color: #f9a21b;
+          }
+        }
+        &:active {
+          .pro-inner-item {
+            color: #f9a21b;
+          }
+        }
+
       }
     }
     
@@ -353,7 +377,7 @@ p {
     min-width: 64px !important;
 
     .pro-menu > ul > .pro-menu-item > .pro-inner-item {
-      padding: 8px 28px 8px 27px;
+      padding: 8px 27px 8px 27px;
     }
     .pro-menu .pro-menu-item.active {
       border: 0;
@@ -363,6 +387,12 @@ p {
         right: auto;
         background-color: #f9a21b;
         cursor: default;
+      }
+      &:hover {
+        color: #f9a21b;
+      }
+      &:active {
+        color: #f9a21b;
       }
     }
 
