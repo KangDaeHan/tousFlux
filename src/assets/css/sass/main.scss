@@ -165,12 +165,19 @@ p {
                 margin: 0;
               }
               a {
-                padding-bottom: 5px;
+                padding: 0 0 5px 0;
                 border-bottom: 2px solid transparent;
                 font-size: 20px;
                 color: #fff;
 
+                &.active {
+                  background: transparent;
+                }
+                &:active {
+                  background: transparent;
+                } 
                 &:hover {
+                  background: transparent;
                   border-bottom-color: #444;
                   color: #444;
                 }
