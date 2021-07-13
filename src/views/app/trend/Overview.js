@@ -338,7 +338,7 @@ class Overview extends React.Component {
                                                 <Card>
                                                     <CardBody>
                                                         <div className='graph-area total-area'>
-                                                            <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} type="bar" height={statesItems.totalGraph.height} />
+                                                            <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
                                                         </div>
                                                     </CardBody>
                                                 </Card>
@@ -352,7 +352,7 @@ class Overview extends React.Component {
                                                             <h2>Heat Map</h2>
                                                         </div>
                                                         <div className='graph-area Heat-Map'>
-                                                            <HeatMap options={statesItems.heatMapGraph.options} series={statesItems.heatMapGraph.series} type="bar" height={statesItems.heatMapGraph.height} />
+                                                            <HeatMap options={statesItems.heatMapGraph.options} series={statesItems.heatMapGraph.series} height={statesItems.heatMapGraph.height} />
                                                         </div>
                                                     </CardBody>
                                                 </Card>
