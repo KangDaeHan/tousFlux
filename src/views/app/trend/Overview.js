@@ -98,67 +98,18 @@ class Overview extends React.Component {
             heatMapGraph : {
                 series: [{
                     name: 'Jan',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
+                    data: [20, 90, 70, 80, 90, 100, 50, {
+                        min: -30,
+                        max: 55
+                      }]
                   },
                   {
                     name: 'Feb',
-                    data: this.generateData(20, {
+                    data:  [20, 90, 70, 80, 90, 100, 50, {
                       min: -30,
                       max: 55
-                    })
+                    }]
                   },
-                  {
-                    name: 'Mar',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
-                  },
-                  {
-                    name: 'Apr',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
-                  },
-                  {
-                    name: 'May',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
-                  },
-                  {
-                    name: 'Jun',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
-                  },
-                  {
-                    name: 'Jul',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
-                  },
-                  {
-                    name: 'Aug',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
-                  },
-                  {
-                    name: 'Sep',
-                    data: this.generateData(20, {
-                      min: -30,
-                      max: 55
-                    })
-                  }
                 ],
                 options: {
                   chart: {
@@ -235,21 +186,22 @@ class Overview extends React.Component {
         }
     }
 
-    generateData = (count, yrange) => {
-        let i = 0;
-        const series = [];
-        while (i < count) {
-          const x = (i + 1).toString();
-          const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-          series.push({
-            x,
-            y
-          });
-          // eslint-disable-next-line no-plusplus
-          i++;
-        }
-        return series;
-      }
+    // generateData = (count, yrange) => {
+    //     let i = 0;
+    //     const series = [];
+    //     while (i < count) {
+    //       const x = (i + 1).toString();
+    //       const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    //       series.push({
+    //         x,
+    //         y
+    //       });
+    //       // eslint-disable-next-line no-plusplus
+    //       i++;
+    //       console.log(series);
+    //     }
+    //     return series;
+    //   }
     
 
     render() {
