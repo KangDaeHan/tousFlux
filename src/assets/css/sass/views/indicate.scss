@@ -223,3 +223,10 @@
         }
     }
 }
+.overview_area .table-hover {
+    text-align: center;
+}
+.overview_area .table-hover tbody tr:hover{
+    background: #f9a21b;
+    color: #fff;
+}

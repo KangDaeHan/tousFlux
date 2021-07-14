@@ -1,19 +1,19 @@
 import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-const Start = React.lazy(() =>
+const Overview = React.lazy(() =>
   import(/* webpackChunkName: "start" */ './Overview')
 );
-const Gogo = ({ match }) => (
+const OverViewLink = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
-      <Redirect exact from={`${match.url}/`} to={`${match.url}/trend/overview`} />
+      <Redirect exact from={`${match.url}/`} to={`${match.url}/overview`} />
       <Route
-        path={`${match.url}/trend/overview`}
-        render={(props) => <Start {...props} />}
+        path={`${match.url}/overview`}
+        render={(props) => <Overview {...props} />}
       />
       <Redirect to="/error" />
     </Switch>
   </Suspense>
 );
-export default Gogo;
+export default OverViewLink;

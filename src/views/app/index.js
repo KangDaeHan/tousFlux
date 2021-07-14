@@ -45,7 +45,7 @@ const App = ({ match }) => {
               render={(props) => <PrimeLink {...props} />}
             />
             <Route
-              path={`${match.url}/`}
+              path={`${match.url}/trend`}
               render={(props) => <OverViewLink {...props} />}
             />
             <Redirect to="/error" />
