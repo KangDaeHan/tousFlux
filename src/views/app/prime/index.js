@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 const Prime = React.lazy(() =>
-  import(/* webpackChunkName: "second" */ '../trend/Social')
+  import(/* webpackChunkName: "second" */ '../trend/Overview')
 );
 const PrimeLink = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>

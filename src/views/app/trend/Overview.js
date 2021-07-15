@@ -38,7 +38,7 @@ class Overview extends React.Component {
                 series: [
                     {
                       name: "High - 2013",
-                      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+                      data: [2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 4, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4,4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4,]
                     },
                   ],
                   height: 500,
@@ -46,15 +46,18 @@ class Overview extends React.Component {
                     chart: {
                       type: 'line',
                       dropShadow: {
-                        enabled: true,
+                        enabled: false,
                         color: '#000',
                         top: 18,
                         left: 7,
                         blur: 10,
-                        opacity: 0.2
+                        opacity: 0.2,
                       },
                       toolbar: {
                         show: false
+                      }, 
+                      zoom: {
+                        enabled: false,
                       }
                     },
                     colors: ['#77B6EA', '#545454'],
@@ -64,40 +67,16 @@ class Overview extends React.Component {
                     stroke: {
                       curve: 'smooth'
                     },
-                    title: {
-                      text: 'Average High & Low Temperature',
-                      align: 'left'
-                    },
                     grid: {
-                      borderColor: '#e7e7e7',
-                      row: {
-                        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                        opacity: 0.5
-                      },
-                    },
-                    markers: {
-                      size: 1
+                      show: false,
                     },
                     xaxis: {
                       categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-                      title: {
-                        text: 'Month'
-                      }
                     },
                     yaxis: {
-                      title: {
-                        text: 'Temperature'
-                      },
                       min: 1,
-                      max: 35
+                      max: 5
                     },
-                    legend: {
-                      position: 'top',
-                      horizontalAlign: 'right',
-                      floating: true,
-                      offsetY: -25,
-                      offsetX: -5
-                    }
                   },
             }, 
             // eslint-disable-next-line react/no-unused-state
@@ -405,6 +384,7 @@ class Overview extends React.Component {
                                                     <CardBody>
                                                         <div className='graph-area total-area'>
                                                             <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
+                                                            <p className='cont-noti'>* 모든 채널의 값을 지수화하여 표시</p>
                                                         </div>
                                                     </CardBody>
                                                 </Card>
@@ -483,7 +463,7 @@ class Overview extends React.Component {
                                                   <CardBody>
                                                       <div className='clearfix box-line'>
                                                         <div className='box left'>
-                                                          <Table hover>
+                                                          <Table hover bordered>
                                                             <thead>
                                                               <tr>
                                                                 <th>No</th>

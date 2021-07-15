@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Row, Card, CardBody, Form, Button, FormGroup } from 'reactstrap';
+import { Row, Card, CardBody, Form, Button, FormGroup, Label, Input } from 'reactstrap';
 import { Formik, Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
@@ -80,7 +80,13 @@ class Prime extends React.Component {
       endDate: new Date(),
       // eslint-disable-next-line react/no-unused-state
       activeId: 1, 
-      
+      // eslint-disable-next-line react/no-unused-state
+      checkInfo: [
+        { id: 1, value: "Naver", isChecked: false },
+        { id: 2, value: "Test1", isChecked: false },
+        { id: 3, value: "Test2", isChecked: false },
+        { id: 4, value: "Test3", isChecked: false }
+      ], 
     };
   }
 
@@ -103,6 +109,29 @@ class Prime extends React.Component {
     } 
     return error;
   };
+
+  handleAllChecked = (evt) => {
+    // eslint-disable-next-line prefer-const
+    let { checkInfo } = this.state;
+
+    checkInfo.forEach(item => {
+      // eslint-disable-next-line no-param-reassign
+      item.isChecked = evt.target.checked
+    });
+    this.setState({ checkInfo });
+  }
+
+  handleOneChecked = (evt) => {
+    // eslint-disable-next-line prefer-const
+    let { checkInfo } = this.state;
+    checkInfo.forEach(item => {
+      if (item.value === evt.target.value){
+        // eslint-disable-next-line no-param-reassign
+        item.isChecked = evt.target.checked;
+      }
+    });
+    this.setState({ checkInfo });
+  }
 
   listClickEvt = (evt) => {
     const getNum = Number(evt.currentTarget.className.replace('item-',''));
@@ -338,6 +367,39 @@ class Prime extends React.Component {
                                 </FormGroup>
                               )}
                               </Formik>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th style={{ width:'15%' }}>Channel</th>
+                            <td style={{ width:'85%' }}>
+                              <FormGroup check inline className='check-box'>
+                                <Label check>
+                                <Input 
+                                  className='check-all-box'
+                                  onChange={this.handleAllChecked}
+                                  type="checkbox"
+                                />{' '}
+                                  all
+                                </Label>
+                              </FormGroup>
+                            {statesItems.checkInfo.map(items => {
+                              return(
+                                <FormGroup check inline className='check-box' key={items.id}>
+                                  <Label check>
+                                  <Input 
+                                  key={items.id}
+                                  onChange={this.handleOneChecked}
+                                  checked={items.isChecked}
+                                  type="checkbox"
+                                  value={items.value}
+                                  className='check-single-box'
+                                  />{' '}
+                                    {items.value}
+                                  </Label>
+                                </FormGroup>
+                              )
+                            })}
+
                             </td>
                           </tr>
                         </tbody>

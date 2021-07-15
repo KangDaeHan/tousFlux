@@ -4,12 +4,16 @@ import { Row,
      CardBody,
      Form,
      Button,
-     FormGroup,
-     Table 
+     FormGroup, 
+     Nav,
+     NavLink,
+     NavItem,
+     TabContent,
+     TabPane, 
     } from 'reactstrap';
 import { Formik, Field } from 'formik';
+import classnames from 'classnames';
 import DatePicker from 'react-datepicker';
-import Select from 'react-select';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -17,9 +21,9 @@ import CompareLine from '../../../components/charts/CompareLine';
 // import NegativeBar from '../../../components/charts/NegativeBar';
 // import HeatMap from '../../../components/charts/HeatMap';
 import ChannelButton from '../../../components/applications/ChannelButton'
-import CustomSelectInput from '../../../components/common/CustomSelectInput';
+// import CustomSelectInput from '../../../components/common/CustomSelectInput';
 
-class Social extends React.Component {
+class Ecommerce extends React.Component {
     constructor(props) {
         super(props); // React.Component의 생성자 메소드를 먼저 실행
         this.state = {
@@ -28,7 +32,6 @@ class Social extends React.Component {
             activeTab: '1',
             // eslint-disable-next-line react/no-unused-state
             selectedOptions : [],
-            // eslint-disable-next-line react/no-unused-state
             totalGraph : {
                 series: [
                     {
@@ -95,121 +98,7 @@ class Social extends React.Component {
                     }
                   },
             }, 
-            // eslint-disable-next-line react/no-unused-state
-            heatMapGraph : {
-                series: [{
-                    name: 'Jan',
-                    data: [{x: "1", y: -21}, {x: "2", y: 30}]
-                  },
-                  {
-                    name: 'Test',
-                    data: [{x: "1", y: 10}, {x: "2", y: 55}]
-                  },
-                ],
-                height: 500,
-                options: {
-                  chart: {
-                    type: 'heatmap',
-                  },
-                  plotOptions: {
-                    heatmap: {
-                      shadeIntensity: 0.5,
-                      radius: 0,
-                      useFillColorAsStroke: true,
-                      colorScale: {
-                        ranges: [{
-                            from: -30,
-                            to: 5,
-                            name: 'low',
-                            color: '#00A100'
-                          },
-                          {
-                            from: 6,
-                            to: 20,
-                            name: 'medium',
-                            color: '#128FD9'
-                          },
-                          {
-                            from: 21,
-                            to: 45,
-                            name: 'high',
-                            color: '#FFB200'
-                          },
-                          {
-                            from: 46,
-                            to: 55,
-                            name: 'extreme',
-                            color: '#FF0000'
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  dataLabels: {
-                    enabled: false
-                  },
-                  stroke: {
-                    width: 1
-                  },
-                  title: {
-                    text: 'HeatMap Chart with Color Range'
-                  },
-                },
-            }, 
-            // eslint-disable-next-line react/no-unused-state
-            columeNegativeGraph : {
-              series: [{
-                name: 'Cash Flow',
-                data: [1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
-                  5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -
-                  48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
-                ]
-              }],
-              height: 350,
-              options: {
-                chart: {
-                  type: 'bar',
-                },
-                plotOptions: {
-                  bar: {
-                    colors: {
-                      ranges: [{
-                        from: -100,
-                        to: -46,
-                        color: '#F15B46'
-                      }, {
-                        from: -45,
-                        to: 0,
-                        color: '#FEB019'
-                      }]
-                    },
-                    columnWidth: '80%',
-                  }
-                },
-                dataLabels: {
-                  enabled: false,
-                },
-                yaxis: {
-                  title: {
-                    text: 'Growth',
-                  },
-                },
-                xaxis: {
-                  type: 'datetime',
-                  categories: [
-                    '2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-06-01',
-                    '2011-07-01', '2011-08-01', '2011-09-01', '2011-10-01', '2011-11-01', '2011-12-01',
-                    '2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01',
-                    '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01',
-                    '2013-01-01', '2013-02-01', '2013-03-01', '2013-04-01', '2013-05-01', '2013-06-01',
-                    '2013-07-01', '2013-08-01', '2013-09-01'
-                  ],
-                  labels: {
-                    rotate: -90
-                  }
-                }
-              },
-            }
+        
         }
     }
 
@@ -252,22 +141,22 @@ class Social extends React.Component {
         return series;
       }
 
-      setSelectedOptions = (val) => {
-        this.setState({  
-          selectedOptions: val
-        }); 
-      }
+    //   setSelectedOptions = (val) => {
+    //     this.setState({  
+    //       selectedOptions: val
+    //     }); 
+    //   }
     
 
     render() {
 
         const statesItems = this.state;
 
-        const selectedOptionsBase = [
-          { label: 'Total', value: 'social_val01', key: 0 },
-          { label: 'Naver_news', value: 'social_val02', key: 1 },
-          { label: 'Naver_blog', value: 'social_val03', key: 2 },
-        ];
+        // const selectedOptionsBase = [
+        //   { label: 'Total', value: 'social_val01', key: 0 },
+        //   { label: 'Naver_news', value: 'social_val02', key: 1 },
+        //   { label: 'Naver_blog', value: 'social_val03', key: 2 },
+        // ];
     
         const validateKeyword = (value) => {
             let error;
@@ -366,88 +255,6 @@ class Social extends React.Component {
                     <Colxx xxs="12">
                         <Card>
                             <CardBody>
-                                <div>
-                                    <FormGroup className="select-box">
-                                        <Select
-                                        components={{ Input: CustomSelectInput }}
-                                        className="react-select"
-                                        classNamePrefix="react-select"
-                                        name="form-field-name"
-                                        value={statesItems.selectedOptions}
-                                        onChange={(val) => this.setSelectedOptions(val)}
-                                        options={selectedOptionsBase}
-                                        />
-                                    </FormGroup>
-                                </div>
-                                <div className='clearfix box-line'>
-                                    <div className='box left'>
-                                        <div className="chart_area">
-                                            <div className='chart-header'>
-                                                Channel Chart
-                                            </div>
-                                            <div className='chart-cont'>
-                                                <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
-                                            </div>
-                                        </div>      
-                                    </div>
-                                    <div className='box right'>
-                                        <div className="chart_area">
-                                            <div className='chart-header'>
-                                                Channel Chart
-                                            </div>
-                                            <div className='chart-cont'>
-                                                <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
-                                            </div>
-                                        </div>      
-                                    </div>
-                                </div>
-                            </CardBody>
-                        </Card>
-                    </Colxx>
-                </Row>
-
-                <Row className='mt-5'>
-                    <Colxx xxs="12">
-                        <Card>
-                            <CardBody>
-                              <Table bordered>
-                                <thead>
-                                  <tr>
-                                    <th>No</th>
-                                    <th>Channel1</th>
-                                    <th>Channel2</th>
-                                    <th>Gap</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Shopping</td>
-                                    <td>Coupang</td>
-                                    <td>0.67</td>
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>Shopping</td>
-                                    <td>Google Analytics</td>
-                                    <td>0.58</td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>Instagram</td>
-                                    <td>Coupang</td>
-                                    <td>0.56</td>
-                                  </tr>
-                                </tbody>
-                              </Table>    
-                            </CardBody>
-                        </Card>
-                    </Colxx>
-                </Row>
-                <Row className='mt-5'>
-                    <Colxx xxs="12">
-                        <Card>
-                            <CardBody>
                               <div className="chart_area">
                                 <div className='box-title'>
                                     <h2>Social Keyword Chart - 독특하다</h2>
@@ -460,9 +267,78 @@ class Social extends React.Component {
                         </Card>
                     </Colxx>
                 </Row>
+
+                <Row className="mt-5">
+                    <Colxx xxs="12">
+                    <Card>
+                        <CardBody>
+                            <div>
+                                <Nav tabs>
+                                    <NavItem>
+                                    <NavLink
+                                        className={classnames({ active: statesItems.activeTab === '1' })}
+                                        onClick={() => { this.toggle('1'); }}
+                                    >
+                                        Total
+                                    </NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink
+                                            className={classnames({ active: statesItems.activeTab === '2' })}
+                                            onClick={() => { this.toggle('2'); }}
+                                        >
+                                            I/D RATE
+                                        </NavLink>
+                                    </NavItem>
+                                </Nav>
+                                <TabContent activeTab={statesItems.activeTab}>
+                                    <TabPane tabId="1">
+                                        <Row>
+                                            <Colxx xxs="12">
+                                                <Card>
+                                                    <CardBody>
+                                                        test
+                                                    </CardBody>
+                                                </Card>
+                                            </Colxx>
+                                        </Row>
+                                    </TabPane>
+                                    <TabPane tabId="2">
+                                        <Row className='mt-5'>
+                                            <Colxx xxs="12">
+                                                <Card>
+                                                    <CardBody>
+                                                      <div className='graph-area negative-chart'>
+                                                        test
+                                                      </div>
+                                                    </CardBody>
+                                                </Card>
+                                            </Colxx>
+                                        </Row>
+                                        <Row className='mt-5'>
+                                            <Colxx xxs="12">
+                                                <Card>
+                                                    <CardBody>
+                                                        <div className='box-title'>
+                                                            <h2>Heat Map</h2>
+                                                        </div>
+                                                        <div className='graph-area Heat-Map'>
+                                                            test
+                                                        </div>
+                                                    </CardBody>
+                                                </Card>
+                                            </Colxx>
+                                        </Row>
+                                    </TabPane>
+                                </TabContent>
+                            </div>
+                        </CardBody>
+                    </Card>
+                    </Colxx>
+                </Row>
             </div>
         )
     }
 }
 
-export default Social;
+export default Ecommerce;
