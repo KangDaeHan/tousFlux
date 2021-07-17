@@ -90,12 +90,12 @@ class Channels extends React.Component {
                                 <tr>
                                     <th style={{ width:'15%' }}>Keywords</th>
                                     <td style={{ width:'85%' }}>
-                                    <Formik
-                                        initialValues={{
-                                        keyword: '',
-                                        }}
-                                        // onSubmit={onSubmit}
-                                    >
+                                        <Formik
+                                            initialValues={{
+                                            keyword: '',
+                                            }}
+                                            // onSubmit={onSubmit}
+                                        >
                                     {({ errors, touched }) => (
                                         <FormGroup className="keyword-area">
                                         <Field

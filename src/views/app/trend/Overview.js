@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Row,
      Card,
@@ -11,7 +13,6 @@ import { Row,
      TabContent,
      TabPane, 
      Table, 
-     Label, 
      Input 
     } from 'reactstrap';
 import { Formik, Field } from 'formik';
@@ -36,7 +37,7 @@ class Overview extends React.Component {
             endDate: new Date(),
             activeTab: '1',
             // eslint-disable-next-line react/no-unused-state
-            selectedOptions : [{ label: 'Total', value: 'social_val01', key: 0 }],
+            selectedOptions : [],
             // eslint-disable-next-line react/no-unused-state
             totalGraph : {
                 series: [
@@ -118,6 +119,17 @@ class Overview extends React.Component {
               { id: 3, value: "Test2", isChecked: false },
               { id: 4, value: "Test3", isChecked: false }
             ], 
+            // eslint-disable-next-line react/no-unused-state
+            overviewTableData : [
+              { 'No': 1, 'Channel1': "Naver", 'Channel2' : 'Naver', "Gap": 0.56, },
+              { 'No': 2, 'Channel1': "Naver News", 'Channel2' : 'Naver', "Gap": 0.56, },
+              { 'No': 3, 'Channel1': "Naver Blog", 'Channel2' : 'Naver', "Gap": 0.56,},
+              { 'No': 4, 'Channel1': "Instargram", 'Channel2' : 'Naver', "Gap": 0.56,},
+              { 'No': 5, 'Channel1': "Facebook", 'Channel2' : 'Naver', "Gap": 0.56,},
+              { 'No': 6, 'Channel1': "Youtube", 'Channel2' : 'Naver', "Gap": 0.56,},
+              { 'No': 7, 'Channel1': "Navete shopping", 'Channel2' : 'Naver', "Gap": 0.56,},
+              { 'No': 8, 'Channel1': "Coupang", 'Channel2' : 'Naver', "Gap": 0.56,},
+            ]
         }
     }
 
@@ -178,6 +190,20 @@ class Overview extends React.Component {
           selectedOptions: val
         }); 
       }
+
+      getKeys = () => {
+        const { overviewTableData } = this.state;
+        return Object.keys(overviewTableData[0]);
+      };
+
+      getHeader = () => {
+        const keys = this.getKeys();
+        return keys.map((key) => {
+          return <th key={key}>{key}</th>;
+        });
+      };
+
+      
 
       
     
@@ -244,9 +270,9 @@ class Overview extends React.Component {
                                     <td  style={{ width:'35%' }}>
                                     {statesItems.checkInfo.map(items => {
                                         return(
-                                          <FormGroup check inline className='check-box' key={items.id}>
-                                            <Label check>
+                                          <FormGroup check inline className='check-box lookup-area' key={items.id}>
                                             <Input 
+                                            id={items.id}
                                             key={items.id}
                                             onChange={this.handleOneChecked}
                                             checked={items.isChecked}
@@ -254,8 +280,9 @@ class Overview extends React.Component {
                                             value={items.value}
                                             className='check-single-box'
                                             />{' '}
-                                              {items.value}
-                                            </Label>
+                                            <label htmlFor={items.id} className='bx_check_oran'>
+                                              <span>{items.value}</span>
+                                            </label>
                                           </FormGroup>
                                         )
                                       })}
@@ -270,26 +297,26 @@ class Overview extends React.Component {
                                 <tr>
                                     <th style={{ width:'15%' }}>Keywords</th>
                                     <td style={{ width:'85%' }} colSpan="3">
-                                    <Formik
-                                        initialValues={{
-                                        keyword: '',
-                                        }}
-                                        // onSubmit={onSubmit}
-                                    >
-                                    {({ errors, touched }) => (
-                                        <FormGroup className="keyword-area">
-                                        <Field
-                                            className="form-control"
-                                            name="keyword"
-                                            validate={validateKeyword}
-                                        />
-                                        {errors.keyword && touched.keyword && (
-                                            <div className="d-block noti-text">
-                                            {errors.keyword}
-                                            </div>
+                                      <Formik
+                                          initialValues={{
+                                          keyword: '',
+                                          }}
+                                          // onSubmit={onSubmit}
+                                      >
+                                        {({ errors, touched }) => (
+                                            <FormGroup className="keyword-area">
+                                            <Field
+                                                className="form-control"
+                                                name="keyword"
+                                                validate={validateKeyword}
+                                            />
+                                            {errors.keyword && touched.keyword && (
+                                                <div className="d-block noti-text">
+                                                {errors.keyword}
+                                                </div>
+                                            )}
+                                            </FormGroup>
                                         )}
-                                        </FormGroup>
-                                    )}
                                     </Formik>
                                     </td>
                                 </tr>
@@ -428,32 +455,19 @@ class Overview extends React.Component {
                                                         <div className='box left'>
                                                           <Table hover bordered>
                                                             <thead>
-                                                              <tr>
-                                                                <th>No</th>
-                                                                <th>Channel1</th>
-                                                                <th>Channel2</th>
-                                                                <th>Gap</th>
-                                                              </tr>
+                                                              <tr>{this.getHeader()}</tr>
                                                             </thead>
-                                                            <tbody>
-                                                              <tr>
-                                                                <td>1</td>
-                                                                <td>Shopping</td>
-                                                                <td>Coupang</td>
-                                                                <td>0.67</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>2</td>
-                                                                <td>Shopping</td>
-                                                                <td>Google Analytics</td>
-                                                                <td>0.58</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>3</td>
-                                                                <td>Instagram</td>
-                                                                <td>Coupang</td>
-                                                                <td>0.56</td>
-                                                              </tr>
+                                                            <tbody>     
+                                                                {statesItems.overviewTableData.map(item => {
+                                                                  return(
+                                                                    <tr key={item.No}>
+                                                                      <td>{item.No}</td>
+                                                                      <td>{item.Channel1}</td>
+                                                                      <td>{item.Channel2}</td>
+                                                                      <td>{item.Gap}</td>
+                                                                    </tr>
+                                                                  )
+                                                                })}
                                                             </tbody>
                                                           </Table>
                                                         </div>
