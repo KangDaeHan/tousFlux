@@ -6,6 +6,7 @@ import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import ChannelButton from '../../../components/applications/ChannelButton'
+import ChannelTable from '../../../components/applications/ChannelTable'
 
 class Channels extends React.Component {
     constructor(props) {
@@ -40,50 +41,6 @@ class Channels extends React.Component {
             } 
             return error;
         };
-        
-        const channelTableTitle = [ 
-            {id: 1, title: 'Channel Category'},
-            {id: 2, title: 'Channel'},
-            {id: 3, title: 'Post(Product)'},
-            {id: 4, title: 'Comment(Review)'},
-            {id: 5, title: 'View'},
-            {id: 6, title: 'Like(Cart)'},
-            {id: 7, title: 'Press'},
-            {id: 8, title: 'Positive Rate'},
-            {id: 9, title: 'Negative Rate'},
-        ]
-
-        const channelSocial = [
-            {id: 1, title: 'Naver News', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-            {id: 2, title: 'Naver Blog', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-            {id: 3, title: 'Instargram', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-            {id: 4, title: 'Facebook', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-            {id: 5, title: 'Youtube', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-        ]
-
-        const channelShopping = [
-            {id: 1, title: 'Navete shopping', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-        ]
-
-        const channelEcommerce = [
-            {id: 1, title: 'Coupang', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-        ]
-
-        const channelVolume = [
-            {id: 1, title: 'Coupang', Post: 496, 'Comment' : 189, View: 1289, Like : '', Press: '', Positive: '', Negative: ''},
-        ]
-
-        const channelTitle = [
-            {id: 1, title: 'Search Volume', cont: [channelVolume]},
-            {id: 2, title: 'Social', cont : [channelSocial]},
-            {id: 3, title: 'Shopping', cont : [channelShopping]},
-            {id: 4, title: 'E-Commerce', cont : [channelEcommerce]},
-        ]
-
-        
-
-        
-        // const channelKinds = [ channelSocial, channelShopping, channelEcommerce ]
 
         return(
             <>
@@ -176,108 +133,7 @@ class Channels extends React.Component {
                             <div className='box-title'>
                                 <h2>Posting Indicator</h2>
                             </div>
-                            <table className='r-table table tbl-indicator mt-5'>
-                                <thead>
-                                    <tr>
-                                        {channelTableTitle.map(item => <th key={item.id}>{item.title}</th>)}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {channelTitle.map(item =>{
-                                        console.log(item.cont[0].length);
-                                        return(
-                                            <tr key>
-                                                <td>{item.title}</td>
-                                            </tr>
-                                        )
-                                    })}
-                                    
-                                    {/* <tr>
-                                        <td>Search Volume</td>
-                                        <td>Naver</td>
-                                        <td>447</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowSpan='5'>Social</td>
-                                        <td>Naver News</td>
-                                        <td>496</td>
-                                        <td>38</td>
-                                        <td>456</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Naver Blog</td>
-                                        <td>1298</td>
-                                        <td>153</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Instagram</td>
-                                        <td>3520</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Facebook</td>
-                                        <td>1595</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Youtube</td>
-                                        <td>5894</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shopping</td>
-                                        <td>Naver Shopping</td>
-                                        <td>354</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr>
-                                    <tr>
-                                        <td>E-commerce</td>
-                                        <td>Coupang</td>
-                                        <td>9988</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                    </tr> */}
-                                </tbody>
-                            </table>
+                            <ChannelTable />
                         </CardBody>
                     </Card>
                     </Colxx>

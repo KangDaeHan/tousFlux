@@ -110,29 +110,6 @@ class Prime extends React.Component {
     return error;
   };
 
-  handleAllChecked = (evt) => {
-    // eslint-disable-next-line prefer-const
-    let { checkInfo } = this.state;
-
-    checkInfo.forEach(item => {
-      // eslint-disable-next-line no-param-reassign
-      item.isChecked = evt.target.checked
-    });
-    this.setState({ checkInfo });
-  }
-
-  handleOneChecked = (evt) => {
-    // eslint-disable-next-line prefer-const
-    let { checkInfo } = this.state;
-    checkInfo.forEach(item => {
-      if (item.value === evt.target.value){
-        // eslint-disable-next-line no-param-reassign
-        item.isChecked = evt.target.checked;
-      }
-    });
-    this.setState({ checkInfo });
-  }
-
   listClickEvt = (evt) => {
     const getNum = Number(evt.currentTarget.className.replace('item-',''));
     this.setState({
@@ -382,24 +359,23 @@ class Prime extends React.Component {
                                   all
                                 </Label>
                               </FormGroup>
-                            {statesItems.checkInfo.map(items => {
-                              return(
-                                <FormGroup check inline className='check-box' key={items.id}>
-                                  <Label check>
-                                  <Input 
-                                  key={items.id}
-                                  onChange={this.handleOneChecked}
-                                  checked={items.isChecked}
-                                  type="checkbox"
-                                  value={items.value}
-                                  className='check-single-box'
-                                  />{' '}
-                                    {items.value}
-                                  </Label>
-                                </FormGroup>
-                              )
-                            })}
-
+                              {statesItems.checkInfo.map(items => {
+                                return(
+                                  <FormGroup check inline className='check-box' key={items.id}>
+                                    <Label check>
+                                    <Input 
+                                    key={items.id}
+                                    onChange={this.handleOneChecked}
+                                    checked={items.isChecked}
+                                    type="checkbox"
+                                    value={items.value}
+                                    className='check-single-box'
+                                    />{' '}
+                                      {items.value}
+                                    </Label>
+                                  </FormGroup>
+                                )
+                              })}
                             </td>
                           </tr>
                         </tbody>

@@ -10,7 +10,10 @@ import { Row,
      NavItem,
      TabContent,
      TabPane, 
-     Table } from 'reactstrap';
+     Table, 
+     Label, 
+     Input 
+    } from 'reactstrap';
 import { Formik, Field } from 'formik';
 import classnames from 'classnames';
 import DatePicker from 'react-datepicker';
@@ -23,6 +26,7 @@ import NegativeBar from '../../../components/charts/NegativeBar';
 import HeatMap from '../../../components/charts/HeatMap';
 import ChannelButton from '../../../components/applications/ChannelButton'
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
+import { heatMapGraphData, columeNegativeGraph } from '../../../components/charts/config'
 
 class Overview extends React.Component {
     constructor(props) {
@@ -32,13 +36,13 @@ class Overview extends React.Component {
             endDate: new Date(),
             activeTab: '1',
             // eslint-disable-next-line react/no-unused-state
-            selectedOptions : [],
+            selectedOptions : [{ label: 'Total', value: 'social_val01', key: 0 }],
             // eslint-disable-next-line react/no-unused-state
             totalGraph : {
                 series: [
                     {
-                      name: "High - 2013",
-                      data: [2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 4, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4,4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4,]
+                      name: "Total Graph",
+                      data: [2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 4, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4,4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4]
                     },
                   ],
                   height: 500,
@@ -60,9 +64,35 @@ class Overview extends React.Component {
                         enabled: false,
                       }
                     },
-                    colors: ['#77B6EA', '#545454'],
+                    colors: ['#b9b9b9'],
                     dataLabels: {
                       enabled: true,
+                      background: {
+                        foreColor: '#000',
+                        padding: 0,
+                        borderRadius: 0,
+                        borderColor: 'transparent',
+                      },
+                      style: {
+                        fontSize: '14px',
+                        fontFamily: 'Helvetica, Arial, sans-serif',
+                        fontWeight: 'bold',
+                        colors: ['transparent'],
+                      },
+                      offsetY: -10,
+                    },
+                    markers: {
+                      size: 5,
+                      hover: {
+                        size: 5,
+                        sizeOffset: 5,
+                        fillColor: '#000',
+                      },
+                      discrete: [{
+                        fillColor: '#e3e3e3',
+                        strokeColor: '#fff',
+                        size: 5
+                      }]
                     },
                     stroke: {
                       curve: 'smooth'
@@ -72,128 +102,22 @@ class Overview extends React.Component {
                     },
                     xaxis: {
                       categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+                      tickPlacement: 'between'
                     },
                     yaxis: {
                       min: 1,
                       max: 5
                     },
+                    
                   },
             }, 
             // eslint-disable-next-line react/no-unused-state
-            heatMapGraph : {
-                series: [{
-                    name: 'Jan',
-                    data: [{x: "1", y: -21}, {x: "2", y: 30}]
-                  },
-                  {
-                    name: 'Test',
-                    data: [{x: "1", y: 10}, {x: "2", y: 55}]
-                  },
-                ],
-                height: 500,
-                options: {
-                  chart: {
-                    type: 'heatmap',
-                  },
-                  plotOptions: {
-                    heatmap: {
-                      shadeIntensity: 0.5,
-                      radius: 0,
-                      useFillColorAsStroke: true,
-                      colorScale: {
-                        ranges: [{
-                            from: -30,
-                            to: 5,
-                            name: 'low',
-                            color: '#00A100'
-                          },
-                          {
-                            from: 6,
-                            to: 20,
-                            name: 'medium',
-                            color: '#128FD9'
-                          },
-                          {
-                            from: 21,
-                            to: 45,
-                            name: 'high',
-                            color: '#FFB200'
-                          },
-                          {
-                            from: 46,
-                            to: 55,
-                            name: 'extreme',
-                            color: '#FF0000'
-                          }
-                        ]
-                      }
-                    }
-                  },
-                  dataLabels: {
-                    enabled: false
-                  },
-                  stroke: {
-                    width: 1
-                  },
-                  title: {
-                    text: 'HeatMap Chart with Color Range'
-                  },
-                },
-            }, 
-            // eslint-disable-next-line react/no-unused-state
-            columeNegativeGraph : {
-              series: [{
-                name: 'Cash Flow',
-                data: [1.45, 5.42, 5.9, -0.42, -12.6, -18.1, -18.2, -14.16, -11.1, -6.09, 0.34, 3.88, 13.07,
-                  5.8, 2, 7.37, 8.1, 13.57, 15.75, 17.1, 19.8, -27.03, -54.4, -47.2, -43.3, -18.6, -
-                  48.6, -41.1, -39.6, -37.6, -29.4, -21.4, -2.4
-                ]
-              }],
-              height: 350,
-              options: {
-                chart: {
-                  type: 'bar',
-                },
-                plotOptions: {
-                  bar: {
-                    colors: {
-                      ranges: [{
-                        from: -100,
-                        to: -46,
-                        color: '#F15B46'
-                      }, {
-                        from: -45,
-                        to: 0,
-                        color: '#FEB019'
-                      }]
-                    },
-                    columnWidth: '80%',
-                  }
-                },
-                dataLabels: {
-                  enabled: false,
-                },
-                yaxis: {
-                  title: {
-                    text: 'Growth',
-                  },
-                },
-                xaxis: {
-                  type: 'datetime',
-                  categories: [
-                    '2011-01-01', '2011-02-01', '2011-03-01', '2011-04-01', '2011-05-01', '2011-06-01',
-                    '2011-07-01', '2011-08-01', '2011-09-01', '2011-10-01', '2011-11-01', '2011-12-01',
-                    '2012-01-01', '2012-02-01', '2012-03-01', '2012-04-01', '2012-05-01', '2012-06-01',
-                    '2012-07-01', '2012-08-01', '2012-09-01', '2012-10-01', '2012-11-01', '2012-12-01',
-                    '2013-01-01', '2013-02-01', '2013-03-01', '2013-04-01', '2013-05-01', '2013-06-01',
-                    '2013-07-01', '2013-08-01', '2013-09-01'
-                  ],
-                  labels: {
-                    rotate: -90
-                  }
-                }
-              },
-            }
+            checkInfo: [
+              { id: 1, value: "Naver", isChecked: false },
+              { id: 2, value: "Test1", isChecked: false },
+              { id: 3, value: "Test2", isChecked: false },
+              { id: 4, value: "Test3", isChecked: false }
+            ], 
         }
     }
 
@@ -219,6 +143,19 @@ class Overview extends React.Component {
         }
     }
 
+    handleOneChecked = (evt) => {
+      // eslint-disable-next-line prefer-const
+      let { checkInfo } = this.state;
+      checkInfo.forEach(item => {
+        if (item.value === evt.target.value){
+          // eslint-disable-next-line no-param-reassign
+          item.isChecked = evt.target.checked;
+        }
+      });
+      this.setState({ checkInfo });
+    }
+  
+
     generateData = (count, yrange) => {
         let i = 0;
         const series = [];
@@ -241,11 +178,15 @@ class Overview extends React.Component {
           selectedOptions: val
         }); 
       }
+
+      
     
 
     render() {
 
-        const statesItems = this.state;
+
+      const statesItems = this.state;
+      console.log(statesItems.configData);
 
         const selectedOptionsBase = [
           { label: 'Total', value: 'social_val01', key: 0 },
@@ -274,7 +215,7 @@ class Overview extends React.Component {
                                 <tr>
                                     {/* vertical유형의 테이블 th 값은 인라인 스타일로 지정 바랍니다. */}
                                     <th style={{ width:'15%' }}>Period</th>
-                                    <td style={{ width:'85%' }} colSpan="3">
+                                    <td style={{ width:'35%' }}>
                                     <div className="date-picker-wrap">
                                         <DatePicker className="form-control"  
                                         locale={ko}
@@ -299,16 +240,36 @@ class Overview extends React.Component {
                                         /> 
                                     </div>
                                     </td>
+                                    <th style={{ width:'15%' }}>Period Unit</th>
+                                    <td  style={{ width:'35%' }}>
+                                    {statesItems.checkInfo.map(items => {
+                                        return(
+                                          <FormGroup check inline className='check-box' key={items.id}>
+                                            <Label check>
+                                            <Input 
+                                            key={items.id}
+                                            onChange={this.handleOneChecked}
+                                            checked={items.isChecked}
+                                            type="checkbox"
+                                            value={items.value}
+                                            className='check-single-box'
+                                            />{' '}
+                                              {items.value}
+                                            </Label>
+                                          </FormGroup>
+                                        )
+                                      })}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th style={{ width:'15%' }}>Channel</th>
-                                    <td style={{ width:'85%' }}>
+                                    <td style={{ width:'85%' }} colSpan="3">
                                     <ChannelButton />                             
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style={{ width:'15%' }}>Keywords</th>
-                                    <td style={{ width:'85%' }}>
+                                    <td style={{ width:'85%' }} colSpan="3">
                                     <Formik
                                         initialValues={{
                                         keyword: '',
@@ -398,7 +359,7 @@ class Overview extends React.Component {
                                                             <h2>Heat Map</h2>
                                                         </div>
                                                         <div className='graph-area Heat-Map'>
-                                                            <HeatMap options={statesItems.heatMapGraph.options} series={statesItems.heatMapGraph.series} height={statesItems.heatMapGraph.height} />
+                                                          <HeatMap options={heatMapGraphData.options} series={heatMapGraphData.series} height={heatMapGraphData.height} />
                                                         </div>
                                                     </CardBody>
                                                 </Card>
@@ -410,7 +371,8 @@ class Overview extends React.Component {
                                             <Colxx xxs="12">
                                                 <Card>
                                                     <CardBody>
-                                                      <div>
+                                                      <div className='bx_select_area'>
+                                                        <span className='select-title'>Channel</span>
                                                         <FormGroup className="select-box">
                                                           <Select
                                                             components={{ Input: CustomSelectInput }}
@@ -423,8 +385,9 @@ class Overview extends React.Component {
                                                           />
                                                         </FormGroup>
                                                       </div>
-                                                      <div className='graph-area negative-chart'>
-                                                        <NegativeBar options={statesItems.columeNegativeGraph.options} series={statesItems.columeNegativeGraph.series} height={statesItems.columeNegativeGraph.height} />
+                                                      <div className='graph-area negative-chart title-type'>
+                                                        <p className='bx_name'>{statesItems.selectedOptions.label}</p>
+                                                        <NegativeBar options={columeNegativeGraph.options} series={columeNegativeGraph.series} height={columeNegativeGraph.height} />
                                                       </div>
                                                     </CardBody>
                                                 </Card>
@@ -438,7 +401,7 @@ class Overview extends React.Component {
                                                             <h2>Heat Map</h2>
                                                         </div>
                                                         <div className='graph-area Heat-Map'>
-                                                            <HeatMap options={statesItems.heatMapGraph.options} series={statesItems.heatMapGraph.series} height={statesItems.heatMapGraph.height} />
+                                                            <HeatMap options={heatMapGraphData.options} series={heatMapGraphData.series} height={heatMapGraphData.height} />
                                                         </div>
                                                     </CardBody>
                                                 </Card>
