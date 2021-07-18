@@ -328,8 +328,9 @@ export const ScatterQuadrantChartOptions = {
 
 
 export const heatMapGraphData = {
-    series: [{
-        name: 'Naver',
+    series: [
+      {
+        name: 'Coupang',
         data: [
           {x: "1/1", y: -30},
           {x: "1/2", y: 10},
@@ -365,7 +366,223 @@ export const heatMapGraphData = {
         ]
       },
       {
+        name: 'Naver Shopping',
+        data: [
+          {x: "1/1", y: -9},
+          {x: "1/2", y: 43},
+          {x: "1/3", y: 44},
+          {x: "1/4", y: 50},
+          {x: "1/5", y: -30},
+          {x: "1/6", y: 10},
+          {x: "1/7", y: -5},
+          {x: "1/8", y: 15},
+          {x: "1/9", y: 40},
+          {x: "1/10", y: -8},
+          {x: "1/11", y: -50},
+          {x: "1/12", y: 12},
+          {x: "1/13", y: 56},
+          {x: "1/14", y: 18},
+          {x: "1/15", y: 28},
+          {x: "1/16", y: 33},
+          {x: "1/17", y: 26},
+          {x: "1/18", y: 17},
+          {x: "1/19", y: 31},
+          {x: "1/20", y: -10},
+          {x: "1/21", y: 16},
+          {x: "1/22", y: 27},
+          {x: "1/23", y: 0},
+          {x: "1/24", y: 7},
+          {x: "1/25", y: 6},
+          {x: "1/26", y: 3},
+          {x: "1/27", y: -10},
+          {x: "1/28", y: 9},
+          {x: "1/29", y: 5},
+          {x: "1/30", y: 27},
+          {x: "1/31", y: 11},
+        ]
+      },
+      {
+        name: 'YouTube',
+        data: [
+          {x: "1/1", y: -30},
+          {x: "1/2", y: 10},
+          {x: "1/3", y: 40},
+          {x: "1/4", y: 55},
+          {x: "1/5", y: -20},
+          {x: "1/6", y: 30},
+          {x: "1/7", y: -10},
+          {x: "1/8", y: 5},
+          {x: "1/9", y: 20},
+          {x: "1/10", y: 40},
+          {x: "1/11", y: -5},
+          {x: "1/12", y: 10},
+          {x: "1/13", y: 50},
+          {x: "1/14", y: 30},
+          {x: "1/15", y: 20},
+          {x: "1/16", y: 30},
+          {x: "1/17", y: 20},
+          {x: "1/18", y: 10},
+          {x: "1/19", y: 30},
+          {x: "1/20", y: 0},
+          {x: "1/21", y: 6},
+          {x: "1/22", y: 20},
+          {x: "1/23", y: 30},
+          {x: "1/24", y: 50},
+          {x: "1/25", y: 40},
+          {x: "1/26", y: 9},
+          {x: "1/27", y: 20},
+          {x: "1/28", y: 10},
+          {x: "1/29", y: 44},
+          {x: "1/30", y: 43},
+          {x: "1/31", y: 9},
+        ]
+      },
+      {
+        name: 'Facebook',
+        data: [
+          {x: "1/1", y: -9},
+          {x: "1/2", y: 43},
+          {x: "1/3", y: 44},
+          {x: "1/4", y: 50},
+          {x: "1/5", y: -30},
+          {x: "1/6", y: 10},
+          {x: "1/7", y: -5},
+          {x: "1/8", y: 15},
+          {x: "1/9", y: 40},
+          {x: "1/10", y: -8},
+          {x: "1/11", y: -50},
+          {x: "1/12", y: 12},
+          {x: "1/13", y: 56},
+          {x: "1/14", y: 18},
+          {x: "1/15", y: 28},
+          {x: "1/16", y: 33},
+          {x: "1/17", y: 26},
+          {x: "1/18", y: 17},
+          {x: "1/19", y: 31},
+          {x: "1/20", y: -10},
+          {x: "1/21", y: 16},
+          {x: "1/22", y: 27},
+          {x: "1/23", y: 0},
+          {x: "1/24", y: 7},
+          {x: "1/25", y: 6},
+          {x: "1/26", y: 3},
+          {x: "1/27", y: -10},
+          {x: "1/28", y: 9},
+          {x: "1/29", y: 5},
+          {x: "1/30", y: 27},
+          {x: "1/31", y: 11},
+        ]
+      },
+      {
+        name: 'Instagram',
+        data: [
+          {x: "1/1", y: -30},
+          {x: "1/2", y: 10},
+          {x: "1/3", y: 40},
+          {x: "1/4", y: 55},
+          {x: "1/5", y: -20},
+          {x: "1/6", y: 30},
+          {x: "1/7", y: -10},
+          {x: "1/8", y: 5},
+          {x: "1/9", y: 20},
+          {x: "1/10", y: 40},
+          {x: "1/11", y: -5},
+          {x: "1/12", y: 10},
+          {x: "1/13", y: 50},
+          {x: "1/14", y: 30},
+          {x: "1/15", y: 20},
+          {x: "1/16", y: 30},
+          {x: "1/17", y: 20},
+          {x: "1/18", y: 10},
+          {x: "1/19", y: 30},
+          {x: "1/20", y: 0},
+          {x: "1/21", y: 6},
+          {x: "1/22", y: 20},
+          {x: "1/23", y: 30},
+          {x: "1/24", y: 50},
+          {x: "1/25", y: 40},
+          {x: "1/26", y: 9},
+          {x: "1/27", y: 20},
+          {x: "1/28", y: 10},
+          {x: "1/29", y: 44},
+          {x: "1/30", y: 43},
+          {x: "1/31", y: 9},
+        ]
+      },
+      {
+        name: 'Naver Blog',
+        data: [
+          {x: "1/1", y: -9},
+          {x: "1/2", y: 43},
+          {x: "1/3", y: 44},
+          {x: "1/4", y: 50},
+          {x: "1/5", y: -30},
+          {x: "1/6", y: 10},
+          {x: "1/7", y: -5},
+          {x: "1/8", y: 15},
+          {x: "1/9", y: 40},
+          {x: "1/10", y: -8},
+          {x: "1/11", y: -50},
+          {x: "1/12", y: 12},
+          {x: "1/13", y: 56},
+          {x: "1/14", y: 18},
+          {x: "1/15", y: 28},
+          {x: "1/16", y: 33},
+          {x: "1/17", y: 26},
+          {x: "1/18", y: 17},
+          {x: "1/19", y: 31},
+          {x: "1/20", y: -10},
+          {x: "1/21", y: 16},
+          {x: "1/22", y: 27},
+          {x: "1/23", y: 0},
+          {x: "1/24", y: 7},
+          {x: "1/25", y: 6},
+          {x: "1/26", y: 3},
+          {x: "1/27", y: -10},
+          {x: "1/28", y: 9},
+          {x: "1/29", y: 5},
+          {x: "1/30", y: 27},
+          {x: "1/31", y: 11},
+        ]
+      },
+      {
         name: 'Naver News',
+        data: [
+          {x: "1/1", y: -30},
+          {x: "1/2", y: 10},
+          {x: "1/3", y: 40},
+          {x: "1/4", y: 55},
+          {x: "1/5", y: -20},
+          {x: "1/6", y: 30},
+          {x: "1/7", y: -10},
+          {x: "1/8", y: 5},
+          {x: "1/9", y: 20},
+          {x: "1/10", y: 40},
+          {x: "1/11", y: -5},
+          {x: "1/12", y: 10},
+          {x: "1/13", y: 50},
+          {x: "1/14", y: 30},
+          {x: "1/15", y: 20},
+          {x: "1/16", y: 30},
+          {x: "1/17", y: 20},
+          {x: "1/18", y: 10},
+          {x: "1/19", y: 30},
+          {x: "1/20", y: 0},
+          {x: "1/21", y: 6},
+          {x: "1/22", y: 20},
+          {x: "1/23", y: 30},
+          {x: "1/24", y: 50},
+          {x: "1/25", y: 40},
+          {x: "1/26", y: 9},
+          {x: "1/27", y: 20},
+          {x: "1/28", y: 10},
+          {x: "1/29", y: 44},
+          {x: "1/30", y: 43},
+          {x: "1/31", y: 9},
+        ]
+      },
+      {
+        name: 'Naver',
         data: [
           {x: "1/1", y: -9},
           {x: "1/2", y: 43},
@@ -461,6 +678,9 @@ export const heatMapGraphData = {
       xaxis: {
         position: 'top',
       },
+      legend: {
+        show : false
+      }
     },
 }
 
@@ -515,5 +735,306 @@ export const columeNegativeGraph = {
       show: false
     }, 
     
+  },
+}
+
+export const columeNegativeGraphMix = {
+  series: [{
+    name: 'Instgram',
+    type: 'column',
+    data: [4.2, 3.9, 2.8, 2.1, 2.6, 0.9, 1.1, -1.8, -2.1, -3.3]
+  }, {
+    name: 'Coupang',
+    type: 'column',
+    data: [-0.8, 0.4, 1.1, 2.7, 3.7, 2.6, 3.6, 1.7, 3.4, 1.7]
+  }, {
+    name: 'Instgram',
+    type: 'line',
+    data: [4.2, 3.9, 2.8, 2.1, 2.6, 0.9, 1.1, -1.8, -2.1, -3.3]
+  }, {
+    name: 'Coupang',
+    type: 'line',
+    data: [-0.8, 0.4, 1.1, 2.7, 3.7, 2.6, 3.6, 1.7, 3.4, 1.7]
+  }
+],
+  
+  options: {
+    chart: {
+      height: 350,
+      type: 'line',
+      stacked: false,
+      toolbar: {
+        show: false,
+      },
+      zoom: {
+        enabled: false
+      },
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      width: [1, 1, 4, 4], 
+      dashArray: [0, 0, 4, 4],  
+    },
+    xaxis: {
+      categories: ['휴가', '바캉스', '여름', '수영복', '비치웨어', '페이즐리', '썬캡', '비치숄', '래쉬가드', '비치가운'],
+      tickPlacement: 'between'
+    },
+    yaxis: {
+      show: false
+    },
+    tooltip: {
+      fixed: {
+        enabled: false,
+      },
+    },
+    legend: {
+      position:'top',
+      horizontalAlign: 'center',
+    }, 
+    colors: ['#f5800b', '#ffc000','#f5800b', '#ffc000']
+  },
+}
+
+export const gapTotalGraph = {
+  series: [
+    {
+      name: "Search Volume",
+      data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+    },
+    {
+      name: "Social",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+    {
+      name: "Online Shopping",
+      data: [0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.4, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24,0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.77]
+    },
+  ],
+  height: 500,
+  options: {
+    chart: {
+      type: 'line',
+      dropShadow: {
+        enabled: false,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2,
+      },
+      toolbar: {
+        show: false
+      }, 
+      zoom: {
+        enabled: false,
+      }
+    },
+    colors: ['#555', '#a9a9a9', '#ffb800'],
+    dataLabels: {
+      enabled: true,
+      background: {
+        foreColor: '#000',
+        padding: 0,
+        borderRadius: 0,
+        borderColor: 'transparent',
+      },
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontWeight: 'bold',
+        colors: ['transparent'],
+      },
+      offsetY: -10,
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 5,
+        sizeOffset: 5,
+        fillColor: '#000',
+      },
+      discrete: [{
+        fillColor: '#e3e3e3',
+        strokeColor: '#fff',
+        size: 5
+      }]
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    grid: {
+      show: false,
+    },
+    xaxis: {
+      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      tickPlacement: 'between'
+    },
+    yaxis: {
+      show: false
+    }, 
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right', 
+    }
+  },
+}
+
+
+export const channelChartGraph = {
+  series: [
+    {
+      name: "Instagram",
+      data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+    },
+    {
+      name: "Coupang",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+  ],
+  height: 330,
+  options: {
+    chart: {
+      type: 'line',
+      dropShadow: {
+        enabled: false,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2,
+      },
+      toolbar: {
+        show: false
+      }, 
+      zoom: {
+        enabled: false,
+      }
+    },
+    colors: ['#555', '#a9a9a9'],
+    dataLabels: {
+      enabled: true,
+      background: {
+        foreColor: '#000',
+        padding: 0,
+        borderRadius: 0,
+        borderColor: 'transparent',
+      },
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontWeight: 'bold',
+        colors: ['transparent'],
+      },
+      offsetY: -10,
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 5,
+        sizeOffset: 5,
+        fillColor: '#000',
+      },
+      discrete: [{
+        fillColor: '#e3e3e3',
+        strokeColor: '#fff',
+        size: 5
+      }]
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    grid: {
+      show: false,
+    },
+    xaxis: {
+      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      tickPlacement: 'between'
+    },
+    yaxis: {
+      show: false
+    }, 
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right', 
+    }
+  },
+}
+
+
+export const gapChartGraph = {
+  series: [
+    {
+      name: "Coupang",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+  ],
+  height: 330,
+  options: {
+    chart: {
+      type: 'line',
+      dropShadow: {
+        enabled: false,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2,
+      },
+      toolbar: {
+        show: false
+      }, 
+      zoom: {
+        enabled: false,
+      }
+    },
+    colors: ['#ee843b'],
+    dataLabels: {
+      enabled: true,
+      background: {
+        foreColor: '#000',
+        padding: 0,
+        borderRadius: 0,
+        borderColor: 'transparent',
+      },
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontWeight: 'bold',
+        colors: ['transparent'],
+      },
+      offsetY: -10,
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 5,
+        sizeOffset: 5,
+        fillColor: '#000',
+      },
+      discrete: [{
+        fillColor: '#e3e3e3',
+        strokeColor: '#fff',
+        size: 5
+      }]
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    grid: {
+      show: false,
+    },
+    xaxis: {
+      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      tickPlacement: 'between'
+    },
+    yaxis: {
+      show: false
+    }, 
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right', 
+    }
   },
 }

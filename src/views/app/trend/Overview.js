@@ -27,7 +27,14 @@ import NegativeBar from '../../../components/charts/NegativeBar';
 import HeatMap from '../../../components/charts/HeatMap';
 import ChannelButton from '../../../components/applications/ChannelButton'
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
-import { heatMapGraphData, columeNegativeGraph } from '../../../components/charts/config'
+import { 
+  heatMapGraphData,
+  columeNegativeGraph, 
+  columeNegativeGraphMix,
+  gapTotalGraph, 
+  channelChartGraph,
+  gapChartGraph
+} from '../../../components/charts/config'
 
 class Overview extends React.Component {
     constructor(props) {
@@ -106,18 +113,17 @@ class Overview extends React.Component {
                       tickPlacement: 'between'
                     },
                     yaxis: {
-                      min: 1,
-                      max: 5
-                    },
+                      show: false
+                    }, 
                     
                   },
             }, 
             // eslint-disable-next-line react/no-unused-state
             checkInfo: [
-              { id: 1, value: "Naver", isChecked: false },
-              { id: 2, value: "Test1", isChecked: false },
-              { id: 3, value: "Test2", isChecked: false },
-              { id: 4, value: "Test3", isChecked: false }
+              { id: 1, value: "Daily", isChecked: false },
+              { id: 2, value: "Weekly", isChecked: false },
+              { id: 3, value: "Monthly", isChecked: false },
+              { id: 4, value: "Yearly", isChecked: false }
             ], 
             // eslint-disable-next-line react/no-unused-state
             overviewTableData : [
@@ -129,6 +135,8 @@ class Overview extends React.Component {
               { 'No': 6, 'Channel1': "Youtube", 'Channel2' : 'Naver', "Gap": 0.56,},
               { 'No': 7, 'Channel1': "Navete shopping", 'Channel2' : 'Naver', "Gap": 0.56,},
               { 'No': 8, 'Channel1': "Coupang", 'Channel2' : 'Naver', "Gap": 0.56,},
+              { 'No': 9, 'Channel1': "Coupang", 'Channel2' : 'Naver', "Gap": 0.56,},
+              { 'No': 10, 'Channel1': "Coupang", 'Channel2' : 'Naver', "Gap": 0.56,},
             ]
         }
     }
@@ -203,16 +211,10 @@ class Overview extends React.Component {
         });
       };
 
-      
-
-      
-    
-
     render() {
 
 
       const statesItems = this.state;
-      console.log(statesItems.configData);
 
         const selectedOptionsBase = [
           { label: 'Total', value: 'social_val01', key: 0 },
@@ -366,7 +368,7 @@ class Overview extends React.Component {
                                 </Nav>
                                 <TabContent activeTab={statesItems.activeTab}>
                                     <TabPane tabId="1">
-                                        <Row>
+                                        <Row className='mt-5'>
                                             <Colxx xxs="12">
                                                 <Card>
                                                     <CardBody>
@@ -436,12 +438,13 @@ class Overview extends React.Component {
                                         </Row>
                                     </TabPane>
                                     <TabPane tabId="3">
-                                      <Row>
+                                      <Row className='mt-5'>
                                           <Colxx xxs="12">
                                               <Card>
                                                   <CardBody>
                                                       <div className='graph-area grap-area'>
-                                                          <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
+                                                          <CompareLine options={gapTotalGraph.options} series={gapTotalGraph.series} height={gapTotalGraph.height} />
+                                                          <p className='cont-noti'>* 모든 채널의 값을 지수화하여 표시</p>
                                                       </div>
                                                   </CardBody>
                                               </Card>
@@ -472,20 +475,25 @@ class Overview extends React.Component {
                                                           </Table>
                                                         </div>
                                                         <div className='box right'>
-                                                          <div className="chart_area">
+                                                          <div className="chart-area">
                                                             <div className='chart-header'>
-                                                              Channel Chart
+                                                              <div className='chart-title'>
+                                                                <h4>Channel Chart</h4>
+                                                              </div>
                                                             </div>
                                                             <div className='chart-cont'>
-                                                              <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
+                                                              <CompareLine options={channelChartGraph.options} series={channelChartGraph.series} height={330} />
                                                             </div>
                                                           </div>
-                                                          <div className="chart_area">
+                                                          <p className='cont-noti mt0'>* 모든 채널의 값을 지수화하여 표시</p>
+                                                          <div className="chart-area">
                                                             <div className='chart-header'>
-                                                              GAP Chart
+                                                              <div className='chart-title'>
+                                                                <h4>GAP Chart</h4>
+                                                              </div>
                                                             </div>
                                                             <div className='chart-cont'>
-                                                              <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
+                                                              <CompareLine options={gapChartGraph.options} series={gapChartGraph.series} height={330} />
                                                             </div>
                                                           </div>
                                                         </div>
@@ -494,12 +502,15 @@ class Overview extends React.Component {
                                               </Card>
                                           </Colxx>
                                       </Row>
-                                      <Row>
+                                      <Row className='mt-5'>
                                           <Colxx xxs="12">
                                               <Card>
                                                   <CardBody>
                                                       <div className='graph-area grap-area'>
-                                                          TEST
+                                                        <div className='box-title'>
+                                                            <h2>Keyword GAP Comparison Chart</h2>
+                                                        </div>
+                                                        <CompareLine options={columeNegativeGraphMix.options} series={columeNegativeGraphMix.series} height={330} />
                                                       </div>
                                                   </CardBody>
                                               </Card>

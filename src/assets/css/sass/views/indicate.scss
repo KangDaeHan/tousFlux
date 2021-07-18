@@ -246,9 +246,23 @@
     .table-hover {
         text-align: center;
         
-        tbody tr:hover{
-            background: #f9a21b;
-            color: #fff;
+        thead{
+            th{
+                background: #a6a6a6;
+                color: #fff;
+                padding: 23px 0;
+            }
+        }
+
+        tbody{
+            tr:hover{
+                background: #f9a21b;
+                color: #fff;
+                cursor: pointer;
+            }
+            td{
+                padding: 30px 0;
+            }
         }
     }
 }
@@ -300,4 +314,8 @@
             }
         }
     }
+}
+
+.mt0{
+    margin-top: 0 !important;
 }
