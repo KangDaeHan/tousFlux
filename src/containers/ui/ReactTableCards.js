@@ -3,6 +3,10 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/display-name */
+/* eslint no-undef: "off" */
+/* eslint no-unused-vars: "off" */
+/* eslint-disable react/no-this-in-sfc */
+/* eslint no-else-return: "off" */
 import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 import { useTable, usePagination, useSortBy } from 'react-table';
@@ -13,7 +17,7 @@ import DatatablePagination from '../../components/DatatablePagination';
 
 import products from '../../data/products';
 
-function Table({ columns, data, divided = false, defaultPageSize = 6 }) {
+function Table({ columns, data, divided = false, fixed = false ,defaultPageSize = 6 , rowProps = () => ({}) }) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -25,7 +29,7 @@ function Table({ columns, data, divided = false, defaultPageSize = 6 }) {
     pageCount,
     gotoPage,
     setPageSize,
-    state: { pageIndex, pageSize },
+    state: { pageIndex, pageSize},
   } = useTable(
     {
       columns,
@@ -40,7 +44,7 @@ function Table({ columns, data, divided = false, defaultPageSize = 6 }) {
     <>
       <table
         {...getTableProps()}
-        className={`r-table table ${classnames({ 'table-divided': divided })}`}
+        className={`r-table table ${classnames({ 'table-divided': divided })} ${classnames({ 'table-fixed': fixed })}`}
       >
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -65,12 +69,12 @@ function Table({ columns, data, divided = false, defaultPageSize = 6 }) {
             </tr>
           ))}
         </thead>
-
+        
         <tbody {...getTableBodyProps()}>
           {page.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} onClick={() => console.log(row.original)}>
+              <tr {...row.getRowProps(rowProps(row))} >
                 {row.cells.map((cell, cellIndex) => (
                   <td
                     key={`td_${cellIndex}`}
@@ -183,6 +187,52 @@ export const ReactTableDivided = () => {
         <IntlMessages id="table.divided" />
       </CardTitle>
       <Table columns={cols} data={products} divided />
+    </div>
+  );
+};
+
+export const ReactTable = ({columns,data}) => {
+
+  const rowStyles = [
+    {
+      when: row => row.toggleSelected,
+      style: {
+        backgroundColor: "green",
+        userSelect: "none"
+      }
+    }
+  ];
+
+  const handleRowClicked = row => {
+    const updatedData = data.map(item => {
+      if (row.id !== item.id) {
+        return item;
+      }
+
+      return {
+        ...item,
+        toggleSelected: !item.toggleSelected
+      };
+    });
+
+    setData(updatedData);
+  };
+
+  return (
+    <div className="mb-4">
+      <Table 
+        columns={columns} 
+        data={data}
+        rowProps={( row ) => ({
+          onClick: () => {
+            console.log('1: ', row , '2: ', row.original);
+          },
+          style: {
+            cursor: "pointer",
+            // background: row.original === 'flagged' ? 'yellow' : 'white',
+          }
+        })}
+      />
     </div>
   );
 };

@@ -112,7 +112,7 @@ const TopNav = ({
                 <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">CHANNELS</DropdownItem></li>
               </ul>
               <ul className="sub-list2">
-                <li><DropdownItem tag={NavLink} to="/app/trend/basic" activeClassName="active" className="sub-menu">BASIC</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="/app/trend/googleAnalytics" activeClassName="active" className="sub-menu">BASIC</DropdownItem></li>
                 <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">ACVANCED</DropdownItem></li>
                 <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">INDUSTRY</DropdownItem></li>
               </ul>

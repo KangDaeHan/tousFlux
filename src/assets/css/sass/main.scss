@@ -64,6 +64,7 @@ p {
   position: relative;
 
   main {
+    width: calc(100vw - 270px);
     min-height: calc(100vh - 140px);
     flex-grow: 1;
     flex-direction: column;
@@ -1020,6 +1021,79 @@ table {
       }
     }
   }
+}
+
+.apexcharts-bar-area.active {
+  fill: #f9a21b;
+}
+
+// 차트 툴팁 스타일
+.apexcharts-tooltip {
+  border-radius: 0 !important;
+  border: 0 !important;
+  margin: 15px 0 0 7px !important;
+  overflow: visible !important;
+}
+.arrow_box {
+  position: relative;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid #4e8ac1;
+}
+.arrow_box::before {
+  content: '';
+  position: absolute;
+  display: block;    
+  width: 0px;        
+  left: 0;
+  top: 50%;
+  border: 7px solid transparent;
+  border-left: 0;
+  border-right: 7px solid #4f8bc1;
+  transform: translate(calc(-100% - 0px), -50%);
+}
+.arrow_box span {
+  color: #4f8bc1;
+}
+
+.tab-list {
+  padding: 0;
+  margin: 25px 0 0 0;
+  overflow: hidden;
+
+  li {
+    position: relative;
+    float: left;
+    min-width: 180px;
+    margin: 0 5px 0 0;
+    padding: 12px 0;
+    border-radius: 7px 7px 0 0;
+    border: 1px solid #d1d1d1;
+    list-style: none;
+    cursor: pointer;
+    text-align: center;
+    z-index: 10;
+    
+    span {
+      font-size: 20px;
+      color: #d1d1d1;
+    }
+    &.active {
+      border-color: #f9a21b;
+
+      span {
+        color: #f9a21b;
+      }
+    }
+  }
+}
+
+.tab-chart-area {
+  margin-top: -1px;
+}
+
+.table-fixed {
+  table-layout: fixed;
 }
 
 @media (max-width: 1906px) { 

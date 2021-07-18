@@ -1,6 +1,6 @@
 /* eslint no-unused-vars: "off" */
 import React, { useState } from "react";
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, Link } from 'react-router-dom';
 import {
   ProSidebar,
   Menu,
@@ -33,7 +33,7 @@ const LeftMenu = () => {
           <Menu>
             <Switch>
               <Route path="/app/prime/prime" component={LeftPrime} />
-              <Route exact path="/app/gogo/start" component={LeftTrend} />
+              <Route exact path={['/app/gogo/start', '/app/trend/googleAnalytics']} component={LeftTrend} />
               <Route path="/app/socialListening" component={LeftSocial} />
               <Route path="/app/onlineRetailer" component={LeftOnline} />
               <Route path="/app/simulator" component={LeftSimulator} />
