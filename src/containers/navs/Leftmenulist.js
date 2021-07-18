@@ -9,7 +9,8 @@ import { NavLink, Link } from 'react-router-dom';
 export const LeftPrime = ({match}) => {
   return (
     <>
-      <MenuItem><NavLink to="/app/prime/prime" activeClassName="active">states</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/prime/prime" activeClassName="active">STATES</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/prime/channels" activeClassName="active">CHANNELS</NavLink></MenuItem>
     </>
   )
 }
@@ -17,11 +18,11 @@ export const LeftPrime = ({match}) => {
 export const LeftTrend = ({match}) => {
   return (
     <>
-      <MenuItem><NavLink to="/app/gogo/start" activeClassName="active">OVERVIEW</NavLink></MenuItem>
-      <MenuItem><NavLink to="#" activeClassName="active">SOCIAL</NavLink></MenuItem>
-      <MenuItem><NavLink to="#" activeClassName="active">E-COMMERCE</NavLink></MenuItem>
-      <MenuItem><NavLink to="/app/trend/googleAnalytics" activeClassName="active">GOOGLE ANALYTICS</NavLink></MenuItem>
-      <MenuItem><NavLink to="#" activeClassName="active">TREND-RESPONSE</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/trend/overview" activeClassName="active">OVERVIEW</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/trend/social" activeClassName="active">SOCIAL</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/trend/ecommerce" activeClassName="active">E-COMMERCE</NavLink></MenuItem>
+      {/* <MenuItem><NavLink to="/app/trend/googleAnalytics" activeClassName="active">GOOGLE ANALYTICS</NavLink></MenuItem>
+      <MenuItem><NavLink to="#" activeClassName="active">TREND-RESPONSE</NavLink></MenuItem> */}
     </>
   )
 }

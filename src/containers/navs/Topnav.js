@@ -108,13 +108,13 @@ const TopNav = ({
           <DropdownMenu>
             <div className="sub-menu-area">
               <ul className="sub-list1">
-                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">STATES</DropdownItem></li>
-                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">CHANNELS</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="/app/prime/prime" activeClassName="active" className="sub-menu">STATES</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="/app/prime/channels" activeClassName="active" className="sub-menu">CHANNELS</DropdownItem></li>
               </ul>
               <ul className="sub-list2">
-                <li><DropdownItem tag={NavLink} to="/app/trend/googleAnalytics" activeClassName="active" className="sub-menu">BASIC</DropdownItem></li>
-                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">ACVANCED</DropdownItem></li>
-                <li><DropdownItem tag={NavLink} to="#" activeClassName="" className="sub-menu">INDUSTRY</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="/app/trend/overview" activeClassName="active" className="sub-menu">OVERVIEW</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="/app/trend/social" activeClassName="active" className="sub-menu">SOCIAL</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="/app/trend/ecommerce" activeClassName="active" className="sub-menu">E-COMMERCE</DropdownItem></li>
               </ul>
               <ul className="sub-list3">
                 <li><NavLink to="#" activeClassName="" className="sub-menu">OPINION/NEEDS</NavLink></li>

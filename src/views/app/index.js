@@ -17,7 +17,7 @@ const AboutLink = React.lazy(() =>
 const PrimeLink = React.lazy(() =>
   import(/* webpackChunkName: "viwes-blank-page" */ './prime')
 );
-const TrendMenu = React.lazy(() =>
+const OverViewLink = React.lazy(() =>
   import(/* webpackChunkName: "viwes-blank-page" */ './trend')
 );
 
@@ -46,7 +46,7 @@ const App = ({ match }) => {
             />
             <Route
               path={`${match.url}/trend`}
-              render={(props) => <TrendMenu {...props} />}
+              render={(props) => <OverViewLink {...props} />}
             />
             <Redirect to="/error" />
           </Switch>

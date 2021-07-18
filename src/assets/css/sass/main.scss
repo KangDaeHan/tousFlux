@@ -64,7 +64,7 @@ p {
   position: relative;
 
   main {
-    width: calc(100vw - 270px);
+    width: calc(100vw - 330px);
     min-height: calc(100vh - 140px);
     flex-grow: 1;
     flex-direction: column;
@@ -335,42 +335,48 @@ p {
 
       > .pro-inner-item {
         height: 60px;
-        padding: 0 26px;
+        padding: 0 !important;
         border-bottom: 1px solid #888;
-      }
+        cursor: default !important;
 
-      &.active {
-        color: #f9a21b;
-        
-        &::before {
-          content:'';
-          position: absolute;
-          top: 0;
-          left: 0;
-          display: block;
-          width: 5px;
+        > .pro-item-content {
+          width: 100%;
           height: 100%;
-          background: #f9a21b;
-        }
 
-        .pro-inner-item {
-          color: #f9a21b;
-        }
+          a{
+            display: block;
+            padding: 0 26px;
+            line-height: 60px;
 
-        &:hover {
-          .pro-inner-item {
-            color: #f9a21b;
-          }
-        }
-        &:active {
-          .pro-inner-item {
-            color: #f9a21b;
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 5px;
+              background-color: transparent;
+            }
+            &.active {
+              color: #f9a21b;
+              &:before {
+                background-color: #f9a21b;
+              }
+            }
+            &:hover {
+              .pro-inner-item {
+                color: #f9a21b;
+              }
+            }
+            &:active {
+              .pro-inner-item {
+                color: #f9a21b;
+              }
+            }
           }
         }
 
       }
     }
-    
   }
 
   &.collapsed {
@@ -378,8 +384,17 @@ p {
     min-width: 64px !important;
 
     .pro-menu > ul > .pro-menu-item > .pro-inner-item {
-      padding: 8px 27px 8px 27px;
+      padding: 8px 27px 8px 27px !important;
+
+      >.pro-item-content {
+
+        a {
+          padding: 0;
+          line-height: 43px;
+        }
+      }
     }
+
     .pro-menu .pro-menu-item.active {
       border: 0;
 
