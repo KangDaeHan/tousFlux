@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+<<<<<<< Updated upstream
 const Overview = React.lazy(() =>
   import(/* webpackChunkName: "start" */ './Overview')
 );
@@ -23,6 +24,12 @@ export const OverViewLink = ({ match }) => (
 );
 
 export const TrendMenu = ({ match }) => (
+=======
+const GoogleAnalytics = React.lazy(() =>
+  import(/* webpackChunkName: "googleAnalytics" */ './googleAnalytics')
+);
+const TrendMenu = ({ match }) => (
+>>>>>>> Stashed changes
   <Suspense fallback={<div className="loading" />}>
     <Switch>
       <Redirect exact from={`${match.url}/`} to={`${match.url}/googleAnalytics`} />
@@ -34,3 +41,7 @@ export const TrendMenu = ({ match }) => (
     </Switch>
   </Suspense>
 );
+<<<<<<< Updated upstream
+=======
+export default TrendMenu;
+>>>>>>> Stashed changes
