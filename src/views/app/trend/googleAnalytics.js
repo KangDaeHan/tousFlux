@@ -125,15 +125,147 @@ class GoogleAnalytics extends React.Component {
         },
       },
 
+      vertical : {
+        options: {
+          chart: {
+            height: 350,
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+            events: {
+              dataPointSelection: (event, chartContext, config) => {
+                for(let i = 0; i < event.target.parentNode.childNodes.length; i++){
+                  event.target.parentNode.childNodes[i].setAttribute('fill', '#dbdbdb');
+                  
+                  if(event.target) {
+                    event.target.setAttribute('fill', '#f9a21b');
+                  }
+                }
+              }
+            }
+          },
+          dataLabels: {
+            enabled: true,
+          },
+          grid: {
+            show: false,
+          },
+          fill: {
+            colors: ['#dbdbdb',],
+            opacity: 1
+          },
+          title: {
+            // text: ""
+          },
+          states: {
+            hover: {
+              filter: {
+                type: 'none',
+              }
+            },
+            active: {
+              allowMultipleDataPointsSelection: false,
+              filter: {
+                type: 'none',
+              }
+            },
+          },
+          legend: {
+            show: false
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: '',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          tooltip: {
+            custom: ({ series, seriesIndex, dataPointIndex, w }) => {
+              // console.log(w.config.series[seriesIndex].average[dataPointIndex]);
+              return (
+                '<div class="arrow_box">' +
+                "<span>" +
+                w.config.series[seriesIndex].title +
+                ": " +
+                series[seriesIndex][dataPointIndex] +
+                " ("+ w.config.series[seriesIndex].average[dataPointIndex] +"%)" +
+                "</span>" +
+                "</div>"
+              );
+            }
+          },
+          noData: {
+            text: '데이터 없음',
+            align: 'center',
+            verticalAlign: 'middle',
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              fontSize: '16px',
+            }
+          }
+        },
+      },
+
       activeId: 1,
+      listActiveId: 1,
       selectedOptions: null,
     };
   }
   
-  listClickEvt = (evt) => {
+  listClickEvt = (evt,num) => {
     const getNum = Number(evt.currentTarget.className.replace('item-',''));
+
     this.setState({
-      activeId : getNum
+      activeId : getNum,
+    });
+  };
+
+  analysisClickEvt = (evt) => {
+    const getNum = Number(evt.currentTarget.className.replace('analysis-item-',''));
+
+    this.setState({
+      listActiveId: getNum
     });
   };
 
@@ -144,15 +276,17 @@ class GoogleAnalytics extends React.Component {
     } 
     return error;
   };
-
+  
   changeOption = (...args) => {
     this.setState({
       selectedOptions: [args[0]]
     });
   };
-
+  
   render() {
     const statesChart = this.state;
+    const analysisStatesChart = this.state;
+
     const { internalIndexSelected , externalSelected } = this.state;    
 
     const internalIndex = [
@@ -189,6 +323,34 @@ class GoogleAnalytics extends React.Component {
     ]
 
     const chartDataArray = [usersChartData, sessionsChartData, conversionChartData, bounceChartData];
+
+    const initDemoAnalysis = [
+      {id: 1, title :  'Gender',},
+      {id: 2, title :  'Ages',},
+      {id: 3, title :  'Device',},
+      {id: 4, title :  'Region',},
+    ]
+
+    const genderChartData = [
+      {id: 1, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [17, 50], title: 'Gender', average: [5, 50, ],}]},
+      {id: 2, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [15, 30], title: 'Gender', average: [5, 50, ],}]},
+      {id: 3, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [50, 30], title: 'Gender', average: [5, 50, ],}]},
+      {id: 4, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [17, 15], title: 'Gender', average: [5, 50, ],}]},
+    ]
+
+    const agesChartData = [
+      {id: 1, series: [{data: [50, 20], title: 'Sessions', average: [5, 50, ],}]},
+    ]
+
+    const deviceChartData = [
+      {id: 1, series: [{data: [23, 10], title: 'Conversion', average: [5, 50,],}]},
+    ]
+
+    const regionChartData = [
+      {id: 1, series: [{data: [10, 20], title: 'Bounce', average: [5, 50,],}]},
+    ]
+
+    const analysisChartArray = [genderChartData, agesChartData, deviceChartData, regionChartData];
 
     const columns = [
       {
@@ -332,7 +494,7 @@ class GoogleAnalytics extends React.Component {
                                 key={idx}
                               >
                                 <div className='chart-area'>
-                                  <CompareBar options={statesChart.horizontal.options} series={item.series} type="bar" height={210} />
+                                  <CompareBar options={statesChart.horizontal.options} series={item.series} type="bar" height={210} yaxis={sd} />
                                 </div>
                               </div>
                             );
@@ -400,6 +562,47 @@ class GoogleAnalytics extends React.Component {
               <CardBody>
                 <div className="box-title">
                   <h2>GA Demographics Analysis </h2>
+                </div>
+
+                <ul className="analysis-tab-list ">
+                  {initDemoAnalysis.map((item, idx) => {
+                    return (
+                      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+                      <li 
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={idx} 
+                        onClick={this.analysisClickEvt}
+                        className={`analysis-item-${item.id} ${analysisStatesChart.listActiveId === Number(item.id) ? 'active' : ""}` }
+                      >
+                        <span className='title'>{item.title}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                <div className="graph-area bar">
+                  {analysisChartArray.map((list , indx) => {
+                      return(
+                        <ul 
+                          // eslint-disable-next-line react/no-array-index-key
+                          key={indx} 
+                          className={`analysis-item-${indx + 1} graph-list`} style={analysisStatesChart.listActiveId === Number(`${indx + 1}`) ? {display : 'flex'} : {display : 'none'}}
+                        >
+                          {list.map((item, idx) => {
+                            return(
+                              <li
+                                // eslint-disable-next-line react/no-array-index-key
+                                key={idx}
+                              >
+                                <div className='chart-area'>
+                                  <CompareBar options={analysisStatesChart.vertical.options} series={item.series} type="bar" height={350} />
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )
+                    })}
                 </div>
               </CardBody>
             </Card>

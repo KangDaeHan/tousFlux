@@ -1111,6 +1111,20 @@ table {
   table-layout: fixed;
 }
 
+.graph-area.bar {
+  .graph-list {
+    li {
+      &:first-child { 
+        margin-left: 0 !important;
+      }
+      &:last-child { 
+        margin-right: 0 !important;
+      }
+    }
+    
+  } 
+}
+
 @media (max-width: 1906px) { 
   .navbar {
     min-width: 100%;
