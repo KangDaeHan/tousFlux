@@ -125,124 +125,69 @@ class GoogleAnalytics extends React.Component {
         },
       },
 
-      vertical : {
-        options: {
-          chart: {
-            height: 350,
-            toolbar: {
-              show: false,
-            },
-            zoom: {
-              enabled: false
-            },
-            events: {
-              dataPointSelection: (event, chartContext, config) => {
-                for(let i = 0; i < event.target.parentNode.childNodes.length; i++){
-                  event.target.parentNode.childNodes[i].setAttribute('fill', '#dbdbdb');
-                  
-                  if(event.target) {
-                    event.target.setAttribute('fill', '#f9a21b');
-                  }
-                }
-              }
-            }
-          },
-          dataLabels: {
-            enabled: true,
-          },
-          grid: {
+      options: {
+        chart: {
+          width: '45%',
+          toolbar: {
             show: false,
           },
-          fill: {
-            colors: ['#dbdbdb',],
-            opacity: 1
+          zoom: {
+            enabled: false
           },
-          title: {
-            // text: ""
+        },
+        fill: {
+          colors: ['#8faadc' ,'#fb9874'],
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: '45%',
+            distributed: true,
+          }
+        },
+        grid: {
+          show: false,
+        },
+        xaxis: {
+          axisTicks: {
+            show: false,
           },
-          states: {
-            hover: {
-              filter: {
-                type: 'none',
-              }
-            },
-            active: {
-              allowMultipleDataPointsSelection: false,
-              filter: {
-                type: 'none',
-              }
-            },
-          },
-          legend: {
-            show: false
-          },
-          xaxis: {
-            axisTicks: {
-              show: false,
-            },
-            categories: ['Male', 'Female',],
-            labels: {
-              style: {
-                colors: ['#8faadc' ,'#fb9874'],
-                fontSize: '12px'
-              }
-            },
-            title : {
-              text : 'Period',
-              offsetX: 100,
-              offsetY: 0,
-              style: {
-                fontSize: '14px',
-                fontFamily: 'Helvetica, Arial, sans-serif',
-                fontWeight: 600,
-                cssClass: 'apexcharts-xaxis-title',
-              },
+          categories: ['Male', 'Female',],
+          labels: {
+            style: {
+              colors: ['#8faadc' ,'#fb9874'],
+              fontSize: '12px'
             }
           },
-          yaxis: {
-            axisTicks: {
-              show: false
-            },
-            axisBorder: {
-              show: true,
-            },
-            title : {
-              text: '',
-              offsetX: 0,
-              offsetY: -110,
-              style: {
-                color: undefined,
-                fontSize: '14px',
-                fontFamily: 'Helvetica, Arial, sans-serif',
-                fontWeight: 600,
-                cssClass: 'apexcharts-xaxis-title',
-              },
-            }
-          },
-          tooltip: {
-            custom: ({ series, seriesIndex, dataPointIndex, w }) => {
-              // console.log(w.config.series[seriesIndex].average[dataPointIndex]);
-              return (
-                '<div class="arrow_box">' +
-                "<span>" +
-                w.config.series[seriesIndex].title +
-                ": " +
-                series[seriesIndex][dataPointIndex] +
-                " ("+ w.config.series[seriesIndex].average[dataPointIndex] +"%)" +
-                "</span>" +
-                "</div>"
-              );
-            }
-          },
-          noData: {
-            text: '데이터 없음',
-            align: 'center',
-            verticalAlign: 'middle',
-            offsetX: 0,
+          title : {
+            text : 'Period',
+            offsetX: 100,
             offsetY: 0,
             style: {
-              fontSize: '16px',
-            }
+              fontSize: '14px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 600,
+              cssClass: 'apexcharts-xaxis-title',
+            },
+          }
+        },
+        yaxis: {
+          axisTicks: {
+            show: false
+          },
+          axisBorder: {
+            show: true,
+          },
+          title : {
+            text: '',
+            offsetX: 0,
+            offsetY: -110,
+            style: {
+              color: undefined,
+              fontSize: '14px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 600,
+              cssClass: 'apexcharts-xaxis-title',
+            },
           }
         },
       },
@@ -286,7 +231,6 @@ class GoogleAnalytics extends React.Component {
   render() {
     const statesChart = this.state;
     const analysisStatesChart = this.state;
-
     const { internalIndexSelected , externalSelected } = this.state;    
 
     const internalIndex = [
@@ -332,25 +276,514 @@ class GoogleAnalytics extends React.Component {
     ]
 
     const genderChartData = [
-      {id: 1, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [17, 50], title: 'Gender', average: [5, 50, ],}]},
-      {id: 2, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [15, 30], title: 'Gender', average: [5, 50, ],}]},
-      {id: 3, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [50, 30], title: 'Gender', average: [5, 50, ],}]},
-      {id: 4, options: { yaxis: { title : { text : 'Users' }}} , series: [{data: [17, 15], title: 'Gender', average: [5, 50, ],}]},
+      {
+        id: 1,
+        text: 'sdsdsd',
+        options: {
+          chart: {
+            width: '45%',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+          },
+          fill: {
+            colors: ['#8faadc' ,'#fb9874'],
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          grid: {
+            show: false,
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: 'sdsdsd',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+        },
+        series: [{data: [17, 50], title: 'Gender', average: [5, 50, ],}]
+      },
+      {
+        id: 2,
+        text: '121',
+        options: {
+          chart: {
+            width: '45%',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+          },
+          fill: {
+            colors: ['#8faadc' ,'#fb9874'],
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          grid: {
+            show: false,
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: 'sdsdsd',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+        },
+        series: [{data: [15, 30], title: 'Gender', average: [5, 50, ],}]},
+      {
+        id: 3,
+        text: '222',
+        options: {
+          chart: {
+            width: '45%',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+          },
+          fill: {
+            colors: ['#8faadc' ,'#fb9874'],
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          grid: {
+            show: false,
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: 'sdsdsd',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+        },
+        series: [{data: [50, 30], title: 'Gender', average: [5, 50, ],}]},
+      {
+        id: 4, 
+        text: '333',
+        options: {
+          chart: {
+            width: '45%',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+          },
+          fill: {
+            colors: ['#8faadc' ,'#fb9874'],
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          grid: {
+            show: false,
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: 'sdsdsd',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+        },
+        series: [{data: [17, 15], title: 'Gender', average: [5, 50, ],}]
+      },
     ]
 
     const agesChartData = [
-      {id: 1, series: [{data: [50, 20], title: 'Sessions', average: [5, 50, ],}]},
+      {
+        id: 1,
+        text: '555',
+        options: {
+          chart: {
+            width: '45%',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+          },
+          fill: {
+            colors: ['#8faadc' ,'#fb9874'],
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          grid: {
+            show: false,
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: 'sdsdsd',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+        },
+        series: [{data: [50, 20], title: 'Sessions', average: [5, 50, ],}]
+      },
     ]
 
     const deviceChartData = [
-      {id: 1, series: [{data: [23, 10], title: 'Conversion', average: [5, 50,],}]},
+      {
+        id: 1, 
+        text: '666',
+        options: {
+          chart: {
+            width: '45%',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+          },
+          fill: {
+            colors: ['#8faadc' ,'#fb9874'],
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          grid: {
+            show: false,
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: 'sdsdsd',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+        },
+        series: [{data: [23, 10], title: 'Conversion', average: [5, 50,],}]
+      },
     ]
 
     const regionChartData = [
-      {id: 1, series: [{data: [10, 20], title: 'Bounce', average: [5, 50,],}]},
+      {
+        id: 1, 
+        text: '777',
+        options: {
+          chart: {
+            width: '45%',
+            toolbar: {
+              show: false,
+            },
+            zoom: {
+              enabled: false
+            },
+          },
+          fill: {
+            colors: ['#8faadc' ,'#fb9874'],
+          },
+          plotOptions: {
+            bar: {
+              columnWidth: '45%',
+              distributed: true,
+            }
+          },
+          grid: {
+            show: false,
+          },
+          xaxis: {
+            axisTicks: {
+              show: false,
+            },
+            categories: ['Male', 'Female',],
+            labels: {
+              style: {
+                colors: ['#8faadc' ,'#fb9874'],
+                fontSize: '12px'
+              }
+            },
+            title : {
+              text : 'Period',
+              offsetX: 100,
+              offsetY: 0,
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+          yaxis: {
+            axisTicks: {
+              show: false
+            },
+            axisBorder: {
+              show: true,
+            },
+            title : {
+              text: 'sdsdsd',
+              offsetX: 0,
+              offsetY: -110,
+              style: {
+                color: undefined,
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 600,
+                cssClass: 'apexcharts-xaxis-title',
+              },
+            }
+          },
+        },
+        series: [{data: [10, 20], title: 'Bounce', average: [5, 50,],}]
+      },
     ]
 
     const analysisChartArray = [genderChartData, agesChartData, deviceChartData, regionChartData];
+
 
     const columns = [
       {
@@ -376,6 +809,7 @@ class GoogleAnalytics extends React.Component {
     ]
 
     return (
+      
       <>
         <Row>
           <Colxx xxs="12">
@@ -494,7 +928,7 @@ class GoogleAnalytics extends React.Component {
                                 key={idx}
                               >
                                 <div className='chart-area'>
-                                  <CompareBar options={statesChart.horizontal.options} series={item.series} type="bar" height={210} yaxis={sd} />
+                                  <CompareBar options={statesChart.horizontal.options} series={item.series} type="bar" height={210} />
                                 </div>
                               </div>
                             );
@@ -595,7 +1029,7 @@ class GoogleAnalytics extends React.Component {
                                 key={idx}
                               >
                                 <div className='chart-area'>
-                                  <CompareBar options={analysisStatesChart.vertical.options} series={item.series} type="bar" height={350} />
+                                  <CompareBar options={analysisStatesChart.options} series={item.series} type="bar" height={350} />
                                 </div>
                               </li>
                             );
