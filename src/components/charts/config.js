@@ -331,6 +331,7 @@ export const heatMapGraphData = {
     series: [
       {
         name: 'Coupang',
+        catagory: 'ecommerce', 
         data: [
           {x: "1/1", y: -30},
           {x: "1/2", y: 10},
@@ -367,6 +368,7 @@ export const heatMapGraphData = {
       },
       {
         name: 'Naver Shopping',
+        catagory: 'shopping',
         data: [
           {x: "1/1", y: -9},
           {x: "1/2", y: 43},
@@ -439,6 +441,7 @@ export const heatMapGraphData = {
       },
       {
         name: 'Facebook',
+        catagory: 'social',
         data: [
           {x: "1/1", y: -9},
           {x: "1/2", y: 43},
@@ -475,6 +478,7 @@ export const heatMapGraphData = {
       },
       {
         name: 'Instagram',
+        catagory: 'social',
         data: [
           {x: "1/1", y: -30},
           {x: "1/2", y: 10},
@@ -511,6 +515,7 @@ export const heatMapGraphData = {
       },
       {
         name: 'Naver Blog',
+        catagory: 'social',
         data: [
           {x: "1/1", y: -9},
           {x: "1/2", y: 43},
@@ -547,6 +552,7 @@ export const heatMapGraphData = {
       },
       {
         name: 'Naver News',
+        catagory: 'social',
         data: [
           {x: "1/1", y: -30},
           {x: "1/2", y: 10},
@@ -583,6 +589,7 @@ export const heatMapGraphData = {
       },
       {
         name: 'Naver',
+        catagory: 'search volume',
         data: [
           {x: "1/1", y: -9},
           {x: "1/2", y: 43},
@@ -673,10 +680,22 @@ export const heatMapGraphData = {
         enabled: false
       },
       stroke: {
-        width: 1
+        width: 0.5
       },
       xaxis: {
         position: 'top',
+      },
+      yaxis: {
+        labels: {
+          show: false,
+          align: 'left',
+          style: {
+              colors: ['#888'],
+              fontSize: '12px',
+              fontFamily: ['noto', 'sans-serif'],
+              fontWeight: 400,
+          },
+        }
       },
       legend: {
         show : false

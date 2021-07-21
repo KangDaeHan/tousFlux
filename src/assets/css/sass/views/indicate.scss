@@ -319,3 +319,29 @@
 .mt0{
     margin-top: 0 !important;
 }
+
+
+.graph-area {
+    &.Heat-Map{
+        padding-left: 224px;
+        
+        .heatmap_wrap_table{
+            position: absolute;
+            width: 246px;
+            top: 0;
+            left: 0;
+            border-bottom: none;
+
+            th{
+                width: 50%;
+                padding: 10px 15px;
+            }
+            td{
+                height: 54.0437px;
+                border-left: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
+        }
+    }
+
+}

@@ -67,7 +67,7 @@ class ChannelTable extends Component {
 
     
     return Object.keys(keys).map((key, idx) => {
-      return keys[key].forEach((obj, idx2) => {
+      return keys[key].map((obj, idx2) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
           <tr key={idx}>

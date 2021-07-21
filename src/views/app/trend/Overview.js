@@ -28,7 +28,6 @@ import HeatMap from '../../../components/charts/HeatMap';
 import ChannelButton from '../../../components/applications/ChannelButton'
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
 import { 
-  heatMapGraphData,
   columeNegativeGraph, 
   columeNegativeGraphMix,
   gapTotalGraph, 
@@ -388,7 +387,7 @@ class Overview extends React.Component {
                                                             <h2>Heat Map</h2>
                                                         </div>
                                                         <div className='graph-area Heat-Map'>
-                                                          <HeatMap options={heatMapGraphData.options} series={heatMapGraphData.series} height={heatMapGraphData.height} />
+                                                          <HeatMap />
                                                         </div>
                                                     </CardBody>
                                                 </Card>
@@ -430,7 +429,7 @@ class Overview extends React.Component {
                                                             <h2>Heat Map</h2>
                                                         </div>
                                                         <div className='graph-area Heat-Map'>
-                                                            <HeatMap options={heatMapGraphData.options} series={heatMapGraphData.series} height={heatMapGraphData.height} />
+                                                          <HeatMap />
                                                         </div>
                                                     </CardBody>
                                                 </Card>
