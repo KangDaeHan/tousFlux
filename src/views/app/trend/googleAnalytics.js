@@ -6,19 +6,22 @@
 /* eslint no-plusplus : "off" */
 /* eslint react/no-unused-state: "off" */
 /* eslint prefer-template: "off" */
+/* eslint react/no-array-index-key: "off" */
+/* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
-import { Row, Card, CardBody, Form, Button, FormGroup, CustomInput, } from 'reactstrap';
+import { Row, Card, CardBody, Form, Button, FormGroup, Input, Nav, NavLink, NavItem, TabContent, TabPane, } from 'reactstrap';
+import classnames from 'classnames';
 import { Formik, Field } from 'formik';
 import Select from 'react-select';
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import {ReactTable} from '../../../containers/ui/ReactTableCards';
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
 import CompareBar from '../../../components/charts/CompareBar';
+import CompareLine from '../../../components/charts/CompareLine';
 import { TableData } from './data';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class GoogleAnalytics extends React.Component {
-  
   constructor(props) {
     super(props); // React.Component의 생성자 메소드를 먼저 실행
 
@@ -124,95 +127,213 @@ class GoogleAnalytics extends React.Component {
           }
         },
       },
-
-      options: {
-        chart: {
-          width: '45%',
-          toolbar: {
-            show: false,
+      
+      totalGraph : {
+        series: [
+          {
+            name: "Users",
+            data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
           },
-          zoom: {
-            enabled: false
+          {
+            name: "Sessions",
+            data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
           },
-        },
-        fill: {
-          colors: ['#8faadc' ,'#fb9874'],
-        },
-        plotOptions: {
-          bar: {
-            columnWidth: '45%',
-            distributed: true,
-          }
-        },
-        grid: {
-          show: false,
-        },
-        xaxis: {
-          axisTicks: {
-            show: false,
-          },
-          categories: ['Male', 'Female',],
-          labels: {
-            style: {
-              colors: ['#8faadc' ,'#fb9874'],
-              fontSize: '12px'
-            }
-          },
-          title : {
-            text : 'Period',
-            offsetX: 100,
-            offsetY: 0,
-            style: {
-              fontSize: '14px',
-              fontFamily: 'Helvetica, Arial, sans-serif',
-              fontWeight: 600,
-              cssClass: 'apexcharts-xaxis-title',
+        ],
+          height: 250,
+          options: {
+            chart: {
+              type: 'line',
+              dropShadow: {
+                enabled: false,
+                color: '#000',
+                top: 18,
+                left: 7,
+                blur: 10,
+                opacity: 0.2,
+              },
+              toolbar: {
+                show: false
+              }, 
+              zoom: {
+                enabled: false,
+              }
             },
-          }
-        },
-        yaxis: {
-          axisTicks: {
-            show: false
-          },
-          axisBorder: {
-            show: true,
-          },
-          title : {
-            text: '',
-            offsetX: 0,
-            offsetY: -110,
-            style: {
-              color: undefined,
-              fontSize: '14px',
-              fontFamily: 'Helvetica, Arial, sans-serif',
-              fontWeight: 600,
-              cssClass: 'apexcharts-xaxis-title',
+            legend: {
+              position: 'top',
+              horizontalAlign: 'right', 
             },
-          }
-        },
+            colors: ['#4e4f4f','#b9b9b9'],
+            dataLabels: {
+              enabled: true,
+              background: {
+                foreColor: '#000',
+                padding: 0,
+                borderRadius: 0,
+                borderColor: 'transparent',
+              },
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 'bold',
+                colors: ['transparent'],
+              },
+              offsetY: -10,
+            },
+            markers: {
+              size: 5,
+              hover: {
+                size: 5,
+                sizeOffset: 5,
+                fillColor: '#000',
+              },
+              discrete: [{
+                fillColor: '#e3e3e3',
+                strokeColor: '#fff',
+                size: 5
+              }]
+            },
+            stroke: {
+              curve: 'smooth'
+            },
+            grid: {
+              show: false,
+            },
+            xaxis: {
+              categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+              tickPlacement: 'between'
+            },
+            yaxis: {
+              show: false
+            }, 
+            
+          },
       },
+
+      keywordGap : {
+        series: [
+          {
+            name: "Source1",
+            data: [0.77, 0.88, 0.99, 0.12, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+          },
+          {
+            name: "Source2",
+            data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+          },
+          {
+            name: "Source3",
+            data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.86, 0.77, 0.2, 0.55, 0.44]
+          },
+          {
+            name: "Source4",
+            data: [0.77, 0.8, 0.55, 0.22, 0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.74, 0.45]
+          },
+        ],
+          height: 350,
+          options: {
+            chart: {
+              type: 'line',
+              dropShadow: {
+                enabled: false,
+                color: '#000',
+                top: 18,
+                left: 7,
+                blur: 10,
+                opacity: 0.2,
+              },
+              toolbar: {
+                show: false
+              }, 
+              zoom: {
+                enabled: false,
+              }
+            },
+            legend: {
+              position: 'right',
+              horizontalAlign: 'right', 
+            },
+            colors: ['#404141','#ed7d31','#a4a4a4','#ffc000'],
+            dataLabels: {
+              enabled: true,
+              background: {
+                foreColor: '#000',
+                padding: 0,
+                borderRadius: 0,
+                borderColor: 'transparent',
+              },
+              style: {
+                fontSize: '14px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                fontWeight: 'bold',
+                colors: ['transparent'],
+              },
+              offsetY: -10,
+            },
+            markers: {
+              size: 5,
+              hover: {
+                size: 5,
+                sizeOffset: 5,
+                fillColor: '#000',
+              },
+              discrete: [{
+                fillColor: '#e3e3e3',
+                strokeColor: '#fff',
+                size: 5
+              }]
+            },
+            grid: {
+              show: true,
+            },
+            xaxis: {
+              categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+              tickPlacement: 'between'
+            },
+            yaxis: {
+              show: false
+            }, 
+            
+          },
+      }, 
 
       activeId: 1,
       listActiveId: 1,
       selectedOptions: null,
+      activeTab: '1',
+      checkInfo: [
+        { id: 1, value: "Daily", isChecked: false },
+        { id: 2, value: "Weekly", isChecked: false },
+        { id: 3, value: "Monthly", isChecked: false },
+        { id: 4, value: "Yearly", isChecked: false }
+      ], 
     };
+
   }
-  
-  listClickEvt = (evt,num) => {
+
+  tabToggle = (tab) => {
+    const activeTab = this.state;
+    
+    if ( activeTab !== tab) {
+      this.setState({ activeTab: tab });
+    }
+  }
+
+  listClickEvt = (evt) => {
+    evt.preventDefault();
     const getNum = Number(evt.currentTarget.className.replace('item-',''));
 
     this.setState({
       activeId : getNum,
     });
-  };
+  }
 
   analysisClickEvt = (evt) => {
+    evt.preventDefault();
     const getNum = Number(evt.currentTarget.className.replace('analysis-item-',''));
 
     this.setState({
-      listActiveId: getNum
+      listActiveId: getNum,
     });
-  };
+  }
 
   validateKeyword = (value) => {
     let error;
@@ -220,18 +341,30 @@ class GoogleAnalytics extends React.Component {
       error = 'No Keywords';
     } 
     return error;
-  };
+  }
   
   changeOption = (...args) => {
     this.setState({
       selectedOptions: [args[0]]
     });
-  };
-  
+  }
+
+  handleOneChecked = (evt) => {
+    // eslint-disable-next-line prefer-const
+    let { checkInfo } = this.state;
+    checkInfo.forEach(item => {
+      if (item.value === evt.target.value){
+        // eslint-disable-next-line no-param-reassign
+        item.isChecked = evt.target.checked;
+      }
+    });
+    this.setState({ checkInfo });
+  }
+
   render() {
     const statesChart = this.state;
-    const analysisStatesChart = this.state;
-    const { internalIndexSelected , externalSelected } = this.state;    
+    const statesItems = this.state;
+    const { internalIndexSelected , externalSelected } = this.state;
 
     const internalIndex = [
       { label: 'Users', value: 'internal1', key: 0 },
@@ -277,17 +410,19 @@ class GoogleAnalytics extends React.Component {
 
     const genderChartData = [
       {
-        id: 1,
-        text: 'sdsdsd',
         options: {
           chart: {
             width: '45%',
+            redrawOnParentResize: true,
             toolbar: {
               show: false,
             },
             zoom: {
               enabled: false
             },
+          },
+          legend: {
+            show: false,
           },
           fill: {
             colors: ['#8faadc' ,'#fb9874'],
@@ -313,7 +448,7 @@ class GoogleAnalytics extends React.Component {
               }
             },
             title : {
-              text : 'Period',
+              text : 'dwew',
               offsetX: 100,
               offsetY: 0,
               style: {
@@ -332,7 +467,7 @@ class GoogleAnalytics extends React.Component {
               show: true,
             },
             title : {
-              text: 'sdsdsd',
+              text: 'sss',
               offsetX: 0,
               offsetY: -110,
               style: {
@@ -348,17 +483,19 @@ class GoogleAnalytics extends React.Component {
         series: [{data: [17, 50], title: 'Gender', average: [5, 50, ],}]
       },
       {
-        id: 2,
-        text: '121',
         options: {
           chart: {
             width: '45%',
+            redrawOnParentResize: true,
             toolbar: {
               show: false,
             },
             zoom: {
               enabled: false
             },
+          },
+          legend: {
+            show: false,
           },
           fill: {
             colors: ['#8faadc' ,'#fb9874'],
@@ -384,7 +521,7 @@ class GoogleAnalytics extends React.Component {
               }
             },
             title : {
-              text : 'Period',
+              text : 'hghgh',
               offsetX: 100,
               offsetY: 0,
               style: {
@@ -403,7 +540,7 @@ class GoogleAnalytics extends React.Component {
               show: true,
             },
             title : {
-              text: 'sdsdsd',
+              text: 'erer',
               offsetX: 0,
               offsetY: -110,
               style: {
@@ -418,17 +555,19 @@ class GoogleAnalytics extends React.Component {
         },
         series: [{data: [15, 30], title: 'Gender', average: [5, 50, ],}]},
       {
-        id: 3,
-        text: '222',
         options: {
           chart: {
             width: '45%',
+            redrawOnParentResize: true,
             toolbar: {
               show: false,
             },
             zoom: {
               enabled: false
             },
+          },
+          legend: {
+            show: false,
           },
           fill: {
             colors: ['#8faadc' ,'#fb9874'],
@@ -454,7 +593,7 @@ class GoogleAnalytics extends React.Component {
               }
             },
             title : {
-              text : 'Period',
+              text : 'ggbvn',
               offsetX: 100,
               offsetY: 0,
               style: {
@@ -473,7 +612,7 @@ class GoogleAnalytics extends React.Component {
               show: true,
             },
             title : {
-              text: 'sdsdsd',
+              text: 'eeee',
               offsetX: 0,
               offsetY: -110,
               style: {
@@ -488,17 +627,19 @@ class GoogleAnalytics extends React.Component {
         },
         series: [{data: [50, 30], title: 'Gender', average: [5, 50, ],}]},
       {
-        id: 4, 
-        text: '333',
         options: {
           chart: {
             width: '45%',
+            redrawOnParentResize: true,
             toolbar: {
               show: false,
             },
             zoom: {
               enabled: false
             },
+          },
+          legend: {
+            show: false,
           },
           fill: {
             colors: ['#8faadc' ,'#fb9874'],
@@ -524,7 +665,7 @@ class GoogleAnalytics extends React.Component {
               }
             },
             title : {
-              text : 'Period',
+              text : '222',
               offsetX: 100,
               offsetY: 0,
               style: {
@@ -543,7 +684,7 @@ class GoogleAnalytics extends React.Component {
               show: true,
             },
             title : {
-              text: 'sdsdsd',
+              text: 'dddd',
               offsetX: 0,
               offsetY: -110,
               style: {
@@ -562,8 +703,6 @@ class GoogleAnalytics extends React.Component {
 
     const agesChartData = [
       {
-        id: 1,
-        text: '555',
         options: {
           chart: {
             width: '45%',
@@ -573,6 +712,9 @@ class GoogleAnalytics extends React.Component {
             zoom: {
               enabled: false
             },
+          },
+          legend: {
+            show: false,
           },
           fill: {
             colors: ['#8faadc' ,'#fb9874'],
@@ -598,7 +740,7 @@ class GoogleAnalytics extends React.Component {
               }
             },
             title : {
-              text : 'Period',
+              text : 'sds',
               offsetX: 100,
               offsetY: 0,
               style: {
@@ -617,7 +759,7 @@ class GoogleAnalytics extends React.Component {
               show: true,
             },
             title : {
-              text: 'sdsdsd',
+              text: 'www',
               offsetX: 0,
               offsetY: -110,
               style: {
@@ -636,8 +778,6 @@ class GoogleAnalytics extends React.Component {
 
     const deviceChartData = [
       {
-        id: 1, 
-        text: '666',
         options: {
           chart: {
             width: '45%',
@@ -647,6 +787,9 @@ class GoogleAnalytics extends React.Component {
             zoom: {
               enabled: false
             },
+          },
+          legend: {
+            show: false,
           },
           fill: {
             colors: ['#8faadc' ,'#fb9874'],
@@ -672,7 +815,7 @@ class GoogleAnalytics extends React.Component {
               }
             },
             title : {
-              text : 'Period',
+              text : 'wqwq',
               offsetX: 100,
               offsetY: 0,
               style: {
@@ -691,7 +834,7 @@ class GoogleAnalytics extends React.Component {
               show: true,
             },
             title : {
-              text: 'sdsdsd',
+              text: 'ccc',
               offsetX: 0,
               offsetY: -110,
               style: {
@@ -710,8 +853,6 @@ class GoogleAnalytics extends React.Component {
 
     const regionChartData = [
       {
-        id: 1, 
-        text: '777',
         options: {
           chart: {
             width: '45%',
@@ -721,6 +862,9 @@ class GoogleAnalytics extends React.Component {
             zoom: {
               enabled: false
             },
+          },
+          legend: {
+            show: false,
           },
           fill: {
             colors: ['#8faadc' ,'#fb9874'],
@@ -746,7 +890,7 @@ class GoogleAnalytics extends React.Component {
               }
             },
             title : {
-              text : 'Period',
+              text : 'asaa',
               offsetX: 100,
               offsetY: 0,
               style: {
@@ -765,7 +909,7 @@ class GoogleAnalytics extends React.Component {
               show: true,
             },
             title : {
-              text: 'sdsdsd',
+              text: 'hhhh',
               offsetX: 0,
               offsetY: -110,
               style: {
@@ -822,7 +966,25 @@ class GoogleAnalytics extends React.Component {
                         <tr>
                           <th style={{ width:'15%' }}>Period Unit</th>
                           <td style={{ width:'85%' }}>
-                          <CustomInput
+                            {statesItems.checkInfo.map(items => {
+                              return(
+                                <FormGroup check inline className='check-box lookup-area' key={items.id}>
+                                  <Input 
+                                  id={items.id}
+                                  key={items.id}
+                                  onChange={this.handleOneChecked}
+                                  checked={items.isChecked}
+                                  type="checkbox"
+                                  value={items.value}
+                                  className='check-single-box'
+                                  />{' '}
+                                  <label htmlFor={items.id} className='bx_check_oran'>
+                                    <span>{items.value}</span>
+                                  </label>
+                                </FormGroup>
+                              )
+                            })}
+                          {/* <CustomInput
                             type="checkbox"
                             id="period-daily"
                             label="Daily"
@@ -845,7 +1007,7 @@ class GoogleAnalytics extends React.Component {
                             id="period-yearly"
                             label="Yearly"
                             className="chk-remember"
-                          />
+                          /> */}
                           </td>
                         </tr>
                         <tr>
@@ -902,7 +1064,6 @@ class GoogleAnalytics extends React.Component {
                     return (
                       // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                       <li 
-                        // eslint-disable-next-line react/no-array-index-key
                         key={idx} 
                         onClick={this.listClickEvt}
                         className={`item-${item.id} ${statesChart.activeId === Number(item.id) ? 'active' : ""}` }
@@ -917,14 +1078,12 @@ class GoogleAnalytics extends React.Component {
                   {chartDataArray.map((list , indx) => {
                       return(
                         <div 
-                          // eslint-disable-next-line react/no-array-index-key
                           key={indx} 
                           className={`item-${indx + 1} graph-list`} style={statesChart.activeId === Number(`${indx + 1}`) ? {display : 'block'} : {display : 'none'}}
                         >
                           {list.map((item, idx) => {
                             return(
                               <div
-                                // eslint-disable-next-line react/no-array-index-key
                                 key={idx}
                               >
                                 <div className='chart-area'>
@@ -952,7 +1111,7 @@ class GoogleAnalytics extends React.Component {
                   <h2>GA-Social Comparison</h2>
                 </div>
                 <div className="table-sort-area">
-                  <div>
+                  <div className="comparison-select-area">
                     <span>Internal Index</span>
                     <FormGroup className="select-box">
                       <Select
@@ -998,15 +1157,14 @@ class GoogleAnalytics extends React.Component {
                   <h2>GA Demographics Analysis </h2>
                 </div>
 
-                <ul className="analysis-tab-list ">
+                <ul className="analysis-tab-list">
                   {initDemoAnalysis.map((item, idx) => {
                     return (
                       // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                       <li 
-                        // eslint-disable-next-line react/no-array-index-key
                         key={idx} 
                         onClick={this.analysisClickEvt}
-                        className={`analysis-item-${item.id} ${analysisStatesChart.listActiveId === Number(item.id) ? 'active' : ""}` }
+                        className={`analysis-item-${item.id} ${statesItems.listActiveId === Number(item.id) ? 'active' : ""}` }
                       >
                         <span className='title'>{item.title}</span>
                       </li>
@@ -1018,19 +1176,19 @@ class GoogleAnalytics extends React.Component {
                   {analysisChartArray.map((list , indx) => {
                       return(
                         <ul 
-                          // eslint-disable-next-line react/no-array-index-key
                           key={indx} 
-                          className={`analysis-item-${indx + 1} graph-list`} style={analysisStatesChart.listActiveId === Number(`${indx + 1}`) ? {display : 'flex'} : {display : 'none'}}
+                          className={`analysis-item-${indx + 1} graph-list`} style={statesItems.listActiveId === Number(`${indx + 1}`) ? {display : 'flex'} : {display : 'none'}}
                         >
                           {list.map((item, idx) => {
                             return(
                               <li
-                                // eslint-disable-next-line react/no-array-index-key
                                 key={idx}
                               >
-                                <div className='chart-area'>
-                                  <CompareBar options={analysisStatesChart.options} series={item.series} type="bar" height={350} />
+                                { statesItems.listActiveId === Number(`${indx + 1}`) && 
+                                <div className='chart-area bor-none'>
+                                  <CompareBar options={item.options} series={item.series} type="bar" height={350} width='100%' className="analysis-chart-bar" />
                                 </div>
+                                }
                               </li>
                             );
                           })}
@@ -1052,6 +1210,18 @@ class GoogleAnalytics extends React.Component {
                 <div className="box-title">
                   <h2>GA Broad Trend Chart</h2>
                 </div>
+                <div className="box-area">
+                  <div className='graph-area total-area title-type box-left'>
+                    <p className='bx_name'>Users / Sessions</p>
+                    <p className='cont-noti'>* 지수화하여 표시</p>
+                    <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
+                  </div>
+                  <div className='graph-area total-area title-type box-right'>
+                    <p className='bx_name'>Conversion rate / Bounce rate</p>
+                    <p className='cont-noti'>* 지수화하여 표시</p>
+                    <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
+                  </div>
+                </div>
               </CardBody>
             </Card>
           </Colxx>
@@ -1066,6 +1236,150 @@ class GoogleAnalytics extends React.Component {
                 <div className="box-title">
                   <h2>GA Keyword Gap</h2>
                 </div>
+                {/* s: 탭메뉴 */}
+                <Nav tabs className="card-header-tabs keyword-gap-tab">
+                  <NavItem>
+                    <NavLink
+                      className={classnames({
+                        active: statesItems.activeTab === '1',
+                      })}
+                      onClick={() => { this.tabToggle('1'); }}
+                    >
+                      Inflow
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={classnames({
+                        active: statesItems.activeTab === '2',
+                      })}
+                      onClick={() => { this.tabToggle('2'); }}
+                    >
+                      Bounce
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={classnames({
+                        active: statesItems.activeTab === '3',
+                      })}
+                      onClick={() => { this.tabToggle('3'); }}
+                    >
+                      Most Visited Page
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={classnames({
+                        active: statesItems.activeTab === '4',
+                      })}
+                      onClick={() => { this.tabToggle('4'); }}
+                    >
+                      Bounce
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+                {/* e: 탭메뉴 */}
+                {/* s: 탭메뉴 */}
+                <TabContent className="keyword-gap-graph" activeTab={statesItems.activeTab}>
+                  <TabPane tabId="1">
+                    { statesItems.activeTab === '1' &&
+                      <>
+                      <div className='graph-area total-area title-type'>
+                        <p className='cont-noti'>단위: 건</p>
+                        <CompareLine options={statesItems.keywordGap.options} series={statesItems.keywordGap.series} height={statesItems.keywordGap.height} />
+                      </div>
+                      <div className="graph-area total-area title-type keyword-gap-type mt-2">
+                        <div className="keyword-chart-area">
+                          {genderChartData.map((item, idx) => {
+                            return(
+                              <div
+                                key={idx}
+                                className='chart-area'
+                              >
+                                <CompareBar options={item.options} series={item.series} type="bar" height={350} width='100%' className="analysis-chart-bar" />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      </>
+                    }
+                  </TabPane>
+                  <TabPane tabId="2">
+                    { statesItems.activeTab === '2' &&
+                      <>
+                      <div className='graph-area total-area title-type'>
+                        <p className='cont-noti'>단위: 건</p>
+                        <CompareLine options={statesItems.keywordGap.options} series={statesItems.keywordGap.series} height={statesItems.keywordGap.height} />
+                      </div>
+                      <div className="graph-area total-area title-type keyword-gap-type mt-2">
+                        <div className="keyword-chart-area">
+                          {agesChartData.map((item, idx) => {
+                            return(
+                              <div
+                                key={idx}
+                                className='chart-area'
+                              >
+                                <CompareBar options={item.options} series={item.series} type="bar" height={350} width='100%' className="analysis-chart-bar" />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      </>
+                    }
+                  </TabPane>
+                  <TabPane tabId="3">
+                  { statesItems.activeTab === '3' &&
+                      <>
+                      <div className='graph-area total-area title-type'>
+                        <p className='cont-noti'>단위: 건</p>
+                        <CompareLine options={statesItems.keywordGap.options} series={statesItems.keywordGap.series} height={statesItems.keywordGap.height} />
+                      </div>
+                      <div className="graph-area total-area title-type keyword-gap-type mt-2">
+                        <div className="keyword-chart-area">
+                          {genderChartData.map((item, idx) => {
+                            return(
+                              <div
+                                key={idx}
+                                className='chart-area'
+                              >
+                                <CompareBar options={item.options} series={item.series} type="bar" height={350} width='100%' className="analysis-chart-bar" />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      </>
+                    }
+                  </TabPane>
+                  <TabPane tabId="4">
+                  { statesItems.activeTab === '4' &&
+                      <>
+                      <div className='graph-area total-area title-type'>
+                        <p className='cont-noti'>단위: 건</p>
+                        <CompareLine options={statesItems.keywordGap.options} series={statesItems.keywordGap.series} height={statesItems.keywordGap.height} />
+                      </div>
+                      <div className="graph-area total-area title-type keyword-gap-type mt-2">
+                        <div className="keyword-chart-area">
+                          {regionChartData.map((item, idx) => {
+                            return(
+                              <div
+                                key={idx}
+                                className='chart-area'
+                              >
+                                <CompareBar options={item.options} series={item.series} type="bar" height={350} width='100%' className="analysis-chart-bar" />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      </>
+                    }
+                  </TabPane>
+                </TabContent>
+                {/* e: 탭메뉴 */}
               </CardBody>
             </Card>
           </Colxx>
