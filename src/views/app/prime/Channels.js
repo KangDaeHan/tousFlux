@@ -1,12 +1,15 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import { Row, Card, CardBody, Form, Button, FormGroup } from 'reactstrap';
 import { Formik, Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
+import TableRowspan from '../../../components/applications/TableRowspan';
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import ChannelButton from '../../../components/applications/ChannelButton'
-import ChannelTable from '../../../components/applications/ChannelTable'
+// import ChannelTable from '../../../components/applications/ChannelTable'
+import { TableRowData } from '../trend/data';
 
 class Channels extends React.Component {
     constructor(props) {
@@ -14,6 +17,7 @@ class Channels extends React.Component {
         this.state = {
             startDate: new Date(),
             endDate: new Date(),
+            tData: TableRowData
         }
     }
 
@@ -41,6 +45,46 @@ class Channels extends React.Component {
             } 
             return error;
         };
+
+        const columns=
+        [
+            {
+                header:'Channel Category',
+                // sort:'true'
+            },
+            {
+                header:'Channel',
+                // sort:'true'
+            },
+            {
+                header:'Post(product)',
+                // sort:'true'
+            },
+            {
+                header:'Comment(Review)',
+                // sort:'true'
+            },
+            {
+                header:'View',
+                // sort:'true'
+            },
+            {
+                header:'Like(Cart)',
+                // sort:'true'
+            },
+            {
+                header:'Press',
+                // sort:'true'
+            },
+            {
+                header:'Positive Rate',
+                // sort:'true'
+            },
+            {
+                header:'Negative Rate',
+                // sort:'true'
+            },
+        ]
 
         return(
             <>
@@ -133,7 +177,11 @@ class Channels extends React.Component {
                             <div className='box-title'>
                                 <h2>Posting Indicator</h2>
                             </div>
-                            <ChannelTable />
+                            {/* <ChannelTable /> */}
+                            <TableRowspan 
+                                tData={Object.assign([],statesItems.tData)} 
+                                tColumns={columns}
+                            />
                         </CardBody>
                     </Card>
                     </Colxx>

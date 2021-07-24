@@ -4,8 +4,7 @@ import { Row,
      CardBody,
      Form,
      Button,
-     FormGroup,
-     Table 
+     FormGroup, 
     } from 'reactstrap';
 import { Formik, Field } from 'formik';
 import DatePicker from 'react-datepicker';
@@ -13,11 +12,15 @@ import Select from 'react-select';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
+import {ReactTable} from '../../../containers/ui/ReactTable';
 import CompareLine from '../../../components/charts/CompareLine';
 // import NegativeBar from '../../../components/charts/NegativeBar';
 // import HeatMap from '../../../components/charts/HeatMap';
 import ChannelButton from '../../../components/applications/ChannelButton'
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
+// eslint-disable-next-line import/named
+import { TableData2 } from './data';
+
 
 class Social extends React.Component {
     constructor(props) {
@@ -32,8 +35,8 @@ class Social extends React.Component {
             totalGraph : {
                 series: [
                     {
-                      name: "High - 2013",
-                      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+                      name: "Total Graph",
+                      data: [2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 4, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4,4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4]
                     },
                   ],
                   height: 500,
@@ -41,58 +44,64 @@ class Social extends React.Component {
                     chart: {
                       type: 'line',
                       dropShadow: {
-                        enabled: true,
+                        enabled: false,
                         color: '#000',
                         top: 18,
                         left: 7,
                         blur: 10,
-                        opacity: 0.2
+                        opacity: 0.2,
                       },
                       toolbar: {
                         show: false
+                      }, 
+                      zoom: {
+                        enabled: false,
                       }
                     },
-                    colors: ['#77B6EA', '#545454'],
+                    colors: ['#b9b9b9'],
                     dataLabels: {
                       enabled: true,
+                      background: {
+                        foreColor: '#000',
+                        padding: 0,
+                        borderRadius: 0,
+                        borderColor: 'transparent',
+                      },
+                      style: {
+                        fontSize: '14px',
+                        fontFamily: 'Helvetica, Arial, sans-serif',
+                        fontWeight: 'bold',
+                        colors: ['transparent'],
+                      },
+                      offsetY: -10,
+                    },
+                    markers: {
+                      size: 5,
+                      hover: {
+                        size: 5,
+                        sizeOffset: 5,
+                        fillColor: '#000',
+                      },
+                      discrete: [{
+                        fillColor: '#e3e3e3',
+                        strokeColor: '#fff',
+                        size: 5
+                      }]
                     },
                     stroke: {
                       curve: 'smooth'
                     },
-                    title: {
-                      text: 'Average High & Low Temperature',
-                      align: 'left'
-                    },
                     grid: {
-                      borderColor: '#e7e7e7',
-                      row: {
-                        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                        opacity: 0.5
-                      },
-                    },
-                    markers: {
-                      size: 1
+                      show: false,
                     },
                     xaxis: {
                       categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-                      title: {
-                        text: 'Month'
-                      }
+                      tickPlacement: 'between'
                     },
                     yaxis: {
-                      title: {
-                        text: 'Temperature'
-                      },
-                      min: 1,
-                      max: 35
-                    },
-                    legend: {
-                      position: 'top',
-                      horizontalAlign: 'right',
-                      floating: true,
-                      offsetY: -25,
-                      offsetX: -5
-                    }
+                      show: false
+                    }, 
+                    
                   },
             }, 
             // eslint-disable-next-line react/no-unused-state
@@ -268,6 +277,49 @@ class Social extends React.Component {
           { label: 'Naver_news', value: 'social_val02', key: 1 },
           { label: 'Naver_blog', value: 'social_val03', key: 2 },
         ];
+
+        const columns = [
+          {
+            Header: 'Rank',
+            accessor: 'id',
+          },
+          {
+            Header: 'Total',
+            accessor: 'Total',
+          },
+          {
+            Header: 'Naver News',
+            accessor: 'naverNews',
+          },
+          {
+            Header: 'Naver Cafe',
+            accessor: 'naverCafe',
+          },
+          {
+            Header: 'Naver Blog',
+            accessor: 'naverBlog',
+          },
+          {
+            Header: 'Naver Blog',
+            accessor: 'instagram',
+          },
+          {
+            Header: 'Naver Blog',
+            accessor: 'facebook',
+          },
+          {
+            Header: 'Naver Blog',
+            accessor: 'youtube',
+          },
+          {
+            Header: 'Naver Blog',
+            accessor: 'rankstatus',
+          },
+          {
+            Header: 'Naver Blog',
+            accessor: 'count',
+          },
+        ]
     
         const validateKeyword = (value) => {
             let error;
@@ -366,24 +418,24 @@ class Social extends React.Component {
                     <Colxx xxs="12">
                         <Card>
                             <CardBody>
-                                <div>
-                                    <FormGroup className="select-box">
-                                        <Select
-                                        components={{ Input: CustomSelectInput }}
-                                        className="react-select"
-                                        classNamePrefix="react-select"
-                                        name="form-field-name"
-                                        value={statesItems.selectedOptions}
-                                        onChange={(val) => this.setSelectedOptions(val)}
-                                        options={selectedOptionsBase}
-                                        />
-                                    </FormGroup>
+                                <div className='bx_select_area'>
+                                  <FormGroup className="select-box">
+                                    <Select
+                                      components={{ Input: CustomSelectInput }}
+                                      className="react-select"
+                                      classNamePrefix="react-select"
+                                      name="form-field-name"
+                                      value={statesItems.selectedOptions}
+                                      onChange={(val) => this.setSelectedOptions(val)}
+                                      options={selectedOptionsBase}
+                                    />
+                                  </FormGroup>
                                 </div>
                                 <div className='clearfix box-line'>
                                     <div className='box left'>
-                                        <div className="chart_area">
+                                        <div className="graph-area chart_area">
                                             <div className='chart-header'>
-                                                Channel Chart
+                                                <p className='bx_name'>Buzz</p>
                                             </div>
                                             <div className='chart-cont'>
                                                 <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
@@ -391,9 +443,9 @@ class Social extends React.Component {
                                         </div>      
                                     </div>
                                     <div className='box right'>
-                                        <div className="chart_area">
+                                        <div className="graph-area chart_area">
                                             <div className='chart-header'>
-                                                Channel Chart
+                                              <p className='bx_name'>Comment</p>
                                             </div>
                                             <div className='chart-cont'>
                                                 <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
@@ -410,36 +462,11 @@ class Social extends React.Component {
                     <Colxx xxs="12">
                         <Card>
                             <CardBody>
-                              <Table bordered>
-                                <thead>
-                                  <tr>
-                                    <th>No</th>
-                                    <th>Channel1</th>
-                                    <th>Channel2</th>
-                                    <th>Gap</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Shopping</td>
-                                    <td>Coupang</td>
-                                    <td>0.67</td>
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>Shopping</td>
-                                    <td>Google Analytics</td>
-                                    <td>0.58</td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>Instagram</td>
-                                    <td>Coupang</td>
-                                    <td>0.56</td>
-                                  </tr>
-                                </tbody>
-                              </Table>    
+                                <ReactTable
+                                  className='table'
+                                  data={TableData2}
+                                  columns={columns}
+                                />
                             </CardBody>
                         </Card>
                     </Colxx>

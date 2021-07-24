@@ -74,6 +74,7 @@
         position: absolute;
         top: -1px;
         left: -1px;
+        min-width: 150px;
         height: 60px;
         border: 1px solid #ddd;
         background: #f1f1f1;
@@ -344,4 +345,25 @@
         }
     }
 
+}
+
+
+.social_area{
+    
+    .select-box{
+        margin-left: 56px;
+    }
+
+    .box-line{
+        border: none;
+
+        .box{
+            position: relative;
+            border: 1px solid #d4d4d4;
+            margin: 0 2.5%;
+            &.right{
+                width: 45%;
+            }
+        }
+    }
 }
