@@ -1,3 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-new-object */
 /* eslint-disable no-param-reassign */
 /* eslint-disable operator-assignment */
 /* eslint-disable guard-for-in */
@@ -18,18 +21,15 @@ class TableRowspan extends Component {
     }
   }
 
-  
-
 getDataModelled(){
-    const { tData } = this.props;
-    const newRowData = [];
-    for(let i=0; i< tData.length; i++){
-      const obj = tData[i];
+    const data = this.props.tData;
+    const newRowData=[];
+    for(let i=0;i<data.length;i++){
+      const obj = data[i];
       const newColData=[];
         for (const item in obj){
-          // eslint-disable-next-line no-new-object
           newColData.push(new Object({
-            key: item,
+            key:item,
             value:obj[item],
             rowspan:1,
             print:true
@@ -45,6 +45,7 @@ getDataModelled(){
       for(let j=0;j<myProps[i].length;j++)
       {
         for(let k= i-1; k>=0 && myProps[i][j].value === myProps[k][j].value;k--){
+          console.log(myProps[k][j].value, 'test');
           switch (myProps[k][j].key) {
             case'post' :
               myProps[k][j].print = true;
@@ -68,7 +69,7 @@ getDataModelled(){
               myProps[k][j].print = true;
               break;
             default: 
-              myProps[k][j].rowspan = myProps[k][j].rowspan+1;
+              myProps[k][j].rowspan = myProps[k][j].rowspan + 1;
               myProps[k+1][j].print = false;
               break;
           }
@@ -78,25 +79,20 @@ getDataModelled(){
   return myProps;
 }
   render() {
-    const statesItems = this.state;
-    const propsItems = this.props;
+    const stateItem = this.state;
+    const propsItem = this.props;
     return (
-      <table className='ar-table'>
+      <table className='ar-table mt-5'>
           <thead className='ar-table-thead'>
-          <tr className='ar-table-thead-row'>{propsItems.tColumns.map(tColumn=> {
-            return(
-              <th className='ar-table-thead-header' key={tColumn.header}>{tColumn.header}</th>
-            )
-          })}
+          <tr className='ar-table-thead-row'>{propsItem.tColumns.map((tColumn, idx)=>
+          <th className='ar-table-thead-header' key={idx}>{tColumn.header}</th>
+          )}
           </tr>
           </thead>
           <tbody>
-          {statesItems.tableNewData.map((rData, idx) =>{
-            return(
-              // eslint-disable-next-line react/no-array-index-key
-              <Row rData={rData} key={idx}/>
-            )
-          })}
+          {stateItem.tableNewData.map((rData, idx) =>
+            <Row  rData={rData} key={idx}/>
+          )}
           </tbody>
         </table>
     );

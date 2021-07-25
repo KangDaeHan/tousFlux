@@ -267,8 +267,8 @@ export const TableRowData = [
     view : 456, 
     like : 12,
     press : 189,
-    positiveRate : 56,
-    negativeRate : '53.8%'
+    positiveRate : 13,
+    negativeRate : 53.8
   },
   {
     channelCategory: 'Social',
@@ -277,8 +277,8 @@ export const TableRowData = [
     comment : 38, 
     view : 456, 
     like : 12,
-    press : 0,
-    positiveRate : 56,
+    press : '-',
+    positiveRate : 1,
     negativeRate : '-'
   },
   {
@@ -292,4 +292,16 @@ export const TableRowData = [
     positiveRate : 56,
     negativeRate : '-'
   },
+  {
+    channelCategory: 'Social',
+    channel: 'Naver News',
+    post : 496,
+    comment : 38, 
+    view : 456, 
+    like : 12,
+    press : '-',
+    positiveRate : 7,
+    negativeRate : 3
+  },
 ]
+
