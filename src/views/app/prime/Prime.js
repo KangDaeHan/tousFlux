@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { Row, Card, CardBody, Form, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Row, Card, CardBody, Form, Button, FormGroup } from 'reactstrap';
 import { Formik, Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
@@ -336,38 +336,6 @@ class Prime extends React.Component {
                                 </FormGroup>
                               )}
                               </Formik>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th style={{ width:'15%' }}>Channel</th>
-                            <td style={{ width:'85%' }}>
-                              <FormGroup check inline className='check-box'>
-                                <Label check>
-                                <Input 
-                                  className='check-all-box'
-                                  onChange={this.handleAllChecked}
-                                  type="checkbox"
-                                />{' '}
-                                  all
-                                </Label>
-                              </FormGroup>
-                              {statesItems.checkInfo.map(items => {
-                                return(
-                                  <FormGroup check inline className='check-box' key={items.id}>
-                                    <Label check>
-                                    <Input 
-                                    key={items.id}
-                                    onChange={this.handleOneChecked}
-                                    checked={items.isChecked}
-                                    type="checkbox"
-                                    value={items.value}
-                                    className='check-single-box'
-                                    />{' '}
-                                      {items.value}
-                                    </Label>
-                                  </FormGroup>
-                                )
-                              })}
                             </td>
                           </tr>
                         </tbody>

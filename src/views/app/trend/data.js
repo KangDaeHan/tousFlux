@@ -283,7 +283,7 @@ export const TableRowData = [
   },
   {
     channelCategory: 'Social',
-    channel: 'Naver News',
+    channel: 'facebook',
     post : 496,
     comment : 38, 
     view : 456, 
@@ -294,8 +294,30 @@ export const TableRowData = [
   },
   {
     channelCategory: 'Social',
-    channel: 'Naver News',
+    channel: 'youtube',
     post : 496,
+    comment : 38, 
+    view : 456, 
+    like : 12,
+    press : '-',
+    positiveRate : 7,
+    negativeRate : 3
+  },
+  {
+    channelCategory: 'Shopping',
+    channel: 'Naver Shopping',
+    post : 496,
+    comment : 38, 
+    view : 456, 
+    like : 12,
+    press : '-',
+    positiveRate : 7,
+    negativeRate : 3
+  },
+  {
+    channelCategory: 'E-Commerce',
+    channel: 'Coupang',
+    post : 12358,
     comment : 38, 
     view : 456, 
     like : 12,

@@ -45,7 +45,6 @@ getDataModelled(){
       for(let j=0;j<myProps[i].length;j++)
       {
         for(let k= i-1; k>=0 && myProps[i][j].value === myProps[k][j].value;k--){
-          console.log(myProps[k][j].value, 'test');
           switch (myProps[k][j].key) {
             case'post' :
               myProps[k][j].print = true;
@@ -91,7 +90,7 @@ getDataModelled(){
           </thead>
           <tbody>
           {stateItem.tableNewData.map((rData, idx) =>
-            <Row  rData={rData} key={idx}/>
+            <Row rData={rData} key={idx}/>
           )}
           </tbody>
         </table>
