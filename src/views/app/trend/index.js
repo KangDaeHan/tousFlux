@@ -12,7 +12,10 @@ const Ecommerce = React.lazy(() =>
   import(/* webpackChunkName: "Ecommerce" */ './Ecommerce')
 );
 const GoogleAnalytics = React.lazy(() =>
-  import(/* webpackChunkName: "googleAnalytics" */ './googleAnalytics')
+  import(/* webpackChunkName: "GoogleAnalytics" */ './GoogleAnalytics')
+);
+const Response = React.lazy(() =>
+  import(/* webpackChunkName: "Response" */ './Response')
 );
 
 const OverViewLink = ({ match }) => (
@@ -34,6 +37,10 @@ const OverViewLink = ({ match }) => (
       <Route
         path={`${match.url}/googleAnalytics`}
         render={(props) => <GoogleAnalytics {...props} />}
+      />
+      <Route
+        path={`${match.url}/response`}
+        render={(props) => <Response {...props} />}
       />
       <Redirect to="/error" />
     </Switch>
