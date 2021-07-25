@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import { Row,
      Card,
@@ -5,6 +6,7 @@ import { Row,
      Form,
      Button,
      FormGroup, 
+     Input,
     } from 'reactstrap';
 import { Formik, Field } from 'formik';
 import DatePicker from 'react-datepicker';
@@ -218,7 +220,13 @@ class Social extends React.Component {
                   }
                 }
               },
-            }
+            },
+            checkInfo: [
+              { id: 1, value: "Daily", isChecked: false },
+              { id: 2, value: "Weekly", isChecked: false },
+              { id: 3, value: "Monthly", isChecked: false },
+              { id: 4, value: "Yearly", isChecked: false }
+            ], 
         }
     }
 
@@ -242,6 +250,18 @@ class Social extends React.Component {
                 activeTab : tab
             })
         }
+    }
+
+    handleOneChecked = (evt) => {
+      // eslint-disable-next-line prefer-const
+      let { checkInfo } = this.state;
+      checkInfo.forEach(item => {
+        if (item.value === evt.target.value){
+          // eslint-disable-next-line no-param-reassign
+          item.isChecked = evt.target.checked;
+        }
+      });
+      this.setState({ checkInfo });
     }
 
     generateData = (count, yrange) => {
@@ -328,13 +348,13 @@ class Social extends React.Component {
                         <Card>
                             <CardBody>
                             <Form className="check-box-wrap multi">
-                                <div className="tbl-vertical-heading">
+                              <div className="tbl-vertical-heading">
                                 <table>
                                     <tbody>
                                     <tr>
                                         {/* vertical유형의 테이블 th 값은 인라인 스타일로 지정 바랍니다. */}
                                         <th style={{ width:'15%' }}>Period</th>
-                                        <td style={{ width:'85%' }} colSpan="3">
+                                        <td style={{ width:'35%' }}>
                                         <div className="date-picker-wrap">
                                             <DatePicker className="form-control"  
                                             locale={ko}
@@ -359,36 +379,57 @@ class Social extends React.Component {
                                             /> 
                                         </div>
                                         </td>
+                                        <th style={{ width:'15%' }}>Period Unit</th>
+                                        <td  style={{ width:'35%' }}>
+                                        {statesItems.checkInfo.map(items => {
+                                            return(
+                                              <FormGroup check inline className='check-box lookup-area' key={items.id}>
+                                                <Input 
+                                                id={items.id}
+                                                key={items.id}
+                                                onChange={this.handleOneChecked}
+                                                checked={items.isChecked}
+                                                type="checkbox"
+                                                value={items.value}
+                                                className='check-single-box'
+                                                />{' '}
+                                                <label htmlFor={items.id} className='bx_check_oran'>
+                                                  <span>{items.value}</span>
+                                                </label>
+                                              </FormGroup>
+                                            )
+                                          })}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th style={{ width:'15%' }}>Channel</th>
-                                        <td style={{ width:'85%' }}>
+                                        <td style={{ width:'85%' }} colSpan="3">
                                         <ChannelButton />                             
                                         </td>
                                     </tr>
                                     <tr>
                                         <th style={{ width:'15%' }}>Keywords</th>
-                                        <td style={{ width:'85%' }}>
-                                        <Formik
-                                            initialValues={{
-                                            keyword: '',
-                                            }}
-                                            // onSubmit={onSubmit}
-                                        >
-                                        {({ errors, touched }) => (
-                                            <FormGroup className="keyword-area">
-                                            <Field
-                                                className="form-control"
-                                                name="keyword"
-                                                validate={validateKeyword}
-                                            />
-                                            {errors.keyword && touched.keyword && (
-                                                <div className="d-block noti-text">
-                                                {errors.keyword}
-                                                </div>
+                                        <td style={{ width:'85%' }} colSpan="3">
+                                          <Formik
+                                              initialValues={{
+                                              keyword: '',
+                                              }}
+                                              // onSubmit={onSubmit}
+                                          >
+                                            {({ errors, touched }) => (
+                                                <FormGroup className="keyword-area">
+                                                <Field
+                                                    className="form-control"
+                                                    name="keyword"
+                                                    validate={validateKeyword}
+                                                />
+                                                {errors.keyword && touched.keyword && (
+                                                    <div className="d-block noti-text">
+                                                    {errors.keyword}
+                                                    </div>
+                                                )}
+                                                </FormGroup>
                                             )}
-                                            </FormGroup>
-                                        )}
                                         </Formik>
                                         </td>
                                     </tr>
