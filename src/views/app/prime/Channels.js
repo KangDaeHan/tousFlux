@@ -8,7 +8,6 @@ import TableRowspan from '../../../components/applications/TableRowspan';
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import ChannelButton from '../../../components/applications/ChannelButton'
-// import ChannelTable from '../../../components/applications/ChannelTable'
 import { TableRowData } from '../trend/data';
 
 class Channels extends React.Component {
@@ -182,6 +181,7 @@ class Channels extends React.Component {
                                 tData={Object.assign([],statesItems.tData)} 
                                 tColumns={columns}
                             />
+                            <p className='cont-noti'>* 각 수치는 기간 내 일평균 값을 의미</p>
                         </CardBody>
                     </Card>
                     </Colxx>

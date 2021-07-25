@@ -300,24 +300,16 @@ class Social extends React.Component {
             accessor: 'naverBlog',
           },
           {
-            Header: 'Naver Blog',
+            Header: 'instagram',
             accessor: 'instagram',
           },
           {
-            Header: 'Naver Blog',
+            Header: 'facebook',
             accessor: 'facebook',
           },
           {
-            Header: 'Naver Blog',
+            Header: 'youtube',
             accessor: 'youtube',
-          },
-          {
-            Header: 'Naver Blog',
-            accessor: 'rankstatus',
-          },
-          {
-            Header: 'Naver Blog',
-            accessor: 'count',
           },
         ]
     
@@ -430,6 +422,7 @@ class Social extends React.Component {
                                       options={selectedOptionsBase}
                                     />
                                   </FormGroup>
+                                  <p className='cont-noti small'>단위: 건</p>
                                 </div>
                                 <div className='clearfix box-line'>
                                     <div className='box left'>
@@ -480,6 +473,7 @@ class Social extends React.Component {
                                     <h2>Social Keyword Chart - 독특하다</h2>
                                 </div>
                                   <div className='chart-cont'>
+                                      <p className='cont-noti small mt-5'>단위: 건</p>
                                       <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
                                   </div>
                               </div>      

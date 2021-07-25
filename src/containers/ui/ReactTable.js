@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-key */
@@ -34,13 +35,15 @@ export const ReactTable = ({columns,data}) => {
 
   // Render the UI for your table
   return (
-    <Table {...getTableProps()} className='tbl_basic'>
+    <Table {...getTableProps()} className='tbl_updown' bordered>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-            ))}
+            {headerGroup.headers.map((column) => {
+              return(
+                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              )
+            })}
           </tr>
         ))}
       </thead>
@@ -50,7 +53,20 @@ export const ReactTable = ({columns,data}) => {
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()} onClick={() => handleClick(cell)} onKeyDown={() => handleClick(cell)}>{cell.render("Cell")}</td>;
+                // console.log(row.cells, 'rowcell');
+                return (
+                  typeof cell.value === 'number'
+                    ? <td {...cell.getCellProps()} onClick={() => handleClick(cell)} onKeyDown={() => handleClick(cell)}>
+                         <span>{cell.value}</span>
+                       </td>
+                      : 
+                      <td
+                        className={`td_data ${cell.value[1] === 'up'  ?  'up'  : cell.value[1] === 'down' ? 'down'  : ''}`}
+                       {...cell.getCellProps()} onClick={() => handleClick(cell)} onKeyDown={() => handleClick(cell)}
+                      >
+                        <span>{cell.value[0]}</span> ( <span>{cell.value[1] === 'up'  ?  ' ▲'  : cell.value[1] === 'down' ? ' ▲'  : ''}</span> <span> {cell.value[2]} </span> ) 
+                      </td>                  
+                );
               })}
             </tr>
           );
@@ -60,8 +76,4 @@ export const ReactTable = ({columns,data}) => {
   );
 }
 
-
-// function Table() {
-//   return <Table columns={columns} data={data} />;
-// }
 

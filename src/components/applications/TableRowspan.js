@@ -9,7 +9,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-restricted-syntax */
 import React, { Component} from 'react';
-import Row from './Row';
+import RowTable from './Row';
 
 class TableRowspan extends Component {
   constructor(props, context) {
@@ -81,7 +81,7 @@ getDataModelled(){
     const stateItem = this.state;
     const propsItem = this.props;
     return (
-      <table className='ar-table mt-5'>
+      <table className='r-table mt-5 tbl_channel'>
           <thead className='ar-table-thead'>
           <tr className='ar-table-thead-row'>{propsItem.tColumns.map((tColumn, idx)=>
           <th className='ar-table-thead-header' key={idx}>{tColumn.header}</th>
@@ -90,10 +90,10 @@ getDataModelled(){
           </thead>
           <tbody>
           {stateItem.tableNewData.map((rData, idx) =>
-            <Row rData={rData} key={idx}/>
+            <RowTable rData={rData} key={idx}/>
           )}
           </tbody>
-        </table>
+      </table>
     );
   }
 }

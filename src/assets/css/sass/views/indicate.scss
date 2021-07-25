@@ -61,6 +61,10 @@
     font-size: 18px;
     color: #bbb;
     text-align: right;
+    &.small{
+        margin: 0 60px 0 0;
+        font-size: 15px;
+    }
 }
 
 .graph-area{
@@ -364,6 +368,46 @@
             &.right{
                 width: 45%;
             }
+        }
+    }
+}
+
+.tbl_updown{
+    text-align: center;
+    tr{
+        th{
+            text-align: center;
+            font-family: 'noto', sans-serif;
+        }
+        .td_data{
+
+            &:hover{
+                background: #fbe5d6;
+                cursor: pointer;
+            }
+
+            &.up{
+                color: #ff0000;
+            }
+            &.down{
+                color: #0070c0;
+            }
+        }
+    }
+}
+
+.tbl_channel{
+    text-align: center;
+
+    tr{
+        th{
+            text-align: center;
+            font-family: 'noto', sans-serif;
+        }
+        td{
+            font-size: 14px;
+            border-right: 1px solid #f3f3f3;
+            border-bo5tom: 1px solid #f3f3f3;
         }
     }
 }
