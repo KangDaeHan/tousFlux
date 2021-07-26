@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
+import { TableHeatMapData } from '../../views/app/trend/data';
 import { heatMapGraphData } from './config'
+import TableRowspan from '../applications/TableRowspan';
 
 const HeatMapChart = ({options, series, height}) => {
       return (
@@ -12,31 +14,32 @@ class HeatMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tData: TableHeatMapData
     }
   }
   
   render() {
+    const stateItem = this.state;
+    const columns=
+        [
+            {
+                header:'Channel Category',
+                // sort:'true'
+            },
+            {
+                header:'Channel',
+                // sort:'true'
+            },
+        ]
+
+
     return (
       <>
-         <table className='heatmap_wrap_table'>
-           <thead>
-             <tr>
-               <th>test1</th>
-               <th>test2</th>
-             </tr>
-           </thead>
-           <tbody>
-               {heatMapGraphData.series.map((item, idx) => {
-                 return(
-                   // eslint-disable-next-line react/no-array-index-key
-                   <tr key={idx}>
-                     <td>search Volume</td>
-                     <td>{item.name}</td>       
-                   </tr>       
-                 )                                                    
-               })}
-           </tbody>
-         </table>
+         <TableRowspan 
+            tClass='heatmap_wrap_table r-table'
+            tData={Object.assign([],stateItem.tData)} 
+            tColumns={columns}
+          />
          <HeatMapChart className='heatmap_cont' options={heatMapGraphData.options} series={heatMapGraphData.series} height={heatMapGraphData.height} />
        </>
     );

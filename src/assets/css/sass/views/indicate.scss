@@ -328,23 +328,28 @@
 
 .graph-area {
     &.Heat-Map{
-        padding-left: 224px;
+        padding-left: 276px;
         
         .heatmap_wrap_table{
             position: absolute;
-            width: 246px;
+            width: 298px;
             top: 0;
             left: 0;
             border-bottom: none;
+            text-align: center;
 
             th{
                 width: 50%;
                 padding: 10px 15px;
+                text-align: center;
             }
             td{
                 height: 54.0437px;
                 border-left: 1px solid #ddd;
                 border-bottom: 1px solid #ddd;
+                padding-top: 0;
+                padding-bottom: 0;
+                font-size: 14px;
             }
         }
     }

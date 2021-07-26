@@ -386,7 +386,7 @@ class Overview extends React.Component {
                                                         <div className='box-title'>
                                                             <h2>Heat Map</h2>
                                                         </div>
-                                                        <div className='graph-area Heat-Map'>
+                                                        <div className='graph-area Heat-Map mt-5'>
                                                           <HeatMap />
                                                         </div>
                                                     </CardBody>
