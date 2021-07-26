@@ -275,9 +275,10 @@ class Response extends React.Component {
                   </div>
                   <div className='graph-area total-area title-type box-right'>
                     <p className='tit'>Total</p>
-                    <div className="channel_cont active">
+                    <div className="channel_cont">
                       <ul className="list_tag">
-                        <li>Naver_News <Button close /></li>
+                        {/* 활성화 클래스 active */}
+                        <li className="active">Naver_News <Button close /></li> 
                       </ul>
                     </div>
                     <p className='tit'>Social</p>

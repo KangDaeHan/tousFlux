@@ -1278,25 +1278,20 @@ table {
           min-width: auto;
           margin: 0 10px 10px 0;
           border-color: #bbb;
-        }
-      }
+          cursor: pointer;
 
-      &.active {
-        .list_tag {
-          li {
+          &.active , &:hover {
             background-color: #f9a21b;
             border-color: #f9a21b;
             color: #fff;
-
+  
             .close {
-              font-size: 15px;
               color: #fff;
               opacity: 1;
             }
           }
         }
       }
-
     }
   }
   
