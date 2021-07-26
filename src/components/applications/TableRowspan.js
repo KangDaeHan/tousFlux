@@ -80,8 +80,9 @@ getDataModelled(){
   render() {
     const stateItem = this.state;
     const propsItem = this.props;
+    console.log(propsItem);
     return (
-      <table className='r-table mt-5 tbl_channel'>
+      <table className={propsItem.tClass}>
           <thead className='ar-table-thead'>
           <tr className='ar-table-thead-row'>{propsItem.tColumns.map((tColumn, idx)=>
           <th className='ar-table-thead-header' key={idx}>{tColumn.header}</th>

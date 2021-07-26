@@ -178,6 +178,7 @@ class Channels extends React.Component {
                             </div>
                             {/* <ChannelTable /> */}
                             <TableRowspan 
+                                tClass='r-table mt-5 tbl_channel'
                                 tData={Object.assign([],statesItems.tData)} 
                                 tColumns={columns}
                             />

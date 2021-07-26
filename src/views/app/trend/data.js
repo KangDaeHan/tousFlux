@@ -252,13 +252,6 @@ export const TableRowData = [
   {
     channelCategory: 'Social',
     channel: 'instgram',
-    post : 496,
-    comment : 38, 
-    view : 456, 
-    like : 12,
-    press : '-',
-    positiveRate : 1,
-    negativeRate : '-'
   },
   {
     channelCategory: 'Social',
@@ -303,6 +296,41 @@ export const TableRowData = [
     press : '-',
     positiveRate : 7,
     negativeRate : 3
+  },
+]
+
+export const TableHeatMapData = [
+  {
+    channelCategory: 'Search Volume',
+    channel: 'Naver',
+  },
+  {
+    channelCategory: 'Social',
+    channel: 'Naver News',
+  },
+  {
+    channelCategory: 'Social',
+    channel: 'Naver blog',
+  },
+  {
+    channelCategory: 'Social',
+    channel: 'instgram',
+  },
+  {
+    channelCategory: 'Social',
+    channel: 'facebook',
+  },
+  {
+    channelCategory: 'Social',
+    channel: 'youtube',
+  },
+  {
+    channelCategory: 'Shopping',
+    channel: 'Naver Shopping',
+  },
+  {
+    channelCategory: 'E-Commerce',
+    channel: 'Coupang',
   },
 ]
 
