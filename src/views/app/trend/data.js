@@ -251,10 +251,6 @@ export const TableRowData = [
   },
   {
     channelCategory: 'Social',
-    channel: 'instgram',
-  },
-  {
-    channelCategory: 'Social',
     channel: 'facebook',
     post : 496,
     comment : 38, 
