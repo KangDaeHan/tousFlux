@@ -206,7 +206,7 @@ class Response extends React.Component {
                                   id={items.id}
                                   key={items.id}
                                   onChange={this.handleOneChecked}
-                                  checked={items.isChecked}
+                                  defaultChecked={items.isChecked}
                                   type="checkbox"
                                   value={items.value}
                                   className='check-single-box'
