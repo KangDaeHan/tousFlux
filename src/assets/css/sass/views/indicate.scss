@@ -230,7 +230,6 @@
 }
 
 .tbl-indicator{
-
     thead{
         th{
             text-align: center;
@@ -413,6 +412,41 @@
             font-size: 14px;
             border-right: 1px solid #f3f3f3;
             border-bo5tom: 1px solid #f3f3f3;
+        }
+    }
+}
+
+.ReactTags__selected{
+
+    .ReactTags__tag{
+        display: inline-block;
+        float: left;
+        padding: 0.5rem 0.7rem;
+        margin-right: 5px;
+        border: 1px solid #bbb;
+        border-radius: 20px;
+        color: #555;
+        vertical-align: middle;
+        .ReactTags__remove{
+            margin-left: 10px;
+            background: transparent;
+            border: none;
+        }
+
+        + .ReactTags__tag{
+            margin: 0 5px;
+        }
+    }  
+
+    .ReactTags__tagInput{
+        .ReactTags__tagInputField{
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d7d7d7;
+
+            &[name~="hide"]{
+                display: none;
+            }
         }
     }
 }

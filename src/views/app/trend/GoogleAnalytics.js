@@ -227,6 +227,10 @@ class GoogleAnalytics extends React.Component {
             name: "Source4",
             data: [0.77, 0.8, 0.55, 0.22, 0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.74, 0.45]
           },
+          {
+            name: "Source4",
+            data: [0.77, 0.8, 0.55, 0.22, 0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.74, 0.45]
+          },
         ],
           height: 350,
           options: {
@@ -350,8 +354,7 @@ class GoogleAnalytics extends React.Component {
   }
 
   handleOneChecked = (evt) => {
-    // eslint-disable-next-line prefer-const
-    let { checkInfo } = this.state;
+    const { checkInfo } = this.state;
     checkInfo.forEach(item => {
       if (item.value === evt.target.value){
         // eslint-disable-next-line no-param-reassign
@@ -973,7 +976,7 @@ class GoogleAnalytics extends React.Component {
                                   id={items.id}
                                   key={items.id}
                                   onChange={this.handleOneChecked}
-                                  checked={items.isChecked}
+                                  defaultChecked={items.isChecked}
                                   type="checkbox"
                                   value={items.value}
                                   className='check-single-box'
