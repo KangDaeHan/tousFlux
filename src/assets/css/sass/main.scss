@@ -1297,6 +1297,30 @@ table {
   
 }
 
+.tbl-no-page {
+  .table {
+   + div {
+     display: none;
+   }
+   tr {
+     cursor: default !important;
+
+     td {
+       border-left: 1px solid #f3f3f3;
+
+       &:first-child {
+         border-left: 0;
+       }
+     }
+   }
+  }
+}
+
+.tootip-box {
+  padding: 5px 10px;
+}
+
+
 @media (max-width: 1906px) { 
   .navbar {
     min-width: 100%;

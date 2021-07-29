@@ -9,6 +9,7 @@
 /* eslint react/no-array-index-key: "off" */
 /* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
+import ReactApexChart from "react-apexcharts";
 import { Row, Card, CardBody, Form, Button, FormGroup, Input, Nav, NavLink, NavItem, TabContent, TabPane, } from 'reactstrap';
 import classnames from 'classnames';
 import { Formik, Field } from 'formik';
@@ -17,9 +18,12 @@ import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import {ReactTable} from '../../../containers/ui/ReactTableCards';
+import ChannelButton from '../../../components/applications/ChannelButton'
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
 import CompareBar from '../../../components/charts/CompareBar';
 import CompareLine from '../../../components/charts/CompareLine';
+// import {ReactTable} from '../../../containers/ui/ReactTable';
+import { TableData } from './tableData';
 import 'react-datepicker/dist/react-datepicker.css';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -30,94 +34,124 @@ class Needspatterns extends React.Component {
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
-      checkInfo: [
-        { id: 1, value: "7days", isChecked: false },
-        { id: 2, value: "15days", isChecked: false },
-        { id: 3, value: "30days", isChecked: false },
-        { id: 4, value: "45days", isChecked: false },
-        { id: 5, value: "60days", isChecked: false },
-        { id: 6, value: "90days", isChecked: false },
-      ],
-      totalGraph : {
+      treemap : {
         series: [
           {
-            name: "Users",
-            data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
-          },
-          {
-            name: "Sessions",
-            data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
-          },
+            data: [
+              {
+                x: 'Group1',
+                y: 35.8
+              },
+              {
+                x: 'Group2',
+                y: 25.8
+              },
+              {
+                x: 'Group3',
+                y: 10.9
+              },
+              {
+                x: 'Group4',
+                y: 25
+              },
+              {
+                x: 'Group5',
+                y: 5
+              },
+              {
+                x: 'Group6',
+                y: 25
+              },
+              {
+                x: 'Group7',
+                y: 8
+              },
+              {
+                x: 'Group8',
+                y: 13
+              },
+              {
+                x: 'Group9',
+                y: 23
+              },
+              {
+                x: 'Group10',
+                y: 15
+              },
+            ]
+          }
         ],
-          height: 503,
-          options: {
-            chart: {
-              type: 'line',
-              dropShadow: {
-                enabled: false,
-                color: '#000',
-                top: 18,
-                left: 7,
-                blur: 10,
-                opacity: 0.2,
-              },
-              toolbar: {
-                show: false
-              }, 
-              zoom: {
-                enabled: false,
-              }
-            },
-            legend: {
-              position: 'top',
-              horizontalAlign: 'left',
-            },
-            colors: ['#404141','#ed7d31'],
-            dataLabels: {
-              enabled: true,
-              background: {
-                foreColor: '#000',
-                padding: 0,
-                borderRadius: 0,
-                borderColor: 'transparent',
-              },
-              style: {
-                fontSize: '14px',
-                fontFamily: 'Helvetica, Arial, sans-serif',
-                fontWeight: 'bold',
-                colors: ['transparent'],
-              },
-              offsetY: -10,
-            },
-            markers: {
-              size: 5,
-              hover: {
-                size: 5,
-                sizeOffset: 5,
-                fillColor: '#000',
-              },
-              discrete: [{
-                fillColor: '#e3e3e3',
-                strokeColor: '#fff',
-                size: 5
-              }]
-            },
-            stroke: {
-              curve: 'smooth'
-            },
-            grid: {
-              show: false,
-            },
-            xaxis: {
-              categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
-              tickPlacement: 'between'
-            },
-            yaxis: {
+        height: 400,
+        options: {
+          chart: {
+            type: 'treemap',
+            toolbar: {
               show: false
             }, 
+            zoom: {
+              enabled: false,
+            }
           },
-        },
+          legend: {
+            show: false,
+          },
+          colors: [
+            '#58a3b2',
+            '#f8c360',
+            '#b9decf',
+            '#ef597c',
+            '#d4ddc1',
+            '#da5ca6',
+            '#40759d',
+            '#caf77d',
+            '#5e355f',
+            '#f17c55',
+          ],
+          dataLabels: {
+            enabled: true,
+            style: {
+              fontSize: '14px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 'bold',
+              colors: ['#fff'],
+            },
+            formatter: (text, op) => {
+              return [text, op.value + '%']
+            },
+            offsetY: -4
+          },
+          plotOptions: {
+            treemap: {
+              distributed: true,
+              enableShades: false
+            }
+          },
+          tooltip: {
+            custom: ({ series, seriesIndex, dataPointIndex, w }) => {
+              // console.log(w.globals.categoryLabels[dataPointIndex]);
+              // w.config.series[seriesIndex]
+              return (
+                "<div class='tootip-box'>" +
+                w.globals.categoryLabels[dataPointIndex] +
+                ": " +
+                series[seriesIndex][dataPointIndex] +"%" +
+                "</div>"
+              );
+            }
+          },
+          noData: {
+            text: '데이터 없음',
+            align: 'center',
+            verticalAlign: 'middle',
+            offsetX: 0,
+            offsetY: 0,
+            style: {
+              fontSize: '16px',
+            }
+          },
 
+        },
+      },
     };
   }
 
@@ -140,21 +174,23 @@ class Needspatterns extends React.Component {
     } 
     return error;
   }
-
-  handleOneChecked = (evt) => {
-    const { checkInfo } = this.state;
-    checkInfo.forEach(item => {
-      if (item.value === evt.target.value){
-        // eslint-disable-next-line no-param-reassign
-        item.isChecked = evt.target.checked;
-      }
-    });
-    this.setState({ checkInfo });
-  }
   
   render() {
     const statesItems = this.state;
-
+    const columns = [
+      {
+        Header: 'Channel Category',
+        accessor: 'category',
+        cellClass: 'text-center',
+        disableSortBy: true
+      },
+      {
+        Header: 'Needs Keywords',
+        accessor: 'keywords',
+        cellClass: 'text-center',
+        disableSortBy: true
+      },
+    ]
 
     return (
       <>
@@ -167,80 +203,64 @@ class Needspatterns extends React.Component {
                     <table>
                       <tbody>
                         <tr>
-                          <th style={{ width:'15%' }}>Period</th>
-                          <td style={{ width:'85%' }}>
-                            <div className="date-picker-wrap">
+                          {/* vertical유형의 테이블 th 값은 인라인 스타일로 지정 바랍니다. */}
+                          <th style={{ width:'10%' }}>Period</th>
+                          <td style={{ width:'90%' }}>
+                          <div className="date-picker-wrap">
                               <DatePicker className="form-control"  
-                                locale={ko}
-                                dateFormat="yyyy.MM.dd"
-                                selected={statesItems.startDate} 
-                                selectsStart
-                                startDate={statesItems.startDate}
-                                endDate={statesItems.endDate}
-                                onChange={this.ChangeStartDate}  
-                                placeholderText="Select Time" 
+                              locale={ko}
+                              dateFormat="yyyy.MM.dd"
+                              selected={statesItems.startDate} 
+                              selectsStart
+                              startDate={statesItems.startDate}
+                              endDate={statesItems.endDate}
+                              onChange={this.ChangeStartDate}  
+                              placeholderText="Select Time" 
                               /> 
                               <span className="cal-range"> ~ </span>
                               <DatePicker className="form-control"  
-                                locale={ko}
-                                dateFormat="yyyy.MM.dd"
-                                selected={statesItems.endDate}
-                                selectsEnd
-                                startDate={statesItems.startDate}
-                                endDate={statesItems.endDate}
-                                onChange={this.ChangeEndDate}  
-                                placeholderText="Select Time" 
+                              locale={ko}
+                              dateFormat="yyyy.MM.dd"
+                              selected={statesItems.endDate}
+                              selectsEnd
+                              startDate={statesItems.startDate}
+                              endDate={statesItems.endDate}
+                              onChange={this.ChangeEndDate}  
+                              placeholderText="Select Time" 
                               /> 
-                            </div>
+                          </div>
                           </td>
                         </tr>
                         <tr>
-                          <th style={{ width:'15%' }}>Response Limit</th>
-                          <td style={{ width:'85%' }}>
-                            {statesItems.checkInfo.map(items => {
-                              return(
-                                <FormGroup check inline className='check-box lookup-area' key={items.id}>
-                                  <Input 
-                                  id={items.id}
-                                  key={items.id}
-                                  onChange={this.handleOneChecked}
-                                  checked={items.isChecked}
-                                  type="checkbox"
-                                  value={items.value}
-                                  className='check-single-box'
-                                  />{' '}
-                                  <label htmlFor={items.id} className='bx_check_oran'>
-                                    <span>{items.value}</span>
-                                  </label>
-                                </FormGroup>
-                              )
-                            })}
+                          <th style={{ width:'10%' }}>Channel</th>
+                          <td style={{ width:'90%' }}>
+                          <ChannelButton />                             
                           </td>
                         </tr>
                         <tr>
-                          <th style={{ width:'15%' }}>Keywords</th>
-                          <td style={{ width:'85%' }}>
+                          <th style={{ width:'10%' }}>Keywords</th>
+                          <td style={{ width:'90%' }}>
                             <Formik
-                              initialValues={{
+                                initialValues={{
                                 keyword: '',
-                              }}
-                              // onSubmit={onSubmit}
+                                }}
+                                // onSubmit={onSubmit}
                             >
-                            {({ errors, touched }) => (
-                              <FormGroup className="keyword-area">
-                                <Field
-                                  className="form-control"
-                                  name="keyword"
-                                  validate={this.validateKeyword}
-                                />
-                                {errors.keyword && touched.keyword && (
-                                  <div className="d-block noti-text">
-                                    {errors.keyword}
-                                  </div>
-                                )}
-                              </FormGroup>
-                            )}
-                            </Formik>
+                              {({ errors, touched }) => (
+                                  <FormGroup className="keyword-area">
+                                  <Field
+                                      className="form-control"
+                                      name="keyword"
+                                      validate={this.validateKeyword}
+                                  />
+                                  {errors.keyword && touched.keyword && (
+                                      <div className="d-block noti-text">
+                                      {errors.keyword}
+                                      </div>
+                                  )}
+                                  </FormGroup>
+                              )}
+                          </Formik>
                           </td>
                         </tr>
                       </tbody>
@@ -263,7 +283,36 @@ class Needspatterns extends React.Component {
             <Card>
               <CardBody>
                 <div className="box-title">
-                  <h2>Trend Response</h2>
+                  <h2>Needs Pattern Map</h2>
+                </div>
+
+                <div className="box-area">
+                  <div className="box-left">
+                    <ReactApexChart options={statesItems.treemap.options} series={statesItems.treemap.series} type="treemap" height={400} />
+                  </div>
+                  <div className="box-right">
+                    <ReactApexChart options={statesItems.treemap.options} series={statesItems.treemap.series} type="treemap" height={400} />
+                  </div>
+                </div>
+                <div className="box-area tbl-no-page">
+                  <div className="box-left">
+                    <ReactTable
+                      className='table'
+                      data={TableData}
+                      columns={columns}
+                      defaultPageSize={10}
+                      sortable={false}
+                    />
+                  </div>
+                  <div className="box-right">
+                    <ReactTable
+                      className='table'
+                      data={TableData}
+                      columns={columns}
+                      defaultPageSize={10}
+                      sortable={false}
+                    />
+                  </div>
                 </div>
               </CardBody>
             </Card>
