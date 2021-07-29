@@ -1057,3 +1057,51 @@ export const gapChartGraph = {
     }
   },
 }
+
+
+
+export const fullStackBarGraph = {
+  series: [
+  {
+    name: 'Marine Sprite',
+    data: [44, 55, 41, 37, 22, 43, 21]
+  }, 
+  {
+    name: 'Striking Calf',
+    data: [53, 32, 33, 52, 13, 43, 32]
+  }, 
+  {
+    name: 'Tank Picture',
+    data: [12, 17, 11, 9, 15, 11, 20]
+  }, 
+  ],
+  height: 350,
+  options: {
+    chart: {
+      stacked: true,
+      stackType: '100%',
+      toolbar: {
+        show: false,
+      },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    stroke: {
+      width: 1,
+      colors: ['#fff']
+    },
+    xaxis: {
+      categories: ['세컨스킨','쥬시쥬디','에잇세컨즈'],
+    },
+    fill: {
+      opacity: 1
+    },
+    legend: {
+      position: 'bottom',
+      horizontalAlign: 'center',
+    }
+  },
+}

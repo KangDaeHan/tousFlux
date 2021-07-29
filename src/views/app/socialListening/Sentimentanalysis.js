@@ -17,27 +17,17 @@ import {
   Button,
   FormGroup,
   Input,
-  Nav,
-  NavLink,
-  NavItem,
-  TabContent,
-  TabPane,
 } from "reactstrap";
-import classnames from "classnames";
 import { Formik, Field } from "formik";
-import Select from "react-select";
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from "../../../components/common/CustomBootstrap";
 import ChannelButton from '../../../components/applications/ChannelButton'
 import TagInput from '../../../components/applications/TagInput'
-import { ReactTable } from "../../../containers/ui/ReactTableCards";
-import CustomSelectInput from "../../../components/common/CustomSelectInput";
-import CompareBar from "../../../components/charts/CompareBar";
-import CompareLine from "../../../components/charts/CompareLine";
+import { fullStackBarGraph } from '../../../components/charts/config'
+import FullStackBar from '../../../components/charts/FullStackBar';
 import "react-datepicker/dist/react-datepicker.css";
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Sentimentanalysis extends React.Component {
   constructor(props) {
     super(props); // React.Component의 생성자 메소드를 먼저 실행
@@ -316,6 +306,9 @@ class Sentimentanalysis extends React.Component {
               <CardBody>
                 <div className="box-title">
                   <h2>Sentiment Analysis(P/N)</h2>
+                </div>
+                <div className='graph-area'>
+                  <FullStackBar options={fullStackBarGraph.options} series={fullStackBarGraph.series} height={fullStackBarGraph.height} />
                 </div>
               </CardBody>
             </Card>
