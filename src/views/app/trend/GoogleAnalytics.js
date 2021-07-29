@@ -354,8 +354,7 @@ class GoogleAnalytics extends React.Component {
   }
 
   handleOneChecked = (evt) => {
-    // eslint-disable-next-line prefer-const
-    let { checkInfo } = this.state;
+    const { checkInfo } = this.state;
     checkInfo.forEach(item => {
       if (item.value === evt.target.value){
         // eslint-disable-next-line no-param-reassign

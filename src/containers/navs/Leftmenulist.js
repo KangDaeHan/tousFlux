@@ -30,7 +30,7 @@ export const LeftTrend = ({match}) => {
 export const LeftSocial = ({match}) => {
   return (
     <>
-      <MenuItem><NavLink to="#" activeClassName="">SENTIMENT ANALYSIS</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/socialListening/sentimentanalysis" activeClassName="active">SENTIMENT ANALYSIS</NavLink></MenuItem>
       <MenuItem><NavLink to="/app/socialListening/needspatterns" activeClassName="active">NEEDS PATTERNS</NavLink></MenuItem>
     </>
   )
