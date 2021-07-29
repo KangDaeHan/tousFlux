@@ -81,7 +81,7 @@ class Needspatterns extends React.Component {
             ]
           }
         ],
-        height: 400,
+        height: 540,
         options: {
           chart: {
             type: 'treemap',
@@ -152,6 +152,8 @@ class Needspatterns extends React.Component {
 
         },
       },
+
+      selectedOptions: null,
     };
   }
 
@@ -174,9 +176,17 @@ class Needspatterns extends React.Component {
     } 
     return error;
   }
+
+  changeOption = (...args) => {
+    this.setState({
+      selectedOptions: [args[0]]
+    });
+  }
   
   render() {
     const statesItems = this.state;
+    const { channelOptionSelected } = this.state;
+
     const columns = [
       {
         Header: 'Channel Category',
@@ -190,6 +200,11 @@ class Needspatterns extends React.Component {
         cellClass: 'text-center',
         disableSortBy: true
       },
+    ]
+
+    const channelOption = [
+      { label: 'Naver Blog', value: 'naverblog', key: 0 },
+      { label: 'Coupang', value: 'Coupang', key: 1 },
     ]
 
     return (
@@ -286,12 +301,27 @@ class Needspatterns extends React.Component {
                   <h2>Needs Pattern Map</h2>
                 </div>
 
-                <div className="box-area">
+                <div className="box-area pattern-map-area">
                   <div className="box-left">
-                    <ReactApexChart options={statesItems.treemap.options} series={statesItems.treemap.series} type="treemap" height={400} />
+                    <div className="pattern-tit"><span>Total</span></div>
+                    <ReactApexChart options={statesItems.treemap.options} series={statesItems.treemap.series} type="treemap" height={540} className="chart-box" />
                   </div>
                   <div className="box-right">
-                    <ReactApexChart options={statesItems.treemap.options} series={statesItems.treemap.series} type="treemap" height={400} />
+                    <div className="comparison-select-area pattern-tit">
+                      <span className="">Channel</span>
+                      <FormGroup className="select-box">
+                        <Select
+                          components={{ Input: CustomSelectInput }}
+                          className="react-select"
+                          classNamePrefix="react-select"
+                          name="form-field-name"
+                          value={channelOptionSelected}
+                          onChange={this.changeOption}
+                          options={channelOption}
+                        />
+                      </FormGroup>
+                    </div>
+                    <ReactApexChart options={statesItems.treemap.options} series={statesItems.treemap.series} type="treemap" height={540} className="chart-box" />
                   </div>
                 </div>
                 <div className="box-area tbl-no-page">

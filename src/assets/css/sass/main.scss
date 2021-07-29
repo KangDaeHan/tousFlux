@@ -1320,6 +1320,28 @@ table {
   padding: 5px 10px;
 }
 
+.pattern-map-area {
+  .box-left, .box-right {
+    padding: 0;
+  }
+  .pattern-tit {
+    height: 54px;
+    padding: 0 15px;
+    border-bottom: 1px solid #d1d1d1;
+    background-color: #f1f1f1;
+
+    > span {
+      font-size: 20px;
+      color: #444;
+      line-height: 54px;
+    }
+  }
+}
+
+.chart-box {
+  padding: 10px 35px 30px 55px;
+}
+
 
 @media (max-width: 1906px) { 
   .navbar {
