@@ -76,7 +76,7 @@ class Ecommerce extends React.Component {
                             enabled: false,
                         }
                     },
-                    colors: ['#b9b9b9'],
+                    colors: ['#4774c5', '#3a3b3b', '#a1a1a1', '#ffc104', '#5597d3',],
                     dataLabels: {
                         enabled: true,
                         background: {
@@ -126,19 +126,36 @@ class Ecommerce extends React.Component {
                 },
             },
             brushGraph: {
-                series: [{
-                    name: "Desktops",
-                    data: [45, 52, 38, 45, 19, 33]
-                  }],
+                series: [
+                    {
+                        name: "Coupang",
+                        data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+                    },
+                    {
+                        name: "11st",
+                        data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+                    },
+                    {
+                        name: "G-market",
+                        data: [0.7, 0.1, 0.12, 0.5, 0.1, 0.22, 0.30, 0.8, 0.05, 0.11, 0.49, 0.49, 0.83, 0.43, 0.33, 0.99, 0.56, 0.91, 0.03, 0.18, 0.56, 0.39, 0.45, 0.88, 0.77, 0.13, 0.85, 0.24, 0.44, 0.18, 0.17]
+                    },
+                    {
+                        name: "Acuction",
+                        data: [0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.4, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24,0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.77]
+                    },
+                ],
                   height: 230,
                   options: {
                     chart: {
                       id: 'chart2',
                       toolbar: {
                         show: false
-                      }
+                      },
+                      zoom: {
+                        enabled: false,
+                        }, 
                     },
-                    colors: ['#546E7A'],
+                    colors: ['#3a3b3b','#404141','#ed7d31', '#ffc104'],
                     stroke: {
                       width: 3
                     },
@@ -151,25 +168,45 @@ class Ecommerce extends React.Component {
                     xaxis: {
                         categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
                     },
+                    legend: {
+                        show: false
+                    },
                   },
-                
-                  seriesLine: [{
-                    name: "Desktops",
-                    data: [45, 52, 38, 45, 19, 33]
-                  }],
+                  seriesLine: [
+                      {
+                          name: "Coupang",
+                          data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+                        },
+                        {
+                            name: "11st",
+                            data: [0.7, 0.1, 0.12, 0.5, 0.1, 0.22, 0.30, 0.8, 0.05, 0.11, 0.49, 0.49, 0.83, 0.43, 0.33, 0.99, 0.56, 0.91, 0.03, 0.18, 0.56, 0.39, 0.45, 0.88, 0.77, 0.13, 0.85, 0.24, 0.44, 0.18, 0.17]
+                        },
+                        {
+                            name: "G-market",
+                            data: [0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.4, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24,0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.77]
+                        },
+                        {
+                            name: "Acuction",
+                            data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+                        },
+                  ],
                   heightLine: 130,
                   optionsLine: {
                     chart: {
                       id: 'chart1',
                       brush:{
                         target: 'chart2',
-                        enabled: true
+                        enabled: true, 
+                        autoScaleYaxis: true
                       },
                       selection: {
                         enabled: true,
                       },
+                      zoom: {
+                            enabled: false,
+                        }
                     },
-                    colors: ['#008FFB'],
+                    colors: ['#3a3b3b','#404141','#ed7d31', '#ffc104'],
                     xaxis: {
                       tooltip: {
                         enabled: false
@@ -177,7 +214,14 @@ class Ecommerce extends React.Component {
                     },
                     yaxis: {
                       tickAmount: 2
-                    }
+                    }, 
+                    toolbar: {
+                        show: false
+                    },
+                    legend: {
+                        position: 'top',
+                        horizontalAlign: 'center', 
+                    },
                   },
             },
             checkInfo: [
@@ -405,8 +449,8 @@ class Ecommerce extends React.Component {
                                                             <div className='box-title'>
                                                                 <h2>Social Keyword Rank</h2>
                                                             </div>
-                                                            <div className='graph-area negative-chart'>
-                                                            <BrushChart options={statesItems.brushGraph.options} optionsLine={statesItems.brushGraph.optionsLine}  series={statesItems.brushGraph.series} seriesLine={statesItems.brushGraph.seriesLine} height={statesItems.brushGraph.height} heightLine={statesItems.brushGraph.heightLine} />
+                                                            <div className='graph-area brushGraph-chart'>
+                                                                <BrushChart options={statesItems.brushGraph.options} optionsLine={statesItems.brushGraph.optionsLine}  series={statesItems.brushGraph.series} seriesLine={statesItems.brushGraph.seriesLine} height={statesItems.brushGraph.height} heightLine={statesItems.brushGraph.heightLine} />
                                                             </div>
                                                         </CardBody>
                                                     </Card>
@@ -422,7 +466,7 @@ class Ecommerce extends React.Component {
                                                                 <h2>Heat Map</h2>
                                                             </div>
                                                             <div className='graph-area negative-chart'>
-                                                            <BrushChart options={statesItems.brushGraph.options} optionsLine={statesItems.brushGraph.optionsLine}  series={statesItems.brushGraph.series} seriesLine={statesItems.brushGraph.seriesLine} height={statesItems.brushGraph.height} heightLine={statesItems.brushGraph.heightLine} />
+                                                                <BrushChart options={statesItems.brushGraph.options} optionsLine={statesItems.brushGraph.optionsLine}  series={statesItems.brushGraph.series} seriesLine={statesItems.brushGraph.seriesLine} height={statesItems.brushGraph.height} heightLine={statesItems.brushGraph.heightLine} />
                                                             </div>
                                                         </CardBody>
                                                     </Card>

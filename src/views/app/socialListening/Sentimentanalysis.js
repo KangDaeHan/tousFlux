@@ -20,9 +20,11 @@ import {
 } from "reactstrap";
 import { Formik, Field } from "formik";
 import DatePicker from "react-datepicker";
+import Select from 'react-select';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from "../../../components/common/CustomBootstrap";
 import ChannelButton from '../../../components/applications/ChannelButton'
+import CustomSelectInput from '../../../components/common/CustomSelectInput';
 import TagInput from '../../../components/applications/TagInput'
 import { fullStackBarGraph } from '../../../components/charts/config'
 import FullStackBar from '../../../components/charts/FullStackBar';
@@ -41,6 +43,7 @@ class Sentimentanalysis extends React.Component {
         { id: 3, value: "Monthly", isChecked: false },
         { id: 4, value: "Yearly", isChecked: false }
       ],
+      selectedOptions: [],
       totalGraph: {
         series: [
           {
@@ -156,6 +159,12 @@ class Sentimentanalysis extends React.Component {
     return error;
   };
 
+  setSelectedOptions = (val) => {
+    this.setState({
+      selectedOptions: val
+    });
+  }
+
   handleOneChecked = (evt) => {
     const { checkInfo } = this.state;
     checkInfo.forEach((item) => {
@@ -176,6 +185,12 @@ class Sentimentanalysis extends React.Component {
       }
       return error;
     };
+
+    const selectedOptionsBase = [
+      { label: 'Total', value: 'social_val01', key: 0 },
+      { label: 'Naver_news', value: 'social_val02', key: 1 },
+      { label: 'Naver_blog', value: 'social_val03', key: 2 },
+    ];
 
     return (
       <>
@@ -309,6 +324,43 @@ class Sentimentanalysis extends React.Component {
                 </div>
                 <div className='graph-area'>
                   <FullStackBar options={fullStackBarGraph.options} series={fullStackBarGraph.series} height={fullStackBarGraph.height} />
+                </div>
+              </CardBody>
+            </Card>
+          </Colxx>
+        </Row>
+        <Row className="mt-5">
+          <Colxx xxs="12">
+            <Card>
+              <CardBody>
+                <div className="box-title">
+                  <h2>Channel Sentiment Analysis</h2>
+                </div>
+                <div className='graph-area mt-5'>
+                  <div className='bx_select_area'>
+                    <span className='select-title'>Channel</span>
+                    <FormGroup className="select-box">
+                      <Select
+                        components={{ Input: CustomSelectInput }}
+                        className="react-select"
+                        classNamePrefix="react-select"
+                        name="form-field-name"
+                        value={statesItems.selectedOptions}
+                        onChange={(val) => this.setSelectedOptions(val)}
+                        options={selectedOptionsBase}
+                      />
+                    </FormGroup>
+                  </div>
+                  <div className='graph-area'>
+                    <div className='clearfix box-line'>
+                      <div className='box left'>
+                        test1
+                      </div>
+                      <div className='box right'>
+                        test2
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </CardBody>
             </Card>

@@ -450,3 +450,17 @@
         }
     }
 }
+
+
+.brushGraph-chart{
+    position: relative;
+    #chart-line{
+        position: relative;
+        top: 150px;
+    }
+    #chart-line2{
+        position: relative;
+        top: -220px;
+    }
+
+}
