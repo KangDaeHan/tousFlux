@@ -5,13 +5,12 @@ const BrushChart = ({options, optionsLine, series, seriesLine, height, heightLin
   return (
 
     <div id="wrapper">
-        <div id="chart-line2">
+        <div id="chart-line">
             <ReactApexChart options={options} series={series} type="line" height={height} />
         </div>
-        <div id="chart-line">
+        <div id="chart-line2">
             <ReactApexChart options={optionsLine} series={seriesLine} type="line" height={heightLine} />
         </div>
-        
     </div>
   );
 };
