@@ -34,7 +34,7 @@ import {
 import FullStackBar from "../../../components/charts/FullStackBar";
 import "react-datepicker/dist/react-datepicker.css";
 import CompareLine from "../../../components/charts/CompareLine";
-import { ReactTable } from "../../../containers/ui/ReactTable";
+import { ReactTableNor } from "../../../containers/ui/ReactTableNormal";
 import { TableSentimantData } from "../trend/data";
 
 class Sentimentanalysis extends React.Component {
@@ -407,7 +407,7 @@ class Sentimentanalysis extends React.Component {
                             />
                           </div>
                         </div>
-                        <ReactTable
+                        <ReactTableNor
                           data={TableSentimantData}
                           columns={columns}
                         /> 
@@ -427,7 +427,7 @@ class Sentimentanalysis extends React.Component {
                             />
                           </div>
                         </div>
-                        <ReactTable
+                        <ReactTableNor
                           data={TableSentimantData}
                           columns={columns}
                         /> 
