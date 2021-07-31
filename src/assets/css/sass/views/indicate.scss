@@ -88,7 +88,7 @@
         line-height: 60px;
     }
 
-    ul{
+    > ul{
         display: flex;
         padding: 0;
         margin-top: 20px;
@@ -452,15 +452,39 @@
 }
 
 
-.brushGraph-chart{
-    position: relative;
-    #chart-line{
-        position: relative;
-        top: 150px;
-    }
-    #chart-line2{
-        position: relative;
-        top: -220px;
-    }
+.recharts-legend-wrapper{
+    top: 0 !important;
+}
 
+.t-c{
+    text-align: center !important;
+}
+
+.sentiment_wrap{
+    .chart-area{
+        .chart-header{
+            display: block;
+            line-height: 50px;
+            .chart-title{
+                h4{
+                    color: #fff;
+                }
+            }
+            &.blue{
+                background-color: #0070c0;
+            }
+            &.red{
+                background-color: #f00000;
+            }   
+        }
+    } 
+    .tbl_basic{
+        text-align: center;
+        border-bottom: none;
+    }
+    .box-line{
+        .box{
+            width: 50% !important; 
+        }
+    }
 }
