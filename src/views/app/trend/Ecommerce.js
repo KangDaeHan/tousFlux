@@ -472,15 +472,6 @@ class Ecommerce extends React.Component {
                                                     </Card>
                                                 </Colxx>
                                             </Row>
-                                            <Row className='mt-5'>
-                                                <Colxx xxs="12">
-                                                    <Card>
-                                                        <CardBody>
-                                                            test
-                                                        </CardBody>
-                                                    </Card>
-                                                </Colxx>
-                                            </Row>
                                         </TabPane>
                                     </TabContent>
                                 </div>
