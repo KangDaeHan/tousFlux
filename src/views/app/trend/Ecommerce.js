@@ -450,7 +450,7 @@ class Ecommerce extends React.Component {
                                                                 <h2>Social Keyword Rank</h2>
                                                             </div>
                                                             <div className='graph-area brushGraph-chart'>
-                                                                <BrushChart options={statesItems.brushGraph.options} optionsLine={statesItems.brushGraph.optionsLine}  series={statesItems.brushGraph.series} seriesLine={statesItems.brushGraph.seriesLine} height={statesItems.brushGraph.height} heightLine={statesItems.brushGraph.heightLine} />
+                                                                <BrushChart />
                                                             </div>
                                                         </CardBody>
                                                     </Card>
@@ -466,7 +466,7 @@ class Ecommerce extends React.Component {
                                                                 <h2>Heat Map</h2>
                                                             </div>
                                                             <div className='graph-area negative-chart'>
-                                                                <BrushChart options={statesItems.brushGraph.options} optionsLine={statesItems.brushGraph.optionsLine}  series={statesItems.brushGraph.series} seriesLine={statesItems.brushGraph.seriesLine} height={statesItems.brushGraph.height} heightLine={statesItems.brushGraph.heightLine} />
+                                                                <BrushChart />
                                                             </div>
                                                         </CardBody>
                                                     </Card>

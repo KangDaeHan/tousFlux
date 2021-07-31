@@ -1060,22 +1060,24 @@ export const gapChartGraph = {
 
 
 
+
 export const fullStackBarGraph = {
   series: [
   {
-    name: 'Marine Sprite',
-    data: [44, 55, 41, 37, 22, 43, 21]
+    name: '긍정',
+    data: [44, 55, 41]
   }, 
   {
-    name: 'Striking Calf',
-    data: [53, 32, 33, 52, 13, 43, 32]
+    name: '중립',
+    data: [53, 32, 33]
   }, 
   {
-    name: 'Tank Picture',
-    data: [12, 17, 11, 9, 15, 11, 20]
+    name: '부정',
+    data: [15, 11, 20]
   }, 
   ],
   height: 350,
+  
   options: {
     chart: {
       stacked: true,
@@ -1084,6 +1086,7 @@ export const fullStackBarGraph = {
         show: false,
       },
     },
+    colors: ["#baeeff", "#f3f3f3", "#fac4c4"],
     plotOptions: {
       bar: {
         horizontal: true,
@@ -1102,6 +1105,180 @@ export const fullStackBarGraph = {
     legend: {
       position: 'bottom',
       horizontalAlign: 'center',
+    },
+    dataLabels: {
+      style: {
+        colors: ['#888']
+      }
+    }
+  },
+}
+
+export const positiveChartGraph = {
+  series: [
+    {
+      name: "에잇세컨즈",
+      data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+    },
+    {
+      name: "쥬시쥬디",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+    {
+      name: "세컨스킨",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+  ],
+  height: 330,
+  options: {
+    chart: {
+      type: 'line',
+      dropShadow: {
+        enabled: false,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2,
+      },
+      toolbar: {
+        show: false
+      }, 
+      zoom: {
+        enabled: false,
+      }
+    },
+    colors: ['#555', '#a9a9a9','#ee843b'],
+    dataLabels: {
+      enabled: true,
+      background: {
+        foreColor: '#000',
+        padding: 0,
+        borderRadius: 0,
+        borderColor: 'transparent',
+      },
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontWeight: 'bold',
+        colors: ['transparent'],
+      },
+      offsetY: -10,
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 5,
+        sizeOffset: 5,
+        fillColor: '#000',
+      },
+      discrete: [{
+        fillColor: '#e3e3e3',
+        strokeColor: '#fff',
+        size: 5
+      }]
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    grid: {
+      show: false,
+    },
+    xaxis: {
+      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      tickPlacement: 'between'
+    },
+    yaxis: {
+      show: false
+    }, 
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right', 
+    }
+  },
+}
+
+
+export const negativeChartGraph = {
+  series: [
+    {
+      name: "에잇세컨즈",
+      data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+    },
+    {
+      name: "쥬시쥬디",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+    {
+      name: "세컨스킨",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+  ],
+  height: 330,
+  options: {
+    chart: {
+      type: 'line',
+      dropShadow: {
+        enabled: false,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2,
+      },
+      toolbar: {
+        show: false
+      }, 
+      zoom: {
+        enabled: false,
+      }
+    },
+    colors: ['#555', '#a9a9a9','#ee843b'],
+    dataLabels: {
+      enabled: true,
+      background: {
+        foreColor: '#000',
+        padding: 0,
+        borderRadius: 0,
+        borderColor: 'transparent',
+      },
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontWeight: 'bold',
+        colors: ['transparent'],
+      },
+      offsetY: -10,
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 5,
+        sizeOffset: 5,
+        fillColor: '#000',
+      },
+      discrete: [{
+        fillColor: '#e3e3e3',
+        strokeColor: '#fff',
+        size: 5
+      }]
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    grid: {
+      show: false,
+    },
+    xaxis: {
+      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      tickPlacement: 'between'
+    },
+    yaxis: {
+      show: false
+    }, 
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right', 
     }
   },
 }

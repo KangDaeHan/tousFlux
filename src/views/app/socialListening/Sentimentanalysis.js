@@ -20,15 +20,22 @@ import {
 } from "reactstrap";
 import { Formik, Field } from "formik";
 import DatePicker from "react-datepicker";
-import Select from 'react-select';
+import Select from "react-select";
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from "../../../components/common/CustomBootstrap";
-import ChannelButton from '../../../components/applications/ChannelButton'
-import CustomSelectInput from '../../../components/common/CustomSelectInput';
-import TagInput from '../../../components/applications/TagInput'
-import { fullStackBarGraph } from '../../../components/charts/config'
-import FullStackBar from '../../../components/charts/FullStackBar';
+import ChannelButton from "../../../components/applications/ChannelButton";
+import CustomSelectInput from "../../../components/common/CustomSelectInput";
+import TagInput from "../../../components/applications/TagInput";
+import {
+  fullStackBarGraph,
+  positiveChartGraph,
+  negativeChartGraph,
+} from "../../../components/charts/config";
+import FullStackBar from "../../../components/charts/FullStackBar";
 import "react-datepicker/dist/react-datepicker.css";
+import CompareLine from "../../../components/charts/CompareLine";
+import { ReactTable } from "../../../containers/ui/ReactTable";
+import { TableSentimantData } from "../trend/data";
 
 class Sentimentanalysis extends React.Component {
   constructor(props) {
@@ -41,7 +48,7 @@ class Sentimentanalysis extends React.Component {
         { id: 1, value: "Daily", isChecked: false },
         { id: 2, value: "Weekly", isChecked: false },
         { id: 3, value: "Monthly", isChecked: false },
-        { id: 4, value: "Yearly", isChecked: false }
+        { id: 4, value: "Yearly", isChecked: false },
       ],
       selectedOptions: [],
       totalGraph: {
@@ -161,9 +168,9 @@ class Sentimentanalysis extends React.Component {
 
   setSelectedOptions = (val) => {
     this.setState({
-      selectedOptions: val
+      selectedOptions: val,
     });
-  }
+  };
 
   handleOneChecked = (evt) => {
     const { checkInfo } = this.state;
@@ -181,19 +188,47 @@ class Sentimentanalysis extends React.Component {
     const validateKeyword = (value) => {
       let error;
       if (!value) {
-        error = 'No Keywords';
+        error = "No Keywords";
       }
       return error;
     };
 
     const selectedOptionsBase = [
-      { label: 'Total', value: 'social_val01', key: 0 },
-      { label: 'Naver_news', value: 'social_val02', key: 1 },
-      { label: 'Naver_blog', value: 'social_val03', key: 2 },
+      { label: "Total", value: "social_val01", key: 0 },
+      { label: "Naver_news", value: "social_val02", key: 1 },
+      { label: "Naver_blog", value: "social_val03", key: 2 },
+    ];
+
+    const columns = [
+      {
+        Header: "Rank",
+        accessor: "id",
+        cellClass: "list-item-heading text-center w-10",
+      },
+      {
+        Header: "Naver News",
+        accessor: "title",
+        cellClass: "text-muted text-center w-60",
+      },
+      {
+        Header: "TF",
+        accessor: "TF",
+        cellClass: "text-muted text-center w-10",
+      },
+      {
+        Header: "DF",
+        accessor: "DF",
+        cellClass: "text-muted text-center w-10",
+      },
+      {
+        Header: "TF-IDF",
+        accessor: "TF-IDF",
+        cellClass: "text-muted text-center w-10",
+      },
     ];
 
     return (
-      <>
+      <div className='sentiment_wrap'>
         <Row>
           <Colxx xxs="12">
             <Card>
@@ -322,8 +357,12 @@ class Sentimentanalysis extends React.Component {
                 <div className="box-title">
                   <h2>Sentiment Analysis(P/N)</h2>
                 </div>
-                <div className='graph-area'>
-                  <FullStackBar options={fullStackBarGraph.options} series={fullStackBarGraph.series} height={fullStackBarGraph.height} />
+                <div className="graph-area">
+                  <FullStackBar
+                    options={fullStackBarGraph.options}
+                    series={fullStackBarGraph.series}
+                    height={fullStackBarGraph.height}
+                  />
                 </div>
               </CardBody>
             </Card>
@@ -336,9 +375,9 @@ class Sentimentanalysis extends React.Component {
                 <div className="box-title">
                   <h2>Channel Sentiment Analysis</h2>
                 </div>
-                <div className='graph-area mt-5'>
-                  <div className='bx_select_area'>
-                    <span className='select-title'>Channel</span>
+                <div className="graph-area mt-5">
+                  <div className="bx_select_area">
+                    <span className="select-title">Channel</span>
                     <FormGroup className="select-box">
                       <Select
                         components={{ Input: CustomSelectInput }}
@@ -351,13 +390,47 @@ class Sentimentanalysis extends React.Component {
                       />
                     </FormGroup>
                   </div>
-                  <div className='graph-area'>
-                    <div className='clearfix box-line'>
-                      <div className='box left'>
-                        test1
+                  <div className="graph-area">
+                    <div className="clearfix box-line">
+                      <div className="box left">
+                        <div className="chart-area">
+                          <div className="chart-header blue">
+                            <div className="chart-title t-c">
+                              <h4 className='t-c'>Positive</h4>
+                            </div>
+                          </div>
+                          <div className="chart-cont">
+                            <CompareLine
+                              options={positiveChartGraph.options}
+                              series={positiveChartGraph.series}
+                              height={330}
+                            />
+                          </div>
+                        </div>
+                        <ReactTable
+                          data={TableSentimantData}
+                          columns={columns}
+                        /> 
                       </div>
-                      <div className='box right'>
-                        test2
+                      <div className="box right">
+                        <div className="chart-area">
+                          <div className="chart-header red">
+                            <div className="chart-title t-c">
+                              <h4>Negative</h4>
+                            </div>
+                          </div>
+                          <div className="chart-cont">
+                            <CompareLine
+                              options={negativeChartGraph.options}
+                              series={negativeChartGraph.series}
+                              height={330}
+                            />
+                          </div>
+                        </div>
+                        <ReactTable
+                          data={TableSentimantData}
+                          columns={columns}
+                        /> 
                       </div>
                     </div>
                   </div>
@@ -367,7 +440,7 @@ class Sentimentanalysis extends React.Component {
           </Colxx>
         </Row>
         {/* e: GA Keyword Gap */}
-      </>
+      </div>
     );
   }
 }
