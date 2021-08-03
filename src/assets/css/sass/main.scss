@@ -1082,6 +1082,7 @@ table {
     min-width: 180px;
     margin: 0 5px 0 0;
     padding: 12px 0;
+    background-color: #fff;
     border-radius: 7px 7px 0 0;
     border: 1px solid #d1d1d1;
     list-style: none;
@@ -1298,7 +1299,12 @@ table {
 }
 
 .tbl-no-page {
+  .mb-4 {
+    margin: 0 !important;
+  }
   .table {
+    margin: 0;
+
    + div {
      display: none;
    }
@@ -1313,6 +1319,37 @@ table {
        }
      }
    }
+  }
+}
+
+.tbl-wrap {
+  padding: 20px 30px 30px;
+
+  .total-count {
+    float: right;
+    margin: 0 0 5px 0;
+    font-size: 13px;
+    color: #bbb;
+  }
+}
+
+.tbl-scroll-auto {
+  clear: both;
+  border: 1px solid #d4d4d4;
+
+  > div {
+    overflow: auto;
+  }
+  .table {
+    word-break: normal;
+    white-space: nowrap;
+
+    th:first-child {
+      min-width: 200px;
+    }
+    td {
+      min-width: 100px;
+    }
   }
 }
 
