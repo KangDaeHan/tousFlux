@@ -316,7 +316,7 @@ class Sentimentanalysis extends React.Component {
                               initialValues={{
                                 keyword: "",
                               }}
-                              // onSubmit={onSubmit}
+                            // onSubmit={onSubmit}
                             >
                               {({ errors, touched }) => (
                                 <FormGroup className="keyword-area">
@@ -375,6 +375,7 @@ class Sentimentanalysis extends React.Component {
                 <div className="box-title">
                   <h2>Channel Sentiment Analysis</h2>
                 </div>
+                
                 <div className="graph-area mt-5">
                   <div className="bx_select_area">
                     <span className="select-title">Channel</span>
@@ -389,49 +390,47 @@ class Sentimentanalysis extends React.Component {
                         options={selectedOptionsBase}
                       />
                     </FormGroup>
-                  </div>
-                  <div className="graph-area">
-                    <div className="clearfix box-line">
-                      <div className="box left">
-                        <div className="chart-area">
-                          <div className="chart-header blue">
-                            <div className="chart-title t-c">
-                              <h4 className='t-c'>Positive</h4>
-                            </div>
-                          </div>
-                          <div className="chart-cont">
-                            <CompareLine
-                              options={positiveChartGraph.options}
-                              series={positiveChartGraph.series}
-                              height={330}
-                            />
+                  </div>  
+                  <div className="clearfix box-line">
+                    <div className="box left">
+                      <div className="chart-area">
+                        <div className="chart-header blue">
+                          <div className="chart-title t-c">
+                            <h4 className='t-c'>Positive</h4>
                           </div>
                         </div>
-                        <ReactTableNor
-                          data={TableSentimantData}
-                          columns={columns}
-                        /> 
+                        <div className="chart-cont">
+                          <CompareLine
+                            options={positiveChartGraph.options}
+                            series={positiveChartGraph.series}
+                            height={330}
+                          />
+                        </div>
                       </div>
-                      <div className="box right">
-                        <div className="chart-area">
-                          <div className="chart-header red">
-                            <div className="chart-title t-c">
-                              <h4>Negative</h4>
-                            </div>
-                          </div>
-                          <div className="chart-cont">
-                            <CompareLine
-                              options={negativeChartGraph.options}
-                              series={negativeChartGraph.series}
-                              height={330}
-                            />
+                      <ReactTableNor
+                        data={TableSentimantData}
+                        columns={columns}
+                      />
+                    </div>
+                    <div className="box right">
+                      <div className="chart-area">
+                        <div className="chart-header red">
+                          <div className="chart-title t-c">
+                            <h4>Negative</h4>
                           </div>
                         </div>
-                        <ReactTableNor
-                          data={TableSentimantData}
-                          columns={columns}
-                        /> 
+                        <div className="chart-cont">
+                          <CompareLine
+                            options={negativeChartGraph.options}
+                            series={negativeChartGraph.series}
+                            height={330}
+                          />
+                        </div>
                       </div>
+                      <ReactTableNor
+                        data={TableSentimantData}
+                        columns={columns}
+                      />
                     </div>
                   </div>
                 </div>

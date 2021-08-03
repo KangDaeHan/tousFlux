@@ -1077,7 +1077,6 @@ export const fullStackBarGraph = {
   }, 
   ],
   height: 350,
-  
   options: {
     chart: {
       stacked: true,
@@ -1086,10 +1085,14 @@ export const fullStackBarGraph = {
         show: false,
       },
     },
+    grid: {
+      show: false,
+    },
     colors: ["#baeeff", "#f3f3f3", "#fac4c4"],
     plotOptions: {
       bar: {
         horizontal: true,
+        barHeight: '40%',
       },
     },
     stroke: {
@@ -1097,7 +1100,21 @@ export const fullStackBarGraph = {
       colors: ['#fff']
     },
     xaxis: {
+      labels:{
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
       categories: ['세컨스킨','쥬시쥬디','에잇세컨즈'],
+    },
+    yaxis: {
+      axisTicks: {
+        show: false
+      },
+      axisBorder: {
+        show: false,
+      },
     },
     fill: {
       opacity: 1
@@ -1279,6 +1296,158 @@ export const negativeChartGraph = {
     legend: {
       position: 'top',
       horizontalAlign: 'right', 
+    }
+  },
+}
+
+export const boardTotalGraph = {
+  series: [
+    {
+      name: "쥬시쥬디",
+      data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+    },
+    {
+      name: "에잇세컨즈",
+      data: [0.77, 0.8, 0.55, 0.22, 0.33, 0.44, 0.55,0.12, 0.13, 0.76, 0.45, 0.52, 0.01, 0.76, 0.22, 0.78, 0.65, 0.63, 0.93, 0.94, 0.82, 0.2, 0.46, 0.15, 0.76, 0.22, 0.46, 0.55, 0.34, 0.74, 0.45]
+    },
+    {
+      name: "핀블랙",
+      data: [0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.4, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24,0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.18, 0.28, 0.24, 0.44, 0.77]
+    },
+  ],
+  height: 500,
+  options: {
+    chart: {
+      type: 'line',
+      dropShadow: {
+        enabled: false,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2,
+      },
+      toolbar: {
+        show: false
+      }, 
+      zoom: {
+        enabled: false,
+      }
+    },
+    colors: ['#ffb800', '#ed7d31',  '#404141'],
+    dataLabels: {
+      enabled: true,
+      background: {
+        foreColor: '#000',
+        padding: 0,
+        borderRadius: 0,
+        borderColor: 'transparent',
+      },
+      style: {
+        fontSize: '14px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        fontWeight: 'bold',
+        colors: ['transparent'],
+      },
+      offsetY: -10,
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 5,
+        sizeOffset: 5,
+        fillColor: '#000',
+      },
+      discrete: [{
+        fillColor: '#e3e3e3',
+        strokeColor: '#fff',
+        size: 5
+      }]
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    grid: {
+      show: false,
+    },
+    xaxis: {
+      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+      tickPlacement: 'between'
+    },
+    yaxis: {
+      show: false
+    }, 
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right', 
+    }
+  },
+}
+
+
+export const fullStackBarGraphType2 = {
+  series: [
+    {
+      name: 'Sale',
+      data: [44, 30, 50]
+    }, 
+    {
+      name: 'Not Sale',
+      data: [66, 70, 50]
+    }, 
+
+  ],
+  height: 350,
+  options: {
+    chart: {
+      stacked: true,
+      stackType: '100%',
+      toolbar: {
+        show: false,
+      },
+    },
+    grid: {
+      show: false,
+    },
+    colors: ["#0070c0", "#b3b3b3"],
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        barHeight: '40%',
+      },
+    },
+    stroke: {
+      width: 1,
+      colors: ['#fff']
+    },
+    xaxis: {
+      labels:{
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+      categories: ['세컨스킨','쥬시쥬디','에잇세컨즈'],
+    },
+    yaxis: {
+      axisTicks: {
+        show: false
+      },
+      axisBorder: {
+        show: false,
+      },
+    },
+    fill: {
+      opacity: 1
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'center',
+    },
+    dataLabels: {
+      style: {
+        colors: ['#fff']
+      }
     }
   },
 }

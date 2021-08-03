@@ -437,7 +437,7 @@ class Overview extends React.Component {
                         <Colxx xxs="12">
                           <Card>
                             <CardBody>
-                              <div className='graph-area grap-area'>
+                              <div className='graph-area'>
                                 <CompareLine options={gapTotalGraph.options} series={gapTotalGraph.series} height={gapTotalGraph.height} />
                                 <p className='cont-noti'>* 모든 채널의 값을 지수화하여 표시</p>
                               </div>
@@ -501,7 +501,7 @@ class Overview extends React.Component {
                         <Colxx xxs="12">
                           <Card>
                             <CardBody>
-                              <div className='graph-area grap-area'>
+                              <div className='graph-area'>
                                 <div className='box-title'>
                                   <h2>Keyword GAP Comparison Chart</h2>
                                 </div>

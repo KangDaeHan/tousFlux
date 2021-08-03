@@ -274,15 +274,26 @@
 .bx_select_area{
     position: relative;
     .select-title{
-        position: absolute;
-        top: 6px;
-        left: 0;
+        float: left;
+        margin-top: 5px;
+        margin-right: 20px;
         font-size: 18px;
         color: #888;
+        vertical-align: middle;
     }
     .select-box{
-        width: 180px;
-        margin-left: 90px;
+        float: left;
+        width: 100%;
+        max-width: 180px;    
+    }
+
+    &:after{
+        display: block;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        clear: both;
+        content: '';
     }
 }
 
@@ -483,8 +494,17 @@
         border-bottom: none;
     }
     .box-line{
+        margin-top: 0;
+        border: none;
         .box{
             width: 50% !important; 
+
+            &.right{
+                padding: 0 0 0 10px;
+            }
+            &.left{
+                padding: 0 10px 0 0;
+            }
         }
     }
 }

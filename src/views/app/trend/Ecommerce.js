@@ -463,7 +463,7 @@ class Ecommerce extends React.Component {
                                                     <Card>
                                                         <CardBody>
                                                             <div className='box-title'>
-                                                                <h2>Heat Map</h2>
+                                                                <h2>Social Keyword Rank</h2>
                                                             </div>
                                                             <div className='graph-area negative-chart'>
                                                                 <BrushChart />

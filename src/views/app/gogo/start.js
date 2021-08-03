@@ -31,6 +31,7 @@ import ScatterQuadrant from '../../../components/charts/ScatterQuadrant';
 import { ReactTableWithPaginationCard } from '../../../containers/ui/ReactTableCards';
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
+import { bubbleChartOptions } from '../../../components/charts/config';
 
 // import Breadcrumb from '../../../containers/navs/Breadcrumb';
 
@@ -502,7 +503,7 @@ const Start = ({ intl }) => {
                       <p className="f-red">버블 클릭시, 그래프 아래에 연관된 이미지가 활성화됩니다.</p>
                     </PopoverBody>
                   </Popover> */}
-                    <Bubble height={470} className="relation-bubble"/>
+                    <Bubble options={bubbleChartOptions.options} series={bubbleChartOptions.series} height={470} className="relation-bubble"/>
                     <p className="desc text-right">- 위 버블 클릭 시, 연관 이미지 노출됩니다.</p>
                   </div>
                 </div>
