@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable func-names */
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import ActiveKeyword from '../../containers/pages/ActiveKeyword';
@@ -1528,3 +1530,57 @@ export const bubbleChartOptionsType2 = {
     }
   ]
 }
+
+
+export const barChartOptionsCheck = {
+  options: {
+    chart: {
+      type: 'bar',
+      height: 350,
+      toolbar: {
+        show: false,
+      },
+      zoom: {
+        enabled: false
+      }, 
+    },
+    dataLabels: {
+      enabled: true
+    },
+    grid: {
+      show: false,
+    },
+    fill: {
+      colors: [
+      function({ value }) {
+        if (value < 55) {
+          // bar 데이터 값 비교함수
+          console.log(value, 'color val')
+          return '#7E36AF'
+        } 
+      }
+      ],
+      opacity: 0.7
+    },
+    title: {
+      // text: ""
+    },
+    xaxis: {
+      categories: ['test', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    },
+    yaxis: {
+      axisTicks: {
+        show: true
+      },
+      axisBorder: {
+        show: true,
+      },
+    }
+  },
+  series: [{
+    name: "Desktops",
+    data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+  }], 
+
+  
+};
