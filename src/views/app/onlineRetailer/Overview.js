@@ -26,7 +26,7 @@ import CompareLine from '../../../components/charts/CompareLine';
 import 'react-datepicker/dist/react-datepicker.css';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class ProductPrice extends React.Component {
+class Overview extends React.Component {
   constructor(props) {
     super(props); // React.Component의 생성자 메소드를 먼저 실행
 
@@ -171,19 +171,9 @@ class ProductPrice extends React.Component {
             </Card>
           </Colxx>
         </Row>
-
-        <Row className="mt-5">
-          <Colxx xxs="12">
-            <Card>
-              <CardBody>
-                dsdsd
-              </CardBody>
-            </Card>
-          </Colxx>
-        </Row>
       </>
     )
   }
 }
 
-export default ProductPrice;
+export default Overview;

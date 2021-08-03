@@ -39,7 +39,8 @@ export const LeftSocial = ({match}) => {
 export const LeftOnline = ({match}) => {
   return (
     <>
-      <MenuItem><NavLink to="#" activeClassName="">OVERVIEW</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/onlineRetailer/onboard" activeClassName="active">ONBOARD</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/onlineRetailer/overview" activeClassName="active">OVERVIEW</NavLink></MenuItem>
       <MenuItem><NavLink to="/app/onlineRetailer/productprice" activeClassName="active">PRODUCT &amp; PRICE</NavLink></MenuItem>
     </>
   )
