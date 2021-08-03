@@ -17,7 +17,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
-import {ReactTable} from '../../../containers/ui/ReactTableCards';
+import { ReactTable } from '../../../containers/ui/ReactTableCards';
 import ChannelButton from '../../../components/applications/ChannelButton'
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
 import CompareBar from '../../../components/charts/CompareBar';
@@ -67,7 +67,7 @@ class Overview extends React.Component {
 
 
     return (
-      <>
+      <div className='online_overview'>
         <Row>
           <Colxx xxs="12">
             <Card>
@@ -171,7 +171,47 @@ class Overview extends React.Component {
             </Card>
           </Colxx>
         </Row>
-      </>
+        <Row className="mt-5">
+          <Colxx xxs="12">
+            <Card>
+              <CardBody>
+                <div className="box-title">
+                  <h2>Channel Sentiment Analysis</h2>
+                </div>
+
+                  <div className="graph-area">
+                    <div className="clearfix box-line">
+                      <div className="box left">
+                        <div className="chart-area">
+                          <div className="chart-header blue">
+                            <div className="chart-title t-c">
+                              <h4 className='t-c'>Positive</h4>
+                            </div>
+                          </div>
+                          <div className="chart-cont">
+                            test
+                          </div>
+                        </div>
+                      </div>
+                      <div className="box right">
+                        <div className="chart-area">
+                          <div className="chart-header red">
+                            <div className="chart-title t-c">
+                              <h4>Negative</h4>
+                            </div>
+                          </div>
+                          <div className="chart-cont">
+                            test
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </CardBody>
+            </Card>
+          </Colxx>
+        </Row>
+      </div>
     )
   }
 }
