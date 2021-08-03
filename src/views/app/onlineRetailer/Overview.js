@@ -13,17 +13,16 @@ import ReactApexChart from "react-apexcharts";
 import { Row, Card, CardBody, Form, Button, FormGroup, Input, Nav, NavLink, NavItem, TabContent, TabPane, } from 'reactstrap';
 import classnames from 'classnames';
 import { Formik, Field } from 'formik';
-import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
-import { ReactTable } from '../../../containers/ui/ReactTableCards';
 import ChannelButton from '../../../components/applications/ChannelButton'
-import CustomSelectInput from '../../../components/common/CustomSelectInput';
-import CompareBar from '../../../components/charts/CompareBar';
-import CompareLine from '../../../components/charts/CompareLine';
-// import {ReactTable} from '../../../containers/ui/ReactTable';
+import CompareBar from '../../../components/charts/CompareBar'
+import Bubble from '../../../components/charts/Bubble';
+import { bubbleChartOptionsType2, barChartOptions  } from '../../../components/charts/config';
+import { ReactTableNor } from "../../../containers/ui/ReactTableNormal";
 import 'react-datepicker/dist/react-datepicker.css';
+import { tableOnlineOverviewData } from "../trend/data";
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Overview extends React.Component {
@@ -65,6 +64,33 @@ class Overview extends React.Component {
   render() {
     const statesItems = this.state;
 
+    const columns = [
+      {
+        Header: "Rank",
+        accessor: "id",
+        cellClass: "list-item-heading text-center w-10",
+      },
+      {
+        Header: "Naver News",
+        accessor: "title",
+        cellClass: "text-muted text-center w-60",
+      },
+      {
+        Header: "TF",
+        accessor: "TF",
+        cellClass: "text-muted text-center w-10",
+      },
+      {
+        Header: "DF",
+        accessor: "DF",
+        cellClass: "text-muted text-center w-10",
+      },
+      {
+        Header: "TF-IDF",
+        accessor: "TF-IDF",
+        cellClass: "text-muted text-center w-10",
+      },
+    ];
 
     return (
       <div className='online_overview'>
@@ -176,9 +202,8 @@ class Overview extends React.Component {
             <Card>
               <CardBody>
                 <div className="box-title">
-                  <h2>Channel Sentiment Analysis</h2>
+                  <h2>Retailer’s Channel Average</h2>
                 </div>
-
                   <div className="graph-area">
                     <div className="clearfix box-line">
                       <div className="box left">
@@ -189,7 +214,7 @@ class Overview extends React.Component {
                             </div>
                           </div>
                           <div className="chart-cont">
-                            test
+                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
                           </div>
                         </div>
                       </div>
@@ -201,9 +226,57 @@ class Overview extends React.Component {
                             </div>
                           </div>
                           <div className="chart-cont">
-                            test
+                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
                           </div>
                         </div>
+                      </div>
+                      <div className="box left">
+                        <div className="chart-area">
+                          <div className="chart-header">
+                            <div className="chart-title t-c">
+                              <h4 className='t-c'>Positive</h4>
+                            </div>
+                          </div>
+                          <div className="chart-cont">
+                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="box right">
+                        <div className="chart-area">
+                          <div className="chart-header">
+                            <div className="chart-title t-c">
+                              <h4>Negative</h4>
+                            </div>
+                          </div>
+                          <div className="chart-cont">
+                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </CardBody>
+            </Card>
+          </Colxx>
+        </Row>
+        <Row className="mt-5">
+          <Colxx xxs="12">
+            <Card>
+              <CardBody>
+                <div className="box-title">
+                  <h2>Retailer’s Crossover Analysis</h2>
+                </div>
+                  <div className="graph-area">
+                    <div className="clearfix box-line">
+                      <div className="box left">
+                        <Bubble options={bubbleChartOptionsType2.options} series={bubbleChartOptionsType2.series} height={470} className="relation-bubble"/>
+                      </div>
+                      <div className="box right">
+                        <ReactTableNor
+                          data={tableOnlineOverviewData}
+                          columns={columns}
+                        />
                       </div>
                     </div>
                   </div>
