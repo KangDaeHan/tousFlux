@@ -13,11 +13,6 @@ const Overview = React.lazy(() =>
   import(/* webpackChunkName: "second" */ './Overview')
 );
 
-
-
-
-
-
 const SocialLink = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
@@ -27,11 +22,11 @@ const SocialLink = ({ match }) => (
         render={(props) => <ProductPrice {...props} />}
       />
       <Route
-        path={`${match.url}/overview`}
+        path={`${match.url}/onboard`}
         render={(props) => <Onboard {...props} />}
       />
       <Route
-        path={`${match.url}/onboard`}
+        path={`${match.url}/overview`}
         render={(props) => <Overview {...props} />}
       />
       <Redirect to="/error" />
