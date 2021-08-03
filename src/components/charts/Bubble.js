@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactApexChart from "react-apexcharts";
+import { bubbleChartOptions } from './config';
 
-const Bubble = ({options, series, height , className}) => {
+const Bubble = ({height , className}) => {
   return (
-    <ReactApexChart options={options} series={series} type="bubble" height={height} className={className} />
+    <ReactApexChart options={bubbleChartOptions.options} series={bubbleChartOptions.series} type="bubble" height={height} className={className} />
   );
 };
 

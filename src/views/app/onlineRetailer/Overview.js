@@ -18,7 +18,7 @@ import { ko } from "date-fns/esm/locale";
 import { Colxx } from '../../../components/common/CustomBootstrap';
 import ChannelButton from '../../../components/applications/ChannelButton'
 import CompareBar from '../../../components/charts/CompareBar'
-import Bubble from '../../../components/charts/Bubble';
+import CompareBubble from '../../../components/charts/CompareBubble';
 import { bubbleChartOptionsType2, barChartOptions  } from '../../../components/charts/config';
 import { ReactTableNor } from "../../../containers/ui/ReactTableNormal";
 import 'react-datepicker/dist/react-datepicker.css';
@@ -270,7 +270,7 @@ class Overview extends React.Component {
                   <div className="graph-area">
                     <div className="clearfix box-line">
                       <div className="box left">
-                        <Bubble options={bubbleChartOptionsType2.options} series={bubbleChartOptionsType2.series} height={470} className="relation-bubble"/>
+                        <CompareBubble options={bubbleChartOptionsType2.options} series={bubbleChartOptionsType2.series} height={470} className="relation-bubble"/>
                       </div>
                       <div className="box right">
                         <ReactTableNor
