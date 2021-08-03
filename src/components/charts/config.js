@@ -1451,3 +1451,80 @@ export const fullStackBarGraphType2 = {
     }
   },
 }
+
+export const bubbleChartOptionsType2 = {
+  options: {
+    chart: {
+      toolbar: {
+        show: false,
+      },
+      zoom: {
+        enabled: false
+      },
+      events: {
+        dataPointSelection: (event, chartContext, config) => {
+          const dataImgWrap = document.querySelector('.relation-gallery');
+          const dataImg = config.w.config.series[config.seriesIndex].relationTxt;
+          
+          dataImgWrap.innerHTML = "";
+          dataImgWrap.innerHTML = dataImg;
+          dataImgWrap.innerHTML = dataImgWrap.innerHTML.replaceAll(',','');
+        }
+      }
+    },
+    grid: {
+      show: false,
+    },
+    tooltip: {                                       
+      custom: displayTooltip,
+    },
+    dataLabels: {
+      enabled: true
+    },
+    fill: {
+      opacity: 0.7
+    },
+    xaxis: {
+      tickAmount: 10,
+      type: "category",
+    },
+    yaxis: {
+      max: 70,
+      axisTicks: {
+        show: true
+      },
+      axisBorder: {
+        show: true,
+      },
+    },
+    plotOptions: {
+      bubble: {
+        minBubbleRadius: 10,
+      }
+    },
+  },
+  series: [
+    {
+      name: "ORG",
+      data: [[20, 50, 60]],
+      relationTxt: [
+        '<div><p>핏</p><img src="/assets/img/showroom/thumb1.png" alt="" /></div>',
+        '<div><p>레이어드</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
+        '<div><p>멋있다</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
+        '<div><p>깔끔함</p><img src="/assets/img/showroom/thumb4.png" alt="" /></div>',
+        '<div><p>고급스럽다</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
+      ]
+    },
+    {
+      name: "OHEP Index",
+      data: [[20, 20, 150]],
+      relationTxt: [
+        '<div><p>고급스럽다</p><img src="/assets/img/showroom/thumb4.png" alt="" /></div>',
+        '<div><p>깔끔함</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
+        '<div><p>핏</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
+        '<div><p>멋있다</p><img src="/assets/img/showroom/thumb1.png" alt="" /></div>',
+        '<div><p>레이어드</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
+      ]
+    }
+  ]
+}
