@@ -5,6 +5,19 @@ const ProductPrice = React.lazy(() =>
   import(/* webpackChunkName: "second" */ './Productprice')
 );
 
+const Onboard = React.lazy(() =>
+  import(/* webpackChunkName: "second" */ './Onboard')
+);
+
+const Overview = React.lazy(() =>
+  import(/* webpackChunkName: "second" */ './Overview')
+);
+
+
+
+
+
+
 const SocialLink = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
@@ -12,6 +25,14 @@ const SocialLink = ({ match }) => (
       <Route
         path={`${match.url}/productprice`}
         render={(props) => <ProductPrice {...props} />}
+      />
+      <Route
+        path={`${match.url}/overview`}
+        render={(props) => <Onboard {...props} />}
+      />
+      <Route
+        path={`${match.url}/onboard`}
+        render={(props) => <Overview {...props} />}
       />
       <Redirect to="/error" />
     </Switch>
