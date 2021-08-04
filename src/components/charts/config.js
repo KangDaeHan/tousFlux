@@ -1545,20 +1545,39 @@ export const barChartOptionsCheck = {
       }, 
     },
     dataLabels: {
-      enabled: true
+      enabled: true,
+      offsetY: -20, 
+      style: {
+        colors: ['#888']
+      },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        dataLabels: {
+          position: 'top'
+        }
+      }
     },
     grid: {
       show: false,
     },
     fill: {
       colors: [
-      function({ value }) {
-        if (value < 55) {
-          // bar 데이터 값 비교함수
-          console.log(value, 'color val')
-          return '#7E36AF'
-        } 
-      }
+        // color 값 최대값 최소 값 확인함수
+        function({ value, w }) {
+          const graphDataArr = w.config.series[0].data;
+          const maxVal = Math.max.apply(9 , graphDataArr);
+          const minVal = Math.min.apply(9 , graphDataArr);
+          if (value === maxVal) {
+            return '#2f5597'
+          // eslint-disable-next-line no-else-return
+          } else if(value === minVal){
+            return '#f00001'
+          }else{
+            return '#a6a6a6'
+          }
+        }
       ],
       opacity: 0.7
     },
@@ -1575,11 +1594,11 @@ export const barChartOptionsCheck = {
       axisBorder: {
         show: true,
       },
-    }
+    },
   },
   series: [{
     name: "Desktops",
-    data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+    data: [10, 10, 35, 51, 49, 62, 69, 148, 148]
   }], 
 
   
