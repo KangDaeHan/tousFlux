@@ -412,80 +412,45 @@ export const tableSentimantData = [
 
 export const tableOnlineOverviewData = [
   {
-    id: '-',
-    title: '원피스',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
+    Channels: '-',
+    'Num of Reviews': '원피스',
+    'Avg of Ratings': '',
+    'Display Ads Spending': '',
   },
   {
-    id: 1,
-    title: '폴라니트',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
+    Channels: 1,
+    'Num of Reviews': '폴라니트',
+    'Avg of Ratings': '',
+    'Display Ads Spending': '',
   },
   {
-    id: 2,
-    title: '플로랄원피스',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
+    Channels: 2,
+    'Num of Reviews': '플로랄원피스',
+    'Avg of Ratings': '',
+    'Display Ads Spending': '',
   },
   {
-    id: 3,
-    title: '하객룩',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
+    Channels: 3,
+    'Num of Reviews': '하객룩',
+    'Avg of Ratings': '',
+    'Display Ads Spending': '',
   },
   {
-    id: 4,
-    title: '여름옷',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
+    Channels: 4,
+    'Num of Reviews': '여름옷',
+    'Avg of Ratings': '',
+    'Display Ads Spending': '',
   },
   {
-    id: 5,
-    title: '여름스커트',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
+    Channels: 5,
+    'Num of Reviews': '여름스커트',
+    'Avg of Ratings': '',
+    'Display Ads Spending': '',
   },
   {
-    id: 6,
-    title: '샤스커트',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
-  },
-  {
-    id: 7,
-    title: '여름슬랙스',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
-  },
-  {
-    id: 8,
-    title: '블라우스',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
-  },
-  {
-    id: 9,
-    title: '스커트',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
-  },
-  {
-    id: 10,
-    title: '원피스',
-    TF: '',
-    DF: '',
-    'TF-IDF': ''
+    Channels: 6,
+    'Num of Reviews': '샤스커트',
+    'Avg of Ratings': '',
+    'Display Ads Spending': '',
   },
 ];

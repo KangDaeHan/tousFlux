@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable object-shorthand */
 /* eslint-disable consistent-return */
 /* eslint-disable func-names */
 import React from 'react';
@@ -1455,80 +1457,59 @@ export const fullStackBarGraphType2 = {
 }
 
 export const bubbleChartOptionsType2 = {
+  series: [{
+    name: 'Bubble1',
+    data: [[1, 1, 50]],
+  },
+  {
+    name: 'Bubble2',
+    data: [[2, 30, 30]],
+  },
+  {
+    name: 'Bubble3',
+    data: [[3, 20, 40]],
+  }],
   options: {
     chart: {
-      toolbar: {
-        show: false,
-      },
-      zoom: {
-        enabled: false
-      },
-      events: {
-        dataPointSelection: (event, chartContext, config) => {
-          const dataImgWrap = document.querySelector('.relation-gallery');
-          const dataImg = config.w.config.series[config.seriesIndex].relationTxt;
-          
-          dataImgWrap.innerHTML = "";
-          dataImgWrap.innerHTML = dataImg;
-          dataImgWrap.innerHTML = dataImgWrap.innerHTML.replaceAll(',','');
-        }
-      }
-    },
-    grid: {
-      show: false,
-    },
-    tooltip: {                                       
-      custom: displayTooltip,
+        height: 350,
+        type: 'bubble',
     },
     dataLabels: {
-      enabled: true
+        enabled: false
     },
     fill: {
-      opacity: 0.7
+        opacity: 0.8
+    },
+    title: {
+        text: 'Simple Bubble Chart'
     },
     xaxis: {
-      tickAmount: 10,
-      type: "category",
+        tickAmount: 12,
+        type: 'category',
     },
     yaxis: {
-      max: 70,
-      axisTicks: {
-        show: true
+        max: 70
+    }, 
+    tooltip: {
+      custom: function({series, seriesIndex, dataPointIndex, w}) {
+        console.log(w);
+        return (
+          `
+            <div class="arrow_box">
+              <p>Ads Spending</p>
+              <span>${series[seriesIndex][dataPointIndex]}</span>
+            </div>
+          `
+        )
       },
-      axisBorder: {
-        show: true,
-      },
-    },
-    plotOptions: {
-      bubble: {
-        minBubbleRadius: 10,
-      }
-    },
-  },
-  series: [
-    {
-      name: "ORG",
-      data: [[20, 50, 60]],
-      relationTxt: [
-        '<div><p>핏</p><img src="/assets/img/showroom/thumb1.png" alt="" /></div>',
-        '<div><p>레이어드</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
-        '<div><p>멋있다</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
-        '<div><p>깔끔함</p><img src="/assets/img/showroom/thumb4.png" alt="" /></div>',
-        '<div><p>고급스럽다</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
-      ]
-    },
-    {
-      name: "OHEP Index",
-      data: [[20, 20, 150]],
-      relationTxt: [
-        '<div><p>고급스럽다</p><img src="/assets/img/showroom/thumb4.png" alt="" /></div>',
-        '<div><p>깔끔함</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
-        '<div><p>핏</p><img src="/assets/img/showroom/thumb2.png" alt="" /></div>',
-        '<div><p>멋있다</p><img src="/assets/img/showroom/thumb1.png" alt="" /></div>',
-        '<div><p>레이어드</p><img src="/assets/img/showroom/thumb3.png" alt="" /></div>',
-      ]
+      // fixed: {
+      //   enabled: true,
+      //   position: 'topLeft',
+      //   offsetX: 50,
+      //   offsetY: 0,
+      // },
     }
-  ]
+  },
 }
 
 
@@ -1556,7 +1537,8 @@ export const barChartOptionsCheck = {
         horizontal: false,
         dataLabels: {
           position: 'top'
-        }
+        },
+        columnWidth: '40%',
       }
     },
     grid: {
@@ -1585,7 +1567,7 @@ export const barChartOptionsCheck = {
       // text: ""
     },
     xaxis: {
-      categories: ['test', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+      categories: ['Copang', '11st', 'Wemakeprice', 'Sinsegae mall', 'Timon', 'Gmarket', 'Auction',],
     },
     yaxis: {
       axisTicks: {
@@ -1598,7 +1580,7 @@ export const barChartOptionsCheck = {
   },
   series: [{
     name: "Desktops",
-    data: [10, 10, 35, 51, 49, 62, 69, 148, 148]
+    data: [10, 10, 35, 62, 69, 148, 148]
   }], 
 
   
