@@ -19,7 +19,7 @@ import { Colxx } from '../../../components/common/CustomBootstrap';
 import ChannelButton from '../../../components/applications/ChannelButton'
 import CompareBar from '../../../components/charts/CompareBar'
 import CompareBubble from '../../../components/charts/CompareBubble';
-import { bubbleChartOptionsType2, barChartOptions  } from '../../../components/charts/config';
+import {  barChartOptionsCheck } from '../../../components/charts/config';
 import { ReactTableNor } from "../../../containers/ui/ReactTableNormal";
 import 'react-datepicker/dist/react-datepicker.css';
 import { tableOnlineOverviewData } from "../trend/data";
@@ -214,7 +214,7 @@ class Overview extends React.Component {
                             </div>
                           </div>
                           <div className="chart-cont">
-                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
+                            <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
                       </div>
@@ -226,7 +226,7 @@ class Overview extends React.Component {
                             </div>
                           </div>
                           <div className="chart-cont">
-                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
+                            <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
                       </div>
@@ -238,7 +238,7 @@ class Overview extends React.Component {
                             </div>
                           </div>
                           <div className="chart-cont">
-                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
+                            <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
                       </div>
@@ -250,7 +250,7 @@ class Overview extends React.Component {
                             </div>
                           </div>
                           <div className="chart-cont">
-                            <CompareBar options={barChartOptions.options} series={barChartOptions.series} type="bar" height={210} />
+                            <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
                       </div>
@@ -270,7 +270,7 @@ class Overview extends React.Component {
                   <div className="graph-area">
                     <div className="clearfix box-line">
                       <div className="box left">
-                        <CompareBubble options={bubbleChartOptionsType2.options} series={bubbleChartOptionsType2.series} height={470} className="relation-bubble"/>
+                        <CompareBubble height={470} className="relation-bubble"/>
                       </div>
                       <div className="box right">
                         <ReactTableNor

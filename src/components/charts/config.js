@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable func-names */
 import React from 'react';
 import {renderToString} from 'react-dom/server';
 import ActiveKeyword from '../../containers/pages/ActiveKeyword';
@@ -1528,3 +1530,76 @@ export const bubbleChartOptionsType2 = {
     }
   ]
 }
+
+
+export const barChartOptionsCheck = {
+  options: {
+    chart: {
+      type: 'bar',
+      height: 350,
+      toolbar: {
+        show: false,
+      },
+      zoom: {
+        enabled: false
+      }, 
+    },
+    dataLabels: {
+      enabled: true,
+      offsetY: -20, 
+      style: {
+        colors: ['#888']
+      },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        dataLabels: {
+          position: 'top'
+        }
+      }
+    },
+    grid: {
+      show: false,
+    },
+    fill: {
+      colors: [
+        // color 값 최대값 최소 값 확인함수
+        function({ value, w }) {
+          const graphDataArr = w.config.series[0].data;
+          const maxVal = Math.max.apply(9 , graphDataArr);
+          const minVal = Math.min.apply(9 , graphDataArr);
+          if (value === maxVal) {
+            return '#2f5597'
+          // eslint-disable-next-line no-else-return
+          } else if(value === minVal){
+            return '#f00001'
+          }else{
+            return '#a6a6a6'
+          }
+        }
+      ],
+      opacity: 0.7
+    },
+    title: {
+      // text: ""
+    },
+    xaxis: {
+      categories: ['test', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+    },
+    yaxis: {
+      axisTicks: {
+        show: true
+      },
+      axisBorder: {
+        show: true,
+      },
+    },
+  },
+  series: [{
+    name: "Desktops",
+    data: [10, 10, 35, 51, 49, 62, 69, 148, 148]
+  }], 
+
+  
+};
