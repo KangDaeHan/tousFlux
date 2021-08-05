@@ -357,8 +357,8 @@ class Onboard extends React.Component {
                                                             <div className='box-title'>
                                                                 <h2>Broad Market</h2>
                                                             </div>
-                                                            <div className='graph-area'>
-                                                                <p className='cont-noti small'>단위: 건</p>
+                                                            <div className='graph-area mt-5'>
+                                                                <p className='cont-noti'>단위: 건</p>
                                                                 <CompareLine options={boardTotalGraph.options} series={boardTotalGraph.series} height={boardTotalGraph.height} />
                                                             </div>
                                                         </CardBody>
@@ -375,7 +375,7 @@ class Onboard extends React.Component {
                                                                 <h2>Avg of Regular Price</h2>
                                                             </div>
                                                             <div className='graph-area'>
-                                                                <p className='cont-noti small'>단위: 건</p>
+                                                                <p className='cont-noti'>단위: 건</p>
                                                                 <CompareLine options={boardTotalGraph.options} series={boardTotalGraph.series} height={boardTotalGraph.height} />
                                                             </div>
                                                         </CardBody>
@@ -392,7 +392,7 @@ class Onboard extends React.Component {
                                                                 <h2>Num of Market</h2>
                                                             </div>
                                                             <div className='graph-area'>
-                                                                <p className='cont-noti small'>단위: 건</p>
+                                                                <p className='cont-noti'>단위: 건</p>
                                                                 <CompareLine options={boardTotalGraph.options} series={boardTotalGraph.series} height={boardTotalGraph.height} />
                                                             </div>
                                                         </CardBody>
@@ -409,7 +409,7 @@ class Onboard extends React.Component {
                                                                 <h2>Num of Review</h2>
                                                             </div>
                                                             <div className='graph-area'>
-                                                                <p className='cont-noti small'>단위: 건</p>
+                                                                <p className='cont-noti'>단위: 건</p>
                                                                 <CompareLine options={boardTotalGraph.options} series={boardTotalGraph.series} height={boardTotalGraph.height} />
                                                             </div>
                                                         </CardBody>
@@ -426,7 +426,7 @@ class Onboard extends React.Component {
                                                                 <h2>Num of Cart</h2>
                                                             </div>
                                                             <div className='graph-area'>
-                                                                <p className='cont-noti small'>단위: 건</p>
+                                                                <p className='cont-noti'>단위: 건</p>
                                                                 <CompareLine options={boardTotalGraph.options} series={boardTotalGraph.series} height={boardTotalGraph.height} />
                                                             </div>
                                                         </CardBody>
@@ -472,7 +472,7 @@ class Onboard extends React.Component {
                                                             <div className='box-title'>
                                                                 <h2>Benefits Type</h2>
                                                             </div>
-                                                            <div className='graph-area'>
+                                                            <div className='graph-area mt-5'>
                                                                 <FullStackBar
                                                                     options={fullStackBarGraphType2.options}
                                                                     series={fullStackBarGraphType2.series}
@@ -517,7 +517,7 @@ class Onboard extends React.Component {
                                 <div className='box-title'>
                                     <h2> Price Distribution</h2>
                                 </div>
-                                <div className='bx_select_area'>
+                                <div className='bx_select_area mt-5'>
                                     <span className='select-title'>Competitors</span>
                                     <FormGroup className="select-box">
                                         <Select
@@ -531,7 +531,8 @@ class Onboard extends React.Component {
                                         />
                                     </FormGroup>
                                 </div>
-                                <div className='graph-area'>
+                                <div className='graph-area brushChart_wrap'>
+                                    <p className='cont-noti'>단위: 건</p>
                                     <BrushChart />
                                 </div>
                             </CardBody>
