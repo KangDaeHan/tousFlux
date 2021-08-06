@@ -66,29 +66,24 @@ class Overview extends React.Component {
 
     const columns = [
       {
-        Header: "Rank",
-        accessor: "id",
-        cellClass: "list-item-heading text-center w-10",
+        Header: "Channels",
+        accessor: "Channels",
+        cellClass: "list-item-heading t-c w-25",
       },
       {
-        Header: "Naver News",
-        accessor: "title",
-        cellClass: "text-muted text-center w-60",
+        Header: "Num of Reviews",
+        accessor: "Num of Reviews",
+        cellClass: "text-muted t-c w-25",
       },
       {
-        Header: "TF",
-        accessor: "TF",
-        cellClass: "text-muted text-center w-10",
+        Header: "Avg of Ratings",
+        accessor: "Avg of Ratings",
+        cellClass: "text-muted t-c w-25",
       },
       {
-        Header: "DF",
-        accessor: "DF",
-        cellClass: "text-muted text-center w-10",
-      },
-      {
-        Header: "TF-IDF",
-        accessor: "TF-IDF",
-        cellClass: "text-muted text-center w-10",
+        Header: "Display Ads Spending",
+        accessor: "Display Ads Spending",
+        cellClass: "text-muted t-c w-25",
       },
     ];
 
@@ -276,6 +271,7 @@ class Overview extends React.Component {
                         <ReactTableNor
                           data={tableOnlineOverviewData}
                           columns={columns}
+                          className='t-c w-25'
                         />
                       </div>
                     </div>

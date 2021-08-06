@@ -59,8 +59,8 @@ export default function BrushChartTest2() {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="name" tickLine={false} axisLine={false} />
+        <YAxis tickLine={false} axisLine={false} />
         <Tooltip />
         <Legend align="center" verticalAlign="top" height={30} className='brushchartlegend' />
         <ReferenceLine y={0} stroke="#000" />

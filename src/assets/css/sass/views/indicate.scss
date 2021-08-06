@@ -422,7 +422,7 @@
         td{
             font-size: 14px;
             border-right: 1px solid #f3f3f3;
-            border-bo5tom: 1px solid #f3f3f3;
+            border-bottom: 1px solid #f3f3f3;
         }
     }
 }
@@ -430,7 +430,6 @@
 .ReactTags__selected{
 
     .ReactTags__tag{
-        display: inline-block;
         float: left;
         padding: 0.5rem 0.7rem;
         margin-right: 5px;
@@ -454,6 +453,10 @@
             display: inline-block;
             padding: 0.5rem 1rem;
             border: 1px solid #d7d7d7;
+
+            &:focus-visible{
+                outline: none;
+            }
 
             &[name~="hide"]{
                 display: none;
@@ -506,5 +509,35 @@
                 padding: 0 10px 0 0;
             }
         }
+    }
+}
+
+.online_overview{
+    .arrow_box{
+        border-radius: 20px;
+        padding: 5px 10px;
+        text-align: center;
+    }
+    .apexcharts-tooltip {
+        transform: translateX(60px) translateY(10px);
+        overflow: visible !important;
+        border-radius: 50px;
+
+        span{
+            display: inline-block;
+            
+            
+        }
+    }
+}
+
+.brushChart_wrap{
+    .cont-noti{
+        position: absolute;
+        top: 290px;
+        right: 48px;
+    }
+    .form-group{
+        margin-bottom: 0;
     }
 }
