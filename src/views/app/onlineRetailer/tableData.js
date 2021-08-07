@@ -353,3 +353,61 @@ export const TableData2 = [
     count22: '55,000',
   },
 ];
+
+export const ProductColumns = [
+  {
+    Header: 'Rank',
+    accessor: 'rank',
+    cellClass: 'text-center w100',
+    disableSortBy: true
+  },
+  {
+    Header: 'Product Name',
+    accessor: 'product',
+    cellClass: 'w-60',
+    disableSortBy: true
+  },
+  {
+    Header: 'Brand Name',
+    accessor: 'brand',
+    cellClass: 'text-center w-20',
+    disableSortBy: true
+  },
+  {
+    Header: 'Avg of Regular Price',
+    accessor: 'avg',
+    cellClass: 'text-center',
+    disableSortBy: true
+  },
+];
+
+export const ProductData = [
+  {
+    id: 1,
+    rank: 1,
+    product: '질레트 G5 남성용 손잡이 + 12 블레이드 리필 - 최대 1년치 쉐이브 질레트 G5 남성용 손잡이 + 12 블레이드 리필 - 최대 1년치 쉐이브 : 뷰티, 1',
+    brand: 'Gillette',
+    avg: '24,800',
+  },
+  {
+    id: 2,
+    rank: 2,
+    product: '2020 다우니 퍼퓸 초고농축 섬유유연제 미스티크 본품, 1.05L , 3개',
+    brand: 'Downy',
+    avg: '16,230',
+  },
+  {
+    id: 3,
+    rank: 65,
+    product: '질레트 G5 남성용 손잡이 + 12 블레이드 리필 - 최대 1년치 쉐이브 : 뷰티, 1',
+    brand: 'Gillette',
+    avg: '12,000',
+  },
+  {
+    id: 4,
+    rank: 23,
+    product: '2020 다우니 퍼퓸 초고농축 섬유유연제 미스티크 본품, 1.05L , 3개',
+    brand: 'Downy',
+    avg: '24,000',
+  },
+];
