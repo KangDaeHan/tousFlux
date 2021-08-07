@@ -536,10 +536,14 @@
         }
     }
     .graph-area.bar_area{
+        .box-line{
+            border: none;
+        }
         .cont-noti{
             &.small{
                 margin-top: 10px;
                 margin-right: 20px;
+                margin-bottom: 0;
             }
         }
     }

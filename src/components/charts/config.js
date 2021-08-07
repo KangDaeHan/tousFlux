@@ -1498,6 +1498,14 @@ export const bubbleChartOptionsType2 = {
           enabled: false
         },
     },
+    states: {
+      hover: {
+          filter: {
+              type: 'lighten',
+              value: 0.001,
+          }
+      },
+  },
     grid: {
       show: false,
     },
@@ -1508,9 +1516,9 @@ export const bubbleChartOptionsType2 = {
           return w.config.series[seriesIndex].name
         }
     },
-    fill: {
-        opacity: 0.8
-    },
+    // fill: {
+    //     opacity: 0.9
+    // },
     xaxis: {
         tickPlacement: 'between',
         tickAmount: 31,
@@ -1525,12 +1533,12 @@ export const bubbleChartOptionsType2 = {
         max: 70
     }, 
     tooltip: {
-      custom: function({series, seriesIndex, dataPointIndex,}) {
+      custom: function({seriesIndex, w}) {        
         return (
           `
             <div class="arrow_box">
               <p>Ads Spending</p>
-              <span>${series[seriesIndex][dataPointIndex]}</span>
+              <span>${w.config.series[seriesIndex].data[0][2]}</span>
             </div>
           `
         )
