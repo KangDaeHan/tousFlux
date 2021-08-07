@@ -513,20 +513,50 @@
 }
 
 .online_overview{
+    
     .arrow_box{
         border-radius: 20px;
         padding: 5px 10px;
         text-align: center;
+        &::before{
+            border: none;
+        }
     }
     .apexcharts-tooltip {
-        transform: translateX(60px) translateY(10px);
         overflow: visible !important;
-        border-radius: 50px;
-
+        border-radius: 20px;
+        background: none !important;
+        box-shadow: none;
+        p{
+            margin-bottom: 0;
+            color: #4f8bc1;
+        }
         span{
             display: inline-block;
-            
-            
+        }
+    }
+    .graph-area.bar_area{
+        .box-line{
+            border: none;
+        }
+        .cont-noti{
+            &.small{
+                margin-top: 10px;
+                margin-right: 20px;
+                margin-bottom: 0;
+            }
+        }
+    }
+    .box{
+        .cont-noti{
+            &.small{
+                margin-top: 10px;
+                margin-right: 5px;
+                margin-bottom: 20px;
+            }
+        }
+        .tbl_basic{
+            text-align: center;            
         }
     }
 }

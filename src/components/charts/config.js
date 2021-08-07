@@ -10,6 +10,7 @@ function displayTooltip() {
   return renderToString(<ActiveKeyword />);
 }
 
+
 // bubble config options 설정
 export const bubbleChartOptions = {
   options: {
@@ -1458,56 +1459,90 @@ export const fullStackBarGraphType2 = {
 
 export const bubbleChartOptionsType2 = {
   series: [{
-    name: 'Bubble1',
-    data: [[1, 1, 50]],
+    name: 'Coupang',
+    data: [[10, 55, 100]],
   },
   {
-    name: 'Bubble2',
-    data: [[2, 30, 30]],
+    name: '11st',
+    data: [[20, 60, 70]],
   },
   {
-    name: 'Bubble3',
-    data: [[3, 20, 40]],
-  }],
+    name: 'Wemakeprice',
+    data: [[20, 20, 80]],
+  },
+  {
+    name: 'Sinsegaemall',
+    data: [[5, 40, 100]],
+  },
+  {
+    name: 'Timon',
+    data: [[12, 40, 110]],
+  },
+  {
+    name: 'Gmarket',
+    data: [[25, 50, 80]],
+  },
+  {
+    name: 'Action',
+    data: [[20, 40, 90]],
+  },
+],
   options: {
     chart: {
         height: 350,
         type: 'bubble',
+        toolbar: {
+          show: false,
+        },
+        zoom: {
+          enabled: false
+        },
     },
+    states: {
+      hover: {
+          filter: {
+              type: 'lighten',
+              value: 0.001,
+          }
+      },
+  },
+    grid: {
+      show: false,
+    },
+    colors: ["#5977ac", "#5891c5", "#5c6573", "#c3d2ec", "#b1cfeb", "#918d8d", "#bdc7d5"],
     dataLabels: {
-        enabled: false
+        enabled: true,
+        formatter: function(value, { seriesIndex, w }) {
+          return w.config.series[seriesIndex].name
+        }
     },
-    fill: {
-        opacity: 0.8
-    },
-    title: {
-        text: 'Simple Bubble Chart'
-    },
+    // fill: {
+    //     opacity: 0.9
+    // },
     xaxis: {
-        tickAmount: 12,
+        tickPlacement: 'between',
+        tickAmount: 31,
         type: 'category',
+        min: 1,
+        max: 31,
+        tooltip: {
+          enabled: false,
+      }
     },
     yaxis: {
         max: 70
     }, 
     tooltip: {
-      custom: function({series, seriesIndex, dataPointIndex, w}) {
-        console.log(w);
+      custom: function({seriesIndex, w}) {        
         return (
           `
             <div class="arrow_box">
               <p>Ads Spending</p>
-              <span>${series[seriesIndex][dataPointIndex]}</span>
+              <span>${w.config.series[seriesIndex].data[0][2]}</span>
             </div>
           `
         )
       },
-      // fixed: {
-      //   enabled: true,
-      //   position: 'topLeft',
-      //   offsetX: 50,
-      //   offsetY: 0,
-      // },
     }
   },
 }
