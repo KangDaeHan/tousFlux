@@ -1,4 +1,8 @@
 /* eslint-disable import/prefer-default-export */
+function checkNumberDot(num){
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 export const TableData = [
   {
     id: '-',
@@ -413,44 +417,44 @@ export const tableSentimantData = [
 export const tableOnlineOverviewData = [
   {
     Channels: 'Coupang',
-    'Num of Reviews': 4348,
+    'Num of Reviews': checkNumberDot(4348),
     'Avg of Ratings': 4.4,
-    'Display Ads Spending': 1582000,
+    'Display Ads Spending': checkNumberDot(1582000),
   },
   {
     Channels: '11st',
-    'Num of Reviews': 4489,
+    'Num of Reviews': checkNumberDot(4489),
     'Avg of Ratings': 4.8,
-    'Display Ads Spending': 1816000,
+    'Display Ads Spending': checkNumberDot(1816000),
   },
   {
     Channels: 'Wemakeprice',
-    'Num of Reviews': 3547,
+    'Num of Reviews': checkNumberDot(3547),
     'Avg of Ratings': 3.9,
-    'Display Ads Spending': 487000,
+    'Display Ads Spending': checkNumberDot(487000),
   },
   {
     Channels: 'Sinsegaemall',
-    'Num of Reviews': 34865,
+    'Num of Reviews': checkNumberDot(34865),
     'Avg of Ratings': 2.1,
-    'Display Ads Spending': 1348000,
+    'Display Ads Spending': checkNumberDot(1348000),
   },
   {
     Channels: 'Timon',
-    'Num of Reviews': 2248,
+    'Num of Reviews': checkNumberDot(2248),
     'Avg of Ratings': 2.2,
-    'Display Ads Spending': 581000,
+    'Display Ads Spending': checkNumberDot(581000),
   },
   {
     Channels: 'Gmarket',
-    'Num of Reviews': 3751,
+    'Num of Reviews': checkNumberDot(3751),
     'Avg of Ratings': 3.3,
-    'Display Ads Spending': 321000,
+    'Display Ads Spending': checkNumberDot(321000),
   },
   {
     Channels: 'Action',
-    'Num of Reviews': 3842,
+    'Num of Reviews': checkNumberDot(3842),
     'Avg of Ratings': 1.5,
-    'Display Ads Spending': 270000,
+    'Display Ads Spending': checkNumberDot(270000),
   },
 ];

@@ -41,6 +41,9 @@ class Overview extends React.Component {
     };
   }
 
+
+  // const countNumberDot = item.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   ChangeStartDate = (e) => {
     this.setState({
       startDate: e,
@@ -199,16 +202,17 @@ class Overview extends React.Component {
                 <div className="box-title">
                   <h2>Retailer’s Channel Average</h2>
                 </div>
-                  <div className="graph-area">
+                  <div className="graph-area bar_area">
                     <div className="clearfix box-line">
                       <div className="box left">
                         <div className="chart-area">
                           <div className="chart-header blue">
                             <div className="chart-title t-c">
-                              <h4 className='t-c'>Positive</h4>
+                              <h4 className='t-c'>Product</h4>
                             </div>
                           </div>
                           <div className="chart-cont">
+                            <p className='cont-noti small'>단위 : 건</p>
                             <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
@@ -217,10 +221,11 @@ class Overview extends React.Component {
                         <div className="chart-area">
                           <div className="chart-header red">
                             <div className="chart-title t-c">
-                              <h4>Negative</h4>
+                              <h4>Price</h4>
                             </div>
                           </div>
                           <div className="chart-cont">
+                            <p className='cont-noti small'>단위 : 건</p>
                             <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
@@ -229,10 +234,11 @@ class Overview extends React.Component {
                         <div className="chart-area">
                           <div className="chart-header">
                             <div className="chart-title t-c">
-                              <h4 className='t-c'>Positive</h4>
+                              <h4 className='t-c'>Reviews</h4>
                             </div>
                           </div>
                           <div className="chart-cont">
+                            <p className='cont-noti small'>단위 : 건</p>
                             <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
@@ -241,10 +247,11 @@ class Overview extends React.Component {
                         <div className="chart-area">
                           <div className="chart-header">
                             <div className="chart-title t-c">
-                              <h4>Negative</h4>
+                              <h4>Delivery</h4>
                             </div>
                           </div>
                           <div className="chart-cont">
+                            <p className='cont-noti small'>단위 : 건</p>
                             <CompareBar options={barChartOptionsCheck.options} series={barChartOptionsCheck.series} type="bar" height={210} />
                           </div>
                         </div>
@@ -265,13 +272,14 @@ class Overview extends React.Component {
                   <div className="graph-area">
                     <div className="clearfix box-line">
                       <div className="box left">
+                        <p className='cont-noti small'>*Bubble Size : Ads Spending</p>
                         <CompareBubble height={470} className="relation-bubble"/>
                       </div>
                       <div className="box right">
+                        <p className='cont-noti small mt-5'>단위 : 건, 점, 원</p>
                         <ReactTableNor
                           data={tableOnlineOverviewData}
                           columns={columns}
-                          className='t-c w-25'
                         />
                       </div>
                     </div>
