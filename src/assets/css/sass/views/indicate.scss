@@ -467,7 +467,7 @@
 
 
 .recharts-legend-wrapper{
-    top: 0 !important;
+    top: -15px !important;
 }
 
 .t-c{
@@ -575,13 +575,15 @@
 .ecommerce-chart{
     .recharts-tooltip-wrapper{
         pointer-events: all !important;
-
-        
-
         .recharts-default-tooltip{
             max-height: 300px;
             overflow-y: auto;
         }
     }
-
+    .recharts-tooltip-wrapper-right{
+        left: -5px  !important;
+    }
+    .recharts-tooltip-wrapper-left{
+        left: 5px  !important;
+    }
 }

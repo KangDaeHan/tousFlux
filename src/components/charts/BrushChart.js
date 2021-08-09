@@ -57,12 +57,11 @@ export default function BrushChartTest2() {
           left: 20,
           bottom: 5,
         }}
-        viewBox={{ x: 0, y: 0, height: 300 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" tickLine={false} axisLine={false} />
         <YAxis tickLine={false} axisLine={false} />
-        <Tooltip />
+        <Tooltip coordinate={{ x: 100, y: 140 }} />
         <Legend align="center" verticalAlign="top" height={30} className='brushchartlegend' />
         <ReferenceLine y={0} stroke="#000" />
         <Brush dataKey="name" y={30} height={40} stroke="#8884d8" />
