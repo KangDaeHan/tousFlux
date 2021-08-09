@@ -406,7 +406,7 @@ class Ecommerce extends React.Component {
                             <CardBody>
                                 <div className="chart_area">
                                     <div className='box-title'>
-                                        <h2>Social Keyword Chart - 독특하다</h2>
+                                        <h2>E-Commerce Trend Chart</h2>
                                     </div>
                                     <div className='chart-cont mt-5'>
                                         <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
@@ -428,7 +428,7 @@ class Ecommerce extends React.Component {
                                                 className={classnames({ active: statesItems.activeTab === '1' })}
                                                 onClick={() => { this.toggle('1'); }}
                                             >
-                                                Total
+                                                Num of merchandise
                                             </NavLink>
                                         </NavItem>
                                         <NavItem>
@@ -436,7 +436,7 @@ class Ecommerce extends React.Component {
                                                 className={classnames({ active: statesItems.activeTab === '2' })}
                                                 onClick={() => { this.toggle('2'); }}
                                             >
-                                                I/D RATE
+                                                Avg of ratings
                                             </NavLink>
                                         </NavItem>
                                     </Nav>
@@ -447,7 +447,7 @@ class Ecommerce extends React.Component {
                                                     <Card>
                                                         <CardBody>
                                                             <div className='box-title'>
-                                                                <h2>Social Keyword Rank</h2>
+                                                                <h2>E-Commerce Channel Trend Chart</h2>
                                                             </div>
                                                             <div className='graph-area brushGraph-chart'>
                                                                 <BrushChart />
@@ -463,7 +463,7 @@ class Ecommerce extends React.Component {
                                                     <Card>
                                                         <CardBody>
                                                             <div className='box-title'>
-                                                                <h2>Social Keyword Rank</h2>
+                                                                <h2>E-Commerce Channel Trend Chart</h2>
                                                             </div>
                                                             <div className='graph-area negative-chart'>
                                                                 <BrushChart />
