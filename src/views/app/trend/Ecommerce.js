@@ -449,7 +449,7 @@ class Ecommerce extends React.Component {
                                                             <div className='box-title'>
                                                                 <h2>E-Commerce Channel Trend Chart</h2>
                                                             </div>
-                                                            <div className='graph-area brushGraph-chart'>
+                                                            <div className='graph-area ecommerce-chart'>
                                                                 <BrushChart />
                                                             </div>
                                                         </CardBody>
@@ -465,7 +465,7 @@ class Ecommerce extends React.Component {
                                                             <div className='box-title'>
                                                                 <h2>E-Commerce Channel Trend Chart</h2>
                                                             </div>
-                                                            <div className='graph-area negative-chart'>
+                                                            <div className='graph-area ecommerce-chart'>
                                                                 <BrushChart />
                                                             </div>
                                                         </CardBody>

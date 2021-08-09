@@ -571,3 +571,17 @@
         margin-bottom: 0;
     }
 }
+
+.ecommerce-chart{
+    .recharts-tooltip-wrapper{
+        pointer-events: all !important;
+
+        
+
+        .recharts-default-tooltip{
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    }
+
+}
