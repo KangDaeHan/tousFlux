@@ -1281,7 +1281,7 @@ class ProductPrice extends React.Component {
                   <h2>Product Rank</h2>
                 </div>
 
-                <div className="tbl-no-page">
+                <div>
                   <ReactTable
                     className='table'
                     data={ProductData}
