@@ -268,7 +268,7 @@ class Prime extends React.Component {
 
     // eslint-disable-next-line prefer-const
       return (
-        <>
+        <div className='prime_wrap'>
           <Row>
             <Colxx xxs="12">
               <Card>
@@ -413,7 +413,8 @@ class Prime extends React.Component {
                                   <p className={`count ${item.class}`}>{countNumberDot}</p>
                                 </div>
                                 <div className='chart-area'>
-                                  <div id="chart">
+                                  <div id="chart" className='barchart'>
+                                    <p className='cont-noti small'>단위: 건</p>
                                     <CompareBar options={statesItems.barChart.options} series={item.series} height={350} />
                                   </div>
                                 </div>
@@ -460,7 +461,7 @@ class Prime extends React.Component {
               </Card>
             </Colxx>
           </Row>
-        </>
+        </div>
       )
   }
 }

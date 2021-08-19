@@ -86,7 +86,7 @@ class Channels extends React.Component {
         ]
 
         return(
-            <>
+            <div className='channel_wrap'>
                 <Row>
                     <Colxx xxs="12">
                     <Card>
@@ -177,17 +177,18 @@ class Channels extends React.Component {
                                 <h2>Posting Indicator</h2>
                             </div>
                             {/* <ChannelTable /> */}
+                            <p className='cont-noti small'>단위: 건</p>
                             <TableRowspan 
-                                tClass='r-table mt-5 tbl_channel'
+                                tClass='r-table tbl_channel'
                                 tData={Object.assign([],statesItems.tData)} 
                                 tColumns={columns}
                             />
-                            <p className='cont-noti'>* 각 수치는 기간 내 일평균 값을 의미</p>
+                            <p className='cont-noti'>* 각 수치는 기간 내 총 합계를 의미</p>
                         </CardBody>
                     </Card>
                     </Colxx>
                 </Row>
-            </>
+            </div>
         )
     }
 }

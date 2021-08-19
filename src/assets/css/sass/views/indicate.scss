@@ -67,6 +67,20 @@
     }
 }
 
+.prime_wrap{
+    .graph-area{
+        &.bar{
+            .barchart{
+                .cont-noti{
+                    position: relative;
+                    top: 15px;
+                    right: 15px;
+                }
+            }
+        }
+    }
+}
+
 .graph-area{
     &.title-type{
         position: relative;
@@ -585,5 +599,11 @@
     }
     .recharts-tooltip-wrapper-left{
         left: 5px  !important;
+    }
+}
+
+.channel_wrap{
+    .cont-noti{
+        margin: 20px 0;
     }
 }
