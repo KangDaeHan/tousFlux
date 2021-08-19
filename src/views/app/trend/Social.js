@@ -60,22 +60,9 @@ class Social extends React.Component {
                         enabled: false,
                       }
                     },
-                    colors: ['#b9b9b9'],
+                    colors: ['#000'],
                     dataLabels: {
-                      enabled: true,
-                      background: {
-                        foreColor: '#000',
-                        padding: 0,
-                        borderRadius: 0,
-                        borderColor: 'transparent',
-                      },
-                      style: {
-                        fontSize: '14px',
-                        fontFamily: 'Helvetica, Arial, sans-serif',
-                        fontWeight: 'bold',
-                        colors: ['transparent'],
-                      },
-                      offsetY: -10,
+                      enabled: false,
                     },
                     markers: {
                       size: 5,
@@ -106,6 +93,78 @@ class Social extends React.Component {
                     
                   },
             }, 
+            totalGraph2 : {
+              series: [
+                  {
+                    name: "Total Graph",
+                    data: [2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 4, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4,4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4, 1.8, 2.8, 2.4, 4.4]
+                  },
+                ],
+                height: 500,
+                options: {
+                  chart: {
+                    type: 'line',
+                    dropShadow: {
+                      enabled: false,
+                      color: '#000',
+                      top: 18,
+                      left: 7,
+                      blur: 10,
+                      opacity: 0.2,
+                    },
+                    toolbar: {
+                      show: false
+                    }, 
+                    zoom: {
+                      enabled: false,
+                    }
+                  },
+                  colors: ['#b9b9b9'],
+                  dataLabels: {
+                    enabled: true,
+                    background: {
+                      foreColor: '#000',
+                      padding: 0,
+                      borderRadius: 0,
+                      borderColor: 'transparent',
+                    },
+                    style: {
+                      fontSize: '14px',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      fontWeight: 'bold',
+                      colors: ['transparent'],
+                    },
+                    offsetY: -10,
+                  },
+                  markers: {
+                    size: 5,
+                    hover: {
+                      size: 5,
+                      sizeOffset: 5,
+                      fillColor: '#000',
+                    },
+                    discrete: [{
+                      fillColor: '#e3e3e3',
+                      strokeColor: '#fff',
+                      size: 5
+                    }]
+                  },
+                  stroke: {
+                    curve: 'smooth'
+                  },
+                  grid: {
+                    show: false,
+                  },
+                  xaxis: {
+                    categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+                    tickPlacement: 'between'
+                  },
+                  yaxis: {
+                    show: false
+                  }, 
+                  
+                },
+          }, 
             // eslint-disable-next-line react/no-unused-state
             heatMapGraph : {
                 series: [{
@@ -520,7 +579,7 @@ class Social extends React.Component {
                                 </div>
                                   <div className='chart-cont'>
                                       <p className='cont-noti small mt-5'>단위: 건</p>
-                                      <CompareLine options={statesItems.totalGraph.options} series={statesItems.totalGraph.series} height={statesItems.totalGraph.height} />
+                                      <CompareLine options={statesItems.totalGraph2.options} series={statesItems.totalGraph2.series} height={statesItems.totalGraph2.height} />
                                   </div>
                               </div>      
                             </CardBody>
