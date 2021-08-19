@@ -410,6 +410,7 @@ class Sentimentanalysis extends React.Component {
                       <ReactTableNor
                         data={tableSentimantData}
                         columns={columns}
+                        className='tbl_basic'
                       />
                     </div>
                     <div className="box right">
@@ -430,6 +431,7 @@ class Sentimentanalysis extends React.Component {
                       <ReactTableNor
                         data={tableSentimantData}
                         columns={columns}
+                        className='tbl_basic'
                       />
                     </div>
                   </div>

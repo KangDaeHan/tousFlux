@@ -531,7 +531,7 @@ class Onboard extends React.Component {
                                         />
                                     </FormGroup>
                                 </div>
-                                <div className='graph-area brushChart_wrap'>
+                                <div className='graph-area brushChart_wrap ecommerce-chart'>
                                     <p className='cont-noti'>단위: 건</p>
                                     <BrushChart />
                                 </div>

@@ -13,7 +13,7 @@ import {Table} from 'reactstrap';
 import { useTable } from "react-table";
 
 // eslint-disable-next-line import/prefer-default-export
-export const  ReactTableNor = ({columns,data}) => {
+export const  ReactTableNor = ({columns, data, className}) => {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -34,7 +34,7 @@ export const  ReactTableNor = ({columns,data}) => {
 
   // Render the UI for your table
   return (
-    <Table {...getTableProps()} className='tbl_basic'>
+    <Table {...getTableProps()} className={className}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>

@@ -450,6 +450,9 @@ class Social extends React.Component {
                     <Colxx xxs="12">
                         <Card>
                             <CardBody>
+                              <div className='box-title'>
+                                <h2>Social Trend Chart</h2>
+                              </div>
                                 <div className='bx_select_area'>
                                   <FormGroup className="select-box">
                                     <Select
@@ -495,8 +498,11 @@ class Social extends React.Component {
                     <Colxx xxs="12">
                         <Card>
                             <CardBody>
+                              <div className='box-title'>
+                                <h2>Social Keyword Rank</h2>
+                              </div>
                                 <ReactTable
-                                  className='table'
+                                  className='table mt-5 tbl_updown'
                                   data={TableData2}
                                   columns={columns}
                                 />
