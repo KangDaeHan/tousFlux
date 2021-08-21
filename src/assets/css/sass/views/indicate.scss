@@ -383,9 +383,13 @@
 
 .social_area{
     
-    .select-box{
-        margin-left: 2.5%;
+    .bx_select_area{
+        margin-top: 20px;
+        .select-box{
+            margin-left: 2.5%;
+        }
     }
+    
 
     .box-line{
         border: none;
@@ -397,6 +401,14 @@
             &.right{
                 width: 45%;
             }
+        }
+    }
+
+    .graph-area {
+        .bx_name{
+            right: -1px;
+            background: #333638;
+            color: #fff;
         }
     }
 }
