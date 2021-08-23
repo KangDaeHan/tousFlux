@@ -97,10 +97,10 @@ const TopNav = ({
         <UncontrolledDropdown className="top-nav" isOpen={menuDropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
           <DropdownToggle tag="div">
             <ul className="d-inline-block top-nav-list">
-              <li><NavLink to="/app/prime/prime" activeClassName="active" className="nav-menu">PRIME</NavLink></li>
-              <li className="mr50"><NavLink to="/app/gogo/start" activeClassName="active" className="nav-menu">TREND</NavLink></li>
-              <li className="mr100"><NavLink to="#" activeClassName="" className="nav-menu">SOCIAL LISTENING</NavLink></li>
-              <li className="mr100"><NavLink to="#" activeClassName="" className="nav-menu">ONLINE RETAILER</NavLink></li>
+              <li><NavLink to='/app/prime' activeClassName="active" className="nav-menu">PRIME</NavLink></li>
+              <li className="mr50"><NavLink to="/app/trend" activeClassName="active" className="nav-menu">TREND</NavLink></li>
+              <li className="mr100"><NavLink to="/app/socialListening" activeClassName="active" className="nav-menu">SOCIAL LISTENING</NavLink></li>
+              <li className="mr100"><NavLink to="/app/onlineRetailer" activeClassName="active" className="nav-menu">ONLINE RETAILER</NavLink></li>
               <li className="mr50"><NavLink to="#" activeClassName="" className="nav-menu">SIMULATOR</NavLink></li>
               <li><NavLink to="#" activeClassName="" className="nav-menu">ABOUT TousFlux</NavLink></li>
             </ul>
@@ -117,6 +117,7 @@ const TopNav = ({
                 <li><DropdownItem tag={NavLink} to="/app/trend/ecommerce" activeClassName="active" className="sub-menu">E-COMMERCE</DropdownItem></li>
                 <li><DropdownItem tag={NavLink} to="/app/trend/googleAnalytics" activeClassName="active" className="sub-menu">GOOGLE ANALYTICS</DropdownItem></li>
                 <li><DropdownItem tag={NavLink} to="/app/trend/response" activeClassName="active" className="sub-menu">TREND-RESPONSE</DropdownItem></li>
+                <li><DropdownItem tag={NavLink} to="/app/gogo/start" activeClassName="active" className="sub-menu">INDUSTRY</DropdownItem></li>
               </ul>
               <ul className="sub-list3"> 
                 <li><DropdownItem tag={NavLink} to="/app/socialListening/sentimentanalysis" activeClassName="active" className="sub-menu">SENTIMENT ANALYSIS</DropdownItem></li>

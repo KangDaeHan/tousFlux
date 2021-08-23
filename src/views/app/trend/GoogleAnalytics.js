@@ -257,7 +257,7 @@ class GoogleAnalytics extends React.Component {
             },
             colors: ['#404141','#ed7d31','#a4a4a4','#ffc000'],
             dataLabels: {
-              enabled: true,
+              enabled: false,
               background: {
                 foreColor: '#000',
                 padding: 0,
@@ -1089,7 +1089,8 @@ class GoogleAnalytics extends React.Component {
                               <div
                                 key={idx}
                               >
-                                <div className='chart-area'>
+                                <div className='chart-area keyword-gap-graph'>
+                                  <p className='cont-noti'>단위: 명</p>
                                   <CompareBar options={statesChart.horizontal.options} series={item.series} type="bar" height={210} />
                                 </div>
                               </div>
@@ -1237,7 +1238,7 @@ class GoogleAnalytics extends React.Component {
             <Card>
               <CardBody>
                 <div className="box-title">
-                  <h2>GA Keyword Gap</h2>
+                  <h2>GA User Indicators</h2>
                 </div>
                 {/* s: 탭메뉴 */}
                 <Nav tabs className="card-header-tabs keyword-gap-tab">

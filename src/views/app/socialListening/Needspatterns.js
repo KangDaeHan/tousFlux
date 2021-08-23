@@ -189,7 +189,7 @@ class Needspatterns extends React.Component {
 
     const columns = [
       {
-        Header: 'Channel Category',
+        Header: 'Group Name',
         accessor: 'category',
         cellClass: 'text-center',
         disableSortBy: true

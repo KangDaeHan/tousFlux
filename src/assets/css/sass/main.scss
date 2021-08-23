@@ -296,6 +296,11 @@ p {
   color: #bbb;
 
   > .pro-sidebar-inner {
+    position: fixed !important;
+    top: 140px;
+    bottom: 0;
+    width: 270px;
+    height: auto !important;
     background-color: #5d5d5d !important;
     border-radius: 0 7px 7px 0;
     overflow: hidden;
@@ -390,6 +395,10 @@ p {
   &.collapsed {
     width: 64px !important;
     min-width: 64px !important;
+
+    .pro-sidebar-inner {
+      width: 64px;
+    }
 
     .pro-menu > ul > .pro-menu-item > .pro-inner-item {
       padding: 8px 27px 8px 27px !important;
@@ -1191,7 +1200,7 @@ table {
   }
   .cont-noti {
     position: absolute;
-    top: 20px;
+    top: 15px;
     right: 20px;
     margin: 0;
     font-size: 15px;
@@ -1304,6 +1313,20 @@ table {
     }
   }
   
+}
+
+.response-legend {
+  .apexcharts-svg {
+    overflow: visible !important;
+
+    foreignObject {
+      overflow: visible !important;
+    }
+
+    .apexcharts-legend {
+      margin: -45px 0 0 120px;
+    }
+  }
 }
 
 .tbl-no-page {
@@ -1462,8 +1485,8 @@ table {
     min-width: 100%;
     flex-wrap: nowrap;
     white-space: nowrap;
-    overflow-y: hidden;
-    overflow-x: auto;
+    // overflow-y: hidden;
+    // overflow-x: auto;
 
     .navbar-right {
       padding-left: 3%;
