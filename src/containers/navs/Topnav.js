@@ -101,7 +101,7 @@ const TopNav = ({
               <li className="mr50"><NavLink to="/app/trend" activeClassName="active" className="nav-menu">TREND</NavLink></li>
               <li className="mr100"><NavLink to="/app/socialListening" activeClassName="active" className="nav-menu">SOCIAL LISTENING</NavLink></li>
               <li className="mr100"><NavLink to="/app/onlineRetailer" activeClassName="active" className="nav-menu">ONLINE RETAILER</NavLink></li>
-              <li className="mr50"><NavLink to="#" activeClassName="" className="nav-menu">SIMULATOR</NavLink></li>
+              <li className="mr50 response"><NavLink to="#" activeClassName="" className="nav-menu">SIMULATOR</NavLink></li>
               <li><NavLink to="#" activeClassName="" className="nav-menu">ABOUT TousFlux</NavLink></li>
             </ul>
           </DropdownToggle>
