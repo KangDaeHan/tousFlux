@@ -16,6 +16,7 @@ class TagInput extends React.Component {
         this.state = {
             tags: [],
         };
+        
     }
 
     handleDelete = (i) => {
@@ -31,18 +32,23 @@ class TagInput extends React.Component {
             this.setState(state => ({ tags: [...state.tags, tag] }));
         }
     }
+    
 
     render() {
         const { tags } = this.state;
+        const {suggestions} = this.props;
+        
         return (
             <div>
                 <ReactTags tags={tags}
                     handleDelete={this.handleDelete}
                     handleAddition={this.handleAddition}
                     delimiters={delimiters}
-                    allowDeleteFromEmptyInput={false}
+                    allowDeleteFromEmptyInput={true}
                     placeholder='Add New Item'
                     name={tags.length !== 5 ? `input-tag` : `input-tag hide`}
+                    suggestions={suggestions}
+                    inline={true}
                     />
             </div>
         )

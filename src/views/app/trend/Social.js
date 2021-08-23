@@ -8,7 +8,7 @@ import { Row,
      FormGroup, 
      Input,
     } from 'reactstrap';
-import { Formik, Field } from 'formik';
+// import { Formik, Field } from 'formik';
 import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { ko } from "date-fns/esm/locale";
@@ -22,6 +22,7 @@ import ChannelButton from '../../../components/applications/ChannelButton'
 import CustomSelectInput from '../../../components/common/CustomSelectInput';
 // eslint-disable-next-line import/named
 import { TableData2 } from './data';
+import TagInput from '../../../components/applications/TagInput'
 
 
 class Social extends React.Component {
@@ -390,14 +391,21 @@ class Social extends React.Component {
             accessor: 'youtube',
           },
         ]
+
+        const suggestions = [
+          {"id": "1", "text": "test"},
+          {"id": "2", "text": "test1"},
+          {"id": "3", "text": "test2"},
+          {"id": "4", "text": "test3"},
+      ]
     
-        const validateKeyword = (value) => {
-            let error;
-            if (!value) {
-              error = 'No Keywords';
-            } 
-            return error;
-        };
+        // const validateKeyword = (value) => {
+        //     let error;
+        //     if (!value) {
+        //       error = 'No Keywords';
+        //     } 
+        //     return error;
+        // };
 
         return(
             <div className='social_area'>
@@ -468,12 +476,12 @@ class Social extends React.Component {
                                     <tr>
                                         <th style={{ width:'15%' }}>Keywords</th>
                                         <td style={{ width:'85%' }} colSpan="3">
-                                          <Formik
+                                          {/* <Formik
                                               initialValues={{
                                               keyword: '',
                                               }}
                                               // onSubmit={onSubmit}
-                                          >
+                                          >                                         
                                             {({ errors, touched }) => (
                                                 <FormGroup className="keyword-area">
                                                 <Field
@@ -488,7 +496,8 @@ class Social extends React.Component {
                                                 )}
                                                 </FormGroup>
                                             )}
-                                        </Formik>
+                                        </Formik> */}
+                                        <TagInput suggestions={suggestions} />
                                         </td>
                                     </tr>
                                     </tbody>

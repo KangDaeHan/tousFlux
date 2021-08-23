@@ -455,14 +455,15 @@
 
 .ReactTags__selected{
 
-    .ReactTags__tag{
-        float: left;
+    > .ReactTags__tag{
+        display: inline-block;
         padding: 0.5rem 0.7rem;
         margin-right: 5px;
         border: 1px solid #bbb;
         border-radius: 20px;
         color: #555;
-        vertical-align: middle;
+        vertical-align: top;
+        cursor: default;
         .ReactTags__remove{
             margin-left: 10px;
             background: transparent;
@@ -475,10 +476,13 @@
     }  
 
     .ReactTags__tagInput{
+        display: inline-block;
+        
         .ReactTags__tagInputField{
             display: inline-block;
             padding: 0.5rem 1rem;
             border: 1px solid #d7d7d7;
+            cursor: default;
 
             &:focus-visible{
                 outline: none;
@@ -488,6 +492,44 @@
                 display: none;
             }
         }
+    }
+
+    /* Styles for suggestions */
+  .ReactTags__suggestions {
+        position: absolute;
+        ul {
+            list-style-type: none;
+            box-shadow: 0.05em 0.01em 0.5em rgba(0, 0, 0, 0.2);
+            background: white;
+            width: 200px;
+            padding-left: 0;
+        }
+      li {
+        border-bottom: 1px solid #ddd;
+        padding: 5px 10px;
+        margin: 0;
+       
+
+        &:hover{
+            background: #4f8bc1;
+            color: #fff;
+            & mark{
+                color: #fff;
+            }
+        }
+        &:focus{
+            background: #4f8bc1;
+            color: #fff;
+            & mark{
+                color: #fff;
+            }
+        }
+        & mark {
+            text-decoration: underline;
+            background: none;
+            font-weight: 600;
+        }
+      }
     }
 }
 
@@ -628,3 +670,5 @@
         margin: 0;
     }
 }
+
+
