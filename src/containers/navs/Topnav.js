@@ -97,12 +97,12 @@ const TopNav = ({
         <UncontrolledDropdown className="top-nav" isOpen={menuDropdown} onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
           <DropdownToggle tag="div">
             <ul className="d-inline-block top-nav-list">
-              <li><NavLink to='/app/prime' activeClassName="active" className="nav-menu">PRIME</NavLink></li>
-              <li className="mr50"><NavLink to="/app/trend" activeClassName="active" className="nav-menu">TREND</NavLink></li>
-              <li className="mr100"><NavLink to="/app/socialListening" activeClassName="active" className="nav-menu">SOCIAL LISTENING</NavLink></li>
-              <li className="mr100"><NavLink to="/app/onlineRetailer" activeClassName="active" className="nav-menu">ONLINE RETAILER</NavLink></li>
-              <li className="mr50 response"><NavLink to="#" activeClassName="" className="nav-menu">SIMULATOR</NavLink></li>
-              <li><NavLink to="#" activeClassName="" className="nav-menu">ABOUT TousFlux</NavLink></li>
+              <li className="menu1"><NavLink to='/app/prime' activeClassName="active" className="nav-menu">PRIME</NavLink></li>
+              <li className="menu2"><NavLink to="/app/trend" activeClassName="active" className="nav-menu">TREND</NavLink></li>
+              <li className="menu3"><NavLink to="/app/socialListening" activeClassName="active" className="nav-menu">SOCIAL LISTENING</NavLink></li>
+              <li className="menu4"><NavLink to="/app/onlineRetailer" activeClassName="active" className="nav-menu">ONLINE RETAILER</NavLink></li>
+              <li className="menu5"><NavLink to="#" activeClassName="" className="nav-menu">SIMULATOR</NavLink></li>
+              <li className="menu6"><NavLink to="#" activeClassName="" className="nav-menu">ABOUT TousFlux</NavLink></li>
             </ul>
           </DropdownToggle>
           <DropdownMenu>
