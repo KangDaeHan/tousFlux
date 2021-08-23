@@ -196,6 +196,13 @@ class Onboard extends React.Component {
             { label: 'Naver_blog', value: 'social_val03', key: 2 },
         ];
 
+        const suggestions = [
+            {"id": "1", "text": "test"},
+            {"id": "2", "text": "test1"},
+            {"id": "3", "text": "test2"},
+            {"id": "4", "text": "test3"},
+        ]
+
         return (
             <div className='onboard-wrap'>
                 <Row>
@@ -259,7 +266,7 @@ class Onboard extends React.Component {
                                                 <tr>
                                                     <th style={{ width: "15%" }}>Competitors</th>
                                                     <td style={{ width: "85%" }} colSpan="3">
-                                                        <TagInput />
+                                                        <TagInput suggestions={suggestions} />
                                                     </td>
                                                 </tr>
                                                 <tr>
