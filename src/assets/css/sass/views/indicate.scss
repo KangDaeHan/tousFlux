@@ -469,6 +469,7 @@
             background: transparent;
             border: none;
         }
+        
 
         + .ReactTags__tag{
             margin: 0 5px;
@@ -511,19 +512,18 @@
        
 
         &:hover{
-            background: #4f8bc1;
+            background: #b7cfe0;
             color: #fff;
             & mark{
                 color: #fff;
             }
         }
-        &:focus{
-            background: #4f8bc1;
-            color: #fff;
-            & mark{
-                color: #fff;
-            }
+
+        &.ReactTags__activeSuggestion {
+            background: #b7cfe0;
+            cursor: pointer;
         }
+
         & mark {
             text-decoration: underline;
             background: none;
