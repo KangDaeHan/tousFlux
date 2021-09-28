@@ -1172,7 +1172,7 @@ export const positiveChartGraph = {
     },
     colors: ['#555', '#a9a9a9','#ee843b'],
     dataLabels: {
-      enabled: true,
+      enabled: false,
       background: {
         foreColor: '#000',
         padding: 0,
@@ -1257,7 +1257,7 @@ export const negativeChartGraph = {
     },
     colors: ['#555', '#a9a9a9','#ee843b'],
     dataLabels: {
-      enabled: true,
+      enabled: false,
       background: {
         foreColor: '#000',
         padding: 0,

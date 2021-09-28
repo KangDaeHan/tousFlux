@@ -420,7 +420,7 @@ class Sentimentanalysis extends React.Component {
                             <h4>Negative</h4>
                           </div>
                         </div>
-                        <div className="chart-cont">
+                        <div className="chart-cont ver-legend">
                           <CompareLine
                             options={negativeChartGraph.options}
                             series={negativeChartGraph.series}
