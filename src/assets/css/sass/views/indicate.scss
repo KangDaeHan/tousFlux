@@ -407,8 +407,8 @@
     .graph-area {
         .bx_name{
             right: -1px;
-            background: #333638;
-            color: #fff;
+            background: #f3f3f3;
+            color: #3a3a3a;
         }
     }
 }
@@ -672,4 +672,6 @@
     }
 }
 
-
+.ver-legend .apexcharts-legend{
+    flex-direction: column !important;
+}

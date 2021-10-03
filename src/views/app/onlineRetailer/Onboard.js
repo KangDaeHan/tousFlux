@@ -479,7 +479,7 @@ class Onboard extends React.Component {
                                                             <div className='box-title'>
                                                                 <h2>Benefits Type</h2>
                                                             </div>
-                                                            <div className='graph-area mt-5'>
+                                                            <div className='graph-area'>
                                                                 <FullStackBar
                                                                     options={fullStackBarGraphType2.options}
                                                                     series={fullStackBarGraphType2.series}
