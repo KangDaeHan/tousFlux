@@ -1285,6 +1285,7 @@ table {
   .select-box {
     min-width: 150px;
     margin: 0 40px 0 9px;
+    text-align: left;
   }
 }
 
@@ -1417,6 +1418,7 @@ table {
     padding: 0 15px;
     border-bottom: 1px solid #d1d1d1;
     background-color: #f1f1f1;
+    text-align: center;
 
     > span {
       font-size: 20px;
@@ -1599,6 +1601,7 @@ table {
 
 @media (max-width: 1110px) { 
   .navbar {
+    width: 1090px;
 
     .navbar-right {
 
