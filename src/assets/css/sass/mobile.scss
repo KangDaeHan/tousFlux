@@ -207,7 +207,7 @@ input[type=number] {
             left: 3rem;
             width: 2.5rem;
             height: 2.5rem;
-            // background: url("/assets/img/login/search_icon.png") no-repeat 50% 50%;
+            background: url("/assets/img/mobile/search_icon.png") no-repeat 50% 50%;
             content: '';
         }
     }
@@ -258,7 +258,7 @@ input[type=number] {
                 display: inline-block;
                 width:2.9rem;
                 height:2.8rem;
-                // background: url("/assets/img/login/search_nor_icon.png") no-repeat 50% 50%;
+                background: url("/assets/img/mobile/search_nor_icon.png") no-repeat 50% 50%;
                 
             }
         
@@ -266,7 +266,7 @@ input[type=number] {
                 display: inline-block;
                 width: 3rem;
                 height: 2.7rem;
-                // background: url("/assets/img/login/filter_nor_icon.png") no-repeat 50% 50%;
+                background: url("/assets/img/mobile/filter_nor_icon.png") no-repeat 50% 50%;
                 
             }
         }
@@ -313,7 +313,7 @@ input[type=number] {
             ._back{
                 width: 3rem;
                 height: 2.7rem;
-                // background: url("/assets/img/login/back_icon.png") no-repeat 50% 50%;
+                background: url("/assets/img/mobile/back_icon.png") no-repeat 50% 50%;
                 content: '';
             }
         }
@@ -488,7 +488,7 @@ input[type=number] {
                         &._monitor{
                             width: 3.7rem;
                             height: 3.8rem;
-                            // background: url('/assets/img/login/monitor_icon.png') center center no-repeat;
+                            background: url('/assets/img/mobile/monitor_icon.png') center center no-repeat;
                             -webkit-background-size: 100%;
                             background-size: 100%;
                         }
@@ -496,34 +496,34 @@ input[type=number] {
                         &._analysis{
                             width: 3.7rem;
                             height: 3.9rem;
-                            // background: url('/assets/img/login/analysis_icon.png') center center no-repeat;
+                            background: url('/assets/img/mobile/analysis_icon.png') center center no-repeat;
                             -webkit-background-size: 100%;
                             background-size: 100%;
                         }
                         &._account{
                             width: 3.8rem;
                             height: 3.9rem;
-                            // background: url('/assets/img/login/account_icon.png') center center no-repeat;
+                            background: url('/assets/img/mobile/account_icon.png') center center no-repeat;
                             -webkit-background-size: 100%;
                             background-size: 100%;
                         }
                     }
                 }
 
-                // &.active{
-                //     .ico{
-                //         &._monitor{
-                //             background: url('/assets/img/login/monitor_act_icon.png') center center no-repeat;
+                &.active{
+                    .ico{
+                        &._monitor{
+                            background: url('/assets/img/mobile/monitor_act_icon.png') center center no-repeat;
                         
-                //         }
-                //         &._analysis{
-                //             background: url('/assets/img/login/analysis_act_icon.png') center center no-repeat;
-                //         }
-                //         &._account{
-                //             background: url('/assets/img/login/account_act_icon.png') center center no-repeat;
-                //         }
-                //     }
-                // }
+                        }
+                        &._analysis{
+                            background: url('/assets/img/mobile/analysis_act_icon.png') center center no-repeat;
+                        }
+                        &._account{
+                            background: url('/assets/img/mobile/account_act_icon.png') center center no-repeat;
+                        }
+                    }
+                }
                 p{
                     padding-top: 1rem;
                     font-size: 1.8rem;
@@ -582,6 +582,10 @@ input[type=number] {
         .search_ipt_area{
             width: -webkit-fill-available;
             margin: 0 2rem;
+            &::after{
+                width: 3rem;
+                height: 3rem;
+            }
         }
     }
 }
