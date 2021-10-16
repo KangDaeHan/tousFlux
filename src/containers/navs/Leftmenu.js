@@ -9,7 +9,7 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import {LeftPrime ,LeftTrend, LeftSocial, LeftOnline, LeftSimulator, LeftAbout} from './Leftmenulist';
+import {LeftPrime ,LeftTrend, LeftSocial, LeftOnline, LeftSimulator, LeftAbout, LeftSearch, LeftBasic} from './Leftmenulist';
 
 const LeftMenu = () => {
   const [menuCollapse, setMenuCollapse] = useState(false);
@@ -38,6 +38,8 @@ const LeftMenu = () => {
               <Route path={['/app/onlineRetailer/onboard', '/app/onlineRetailer/overview', '/app/onlineRetailer/productprice']} component={LeftOnline} />
               <Route path="/app/simulator" component={LeftSimulator} />
               <Route path="/app/about" component={LeftAbout} />
+              <Route path="/app/search" component={LeftSearch} />
+              <Route path={['/app/basic/product', '/app/basic/graphinfo']} component={LeftBasic} />
               <Redirect to="/error" />
             </Switch>
           </Menu>

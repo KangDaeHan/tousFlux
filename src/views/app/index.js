@@ -2,7 +2,10 @@ import React, { Suspense } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import AppLayout from '../../layout/AppLayout';
+// [D]모바일 일 경우 AppLayout import 하지 않음 
+// import AppLayout from '../../layout/AppLayout';
+// [D]모바일 일 경우 AppLayout import 하지 않음
+
 // import { ProtectedRoute, UserRole } from '../../helpers/authHelper';
 
 const Gogo = React.lazy(() =>
@@ -27,9 +30,18 @@ const OnlineLink = React.lazy(() =>
   import(/* webpackChunkName: "viwes-blank-page" */ './onlineRetailer')
 );
 
+// 모바일
+const SearchLink = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-blank-page" */ './search')
+);
+const BasicLink = React.lazy(() =>
+  import(/* webpackChunkName: "viwes-blank-page" */ './basic')
+);
+
 const App = ({ match }) => {
   return (
-    <AppLayout>
+    // [D]모바일 일 경우 AppLayout import 하지 않음
+    // <AppLayout>
       <div className="dashboard-wrapper">
         <Suspense fallback={<div className="loading" />}>
           <Switch>
@@ -62,11 +74,19 @@ const App = ({ match }) => {
               path={`${match.url}/onlineRetailer`}
               render={(props) => <OnlineLink {...props} />}
             />
+            <Route
+              path={`${match.url}/basic`}
+              render={(props) => <BasicLink {...props} />}
+            />
+            <Route
+              path={`${match.url}/search`}
+              render={(props) => <SearchLink {...props} />}
+            />
             <Redirect to="/error" />
           </Switch>
         </Suspense>
       </div>
-    </AppLayout>
+    // </AppLayout>
   );
 };
 

@@ -32,5 +32,11 @@ const data = [
     label: 'TREND',
     to: `${adminRoot}/trend`,
   },
+  {
+    id: 'MOBILE',
+    icon: 'iconsminds-library',
+    label: 'TREND',
+    to: `${adminRoot}/mobile`,
+  },
 ];
 export default data;

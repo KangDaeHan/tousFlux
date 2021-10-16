@@ -11,6 +11,7 @@ export const LeftPrime = ({match}) => {
     <>
       <MenuItem><NavLink to="/app/prime/prime" activeClassName="active">STATES</NavLink></MenuItem>
       <MenuItem><NavLink to="/app/prime/channels" activeClassName="active">CHANNELS</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/prime/product" activeClassName="active">CHANNELS</NavLink></MenuItem>
     </>
   )
 }
@@ -59,6 +60,24 @@ export const LeftAbout = ({match}) => {
   return (
     <>
       <MenuItem>about 메뉴1</MenuItem>
+    </>
+  )
+}
+
+
+export const LeftSearch = ({match}) => {
+  return (
+    <>
+      <MenuItem>Search[모바일]</MenuItem>
+    </>
+  )
+}
+
+export const LeftBasic = ({match}) => {
+  return (
+    <>
+      <MenuItem><NavLink to="/app/basic/product" activeClassName="active">PRODUCT</NavLink></MenuItem>
+      <MenuItem><NavLink to="/app/basic/graphinfo" activeClassName="active">GRAPhINFO</NavLink></MenuItem>
     </>
   )
 }

@@ -42,4 +42,5 @@ $logo-path-mobile: "/assets/logos/mobile.svg";
 $lp-logo-path: "/assets/logos/white-full.svg";
 $lp-logo-path-pinned: "/assets/logos/black.svg";
 
-@import "../main.scss";
+// pc 일경우 main.scss로 변경
+@import "../mobile.scss";

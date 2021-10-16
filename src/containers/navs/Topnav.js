@@ -112,6 +112,7 @@ const TopNav = ({
                 <ul className="sub-list1">
                   <li><DropdownItem tag={NavLink} to="/app/prime/prime" activeClassName="active" className="sub-menu">STATES</DropdownItem></li>
                   <li><DropdownItem tag={NavLink} to="/app/prime/channels" activeClassName="active" className="sub-menu">CHANNELS</DropdownItem></li>
+                  <li><DropdownItem tag={NavLink} to="/app/prime/product" activeClassName="active" className="sub-menu">product</DropdownItem></li>
                 </ul>
                 <ul className="sub-list2">
                   <li><DropdownItem tag={NavLink} to="/app/trend/overview" activeClassName="active" className="sub-menu">OVERVIEW</DropdownItem></li>
@@ -139,6 +140,9 @@ const TopNav = ({
                   <li><NavLink to="#" activeClassName="" className="sub-menu">TousFlux 소개</NavLink></li>
                   <li><NavLink to="#" activeClassName="" className="sub-menu">사용법</NavLink></li>
                   <li><NavLink to="#" activeClassName="" className="sub-menu">공지사항</NavLink></li>
+                </ul>
+                <ul className="sub-list7">
+                  <li><NavLink to="/app/search/search" activeClassName="" className="sub-menu">[모바일]Search</NavLink></li>
                 </ul>
               </div>
             </div>

@@ -8,6 +8,10 @@ const Channels = React.lazy(() =>
   import(/* webpackChunkName: "second" */ './Channels')
 );
 
+const Product = React.lazy(() =>
+  import(/* webpackChunkName: "second" */ './Product')
+);
+
 const PrimeLink = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
@@ -19,6 +23,10 @@ const PrimeLink = ({ match }) => (
       <Route
         path={`${match.url}/channels`}
         render={(props) => <Channels {...props} />}
+      />
+      <Route
+        path={`${match.url}/product`}
+        render={(props) => <Product {...props} />}
       />
       <Redirect to="/error" />
     </Switch>

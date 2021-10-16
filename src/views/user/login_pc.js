@@ -1,11 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-use-before-define */
 import React, { useState, useEffect } from 'react';
 /* eslint no-unused-vars: 0 */
 import { 
-  Col, 
+  Row, 
   Card, 
   CardTitle, 
   Label, 
@@ -19,14 +18,12 @@ import {
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 import { Formik, Form, Field } from 'formik';
 import { NotificationManager } from '../../components/common/react-notifications';
 
 import { loginUser, logoutUser } from '../../redux/actions';
 import { Colxx } from '../../components/common/CustomBootstrap';
 import IntlMessages from '../../helpers/IntlMessages';
-import MobileLogo from '../../assets/logos/logo_mobile.png'
 
 const validatePassword = (value) => {
   let error;
@@ -48,10 +45,7 @@ const validateEmail = (value) => {
   return error;
 };
 
-
-
 const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) => {
-
   const [loginBefore, setLoginBefore] = useState(true);
   const [email] = useState('demo@gogo.com');
   const [password] = useState('gogo123');
@@ -61,6 +55,10 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
       NotificationManager.warning(error, 'Login Error', 3000, null, null, '');
     }
   }, [error]);
+
+  const onLoginView = () => {
+    setLoginBefore(false);
+  }
 
   const onUserLogin = (values) => {
     if (!loading) {
@@ -72,27 +70,57 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
 
   const initialValues = { email, password };
 
+  const handleLogout = () => {
+    logoutUserAction(history);
+  };
+
   return (
     <>
-    <Col className={`h-100 login-area ${loginBefore && 'home-area'}`}>
+    <div className="user d-inline-block">
+      <UncontrolledDropdown className="dropdown-menu-right">
+        <DropdownToggle className="p-0" color="empty">
+          <span>
+            <img alt="Profile" src="/assets/img/pic_default.png" />
+          </span>
+        </DropdownToggle>
+        <DropdownMenu className="mt-2" right>
+          <div className="name">
+            <span>
+              <img alt="Profile" src="/assets/img/pic_default.png" />
+            </span>
+            <p>관리자</p>
+          </div>
+          <DropdownItem>MY PAGE</DropdownItem>
+          <DropdownItem onClick={() => onLoginView()}>LOGIN</DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
+    </div>
+
+    <Row className={`h-100 login-area ${loginBefore && 'home-area'}`}>
       <Colxx xxs="12" md="12" className="mx-auto my-auto">
         <Card className="">
-          <div className="wrap_mobile_login">
+          <div className="">
             <NavLink to="/" className="home-logo white">
-              <div>                
-                <img src={MobileLogo} alt="" />
-              </div>
+              <span className="logo-single" />
             </NavLink>
 
+            {loginBefore === true ?
+              <div className="quick-link">
+                <NavLink to="/" className="link1">메뉴1</NavLink>
+                <NavLink to="/" className="link2">메뉴2</NavLink>
+                <NavLink to="/" className="link3">메뉴3</NavLink>
+                <NavLink to="/" className="link4">메뉴4</NavLink>
+                <NavLink to="/" className="link5">메뉴5</NavLink>
+              </div>
+            :
             <Formik initialValues={initialValues} onSubmit={onUserLogin}>
               {({ errors, touched }) => (
-                <Form className="av-tooltip tooltip-label-bottom mt20">
+                <Form className="av-tooltip tooltip-label-bottom">
                   <FormGroup className="form-group has-float-label">
                     <Field
                       className="form-control"
                       name="email"
                       validate={validateEmail}
-                      placeholder="password"
                     />
                     {errors.email && touched.email && (
                       <div className="invalid-feedback d-block">
@@ -105,7 +133,6 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
                       className="form-control"
                       type="password"
                       name="password"
-                      placeholder="password"
                       validate={validatePassword}
                     />
                     {errors.password && touched.password && (
@@ -114,20 +141,13 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
                       </div>
                     )}
                   </FormGroup>
-                  <CustomInput
-                    type="checkbox"
-                    id="exCustomCheckbox"
-                    label="Remember me"
-                    className="chk-remember"
-                  />
-                  <a href='#' className='email_desc'>Incorrect Email or password</a>
                   <div className="d-flex justify-content-between align-items-center">
                     {/* <NavLink to="/user/forgot-password">
                       <IntlMessages id="user.forgot-password-question" />
                     </NavLink> */}
                     <Button
                       color="primary"
-                      className={`btn-shadow btn-multiple-state mt20 ${
+                      className={`btn-shadow btn-multiple-state ${
                         loading ? 'show-spinner' : ''
                       }`}
                       size="lg"
@@ -142,24 +162,21 @@ const Login = ({ history, loading, error, loginUserAction , logoutUserAction}) =
                       </span>
                     </Button>
                   </div>
-                  <div className='t-c pass_desc'>
-                    <p>
-                      Don’t have account?
-                      <a href="#" className='font_c_org ml20'>Click here!</a>
-                    </p>
-                    <p>
-                      <a href="#">Forgot Password?</a>
-                    </p>
-                  </div>
+                  <CustomInput
+                    type="checkbox"
+                    id="exCustomCheckbox"
+                    label="Remember me"
+                    className="chk-remember"
+                  />
                 </Form>
               )}
             </Formik>
-            
+            }
 
           </div>
         </Card>
       </Colxx>
-    </Col>
+    </Row>
   </>
   );
 };
@@ -167,7 +184,6 @@ const mapStateToProps = ({ authUser }) => {
   const { loading, error } = authUser;
   return { loading, error };
 };
-
 
 export default connect(mapStateToProps, {
   loginUserAction: loginUser,
