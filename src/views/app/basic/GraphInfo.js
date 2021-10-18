@@ -1,3 +1,5 @@
+/* eslint-disable no-else-return */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -16,7 +18,11 @@ class Product extends React.Component {
                 data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
                 }],
             options: {
+                colors: ['#f69200'], 
                 chart: {
+                toolbar: {
+                    show: false
+                },
                 height: 350,
                 type: 'line',
                 zoom: {
@@ -29,10 +35,6 @@ class Product extends React.Component {
                 stroke: {
                 curve: 'straight'
                 },
-                title: {
-                text: 'Product Trends by Month',
-                align: 'left'
-                },
                 grid: {
                 row: {
                     colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
@@ -40,17 +42,43 @@ class Product extends React.Component {
                 },
                 },
                 xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                tickPlacement: 'between',
+                categories: ['2020.05.01', '2020.06.01', '2020.07.01', '2020.08.01', '2020.09.01', '2020.10.01', '2020.11.01', '2020.12.01', '2021.01.01'],
                 }
             },
            },
            graphInfo_02: {
             series: [{
                 name: "Desktops",
-                data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+                data: [148, 10, 41, 35, 51, 49, 62, 69, 91, 50]
                 }],
             options: {
+                colors: [
+                    function ({ value, seriesIndex, dataPointIndex, w }) {
+                        if (dataPointIndex === 0) {
+                          return "#f69200";
+                        } else {
+                          return "#ddd";
+                        }
+                }],
                 chart: {
+                toolbar: {
+                    show: false
+                },
+                states: {
+                    hover: {
+                        filter: {
+                            type: 'none',
+                            // value: 0.1,
+                        }
+                    },
+                    active: {
+                        filter: {
+                            type: 'darken',
+                            value: 0.2,
+                        }
+                    },
+                },
                 height: 350,
                 type: 'bar',
                 zoom: {
@@ -58,14 +86,13 @@ class Product extends React.Component {
                 }
                 },
                 dataLabels: {
-                enabled: false
+                enabled: true,
+                style: {
+                    colors: ['#555']
+                },
                 },
                 stroke: {
                 curve: 'straight'
-                },
-                title: {
-                text: 'Product Trends by Month',
-                align: 'left'
                 },
                 grid: {
                 row: {
@@ -74,17 +101,44 @@ class Product extends React.Component {
                 },
                 },
                 xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                tickPlacement: 'between',
+                categories: ['예쁘다', '귀엽다', '화려하다', '부드럽다', '하얗다', '여성스럽다', '광택감', '하객룩', '블라우스', '단색'],
                 }
             },
            },
            graphInfo_03: {
             series: [{
                 name: "Desktops",
-                data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+                data: [148 ,10, 41, 35, 51, 49, 62, 69, 91, 10]
                 }],
             options: {
+                colors: [
+                    function ({ value, seriesIndex, dataPointIndex, w }) {
+                        if (dataPointIndex === 0) {
+                          return "#f69200";
+                        } else {
+                          return "#ddd";
+                        }
+                      }],
                 chart: {
+                toolbar: {
+                    show: false
+                },
+                states: {
+                    hover: {
+                        filter: {
+                            // type: 'darken',
+                            type: 'none',
+                            // value: 0.1,
+                        }
+                    },
+                    active: {
+                        filter: {
+                            type: 'darken',
+                            value: 0.2,
+                        }
+                    },
+                },
                 height: 350,
                 type: 'bar',
                 zoom: {
@@ -92,14 +146,13 @@ class Product extends React.Component {
                 }
                 },
                 dataLabels: {
-                enabled: false
+                enabled: true,
+                style: {
+                    colors: ['#555']
+                },
                 },
                 stroke: {
                 curve: 'straight'
-                },
-                title: {
-                text: 'Product Trends by Month',
-                align: 'left'
                 },
                 grid: {
                 row: {
@@ -108,7 +161,8 @@ class Product extends React.Component {
                 },
                 },
                 xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                tickPlacement: 'between',
+                categories: ['에잇세컨즈', '써스데이아일랜드', '자라', '에이치엔엠', '스파오', '핀블랙', '유니클로', '망고', '미쏘'],
                 }
             },
            }
@@ -126,16 +180,16 @@ class Product extends React.Component {
                             원피스
                         </div>
                         <div className='bx_right'>
-                            <a href="javascript:void;" className='btn_search'>
+                            <a href="#" className='btn_search'>
                                 <span className='btn_nor_search' />
                             </a>
-                            <a href="javscript:void(0);" className='btn_fileter'>
+                            <a href="#" className='btn_fileter'>
                                 <span className='btn_nor_filter' />
                             </a>
                         </div>
                     </div>
                     <div className='menu_info'>
-                        <a href="javascript:void;">
+                        <a href="#">
                             <span className='ico _back' />
                         </a>
                         <p className='desc'>
@@ -190,19 +244,19 @@ class Product extends React.Component {
                     <div className="footer_inner">
                         <ul className='footer_list'>
                             <li>
-                                <a href="javascript:void;">
+                                <a href="#">
                                     <span className='ico _monitor' />
                                     <p>Monitoring</p>
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:void;">
+                            <li className='active'>
+                                <a href="#">
                                     <span className='ico _analysis' />
                                     <p>Analysis</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void;">
+                                <a href="#">
                                     <span className='ico _account' />
                                     <p>My account</p>
                                 </a>

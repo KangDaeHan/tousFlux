@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
 import MobileLogo from '../../../assets/logos/logo_mobile.png'
@@ -20,7 +21,7 @@ class Search extends React.Component {
                     <input type="text" className='search_ipt' />
                 </div>
                 <div className='btn_wrap'>
-                    <a href="javscript:void(0);" className='btn_manual'>Manual download</a>
+                    <a href="#" className='btn_manual'>Manual download</a>
                 </div>
             </div>
         )

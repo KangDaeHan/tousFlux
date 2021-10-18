@@ -1,3 +1,8 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable array-callback-return */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-curly-brace-presence */
@@ -20,11 +25,54 @@ class Product extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-
+            menuActiveItem: 1,
         }
     }
 
     render() {
+        const statesItems = this.state;
+        
+        const menuList = [
+            {id: 1, title :  'Basic'},
+            {id: 2, title :  'Advenced'},
+            {id: 3, title :  'Industry'},
+            {id: 4, title :  'Social L'},
+          ]
+
+        const slideItems = [
+            {id: 1, img :  'thumb1.png'},
+            {id: 2, img :  'thumb2.png'},
+            {id: 3, img :  'thumb3.png'},
+            {id: 4, img :  'thumb4.png'},
+        ]
+
+        const tableItems = [
+            {id: 1, element : '광택', elementDetail: '디테일', state: '높음', productCount: 1130, reviewCount:439},
+            {id: 2, element : '무늬', elementDetail: '지칭', state: '보통', productCount: 1130, reviewCount:439},
+            {id: 3, element : '셔츠', elementDetail: '지칭', state: '보통', productCount: 1130, reviewCount:51},
+            {id: 4, element : '광택', elementDetail: '지칭', state: '낮음', productCount: 1043, reviewCount:3},
+            {id: 5, element : '광택', elementDetail: '지칭', state: '보통', productCount: 1130, reviewCount:439},
+            {id: 6, element : '광택', elementDetail: '지칭', state: '보통', productCount: 1130, reviewCount:439},
+            {id: 7, element : '광택', elementDetail: '지칭', state: '보통', productCount: 1130, reviewCount:439},
+            {id: 8, element : '광택', elementDetail: '지칭', state: '보통', productCount: 1130, reviewCount:439}
+        ]
+
+        const listOption = [
+            {id: 1, title: '사이즈조절'},
+            {id: 2, title: '타겟'},
+            {id: 3, title: '마감처리'},
+            {id: 4, title: '무늬'},
+            {id: 5, title: '제품구성'},
+            {id: 6, title: '디테일'}
+        ]
+
+        const emotionItem =
+        [
+            {id: 1, title: '단정', img: 'thumb1.png'},
+            {id: 2, title: '하객룩', img: 'thumb2.png'},
+            {id: 3, title: '트렌치', img: 'thumb3.png'},
+            {id: 4, title: '솔리드', img: 'thumb4.png'}
+        ]
 
         return(
             <div className='main wrap'>
@@ -34,7 +82,7 @@ class Product extends React.Component {
                             원피스
                         </div>
                         <div className='bx_right'>
-                            <a href="javascript:void;" className='btn_search'>
+                            <a href="#" className='btn_search'>
                                 <span className='btn_nor_search' />
                             </a>
                             <a href="javscript:void(0);" className='btn_fileter'>
@@ -43,18 +91,17 @@ class Product extends React.Component {
                         </div>
                     </div>
                     <ul className='list_menu'>
-                        <li className='active'>
-                            <a href="javascript:void;">Basic</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void;">Advenced</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void;">Industry</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void;">Social L</a>
-                        </li>
+                        {menuList.map((item) => {
+                            return(
+                            <li 
+                                key={item.id}
+                                onClick={()=> this.setState({menuActiveItem : item.id})}
+                                className={`${statesItems.menuActiveItem === item.id ? 'active' : ""}`}
+                            >
+                                <a href="#">{item.title}</a>
+                            </li>
+                            )
+                        })}
                     </ul>
                 </header>
                 <div className='main_container'>
@@ -69,30 +116,21 @@ class Product extends React.Component {
                                 <div className='slide_wrap'>
                                     <Swiper
                                         slidesPerView={2}
-                                        // onSlideChange={() => console.log('slide change')}
-                                        // onSwiper={(swiper) => console.log(swiper)}
                                         pagination={true}
                                         >
-                                        <SwiperSlide>
-                                            <a href="javascript:void;">
-                                                <img src="/assets/img/showroom/thumb1.png" alt="" />
-                                            </a>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <a href="javascript:void;">
-                                                <img src="/assets/img/showroom/thumb2.png" alt="" />
-                                            </a>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <a href="javascript:void;">
-                                                <img src="/assets/img/showroom/thumb3.png" alt="" />
-                                            </a>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <a href="javascript:void;">
-                                                <img src="/assets/img/showroom/thumb1.png" alt="" />
-                                            </a>
-                                        </SwiperSlide>
+                                        {
+                                            slideItems.map(item => {
+                                                return(
+                                                    <SwiperSlide
+                                                        key={item.id}
+                                                    >
+                                                        <a href="#">
+                                                            <img src={`/assets/img/showroom/${item.img}`} alt="" />
+                                                        </a>
+                                                    </SwiperSlide>
+                                                )
+                                            })
+                                        }
                                     </Swiper>
                                 </div>
                             </div>
@@ -102,12 +140,18 @@ class Product extends React.Component {
                                 <p className="panel_title t-c">
                                     Trend by Product
                                 </p>
-                                <p className='panel_desc'>
+                                <p className='panel_desc mt20'>
                                     관련 한줄 설명
                                 </p>
                             </div>
                             <div className="panel_cont">
                                 <table className='tbl_basic'>
+                                    <colgroup>
+                                        <col style={{width:'10%'}} />
+                                        <col style={{width:'40%'}} />
+                                        <col style={{width:'20%'}} />
+                                        <col style={{width:'30%'}} />
+                                    </colgroup>
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -117,24 +161,31 @@ class Product extends React.Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                광택
-                                                <span className='btn_status'>
-                                                    <span className='dot' />
-                                                    디테일
-                                                </span>
-                                            </td>
-                                            <td>
-                                                높음
-                                            </td>
-                                            <td>
-                                                1,130 (439)
-                                            </td>
-                                        </tr>
+                                        {tableItems.map(item => {
+                                             const productCountDot = item.productCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                             const reviewCountDot = item.reviewCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                            return(
+                                            <tr
+                                                key={item.id}
+                                            >
+                                                <td>
+                                                    {item.id}
+                                                </td>
+                                                <td>
+                                                    {item.element}
+                                                    <span className='btn_status'>
+                                                        <span className='dot' />
+                                                        {item.elementDetail}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {item.state}
+                                                </td>
+                                                <td>
+                                                    {productCountDot} ({reviewCountDot})
+                                                </td>
+                                            </tr>
+                                        )})}
                                     </tbody>
                                 </table>
                             </div>
@@ -146,42 +197,23 @@ class Product extends React.Component {
                                 </p>
                             </div>
                             <div className="panel_cont">
-                                <p className='panel_desc'>
+                                <p className='panel_desc t-c'>
                                     관련 한줄 설명
                                 </p>
-                                <ul className='list_option'>
-                                    <li><a href="javascript:void;">사이즈조절</a></li>
-                                    <li><a href="javascript:void;">타겟</a></li>
-                                    <li><a href="javascript:void;">마감처리</a></li>
-                                    <li><a href="javascript:void;">무늬</a></li>
-                                    <li><a href="javascript:void;">제품구성</a></li>
-                                    <li><a href="javascript:void;">디테일</a></li>
+                                <ul className='list_option mt20'>
+                                    {listOption.map(item => {return(
+                                        <li key={item.id}><a href="#">{item.title}</a></li>
+                                    )})}
                                 </ul>
-                                <ul className='list_emotion_item'>
-                                    <li>
-                                        <a href="">
-                                            <span>단정</span>
-                                            <img src="/assets/img/showroom/thumb1.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span>하객룩</span>
-                                            <img src="/assets/img/showroom/thumb2.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span>트렌치</span>
-                                            <img src="/assets/img/showroom/thumb3.png" alt="" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <span>솔리드</span>
-                                            <img src="/assets/img/showroom/thumb4.png" alt="" />
-                                        </a>
-                                    </li>
+                                <ul className='list_emotion_item mt20'>
+                                    {emotionItem.map(item=>{return(
+                                        <li key={item.id}>
+                                            <a href="">
+                                                <span>{item.title}</span>
+                                                <img src={`/assets/img/showroom/${item.img}`} alt="" />
+                                            </a>
+                                        </li>
+                                    )})}
                                 </ul>
                             </div>
                         </div>
@@ -191,19 +223,19 @@ class Product extends React.Component {
                     <div className="footer_inner">
                         <ul className='footer_list'>
                             <li>
-                                <a href="javascript:void;">
+                                <a href="#">
                                     <span className='ico _monitor' />
                                     <p>Monitoring</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void;">
+                                <a href="#">
                                     <span className='ico _analysis' />
                                     <p>Analysis</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void;">
+                                <a href="#">
                                     <span className='ico _account' />
                                     <p>My account</p>
                                 </a>
