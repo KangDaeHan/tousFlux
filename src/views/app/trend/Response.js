@@ -43,7 +43,7 @@ class Response extends React.Component {
         series: [
           {
             name: "Users",
-            data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.44]
+            data: [0.77, 0.88, 0.99, 0.11, 0.12, 0.34, 0.56, 0.4, 0.56, 0.41, 0.42, 0.44, 0.55, 0.66, 0.77, 0.99, 0.11, 0.55, 0.11, 0.12, 0.13, 0.15, 0.46, 0.79, 0.53, 0.12, 0.86, 0.77, 0.2, 0.55, 0.75]
           },
           {
             name: "Sessions",
@@ -73,7 +73,48 @@ class Response extends React.Component {
               position: 'top',
               horizontalAlign: 'left',
             },
-            colors: ['#404141','#ed7d31'],
+            annotations: {
+              points: [{
+                x: 0,
+                y: 0.75,
+                marker: {
+                  size: 0,
+                  radius: 0
+                },
+                label: {
+                  borderWidth: 0,
+                  text: '0.75',
+                  offsetX: '98%',
+                  offsetY: 15,
+                  style: {
+                    background: "transparent",
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    color: '#777',
+                  },
+                },
+              },
+              {
+                x: 0,
+                y: 0.45,
+                marker: {
+                  size: 0,
+                  radius: 0
+                },
+                label: {
+                  borderWidth: 0,
+                  text: '0.45',
+                  offsetX: '98%',
+                  offsetY: 15,
+                  style: {
+                    background: "transparent",
+                    fontSize: '13px',
+                    fontWeight: 'bold',
+                    color: '#777',
+                  },
+                },
+              }],
+            },
             dataLabels: {
               enabled: false,
               background: {
@@ -88,8 +129,9 @@ class Response extends React.Component {
                 fontWeight: 'bold',
                 colors: ['transparent'],
               },
-              offsetY: -10,
+              offsetY: -5,
             },
+            colors: ['#404141','#ed7d31'],
             markers: {
               size: 0,
               hover: {

@@ -45,5 +45,12 @@
       "FileReader": true,
       "Blob": true,
       "navigator": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": ["src"]
+        }
+      }
     }
   }
