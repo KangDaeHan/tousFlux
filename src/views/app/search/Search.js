@@ -1,7 +1,9 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unused-state */
 import React from 'react';
-import MobileLogo from '../../../assets/logos/logo_mobile.png'
+import MobileLogo from '../../../assets/logos/logo_mobile_w.png'
+import arrowThin from '../../../assets/img/mobile/arrow-left-thin.png'
 
 class Search extends React.Component {
     constructor(props) {
@@ -12,13 +14,14 @@ class Search extends React.Component {
     }
 
     render() {
-        return(
-            <div className='search_wrap'>           
+        return (
+            <div className='search_wrap'>
                 <div className='logo_wrap'>
                     <img src={MobileLogo} alt="" />
                 </div>
                 <div className="search_ipt_area">
                     <input type="text" className='search_ipt' />
+                    <button><img src={arrowThin} alt="" /></button>
                 </div>
                 <div className='btn_wrap'>
                     <a href="#" className='btn_manual'>Manual download</a>
