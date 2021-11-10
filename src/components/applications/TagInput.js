@@ -3,8 +3,8 @@ import React from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
 
 const KeyCodes = {
-  comma: 188,
-  enter: [10, 13],
+    comma: 188,
+    enter: [10, 13],
 };
 
 const delimiters = [...KeyCodes.enter, KeyCodes.comma];
@@ -16,28 +16,28 @@ class TagInput extends React.Component {
         this.state = {
             tags: [],
         };
-        
+
     }
 
     handleDelete = (i) => {
         const { tags } = this.state;
         this.setState({
-         tags: tags.filter((tag, index) => index !== i),
+            tags: tags.filter((tag, index) => index !== i),
         });
     }
 
-    handleAddition = (tag) =>  {
+    handleAddition = (tag) => {
         const { tags } = this.state;
-        if(tags.length !== 5){
+        if (tags.length !== 3) {
             this.setState(state => ({ tags: [...state.tags, tag] }));
         }
     }
-    
+
 
     render() {
         const { tags } = this.state;
-        const {suggestions} = this.props;
-        
+        const { suggestions } = this.props;
+
         return (
             <div>
                 <ReactTags tags={tags}
@@ -46,10 +46,10 @@ class TagInput extends React.Component {
                     delimiters={delimiters}
                     allowDeleteFromEmptyInput={true}
                     placeholder='Add New Item'
-                    name={tags.length !== 5 ? `input-tag` : `input-tag hide`}
+                    name={tags.length !== 3 ? `input-tag` : `input-tag hide`}
                     suggestions={suggestions}
                     inline={true}
-                    />
+                />
             </div>
         )
     }
