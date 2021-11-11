@@ -237,11 +237,14 @@ class EditPage extends React.Component {
         ]
 
         return (
-            <div className='main wrap'>
+            <div className='main wrap edit_page'>
                 <header className='header'>
                     <div className='header_inner'>
                         <div className={statesItems.isActive === true ? 'wrap_title active' : 'wrap_title'}>
-                            <span>원피스</span>
+                            <span>Edit</span>
+                            <div className="bx_right">
+                                <button type='button'>X</button>
+                            </div>
                         </div>
                     </div>
                 </header>
@@ -303,7 +306,7 @@ class EditPage extends React.Component {
                                                 />
                                                 <div className='sel'>
                                                     <select name="" id="">
-                                                        <option value="">111</option>
+                                                        <option value="">Daily</option>
                                                     </select>
                                                 </div>
                                             </div>

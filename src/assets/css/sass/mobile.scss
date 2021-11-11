@@ -661,17 +661,74 @@ input[type=number] {
 
 .apexcharts-bar-area:hover { fill: #ddd !important; }
 
+.edit_page{
+    .header{
+        height: 8rem;
+
+        .bx_right{
+            top: 1.5rem;
+            right: 4rem;
+            font-size: 3rem;
+        }
+    }
+    .main_container{
+        padding-top: 10rem;
+    }
+}
+
 .edit_cont{
     .react-datepicker__day--selected,
     .react-datepicker__day--in-selecting-range,
     .react-datepicker__day--in-range{
         background: #f9a21b !important;
     }
+    .react-datepicker__current-month, 
+    .react-datepicker-time__header, 
+    .react-datepicker-year-header{
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    .react-datepicker-wrapper{
+        width: 20% !important;
+    }
+
+    .cal-range{
+        margin: 0 1rem;
+    }
+
+    .sel{
+        position: relative;
+        select{
+            margin-left: 1rem;
+            padding: 0.65rem 3rem 0.65rem 0.65rem;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            background: #d1cbcb;
+            color: #fff;
+            font-weight: 600;
+        }
+        &::after{
+            position: absolute;
+            content: "";
+            width: 0.5em;
+            height: 0.5em;
+            border-width: 0 0 1px 1px;
+            border-style: solid;
+            border-color: #fff;
+            right: 1em;
+            transform: rotate(315deg) translate(0, -50%);
+            transform-origin: top;
+            top: 50%;
+            transition: all .3s ease-out;
+        }
+    }
 
     .react-datepicker__input-container{
         input{
 
-            font-size: 2rem !important;
+            font-size: 1.6rem !important;
+            border-radius: 50px !important;
+            text-align: center;
 
             &:focus{
                 border: 1px solid #f9a21b !important;

@@ -100,12 +100,12 @@ const ChannelButton = () => {
             </div>
 
             <div className={`channel_cont ${rSelected === 0 ? ' active' : ''}`}>
-                <div>
+                <div className='bx_channel_click'>
                     {socialData.map((list, idx) => {
                         return (
                             // eslint-disable-next-line react/no-array-index-key
                             <div key={idx}>
-                                <p>{socialDataTitle[idx]}</p>
+                                <p className='cannel_title'>{socialDataTitle[idx]}</p>
                                 {list.map(item => {
                                     return (
                                         <Button color="items" key={item.id} onClick={() => onCheckboxBtnClick(item.id, item.name)} active={checkSelected.includes(item.id)}>{item.name}</Button>

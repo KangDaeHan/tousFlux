@@ -180,6 +180,7 @@
         background-color: #fff;
         border-color: #bbb;
         color: #bbb;
+        font-size: 1.2rem;
 
         &.active{
             background-color: #f9a21b;
@@ -196,8 +197,33 @@
     margin-top: 10px;
     display: none;
 
+
     &.active{
         display: block;
+    }
+
+    .bx_channel_click{
+        padding: 1rem;
+        border: 1px solid #ddd;
+
+        div{
+            &:first-child{
+                .cannel_title{
+                    margin-top: 0;
+                }
+            }
+        }
+        > div{
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    .cannel_title{
+        line-height: 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 1rem 0;
     }
 
     .btn-items{
@@ -205,6 +231,8 @@
         background-color: #fff;
         border: none;
         color: #bbb;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
 
         &.active{
             background-color: #f9a21b;
@@ -228,6 +256,7 @@
             border: 1px solid #f9a21b;
             border-radius: 20px;
             color: #555;
+            margin-bottom: 1rem;
 
             .close{
                 margin-left: 10px;
