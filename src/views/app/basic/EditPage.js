@@ -250,82 +250,71 @@ class EditPage extends React.Component {
                         <Colxx xxs="12">
                             <Card>
                                 <CardBody>
-                                    <Form className="check-box-wrap multi">
-                                        <div className="tbl-vertical-heading">
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <th style={{ width: "15%" }}>Keywords</th>
-                                                        <td style={{ width: "85%" }} colSpan="3">
-                                                            <Formik
-                                                                initialValues={{
-                                                                    keyword: "",
-                                                                }}
-                                                            // onSubmit={onSubmit}
-                                                            >
-                                                                {({ errors, touched }) => (
-                                                                    <FormGroup className="keyword-area">
-                                                                        <Field
-                                                                            className="form-control"
-                                                                            name="keyword"
-                                                                            validate={validateKeyword}
-                                                                        />
-                                                                        {errors.keyword && touched.keyword && (
-                                                                            <div className="d-block noti-text">
-                                                                                {errors.keyword}
-                                                                            </div>
-                                                                        )}
-                                                                    </FormGroup>
-                                                                )}
-                                                            </Formik>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        {/* vertical유형의 테이블 th 값은 인라인 스타일로 지정 바랍니다. */}
-                                                        <th style={{ width: "15%" }}>Period</th>
-                                                        <td style={{ width: "85%" }}>
-                                                            <div className="date-picker-wrap">
-                                                                <DatePicker
-                                                                    className="form-control"
-                                                                    locale={ko}
-                                                                    dateFormat="yyyy.MM.dd"
-                                                                    selected={statesItems.startDate}
-                                                                    selectsStart
-                                                                    startDate={statesItems.startDate}
-                                                                    endDate={statesItems.endDate}
-                                                                    onChange={this.ChangeStartDate}
-                                                                    placeholderText="Select Time"
-                                                                />
-                                                                <span className="cal-range"> ~ </span>
-                                                                <DatePicker
-                                                                    className="form-control"
-                                                                    locale={ko}
-                                                                    dateFormat="yyyy.MM.dd"
-                                                                    selected={statesItems.endDate}
-                                                                    selectsEnd
-                                                                    startDate={statesItems.startDate}
-                                                                    endDate={statesItems.endDate}
-                                                                    onChange={this.ChangeEndDate}
-                                                                    placeholderText="Select Time"
-                                                                />
+                                    <Form className="edit_cont">
+                                        <div>
+                                            <p className='title_desc'>Keyword</p>
+                                            <Formik
+                                                initialValues={{
+                                                    keyword: "",
+                                                }}
+                                            // onSubmit={onSubmit}
+                                            >
+                                                {({ errors, touched }) => (
+                                                    <FormGroup className="keyword-area">
+                                                        <Field
+                                                            className="form-control"
+                                                            name="keyword"
+                                                            validate={validateKeyword}
+                                                        />
+                                                        {errors.keyword && touched.keyword && (
+                                                            <div className="d-block noti-text">
+                                                                {errors.keyword}
                                                             </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style={{ width: "15%" }}>Channel</th>
-                                                        <td style={{ width: "85%" }} colSpan="3">
-                                                            <ChannelButton />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style={{ width: "15%" }}>Competitors</th>
-                                                        <td style={{ width: "85%" }} colSpan="3">
-                                                            <TagInput suggestions={suggestions} />
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
+                                                        )}
+                                                    </FormGroup>
+                                                )}
+                                            </Formik>
+                                        </div>
+                                        <div>
+                                            <p className='title_desc'>Period</p>
+                                            <div className="date-picker-wrap">
+                                                <DatePicker
+                                                    className="form-control"
+                                                    locale={ko}
+                                                    dateFormat="yyyy.MM.dd"
+                                                    selected={statesItems.startDate}
+                                                    selectsStart
+                                                    startDate={statesItems.startDate}
+                                                    endDate={statesItems.endDate}
+                                                    onChange={this.ChangeStartDate}
+                                                    placeholderText="Select Time"
+                                                />
+                                                <span className="cal-range"> ~ </span>
+                                                <DatePicker
+                                                    className="form-control"
+                                                    locale={ko}
+                                                    dateFormat="yyyy.MM.dd"
+                                                    selected={statesItems.endDate}
+                                                    selectsEnd
+                                                    startDate={statesItems.startDate}
+                                                    endDate={statesItems.endDate}
+                                                    onChange={this.ChangeEndDate}
+                                                    placeholderText="Select Time"
+                                                />
+                                                <div className='sel'>
+                                                    <select name="" id="">
+                                                        <option value="">111</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <p className='title_desc'>Channel</p>
+                                            <ChannelButton />
+                                        </div>
+                                        <div>
+                                            <p className='title_desc'>Competitors</p>
+                                            <TagInput suggestions={suggestions} />
                                         </div>
                                     </Form>
                                 </CardBody>

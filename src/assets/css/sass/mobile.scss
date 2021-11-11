@@ -661,6 +661,38 @@ input[type=number] {
 
 .apexcharts-bar-area:hover { fill: #ddd !important; }
 
+.edit_cont{
+    .react-datepicker__day--selected,
+    .react-datepicker__day--in-selecting-range,
+    .react-datepicker__day--in-range{
+        background: #f9a21b !important;
+    }
+
+    .react-datepicker__input-container{
+        input{
+
+            font-size: 2rem !important;
+
+            &:focus{
+                border: 1px solid #f9a21b !important;
+            }
+        }
+    }
+
+    > div{
+        margin-top: 2rem;
+        .title_desc{
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .date-picker-wrap{
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
 
 @media (max-width: 640px){
     body,html{font-size: 0.5rem !important;}
