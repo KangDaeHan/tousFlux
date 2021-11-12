@@ -668,7 +668,7 @@ input[type=number] {
         .bx_right{
             top: 1.5rem;
             right: 4rem;
-            
+
             button{
                 font-size: 3rem;
             }
@@ -697,6 +697,17 @@ input[type=number] {
 
     .cal-range{
         margin: 0 1rem;
+    }
+    
+    .date-picker-wrap{
+        .cal_icon{
+            width: 20px;
+            height: 22px;
+            margin-right: 1rem;
+            background: url('/assets/img/icon/cal_icon.png') center center no-repeat;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
     }
 
     .sel{
@@ -751,6 +762,14 @@ input[type=number] {
             align-items: center;
         }
     }
+}
+
+.blind { 
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
 
 

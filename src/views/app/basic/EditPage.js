@@ -281,6 +281,9 @@ class EditPage extends React.Component {
                                         <div>
                                             <p className='title_desc'>Period</p>
                                             <div className="date-picker-wrap">
+                                                <span className='cal_icon'>
+                                                    <span className='blind'>cal_icon</span>
+                                                </span>
                                                 <DatePicker
                                                     className="form-control"
                                                     locale={ko}
