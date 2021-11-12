@@ -262,7 +262,7 @@
                 margin-left: 10px;
                 font-size: 1rem;
                 span{
-                    vertical-align: middle;
+                    vertical-align: -webkit-baseline-middle;
                 }
             }
             + li{
