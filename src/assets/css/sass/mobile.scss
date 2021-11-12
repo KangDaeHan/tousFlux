@@ -668,7 +668,10 @@ input[type=number] {
         .bx_right{
             top: 1.5rem;
             right: 4rem;
-            font-size: 3rem;
+            
+            button{
+                font-size: 3rem;
+            }
         }
     }
     .main_container{
@@ -726,7 +729,7 @@ input[type=number] {
     .react-datepicker__input-container{
         input{
 
-            font-size: 1.6rem !important;
+            font-size: 1.4rem !important;
             border-radius: 50px !important;
             text-align: center;
 

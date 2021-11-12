@@ -104,7 +104,7 @@ const ChannelButton = () => {
                     {socialData.map((list, idx) => {
                         return (
                             // eslint-disable-next-line react/no-array-index-key
-                            <div key={idx}>
+                            <div key={idx} className='bor_b'>
                                 <p className='cannel_title'>{socialDataTitle[idx]}</p>
                                 {list.map(item => {
                                     return (
@@ -125,7 +125,48 @@ const ChannelButton = () => {
                 </ul>
             </div>
 
+
             <div className={`channel_cont ${rSelected === 1 ? ' active' : ''}`}>
+                <div className='bx_channel_click'>
+                    <div>
+                        {onlineShopData.map((item) => {
+                            return (
+                                <Button color="items" key={item.id} onClick={() => onCheckboxBtnClick(item.id, item.name)} active={checkSelected.includes(item.id)}>{item.name}</Button>
+                            )
+                        })}
+                    </div>
+                </div>
+                <ul className='list_tag'>
+                    {selectArray.map((item, idx) => {
+                        return (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <li key={idx}>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
+                        )
+                    })}
+                </ul>
+            </div>
+
+            <div className={`channel_cont ${rSelected === 2 ? ' active' : ''}`}>
+                <div className='bx_channel_click'>
+                    <div>
+                        {googleAnalData.map((item) => {
+                            return (
+                                <Button color="items" key={item.id} onClick={() => onCheckboxBtnClick(item.id, item.name)} active={checkSelected.includes(item.id)}>{item.name}</Button>
+                            )
+                        })}
+                    </div>
+                </div>
+                <ul className='list_tag'>
+                    {selectArray.map((item, idx) => {
+                        return (
+                            // eslint-disable-next-line react/no-array-index-key
+                            <li key={idx}>{item.name} <Button close onClick={() => tagRemoveBtn(item.id)} /></li>
+                        )
+                    })}
+                </ul>
+            </div>
+
+            {/* <div className={`channel_cont ${rSelected === 1 ? ' active' : ''}`}>
                 <table className='tbl_social'>
                     <tbody>
                         <tr>
@@ -172,7 +213,7 @@ const ChannelButton = () => {
                         )
                     })}
                 </ul>
-            </div>
+            </div> */}
         </>
     );
 
