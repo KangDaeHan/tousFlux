@@ -662,6 +662,14 @@ input[type=number] {
 .apexcharts-bar-area:hover { fill: #ddd !important; }
 
 .edit_page{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+
     .header{
         height: 8rem;
 
@@ -676,6 +684,33 @@ input[type=number] {
     }
     .main_container{
         padding-top: 10rem;
+    }
+    .row{
+        margin: 0 !important;
+    }
+    .dim{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #000;
+        opacity: 0.5;
+    }
+    .wrap_title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 3rem;
+
+        .bx_right{
+            button{
+                font-size: 3rem;
+            }
+        }
+    }
+    &.active{
+        display: block;
     }
 }
 

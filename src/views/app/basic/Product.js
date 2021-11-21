@@ -19,6 +19,7 @@ import SwiperCore, { Pagination } from 'swiper';
 
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/components/pagination'
+import ModalPop from './EditPage'
 
 // install Swiper modules
 SwiperCore.use([Pagination]);
@@ -29,7 +30,8 @@ class Product extends React.Component {
         this.state = {
             menuActiveItem: 1,
             num: 0,
-            isActive: false
+            isActive: false,
+            popupActive: false
         }
     }
 
@@ -53,6 +55,10 @@ class Product extends React.Component {
         // })
     }
 
+    popupChangeHandler = (e) =>{
+        e.preventDefault();
+        this.setState(({ popupActive }) => ({ popupActive: !popupActive }));
+    }
 
     render() {
         const statesItems = this.state;
@@ -132,6 +138,7 @@ class Product extends React.Component {
             ]
 
         return (
+            <>
             <div className='main wrap'>
                 <header className='header'>
                     <div className='header_inner'>
@@ -145,7 +152,11 @@ class Product extends React.Component {
                             <a href="#" className='btn_search' onClick={this.changeHandler}>
                                 <span className='btn_nor_search' />
                             </a>
-                            <a href="javscript:void(0);" className='btn_fileter'>
+                            <a 
+                            href="javscript:void(0);" 
+                            className='btn_fileter'
+                            onClick={this.popupChangeHandler}
+                            >
                                 <span className='btn_nor_filter' />
                             </a>
                         </div>
@@ -309,6 +320,8 @@ class Product extends React.Component {
                     </div>
                 </footer>
             </div>
+            <ModalPop popupHandler={this.popupChangeHandler} popupActive={this.state.popupActive} />
+            </>
         )
     }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-use-before-define */
@@ -147,6 +149,7 @@ class EditPage extends React.Component {
             },
         };
     }
+    
 
     ChangeStartDate = (e) => {
         this.setState({
@@ -178,7 +181,6 @@ class EditPage extends React.Component {
         const { checkInfo } = this.state;
         checkInfo.forEach((item) => {
             if (item.value === evt.target.value) {
-                // eslint-disable-next-line no-param-reassign
                 item.isChecked = evt.target.checked;
             }
         });
@@ -187,6 +189,7 @@ class EditPage extends React.Component {
 
     render() {
         const statesItems = this.state;
+        
         const validateKeyword = (value) => {
             let error;
             if (!value) {
@@ -237,96 +240,102 @@ class EditPage extends React.Component {
         ]
 
         return (
-            <div className='main wrap edit_page'>
-                <header className='header'>
-                    <div className='header_inner'>
-                        <div className={statesItems.isActive === true ? 'wrap_title active' : 'wrap_title'}>
-                            <span>Edit</span>
-                            <div className="bx_right">
-                                <button type='button'>X</button>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-                <div className='main_container'>
-                    <Row>
-                        <Colxx xxs="12">
-                            <Card>
-                                <CardBody>
-                                    <Form className="edit_cont">
-                                        <div>
-                                            <p className='title_desc'>Keyword</p>
-                                            <Formik
-                                                initialValues={{
-                                                    keyword: "",
-                                                }}
-                                            // onSubmit={onSubmit}
-                                            >
-                                                {({ errors, touched }) => (
-                                                    <FormGroup className="keyword-area">
-                                                        <Field
-                                                            className="form-control"
-                                                            name="keyword"
-                                                            validate={validateKeyword}
-                                                        />
-                                                        {errors.keyword && touched.keyword && (
-                                                            <div className="d-block noti-text">
-                                                                {errors.keyword}
-                                                            </div>
-                                                        )}
-                                                    </FormGroup>
-                                                )}
-                                            </Formik>
-                                        </div>
-                                        <div>
-                                            <p className='title_desc'>Period</p>
-                                            <div className="date-picker-wrap">
-                                                <span className='cal_icon'>
-                                                    <span className='blind'>cal_icon</span>
-                                                </span>
-                                                <DatePicker
-                                                    className="form-control"
-                                                    locale={ko}
-                                                    dateFormat="yyyy.MM.dd"
-                                                    selected={statesItems.startDate}
-                                                    selectsStart
-                                                    startDate={statesItems.startDate}
-                                                    endDate={statesItems.endDate}
-                                                    onChange={this.ChangeStartDate}
-                                                    placeholderText="Select Time"
-                                                />
-                                                <span className="cal-range"> ~ </span>
-                                                <DatePicker
-                                                    className="form-control"
-                                                    locale={ko}
-                                                    dateFormat="yyyy.MM.dd"
-                                                    selected={statesItems.endDate}
-                                                    selectsEnd
-                                                    startDate={statesItems.startDate}
-                                                    endDate={statesItems.endDate}
-                                                    onChange={this.ChangeEndDate}
-                                                    placeholderText="Select Time"
-                                                />
-                                                <div className='sel'>
-                                                    <select name="" id="">
-                                                        <option value="">Daily</option>
-                                                    </select>
+            <div className={this.props.popupActive === true ? 'edit_page popup_modal active' : 'edit_page popup_modal'}>
+                <div className='dim' />
+                <div className='popup_cont'>
+                    <div className='main_container'>
+                        <Row>
+                            <Colxx xxs="12">
+                                <Card>
+                                    <CardBody>
+                                        <Form className="edit_cont">
+                                            <header>
+                                                <div className='header_inner'>
+                                                    <div className={statesItems.isActive === true ? 'wrap_title active' : 'wrap_title'}>
+                                                        <span>Edit</span>
+                                                        <div className="bx_right">
+                                                            <button 
+                                                                type='button'
+                                                                onClick={this.props.popupHandler}
+                                                            >X</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </header>
+                                            <div>
+                                                <p className='title_desc'>Keyword</p>
+                                                <Formik
+                                                    initialValues={{
+                                                        keyword: "",
+                                                    }}
+                                                // onSubmit={onSubmit}
+                                                >
+                                                    {({ errors, touched }) => (
+                                                        <FormGroup className="keyword-area">
+                                                            <Field
+                                                                className="form-control"
+                                                                name="keyword"
+                                                                validate={validateKeyword}
+                                                            />
+                                                            {errors.keyword && touched.keyword && (
+                                                                <div className="d-block noti-text">
+                                                                    {errors.keyword}
+                                                                </div>
+                                                            )}
+                                                        </FormGroup>
+                                                    )}
+                                                </Formik>
+                                            </div>
+                                            <div>
+                                                <p className='title_desc'>Period</p>
+                                                <div className="date-picker-wrap">
+                                                    <span className='cal_icon'>
+                                                        <span className='blind'>cal_icon</span>
+                                                    </span>
+                                                    <DatePicker
+                                                        className="form-control"
+                                                        locale={ko}
+                                                        dateFormat="yyyy.MM.dd"
+                                                        selected={statesItems.startDate}
+                                                        selectsStart
+                                                        startDate={statesItems.startDate}
+                                                        endDate={statesItems.endDate}
+                                                        onChange={this.ChangeStartDate}
+                                                        placeholderText="Select Time"
+                                                    />
+                                                    <span className="cal-range"> ~ </span>
+                                                    <DatePicker
+                                                        className="form-control"
+                                                        locale={ko}
+                                                        dateFormat="yyyy.MM.dd"
+                                                        selected={statesItems.endDate}
+                                                        selectsEnd
+                                                        startDate={statesItems.startDate}
+                                                        endDate={statesItems.endDate}
+                                                        onChange={this.ChangeEndDate}
+                                                        placeholderText="Select Time"
+                                                    />
+                                                    <div className='sel'>
+                                                        <select name="" id="">
+                                                            <option value="">Daily</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <p className='title_desc'>Channel</p>
-                                            <ChannelButton />
-                                        </div>
-                                        <div>
-                                            <p className='title_desc'>Competitors</p>
-                                            <TagInput suggestions={suggestions} />
-                                        </div>
-                                    </Form>
-                                </CardBody>
-                            </Card>
-                        </Colxx>
-                    </Row>
+                                            <div>
+                                                <p className='title_desc'>Channel</p>
+                                                <ChannelButton />
+                                            </div>
+                                            <div>
+                                                <p className='title_desc'>Competitors</p>
+                                                <TagInput suggestions={suggestions} />
+                                            </div>
+                                        </Form>
+                                    </CardBody>
+                                </Card>
+                            </Colxx>
+                        </Row>
+                    </div>
                 </div>
             </div>
 
