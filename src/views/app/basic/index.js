@@ -13,6 +13,10 @@ const EditPage = React.lazy(() =>
     import(/* webpackChunkName: "second" */ './EditPage')
 );
 
+const Loading = React.lazy(() =>
+    import(/* webpackChunkName: "second" */ './Loading')
+);
+
 const BasicLink = ({ match }) => (
     <Suspense fallback={<div className="loading" />}>
         <Switch>
@@ -28,6 +32,10 @@ const BasicLink = ({ match }) => (
             <Route
                 path={`${match.url}/editpage`}
                 render={(props) => <EditPage {...props} />}
+            />
+            <Route
+                path={`${match.url}/loading`}
+                render={(props) => <Loading {...props} />}
             />
             <Redirect to="/error" />
         </Switch>
