@@ -4,10 +4,28 @@
 <head>
   <meta charset="utf-8" />
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="cleartype" content="on">
   <meta name="theme-color" content="#000000" />
   <link rel="stylesheet" href="/assets/fonts/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="/assets/fonts/iconsmind-s/css/iconsminds.css">
+
+  <!-- 앱 홈 아이콘 링크 -->
+  
+  <link rel="apple-touch-icon" href="/assets/img/mobile/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/mobile/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/mobile/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/mobile/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/mobile/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/mobile/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/mobile/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/mobile/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/mobile/apple-touch-icon-180x180.png" />
+
+  <!-- 앱 홈 아이콘 링크 -->
+
   <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -26,6 +44,16 @@
   <script>
     // See https://github.com/facebook/react/issues/20829#issuecomment-802088260
     if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer;
+
+    // 모바일 홈페이지 바로가기 링크 생성
+    let userAgent = navigator.userAgent.toLowerCase(); // 접속 모바일 디바이스 정보
+    
+    if(userAgent.match('ipad')) {
+      document.write('<link rel="apple-touch-icon" sizes="72*72" href="/assets/img/mobile/apple-touch-icon-72x72.png" />')
+    } else if(userAgent.match('android')) {
+      document.write('<link rel="shortcut icon" href="/assets/img/mobile/apple-touch-icon-72x72.png" />')
+    }
+
   </script>
   <title>TousFlux</title>
 </head>
